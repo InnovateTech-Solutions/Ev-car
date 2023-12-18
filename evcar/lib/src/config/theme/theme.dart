@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final light = ThemeData.light().copyWith(
     extensions: [
-      _lightAppColors,
+      lightAppColors,
     ],
   );
 
-  static final _lightAppColors = AppColorsExtension(
+  static final lightAppColors = AppColorsExtension(
     primary: const Color(0xff161E21),
     background: const Color(0xffFFFFFF),
     buttoncolor: const Color(0xff00A8A8),

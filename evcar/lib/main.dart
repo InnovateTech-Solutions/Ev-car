@@ -1,5 +1,6 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/future/charge_station/view/pages/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,11 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Ev - Car',
+      debugShowCheckedModeBanner: false,
+      title: 'Orange E-commerce',
       theme: AppTheme.light,
       initialRoute: AppRoutes.onBoard,
+      locale: const Locale('ar', 'AR'),
       getPages: AppRoutes.routes,
-      home: const Scaffold(),
+      home: const DetailsPage(),
     );
   }
 }
