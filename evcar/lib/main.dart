@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Orange E-commerce',
+      title: 'Ev - Car',
       theme: AppTheme.light,
       initialRoute: AppRoutes.onBoard,
       getPages: AppRoutes.routes,
