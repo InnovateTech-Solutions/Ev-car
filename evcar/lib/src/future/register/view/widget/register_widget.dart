@@ -1,6 +1,4 @@
-import 'package:evcar/src/future/login/view/widget/login_appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../../../core/widgets/custem_button.dart';
 import 'custem_text_form_field.dart';
 import '../../../../core/widgets/custem_title_text.dart';
