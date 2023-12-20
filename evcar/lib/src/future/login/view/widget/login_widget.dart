@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../../../core/widgets/custom_title_text2.dart';
-import '../../../../core/widgets/dividerHorizontal.dart';
+import '../../../../core/widgets/divider_horizontal.dart';
 import '../../../../core/widgets/dividerVertical.dart';
 import '../pages/complete_phone.dart';
 import 'custem_text.dart';

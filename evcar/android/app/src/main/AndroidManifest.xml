@@ -1,8 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />   
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> 
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
+
+   
+   
     <application
         android:label="evcar"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+          <meta-data android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyBWEtkLBMq5z_dYE1jnuATj6cgW2nyoGCw"/>
+      
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
