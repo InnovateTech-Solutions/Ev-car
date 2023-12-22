@@ -89,7 +89,9 @@ flutter:
     - family: cairo-SemiBold
       fonts:
         - asset: assets/fonts/Cairo-SemiBold.ttf
-
+    - family: Cairo-Regular
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
 
 
   #       - asset: fonts/Schyler-Italic.ttf
