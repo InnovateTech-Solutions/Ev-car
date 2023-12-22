@@ -17,10 +17,10 @@ class LoginWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 50,
-        right: 10,
-        left: 10,
+      padding: EdgeInsets.only(
+        top: MediaQuery.of(context).size.height * .07,
+        right: MediaQuery.of(context).size.width * .03,
+        left: MediaQuery.of(context).size.width * .03,
       ),
       child: SingleChildScrollView(
         child: Column(
@@ -28,18 +28,18 @@ class LoginWidget extends StatelessWidget {
           children: [
             const CustemTitleText(text: 'تسجيل الدخول'),
             SizedBox(
-              height: Get.height / 49,
+              height: MediaQuery.of(context).size.height * .01,
             ),
             const CustomTitleText2(
               text: 'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.',
             ),
             SizedBox(
-              height: Get.height / 20,
+              height: MediaQuery.of(context).size.height * .05,
             ),
             const MyDividerHorizontal(),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: CustemText(
+            Padding(
+              padding: EdgeInsets.all(MediaQuery.of(context).size.height * .02),
+              child: const CustemText(
                 text: 'الاردن',
               ),
             ),
@@ -57,6 +57,10 @@ class LoginWidget extends StatelessWidget {
                     keyboardType: TextInputType.phone,
                     decoration: const InputDecoration(
                       hintText: '00 00 00 00 0',
+                      hintStyle: TextStyle(
+                        color: Colors.grey,
+                        fontFamily: 'cairo-Medium',
+                      ),
                       border: InputBorder.none,
                     ),
                   ),
@@ -67,7 +71,7 @@ class LoginWidget extends StatelessWidget {
             ),
             const MyDividerHorizontal(),
             SizedBox(
-              height: Get.height / 10,
+              height: MediaQuery.of(context).size.height * .08,
             ),
             CustemButton(
               text: 'التالي',
