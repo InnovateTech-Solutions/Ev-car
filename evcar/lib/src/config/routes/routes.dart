@@ -1,3 +1,4 @@
+import 'package:evcar/src/future/charge_station/view/widget/charge_station_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +10,7 @@ class AppRoutes {
   static final List<GetPage> routes = [
     GetPage(
       name: onBoard,
-      page: () => const Scaffold(),
+      page: () => const ChargeStationWidget(),
     ),
     GetPage(
       name: register,
