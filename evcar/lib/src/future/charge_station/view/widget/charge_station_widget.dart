@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'custem_card_station.dart';
 
 class ChargeStationWidget extends StatelessWidget {
@@ -15,7 +17,13 @@ class ChargeStationWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height,
             child: ListView.separated(
-              itemBuilder: (context, index) => const CustemCardStation(),
+              itemBuilder: (context, index) {
+                RxBool seeMore = false.obs;
+
+                return CustemCardStation(
+                  seeMore: seeMore,
+                );
+              },
               separatorBuilder: (context, index) => const SizedBox(
                 height: 30,
               ),

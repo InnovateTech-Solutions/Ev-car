@@ -4,25 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="first commit">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/config/theme/theme.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/config/theme/theme.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/pages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/login/view/pages/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_appbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_appbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/register/view/pages/register_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/register/view/pages/register_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/register/view/widget/register_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/register/view/widget/register_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/pubspec.lock" afterDir="false" />
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="with MediaQuery">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evcar/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="development/forms" />
+        <entry key="$PROJECT_DIR$" value="form" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,19 +38,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "io.flutter.reload.alreadyRun": "true",
-    "last_opened_file_path": "C:/Users/aliha/OneDrive/Desktop/Ev-car",
-    "settings.editor.selected.configurable": "flutter.settings",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/aliha/OneDrive/Desktop/Ev-car&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\aliha\OneDrive\Desktop\projects\EV-car-copy\evcar\lib\src\future" />
@@ -101,7 +86,21 @@
       <option name="project" value="LOCAL" />
       <updated>1702940760853</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="first commit">
+      <created>1702942820279</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702942820279</updated>
+    </task>
+    <task id="LOCAL-00004" summary="with MediaQuery">
+      <created>1703286510063</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1703286510064</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -117,7 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit" />
+    <MESSAGE value="with MediaQuery" />
+    <option name="LAST_COMMIT_MESSAGE" value="with MediaQuery" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

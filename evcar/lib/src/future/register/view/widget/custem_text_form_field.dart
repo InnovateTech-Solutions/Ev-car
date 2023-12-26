@@ -1,7 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.hintText,
@@ -16,35 +16,23 @@ class CustomTextFormField extends StatefulWidget {
   final Function()? validator;
   final TextInputType keyboardType;
   final bool isPassword;
-
-  @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  bool showPassword = false;
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
       child: TextFormField(
-        onSaved: widget.onSave!(),
-        validator: widget.validator!(),
-        keyboardType: widget.keyboardType,
-        obscureText: !showPassword,
+        onSaved: onSave!(),
+        validator: validator!(),
+        keyboardType: keyboardType,
+        obscureText: isPassword,
         decoration: InputDecoration(
-            suffixIcon: widget.isPassword
+            suffixIcon: isPassword
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            showPassword = !showPassword;
-                          });
-                        },
+                        onTap: () {},
                         child: Icon(
-                          showPassword
+                          isPassword
                               ? EvaIcons.eyeOutline
                               : EvaIcons.eyeOffOutline,
                           color: Colors.black.withOpacity(0.6),
@@ -57,7 +45,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             ),
             filled: true,
             fillColor: Colors.white,
-            hintText: widget.hintText,
+            hintText: hintText,
             hintStyle: const TextStyle(fontFamily: 'cairo-Medium')),
       ),
     );
