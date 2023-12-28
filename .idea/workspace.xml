@@ -4,55 +4,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="add textStyle">
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/profile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/charge_station_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/pages/information_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/pages/profile_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/widget/custom_button_profile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/widget/custom_cart_profile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/widget/information_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/widget/profile_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/profile/view/widget/text_form_profile.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="added profile page and charge station">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/assets/images/arrowback.png" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/assets/images/arrowback.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evcar/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widgets/custem_title_text.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widgets/custom_title_text2.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widgets/dividerHorizontal.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/core/widgets/dividerHorizontal.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/pages/create_charging_points_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/pages/create_charging_points_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/CreateChargingPointsWidget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/create_charging_points_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/charge_station_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/charge_station_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_button_call.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_button_call.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_button_message.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_button_message.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_card_station.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_card_station.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_icons.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_icons.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_text_details_station.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custem_text_title.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custom_name_station.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custom_text_description.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custom_text_rating.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custon_text_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custon_text_location.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/details_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/complete_phone_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/complete_phone_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/custem_text.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_appbar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_appbar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/login/view/widget/login_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/opening_screen/view/widget/opening_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/opening_screen/view/widget/opening_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/register/controller/register_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/register/controller/register_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/register/view/widget/custem_text_form_field.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/register/view/widget/custem_text_form_field.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/register/view/widget/register_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/register/view/widget/register_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/linux/flutter/generated_plugins.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/windows/flutter/generated_plugins.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,6 +26,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="form" />
@@ -153,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703288339901</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added profile page and charge station">
+      <created>1703722195365</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1703722195365</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,7 +138,8 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="with MediaQuery" />
     <MESSAGE value="add textStyle" />
-    <option name="LAST_COMMIT_MESSAGE" value="add textStyle" />
+    <MESSAGE value="added profile page and charge station" />
+    <option name="LAST_COMMIT_MESSAGE" value="added profile page and charge station" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

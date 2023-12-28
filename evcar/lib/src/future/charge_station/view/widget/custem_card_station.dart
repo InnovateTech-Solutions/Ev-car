@@ -17,18 +17,14 @@ class CustemCardStation extends StatelessWidget {
       onTap: () {},
       child: Obx(
         () => Container(
-          padding: EdgeInsets.only(
-            top: screenHeight * 0.01,
-            right: screenWidht * 0.02,
-          ),
           margin: EdgeInsets.only(
             left: screenWidht * 0.07,
             right: screenWidht * 0.07,
           ),
           width: MediaQuery.of(context).size.width,
           height: seeMore.value == false
-              ? 0.156 * screenHeight
-              : 0.3 * screenHeight,
+              ? 0.17 * screenHeight
+              : 0.27 * screenHeight,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(15),
@@ -41,66 +37,67 @@ class CustemCardStation extends StatelessWidget {
               ),
             ],
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: const Image(
-                  image: AssetImage('assets/images/chargeStation1.png'),
+          child: Padding(
+            padding: EdgeInsets.only(
+              right: screenWidht * 0.004,
+              top: screenHeight * 0.015,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: const Image(
+                    image: AssetImage('assets/images/chargeStation1.png'),
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: MediaQuery.of(context).size.width / 30,
-              ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  // const CustemTextTitle(
-                  //   title: 'اكسترا للشحن المتنقل',
-                  // ),
-                  Styles.textstyle17('اكسترا للشحن المتنقل'),
-                  // const CustemTextDetails(
-                  //   text: '-الشحن في اي مكان بالمملكة \n-اسعار منافسة',
-                  // ),
-                  Styles.details('-الشحن في اي مكان بالمملكة \n-اسعار منافسة'),
-                  InkWell(
-                    onTap: () {
-                      if (seeMore.isTrue) {
-                        seeMore.value = false;
-                      } else {
-                        seeMore.value = true;
-                      }
-                    },
-                    child: Obx(
-                      () => Text(
-                        seeMore.value == false ? 'المزيد ...' : 'اقل ...',
-                        style: const TextStyle(
-                          color: Colors.blue,
-                          fontFamily: 'cairo-Medium',
+                SizedBox(
+                  width: MediaQuery.of(context).size.width / 30,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Styles.textstyle17('اكسترا للشحن المتنقل'),
+                    Styles.details(
+                        '-الشحن في اي مكان بالمملكة \n-اسعار منافسة'),
+                    InkWell(
+                      onTap: () {
+                        if (seeMore.isTrue) {
+                          seeMore.value = false;
+                        } else {
+                          seeMore.value = true;
+                        }
+                      },
+                      child: Obx(
+                        () => Text(
+                          seeMore.value == false ? 'المزيد ...' : 'اقل ...',
+                          style: const TextStyle(
+                            color: Colors.blue,
+                            fontFamily: 'cairo-Medium',
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Obx(
-                    () => Container(
-                      child: seeMore.value == false
-                          ? Container()
-                          : Image.asset(
-                              "assets/images/typecharge.png",
-                              width: 0.4 * screenWidht,
-                              height: 0.1 * screenHeight,
-                            ),
+                    Obx(
+                      () => Container(
+                        child: seeMore.value == false
+                            ? Container()
+                            : Image.asset(
+                                "assets/images/typecharge.png",
+                                width: 0.4 * screenWidht,
+                                height: 0.1 * screenHeight,
+                              ),
+                      ),
                     ),
-                  ),
-                  const CustemIcons(),
-                ],
-              ),
-              const Spacer(),
-              const CustemFavriteIcon(),
-            ],
+                    const CustemIcons(),
+                  ],
+                ),
+                const Spacer(),
+                const CustemFavriteIcon(),
+              ],
+            ),
           ),
         ),
       ),

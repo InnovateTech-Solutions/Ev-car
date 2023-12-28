@@ -60,7 +60,7 @@ class DetailsWidget extends StatelessWidget {
           const Image(
             image: AssetImage('assets/images/typecharge.png'),
           ),
-          const Row(
+          Row(
             children: [
               CustemButtonCall(),
             ],
