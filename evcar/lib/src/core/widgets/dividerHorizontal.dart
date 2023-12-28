@@ -10,7 +10,7 @@ class MyDividerHorizontal extends StatelessWidget {
         start: 20.0,
       ),
       child: Container(
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width * .89,
         height: 1.0,
         color: Colors.grey[300],
       ),

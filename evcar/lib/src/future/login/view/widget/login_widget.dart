@@ -1,13 +1,11 @@
 import 'package:evcar/src/core/widgets/custem_button.dart';
-import 'package:evcar/src/core/widgets/custem_title_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../../../../core/widgets/custom_title_text2.dart';
+import '../../../../core/widget/text_widget/text_widget.dart';
 import '../../../../core/widgets/dividerHorizontal.dart';
 import '../../../../core/widgets/dividerVertical.dart';
 import '../pages/complete_phone.dart';
-import 'custem_text.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({
@@ -26,22 +24,19 @@ class LoginWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustemTitleText(text: 'تسجيل الدخول'),
+            Styles.textstyle30('تسجيل الدخول'),
             SizedBox(
               height: MediaQuery.of(context).size.height * .01,
             ),
-            const CustomTitleText2(
-              text: 'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.',
-            ),
+            Styles.textstyle16(
+                'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.'),
             SizedBox(
               height: MediaQuery.of(context).size.height * .05,
             ),
             const MyDividerHorizontal(),
             Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.height * .02),
-              child: const CustemText(
-                text: 'الاردن',
-              ),
+              child: Styles.textstyle17('الاردن'),
             ),
             const MyDividerHorizontal(),
             Row(
@@ -66,7 +61,7 @@ class LoginWidget extends StatelessWidget {
                   ),
                 ),
                 const MyDividerVertical(),
-                const CustemText(text: '962+'),
+                Styles.textstyle17('962+'),
               ],
             ),
             const MyDividerHorizontal(),

@@ -1,10 +1,16 @@
+import 'package:evcar/src/future/login/view/pages/login_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import '../../../../core/widget/text_widget/text_widget.dart';
 import '../../../../core/widgets/custem_button.dart';
+
 import 'custem_text_form_field.dart';
-import '../../../../core/widgets/custem_title_text.dart';
 
 class RegisterWidgets extends StatelessWidget {
-  const RegisterWidgets({super.key});
+  const RegisterWidgets({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,37 +37,47 @@ class RegisterWidgets extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height / 35,
               ),
-              const CustemTitleText(
-                text: 'إنشاء حساب',
-              ),
+              Styles.textstyle30('إنشاء حساب'),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 35,
               ),
               CustomTextFormField(
+                inputFormatter: [
+                  LengthLimitingTextInputFormatter(10),
+                  FilteringTextInputFormatter.digitsOnly,
+                ],
                 hintText: 'رقم الموبايل',
                 keyboardType: TextInputType.phone,
+                validator: () {
+                  // Add validation for phone number
+                },
                 onSave: () {},
-                validator: () {},
               ),
               CustomTextFormField(
                 hintText: 'الرقم السري',
-                keyboardType: TextInputType.text,
-                onSave: () {},
+                keyboardType: TextInputType.visiblePassword,
                 isPassword: true,
-                validator: () {},
+                validator: () {
+                  // Add validation for password
+                },
+                onSave: () {},
               ),
               CustomTextFormField(
                 hintText: 'نوع السيارة',
                 keyboardType: TextInputType.text,
+                validator: () {
+                  // Add validation for car type
+                },
                 onSave: () {},
-                validator: () {},
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 12,
               ),
               CustemButton(
                 text: 'إنشاء حساب',
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const LoginPage());
+                },
                 colorText: Colors.white,
                 colorButton: const Color.fromRGBO(0, 168, 168, 1),
               ),

@@ -14,7 +14,7 @@ class CustemIcons extends StatelessWidget {
         SizedBox(
           width: MediaQuery.of(context).size.width / 50,
         ),
-        const CustemButtonMessage(),
+        CustemButtonMessage(),
       ],
     );
   }

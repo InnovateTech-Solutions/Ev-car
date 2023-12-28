@@ -1,8 +1,6 @@
 import 'package:evcar/src/future/charge_station/view/widget/custem_button_call.dart';
 import 'package:flutter/material.dart';
-import 'custom_name_station.dart';
-import 'custom_text_description.dart';
-import 'custom_text_rating.dart';
+import '../../../../core/widget/text_widget/text_widget.dart';
 import 'custon_text_location.dart';
 
 class DetailsWidget extends StatelessWidget {
@@ -32,9 +30,7 @@ class DetailsWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              const CustemNameStation(
-                nameStation: 'توب لنقاط الشحن',
-              ),
+              Styles.textstyle22('توب لنقاط الشحن'),
               const Spacer(),
               const Image(
                 image: AssetImage(
@@ -44,9 +40,7 @@ class DetailsWidget extends StatelessWidget {
               SizedBox(
                 width: MediaQuery.of(context).size.width / 55,
               ),
-              const CustomTextRating(
-                rating: '4.6',
-              ),
+              Styles.rating('4.6'),
             ],
           ),
           SizedBox(
@@ -58,10 +52,8 @@ class DetailsWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
           ),
-          const CustomTextDescription(
-            description:
-                'تتوفر لدينا خدمات اضافية مثل غسيل السيارات وكافيه\nللجلوس والانتظار لحين انتهاء الشحن',
-          ),
+          Styles.textstyle(
+              'تتوفر لدينا خدمات اضافية مثل غسيل السيارات وكافيه\nللجلوس والانتظار لحين انتهاء الشحن'),
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
           ),

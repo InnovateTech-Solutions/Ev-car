@@ -1,6 +1,5 @@
-import 'package:evcar/src/future/charge_station/view/widget/CreateChargingPointsWidget.dart';
+import 'package:evcar/src/future/charge_station/view/widget/create_charging_points_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/charge_station_appbar.dart';
 
 class CreateChargingPointsPage extends StatelessWidget {

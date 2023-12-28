@@ -1,8 +1,6 @@
 import 'package:evcar/src/core/widgets/custem_button.dart';
-import 'package:evcar/src/core/widgets/custem_title_text.dart';
-import 'package:evcar/src/future/login/view/widget/custem_text.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/widgets/custom_title_text2.dart';
+import '../../../../core/widget/text_widget/text_widget.dart';
 import 'otp_complete_number.dart';
 
 class CompletePhoneWidget extends StatelessWidget {
@@ -20,13 +18,16 @@ class CompletePhoneWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const CustemTitleText(text: 'تأكيد رقم الموبايل'),
+            // const CustemTitleText(text: 'تأكيد رقم الموبايل'),
+            Styles.textstyle30('تأكيد رقم الموبايل'),
             SizedBox(
               height: MediaQuery.of(context).size.height * .06,
             ),
-            const CustomTitleText2(
-                text:
-                    'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 0790973474'),
+            // const CustomTitleText2(
+            //     text:
+            //         'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 0790973474'),
+            Styles.textstyle16(
+                'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 0790973474'),
             SizedBox(
               height: MediaQuery.of(context).size.height * .04,
             ),
@@ -58,13 +59,14 @@ class CompletePhoneWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const CustomTitleText2(text: 'لم أتلق الرمز'),
+                // const CustomTitleText2(text: 'لم أتلق الرمز'),
+                Styles.textstyle16('لم أتلق الرمز'),
                 TextButton(
-                  onPressed: () {},
-                  child: const CustemText(
-                    text: 'إعادة أرسال',
-                  ),
-                )
+                    onPressed: () {}, child: Styles.textstyle17('إعادة أرسال')
+                    // const CustemText(
+                    //   text: 'إعادة أرسال',
+                    // ),
+                    )
               ],
             ),
             SizedBox(

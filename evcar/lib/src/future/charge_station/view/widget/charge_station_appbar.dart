@@ -9,21 +9,26 @@ class ChargeStationAppBar extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: IconButton(
-        icon: const Icon(
-          Icons.arrow_back_ios,
-        ),
-        onPressed: () {
-          Get.back();
-        },
-      ),
-      title: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 22,
-          fontFamily: 'cairo-SemiBold',
+      leading: const Icon(null),
+      title: Center(
+        child: Text(
+          title,
+          style: const TextStyle(
+            fontSize: 22,
+            fontFamily: 'cairo-SemiBold',
+          ),
         ),
       ),
+      actions: [
+        IconButton(
+          icon: const Icon(
+            Icons.arrow_forward_ios_outlined,
+          ),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ],
     );
   }
 

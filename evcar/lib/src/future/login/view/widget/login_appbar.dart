@@ -7,22 +7,30 @@ class AppBarLogin extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      leading: InkWell(
-        onTap: () {
-          Get.back();
-        },
-        child: const Stack(
-          alignment: Alignment.center,
-          children: [
-            Image(
-              image: AssetImage('assets/images/border.png'),
+      leading: const Icon(null),
+      actions: [
+        Container(
+          margin: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * .04,
+          ),
+          child: InkWell(
+            onTap: () {
+              Get.back();
+            },
+            child: const Stack(
+              alignment: Alignment.center,
+              children: [
+                Image(
+                  image: AssetImage('assets/images/border.png'),
+                ),
+                Image(
+                  image: AssetImage('assets/images/arrowback.png'),
+                ),
+              ],
             ),
-            Image(
-              image: AssetImage('assets/images/arrowback.png'),
-            ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 

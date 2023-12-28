@@ -1,5 +1,6 @@
-import 'package:evcar/src/future/charge_station/view/widget/custem_card_station.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'custem_card_station.dart';
 
 class CreateChargingPointsWidget extends StatelessWidget {
   const CreateChargingPointsWidget({super.key});
@@ -15,9 +16,11 @@ class CreateChargingPointsWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height,
             child: ListView.separated(
-              itemBuilder: (context, index) => const CustemCardStation(),
-              separatorBuilder: (context, index) => const SizedBox(
-                height: 30,
+              itemBuilder: (context, index) => CustemCardStation(
+                seeMore: true.obs,
+              ),
+              separatorBuilder: (context, index) => SizedBox(
+                height: MediaQuery.of(context).size.height * .04,
               ),
               itemCount: 2,
             ),

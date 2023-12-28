@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/widget/text_widget/text_widget.dart';
+
 class CustomTextLocation extends StatelessWidget {
   const CustomTextLocation({super.key, required this.location});
 
@@ -13,14 +15,7 @@ class CustomTextLocation extends StatelessWidget {
           color: Color.fromRGBO(186, 92, 61, 1),
           size: 12,
         ),
-        Text(
-          location,
-          style: const TextStyle(
-            color: Color.fromRGBO(186, 92, 61, 1),
-            fontFamily: 'cairo-Medium',
-            fontSize: 12,
-          ),
-        ),
+        Styles.location(location),
       ],
     );
   }
