@@ -42,6 +42,9 @@ dependencies:
   google_fonts: ^6.1.0
   flutter_svg: ^2.0.9
   smooth_page_indicator: ^1.1.0
+  custom_info_window: ^1.0.1
+  url_launcher: ^6.2.2
+  http: ^1.1.2
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +71,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/style/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -85,6 +89,9 @@ flutter:
     - family: cairo-Bold
       fonts:
         - asset: assets/fonts/Cairo-Bold.ttf
+    - family: cairo-Regular
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf
     - family: cairo-Medium
       fonts:
         - asset: assets/fonts/Cairo-Medium.ttf

@@ -22,17 +22,17 @@ class OnBoardingWidget extends StatelessWidget {
                 OnBoardingWidgets(
                     title: "صيانة السيارات الكهربائية",
                     secText: "قم بصيانة سيارتك في افضل مراكز الصيانة\n",
-                    image: "asset/onBoarding1.svg"),
+                    image: "assets/images/onBoarding1.svg"),
                 OnBoardingWidgets(
                     title: "شحن السيارات الكهربائية",
                     secText:
                         "قم بالبحث عن اقرب نقاط شحن سيارتك الثابتة او احجز مع خدمة الشحن المتنقل",
-                    image: "asset/onBoarding2.svg"),
+                    image: "assets/images/onBoarding2.svg"),
                 OnBoardingWidgets(
                     title: "شراء وبيع السيارات الكهربائية",
                     secText:
                         "قم بتصفح وشراء السيارات الكهربائية ومعرفة جميع مواصفاتها في مكان واحد ",
-                    image: "asset/onBoarding3.svg"),
+                    image: "assets/images/onBoarding3.svg"),
               ],
             )),
             onBaordingButton(controller, context),

@@ -3,10 +3,9 @@ import 'package:evcar/src/future/google_map/controller/google_map_controller.dar
 import 'package:evcar/src/future/google_map/view/widget/google_map_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class SearchWidget extends StatefulWidget {
-  const SearchWidget({required this.search, Key? key}) : super(key: key);
+  const SearchWidget({required this.search, super.key});
   final SearchFormEntitiy search;
 
   @override
@@ -36,16 +35,16 @@ class _SearchWidgetState extends State<SearchWidget> {
               onTap: () {
                 controller.isExpanded.value = true;
               },
-              style: GoogleFonts.cairo(
-                textStyle:
-                    TextStyle(color: AppTheme.lightAppColors.subTextcolor),
-              ),
+              style: TextStyle(
+                  color: AppTheme.lightAppColors.subTextcolor,
+                  fontFamily: 'cairo-Regular'),
               readOnly: !controller.isExpanded.value,
-              cursorColor: AppTheme.lightAppColors.primary,
+              cursorColor: AppTheme.lightAppColors.background,
               keyboardType: widget.search.type,
               onChanged: widget.search.onChange,
               controller: widget.search.searchController,
               decoration: InputDecoration(
+                border: const OutlineInputBorder(),
                 floatingLabelBehavior: FloatingLabelBehavior.always,
                 floatingLabelStyle:
                     TextStyle(color: AppTheme.lightAppColors.mainTextcolor),
@@ -80,56 +79,4 @@ class SearchFormEntitiy {
     required this.type,
     required this.onChange,
   });
-}
-
-class SearchFullScreenWidget extends StatelessWidget {
-  final SearchFormEntitiy search;
-
-  const SearchFullScreenWidget({super.key, required this.search});
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(MapController());
-
-    return GestureDetector(
-      onTap: () {
-        controller.isExpanded.toggle();
-      },
-      child: Column(
-        children: [
-          TextFormField(
-            onTap: () {
-              controller.isExpanded.value = true;
-            },
-            style: GoogleFonts.cairo(
-              textStyle: TextStyle(color: AppTheme.lightAppColors.subTextcolor),
-            ),
-            cursorColor: AppTheme.lightAppColors.primary,
-            keyboardType: search.type,
-            onChanged: search.onChange,
-            controller: search.searchController,
-            decoration: InputDecoration(
-              floatingLabelBehavior: FloatingLabelBehavior.always,
-              floatingLabelStyle:
-                  TextStyle(color: AppTheme.lightAppColors.mainTextcolor),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                  color: Colors.grey[200]!,
-                ),
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[200]!),
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
-              ),
-              hintText: search.hintText,
-              hintStyle: hintTextStyle(),
-              hintTextDirection: TextDirection.rtl,
-            ),
-          ),
-          // Add any other widgets or functionality you need for the full-screen search
-        ],
-      ),
-    );
-  }
 }

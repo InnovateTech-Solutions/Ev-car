@@ -1,4 +1,4 @@
-import 'package:evcar/src/future/google_map/view/pages/google_map_page.dart';
+import 'package:evcar/src/future/opening_screen/view/pages/opening_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class OnboardingController extends GetxController {
         curve: Curves.ease,
       );
     } else {
-      Get.to(const GoogleMapPage());
+      Get.to(const OpeningPage());
     }
   }
 

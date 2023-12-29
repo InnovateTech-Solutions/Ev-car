@@ -29,7 +29,6 @@ thirdText(String title) {
   return Container(
     margin: const EdgeInsets.only(right: 10),
     child: Text(title,
-        textAlign: TextAlign.end,
         style: GoogleFonts.cairo(
           textStyle: TextStyle(
               color: AppTheme.lightAppColors.mainTextcolor,

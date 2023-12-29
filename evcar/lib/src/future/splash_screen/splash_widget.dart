@@ -11,10 +11,10 @@ class SplashWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Image.asset(
-          "asset/splashImage.png",
+          "assets/images/splashImage.png",
         ),
         Image.asset(
-          "asset/logo.png",
+          "assets/images/logo.png",
           width: 0.35 * screenWidth,
         ),
         mainText("مرحبا بك في تطبيق"),

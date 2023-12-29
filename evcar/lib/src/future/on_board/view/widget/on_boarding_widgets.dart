@@ -20,7 +20,7 @@ class OnBoardingWidgets extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 0.15 * screenWidth),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           mainText(title),
           thirdText(secText),

@@ -1,10 +1,9 @@
 import 'package:evcar/src/core/widgets/custem_button.dart';
-import 'package:evcar/src/core/widgets/custem_title_text.dart';
 import 'package:evcar/src/future/login/view/pages/login_page.dart';
+import 'package:evcar/src/future/login/view/widget/login_text.dart';
 import 'package:evcar/src/future/register/view/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/widgets/custom_title_text2.dart';
 
 class OpeningWidget extends StatelessWidget {
   const OpeningWidget({super.key});
@@ -20,9 +19,9 @@ class OpeningWidget extends StatelessWidget {
               const Image(
                 image: AssetImage('assets/images/photo2.png'),
               ),
-              const CustemTitleText(text: 'استكشف التطبيق'),
-              const CustomTitleText2(
-                  text: 'جميع الخدمات لسيارتك في مكان واحد \nصيانة-وشحن-شراء'),
+              LoginText.mainText('استكشف التطبيق'),
+              LoginText.secText(
+                  'جميع الخدمات لسيارتك في مكان واحد \nصيانة-وشحن-شراء'),
               SizedBox(
                 height: MediaQuery.of(context).size.height / 10,
               ),

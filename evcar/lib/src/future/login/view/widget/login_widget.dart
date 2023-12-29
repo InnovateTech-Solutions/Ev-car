@@ -1,83 +1,102 @@
+import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/core/widgets/custem_button.dart';
-import 'package:evcar/src/core/widgets/custem_title_text.dart';
+import 'package:evcar/src/future/login/controller/login_controller.dart';
+import 'package:evcar/src/future/login/view/widget/login_form_widget.dart';
+import 'package:evcar/src/future/login/view/widget/login_partial.dart';
+import 'package:evcar/src/future/register/model/form_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import '../../../../core/widgets/custom_title_text2.dart';
-import '../../../../core/widgets/divider_horizontal.dart';
-import '../../../../core/widgets/dividerVertical.dart';
-import '../pages/complete_phone.dart';
-import 'custem_text.dart';
 
-class LoginWidget extends StatelessWidget {
+import '../../../otp/view/page/otp_page.dart';
+import 'login_text.dart';
+
+class LoginWidget extends StatefulWidget {
   const LoginWidget({
     super.key,
   });
 
   @override
+  State<LoginWidget> createState() => _LoginWidgetState();
+}
+
+class _LoginWidgetState extends State<LoginWidget> {
+  final controller = Get.put(LoginController());
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 50,
-        right: 10,
-        left: 10,
-      ),
+    return Container(
+      margin: const EdgeInsets.all(20),
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const CustemTitleText(text: 'تسجيل الدخول'),
-            SizedBox(
-              height: Get.height / 49,
-            ),
-            const CustomTitleText2(
-              text: 'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.',
-            ),
-            SizedBox(
-              height: Get.height / 20,
-            ),
-            const MyDividerHorizontal(),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: CustemText(
-                text: 'الاردن',
+        child: Form(
+          key: controller.fromKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LoginText.mainText('تسجيل الدخول'),
+              SizedBox(
+                height: 0.02 * context.screenHeight,
               ),
-            ),
-            const MyDividerHorizontal(),
-            Row(
-              children: [
-                Expanded(
-                  flex: 4,
-                  child: TextFormField(
-                    textAlign: TextAlign.end,
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(9),
-                      FilteringTextInputFormatter.digitsOnly,
-                    ],
-                    keyboardType: TextInputType.phone,
-                    decoration: const InputDecoration(
-                      hintText: '00 00 00 00 0',
-                      border: InputBorder.none,
+              LoginText.secText(
+                'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.',
+              ),
+              SizedBox(
+                height: 0.05 * context.screenHeight,
+              ),
+              Divider(
+                height: 1,
+                color: AppTheme.lightAppColors.bordercolor,
+              ),
+              Container(
+                margin: const EdgeInsets.all(15.0),
+                child: LoginText.secText(
+                  'الاردن',
+                ),
+              ),
+              Divider(
+                height: 1,
+                color: AppTheme.lightAppColors.bordercolor,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: LoginFormWidget(
+                      formModel: FormModel(
+                          controller: controller.phoneNumber,
+                          enableText: false,
+                          hintText: '0000 000 000',
+                          invisible: true,
+                          validator: (phone) =>
+                              controller.validatePhoneNumber(phone),
+                          type: TextInputType.phone,
+                          inputFormat: [
+                            LengthLimitingTextInputFormatter(10),
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          onTap: null),
                     ),
                   ),
-                ),
-                const MyDividerVertical(),
-                const CustemText(text: '962+'),
-              ],
-            ),
-            const MyDividerHorizontal(),
-            SizedBox(
-              height: Get.height / 10,
-            ),
-            CustemButton(
-              text: 'التالي',
-              onPressed: () {
-                Get.to(const CompletePhone());
-              },
-              colorText: Colors.white,
-              colorButton: const Color.fromRGBO(0, 168, 168, 1),
-            )
-          ],
+                  verticalDivider(),
+                  LoginText.secText('962+'),
+                ],
+              ),
+              Divider(
+                height: 1,
+                color: AppTheme.lightAppColors.bordercolor,
+              ),
+              SizedBox(
+                height: 0.1 * context.screenHeight,
+              ),
+              CustemButton(
+                text: 'التالي',
+                onPressed: () {
+                  Get.to(const OtpPage());
+                },
+                colorText: AppTheme.lightAppColors.mainTextcolor,
+                colorButton: AppTheme.lightAppColors.buttoncolor,
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -16,7 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Orange E-commerce',
       theme: AppTheme.light,
-      initialRoute: AppRoutes.splashScreen,
+      locale: const Locale('ar', 'AE'),
+      initialRoute: AppRoutes.spalshPage,
       getPages: AppRoutes.routes,
     );
   }
