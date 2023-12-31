@@ -93,7 +93,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
             alignment: Alignment.bottomCenter,
             child: Container(
               width: 0.75 * context.screenWidth,
-              height: 0.32 * context.screenHeight,
+              height: 0.35 * context.screenHeight,
               decoration: BoxDecoration(
                   color: AppTheme.lightAppColors.buttoncolor,
                   borderRadius:

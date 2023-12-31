@@ -24,7 +24,7 @@ googleMapContainer(BuildContext context) {
             : 0.9 * context.screenWidth,
         height: mapController.isExpanded.value == true
             ? context.screenHeight
-            : 0.3 * context.height,
+            : 0.32 * context.height,
         padding: const EdgeInsets.all(
           10,
         ),

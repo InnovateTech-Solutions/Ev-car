@@ -1,7 +1,9 @@
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/future/on_board/controller/on_board_controller.dart';
 import 'package:evcar/src/future/on_board/view/widget/on_boarding_text_widget.dart';
+import 'package:evcar/src/future/opening_screen/view/pages/opening_page.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 onBaordingButton(OnboardingController controller, BuildContext context) {
@@ -32,7 +34,9 @@ onBaordingButton(OnboardingController controller, BuildContext context) {
               height: 0.02 * screenWidth,
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Get.offAll(const OpeningPage());
+              },
               child: thirdText("Skip"),
             ),
           ],

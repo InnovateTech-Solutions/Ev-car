@@ -1,5 +1,7 @@
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/future/profile/view/widget/text_form_profile.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../core/widgets/custem_button.dart';
 
 class InformationWidget extends StatelessWidget {
@@ -41,8 +43,8 @@ class InformationWidget extends StatelessWidget {
                 child: CustemButton(
                   onPressed: () {},
                   text: 'تعديل',
-                  colorText: Colors.white,
-                  colorButton: const Color.fromRGBO(0, 168, 168, 1),
+                  colorText: AppTheme.lightAppColors.background,
+                  colorButton: AppTheme.lightAppColors.buttoncolor,
                 ),
               ),
             ),
@@ -54,9 +56,9 @@ class InformationWidget extends StatelessWidget {
                 ),
                 child: CustemButton(
                   onPressed: () {},
-                  text: 'تعديل',
-                  colorText: const Color.fromRGBO(0, 168, 168, 1),
-                  colorButton: Colors.white,
+                  text: 'إلغاء',
+                  colorText: AppTheme.lightAppColors.buttoncolor,
+                  colorButton: AppTheme.lightAppColors.background,
                 ),
               ),
             ),

@@ -15,7 +15,7 @@ class OnboardingController extends GetxController {
         curve: Curves.ease,
       );
     } else {
-      Get.to(const OpeningPage());
+      Get.offAll(const OpeningPage());
     }
   }
 

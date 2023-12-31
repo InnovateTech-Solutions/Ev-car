@@ -1,4 +1,4 @@
-import 'package:evcar/src/future/splash_screen/splash_page.dart';
+import 'package:evcar/src/future/google_map/view/pages/google_map_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +10,7 @@ class AppRoutes {
   static final List<GetPage> routes = [
     GetPage(
       name: spalshPage,
-      page: () => const SplashPage(),
+      page: () => const GoogleMapPage(),
     ),
     // GetPage(
     //   name: register,

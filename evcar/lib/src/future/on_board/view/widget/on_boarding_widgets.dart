@@ -1,6 +1,6 @@
+import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/future/on_board/view/widget/on_boarding_text_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 class OnBoardingWidgets extends StatelessWidget {
   const OnBoardingWidgets({
@@ -11,23 +11,24 @@ class OnBoardingWidgets extends StatelessWidget {
   });
   final String title;
   final String secText;
-  final String image;
+  final Widget image;
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Container(
-      margin: EdgeInsets.only(top: 0.15 * screenWidth),
+      margin: EdgeInsets.only(top: 0.1 * context.screenHeight),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           mainText(title),
-          thirdText(secText),
           SizedBox(
-            height: 0.07 * screenWidth,
+            width: context.screenWidth,
+            height: context.screenWidth > 375
+                ? 0.1 * context.screenHeight
+                : 0.15 * context.screenHeight,
+            child: thirdText(secText),
           ),
-          SvgPicture.asset(image),
+          image
         ],
       ),
     );
