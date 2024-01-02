@@ -37,7 +37,8 @@ class CustomCartProfile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Styles.textstyle19('مسلم العبسي'),
-                  Styles.textstyle12('معلومات الحساب'),
+                  Styles.textstyle12(
+                      'معلومات الحساب', const Color.fromRGBO(134, 134, 134, 1)),
                 ],
               )
             ],

@@ -4,9 +4,14 @@ import 'package:get/get.dart';
 import '../../controller/url_lancher_controller.dart';
 
 class CustemButtonCall extends StatelessWidget {
-  CustemButtonCall({super.key});
+  CustemButtonCall({
+    super.key,
+    required this.text,
+  });
+
   final UrlLauncherController phoneController =
       Get.put(UrlLauncherController());
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +26,9 @@ class CustemButtonCall extends StatelessWidget {
       onPressed: () {
         phoneController.launchPhoneCall('+962790973474');
       },
-      child: const Text(
-        'اتصل الان',
-        style: TextStyle(
+      child: Text(
+        text,
+        style: const TextStyle(
           color: Colors.white,
           fontFamily: 'cairo-Medium',
         ),

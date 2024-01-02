@@ -59,7 +59,7 @@ class CustemCardStation extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Styles.textstyle17('اكسترا للشحن المتنقل'),
+                    Styles.textstyle17('اكسترا للشحن المتنقل', Colors.black),
                     Styles.details(
                         '-الشحن في اي مكان بالمملكة \n-اسعار منافسة'),
                     InkWell(

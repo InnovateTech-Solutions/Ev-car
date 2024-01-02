@@ -53,7 +53,8 @@ class DetailsWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 60,
           ),
           Styles.textstyle(
-              'تتوفر لدينا خدمات اضافية مثل غسيل السيارات وكافيه\nللجلوس والانتظار لحين انتهاء الشحن'),
+              'تتوفر لدينا خدمات اضافية مثل غسيل السيارات وكافيه\nللجلوس والانتظار لحين انتهاء الشحن',
+              Colors.black),
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
           ),
@@ -62,9 +63,9 @@ class DetailsWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              CustemButtonCall(),
+              CustemButtonCall(text: 'اتصل الان'),
             ],
-          )
+          ),
         ],
       ),
     );

@@ -13,7 +13,7 @@ class OpeningWidget extends StatelessWidget {
     return Center(
       child: Container(
         margin: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height * .14),
+            vertical: MediaQuery.of(context).size.height * .13),
         child: Column(
           children: [
             const Image(
@@ -21,7 +21,9 @@ class OpeningWidget extends StatelessWidget {
             ),
             Styles.textstyle30('استكشف التطبيق'),
             Styles.textstyle16(
-                'جميع الخدمات لسيارتك في مكان واحد \nصيانة-وشحن-شراء'),
+              'جميع الخدمات لسيارتك في مكان واحد \nصيانة-وشحن-شراء',
+              const Color.fromRGBO(0, 0, 0, 7),
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .1,
             ),

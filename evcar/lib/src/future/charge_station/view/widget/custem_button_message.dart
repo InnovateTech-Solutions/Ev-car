@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import '../../controller/url_lancher_controller.dart';
 
 class CustemButtonMessage extends StatelessWidget {
-  CustemButtonMessage({super.key});
+  CustemButtonMessage({
+    super.key,
+  });
   final UrlLauncherController _whatsAppController =
       Get.put(UrlLauncherController());
 
@@ -14,7 +16,9 @@ class CustemButtonMessage extends StatelessWidget {
         _whatsAppController.openWhatsAppChat('+962790973474');
       },
       child: const Image(
-        image: AssetImage('assets/images/iconmessage.png'),
+        image: AssetImage(
+          'assets/images/iconmessage.png',
+        ),
       ),
     );
   }

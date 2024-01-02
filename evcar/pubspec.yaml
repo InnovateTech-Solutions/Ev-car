@@ -39,6 +39,7 @@ dependencies:
   get: ^4.6.6
   eva_icons_flutter: ^3.1.0
   url_launcher: ^6.2.2
+  conditional_builder_null_safety: ^0.0.6
 
 
 
@@ -90,10 +91,12 @@ flutter:
     - family: cairo-SemiBold
       fonts:
         - asset: assets/fonts/Cairo-SemiBold.ttf
-    - family: Cairo-Regular
+    - family: cairo-Regular
       fonts:
         - asset: assets/fonts/Cairo-Regular.ttf
-
+    - family: cairo-Black
+      fonts:
+        - asset: assets/fonts/Cairo-Black.ttf
 
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic

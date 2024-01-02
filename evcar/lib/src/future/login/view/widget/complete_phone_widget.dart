@@ -27,7 +27,8 @@ class CompletePhoneWidget extends StatelessWidget {
             //     text:
             //         'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 0790973474'),
             Styles.textstyle16(
-                'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 0790973474'),
+                'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 0790973474',
+                const Color.fromRGBO(0, 0, 0, 0.7)),
             SizedBox(
               height: MediaQuery.of(context).size.height * .04,
             ),
@@ -60,9 +61,11 @@ class CompletePhoneWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // const CustomTitleText2(text: 'لم أتلق الرمز'),
-                Styles.textstyle16('لم أتلق الرمز'),
+                Styles.textstyle16(
+                    'لم أتلق الرمز', const Color.fromRGBO(0, 0, 0, 0.7)),
                 TextButton(
-                    onPressed: () {}, child: Styles.textstyle17('إعادة أرسال')
+                    onPressed: () {},
+                    child: Styles.textstyle17('إعادة أرسال', Colors.black)
                     // const CustemText(
                     //   text: 'إعادة أرسال',
                     // ),

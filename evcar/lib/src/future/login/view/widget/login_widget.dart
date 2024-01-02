@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../../../../core/widget/text_widget/text_widget.dart';
-import '../../../../core/widgets/dividerHorizontal.dart';
-import '../../../../core/widgets/dividerVertical.dart';
+import '../../../../core/widgets/divider_horizontal.dart';
+import '../../../../core/widgets/divider_vertical.dart';
 import '../pages/complete_phone.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -29,14 +29,15 @@ class LoginWidget extends StatelessWidget {
               height: MediaQuery.of(context).size.height * .01,
             ),
             Styles.textstyle16(
-                'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.'),
+                'يرجى تأكيد رمز البلد الخاص بك وإدخال رقم هاتفك.',
+                const Color.fromRGBO(0, 0, 0, 0.7)),
             SizedBox(
               height: MediaQuery.of(context).size.height * .05,
             ),
             const MyDividerHorizontal(),
             Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.height * .02),
-              child: Styles.textstyle17('الاردن'),
+              child: Styles.textstyle17('الاردن', Colors.black),
             ),
             const MyDividerHorizontal(),
             Row(
@@ -61,7 +62,7 @@ class LoginWidget extends StatelessWidget {
                   ),
                 ),
                 const MyDividerVertical(),
-                Styles.textstyle17('962+'),
+                Styles.textstyle17('962+', Colors.black),
               ],
             ),
             const MyDividerHorizontal(),

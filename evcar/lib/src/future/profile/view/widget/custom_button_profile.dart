@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/widget/text_widget/text_widget.dart';
-import '../../../../core/widgets/dividerHorizontal.dart';
+import '../../../../core/widgets/divider_horizontal.dart';
 
 class CustomButtonProfile extends StatelessWidget {
   const CustomButtonProfile({
