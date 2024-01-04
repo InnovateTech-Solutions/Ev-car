@@ -120,6 +120,20 @@ abstract class Styles {
     );
   }
 
+  static Text textstyle22bold(String title) {
+    return Text(
+      title,
+      maxLines: 2,
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        overflow: TextOverflow.ellipsis,
+        fontSize: 22,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'Cairo-bold',
+      ),
+    );
+  }
+
   static Text textstyle19(String title) {
     return Text(
       title,
