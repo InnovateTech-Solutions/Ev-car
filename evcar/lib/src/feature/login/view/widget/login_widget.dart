@@ -2,7 +2,6 @@ import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/core/widgets/custem_button.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
-import 'package:evcar/src/feature/login/model/user_login.dart';
 import 'package:evcar/src/feature/login/view/widget/login_form_widget.dart';
 import 'package:evcar/src/feature/login/view/widget/login_partial.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
@@ -15,7 +14,6 @@ class LoginWidget extends StatefulWidget {
   const LoginWidget({
     super.key,
   });
-
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
 }
@@ -63,10 +61,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                       formModel: FormModel(
                           controller: controller.phoneNumber,
                           enableText: false,
+                          textAligment: TextAlign.end,
                           hintText: '0000 000 000',
                           invisible: true,
-                          validator: (phone) =>
-                              controller.validatePhoneNumber(phone),
+                          validator: (password) =>
+                              controller.vaildPassword(password),
                           type: TextInputType.phone,
                           inputFormat: [
                             LengthLimitingTextInputFormatter(10),
@@ -76,12 +75,37 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                   ),
                   verticalDivider(),
-                  LoginText.secText('962+'),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: context.screenHeight * 0.02,
+                      ),
+                      LoginText.secText('962+'),
+                      SizedBox(
+                        height: context.screenHeight * 0.015,
+                      ),
+                      Container(
+                        width: context.screenWidth * 0.1,
+                        height: 1,
+                        color: AppTheme.lightAppColors.bordercolor,
+                      )
+                    ],
+                  )
                 ],
               ),
-              Divider(
-                height: 1,
-                color: AppTheme.lightAppColors.bordercolor,
+              LoginFormWidget(
+                formModel: FormModel(
+                  enableText: false,
+                  icon: null,
+                  textAligment: TextAlign.start,
+                  controller: controller.password,
+                  hintText: 'الرقم السري',
+                  invisible: false,
+                  validator: (password) => controller.vaildPassword(password),
+                  type: TextInputType.visiblePassword,
+                  inputFormat: null,
+                  onTap: () {},
+                ),
               ),
               SizedBox(
                 height: 0.1 * context.screenHeight,
@@ -89,9 +113,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               CustemButton(
                 text: 'التالي',
                 onPressed: () {
-                  controller.loginUser(UserLogin(
-                      phone: controller.phoneNumber.text,
-                      password: "controller."));
+                  controller.postUser(
+                      controller.removeLeadingZero(
+                          controller.phoneNumber.text.trim()),
+                      controller.password.text.trim());
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

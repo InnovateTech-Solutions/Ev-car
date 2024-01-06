@@ -1,8 +1,8 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/future/charging_station/controller/charging_station_controller.dart';
-import 'package:evcar/src/future/google_map/controller/search_controller.dart';
-import 'package:evcar/src/future/google_map/view/widget/google_map_text.dart';
+import 'package:evcar/src/feature/charging_station/controller/charging_station_controller.dart';
+import 'package:evcar/src/feature/google_map/controller/search_controller.dart';
+import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

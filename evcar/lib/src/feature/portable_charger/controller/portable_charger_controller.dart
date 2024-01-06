@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:evcar/src/future/charging_station/model/detail_model.dart';
+import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';

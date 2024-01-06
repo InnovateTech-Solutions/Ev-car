@@ -1,5 +1,5 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/future/portable_charger/controller/portable_charger_controller.dart';
+import 'package:evcar/src/feature/portable_charger/controller/portable_charger_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

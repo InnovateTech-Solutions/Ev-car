@@ -101,7 +101,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                       const BorderRadius.vertical(top: Radius.circular(20))),
             ),
           ),
-          const GoogleMapContainer()
+          googleMapContainer(context),
         ],
       ),
     );
