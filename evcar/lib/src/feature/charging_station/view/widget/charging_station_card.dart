@@ -72,7 +72,20 @@ class ChargingStationCard extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          isFavWidget(isFav, context),
+          isFavWidget(
+              isFav,
+              model.id,
+              context,
+              ChargingStationModel(
+                  id: model.id,
+                  title: model.title,
+                  image: model.image,
+                  address: model.address,
+                  coordinates: model.coordinates,
+                  number: model.number,
+                  features: model.features,
+                  type: model.type,
+                  chargers: model.chargers)),
         ],
       ),
     );

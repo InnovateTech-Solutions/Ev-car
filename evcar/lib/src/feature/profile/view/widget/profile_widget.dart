@@ -1,6 +1,3 @@
-import 'package:evcar/src/feature/charging_station/view/page/charging_station_page.dart';
-import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
-import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../pages/information_page.dart';
@@ -12,7 +9,6 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SubRegisterController());
     return Column(
       children: [
         const CustomCartProfile(),
@@ -32,16 +28,12 @@ class ProfileWidget extends StatelessWidget {
           icon: Icons.favorite_border,
         ),
         CustomButtonProfile(
-          onTap: () {
-            Get.to(const ChargingStationPage());
-          },
+          onTap: () {},
           title: 'الإشعارات',
           icon: Icons.notifications_outlined,
         ),
         CustomButtonProfile(
-          onTap: () {
-            controller.clearToken();
-          },
+          onTap: () {},
           title: 'اللغة',
           icon: Icons.language_outlined,
         ),
@@ -51,9 +43,7 @@ class ProfileWidget extends StatelessWidget {
           icon: Icons.account_box_outlined,
         ),
         CustomButtonProfile(
-          onTap: () {
-            print(controller.token.value);
-          },
+          onTap: () {},
           title: 'عن التطبيق',
           icon: Icons.error_outline_outlined,
         ),
@@ -61,10 +51,7 @@ class ProfileWidget extends StatelessWidget {
           height: MediaQuery.of(context).size.height * .06,
         ),
         MaterialButton(
-          onPressed: () {
-            controller.clearToken();
-            Get.offAll(const SplashPage());
-          },
+          onPressed: () {},
           height: MediaQuery.of(context).size.height * .06,
           shape: OutlineInputBorder(
             borderSide: const BorderSide(

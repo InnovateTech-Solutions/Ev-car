@@ -21,6 +21,20 @@ class ChargingStationModel {
     required this.chargers,
   });
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'image': image,
+      'address': address,
+      'coordinates': coordinates,
+      'number': number,
+      'features': features,
+      'type': type,
+      'chargers': chargers.map((charger) => charger.toJson()).toList(),
+    };
+  }
+
   factory ChargingStationModel.fromJson(Map<String, dynamic> json) {
     return ChargingStationModel(
       id: json['_id'],
@@ -55,5 +69,12 @@ class ChargerModel {
       title: json['title'],
       image: json['image'],
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'image': image,
+    };
   }
 }

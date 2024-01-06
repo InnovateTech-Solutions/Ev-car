@@ -68,7 +68,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           validator: null,
                           type: TextInputType.phone,
                           inputFormat: [
-                            LengthLimitingTextInputFormatter(10),
+                            // LengthLimitingTextInputFormatter(10),
                             FilteringTextInputFormatter.digitsOnly,
                           ],
                           onTap: null),
@@ -113,9 +113,7 @@ class _LoginWidgetState extends State<LoginWidget> {
               CustemButton(
                 text: 'التالي',
                 onPressed: () {
-                  controller.postUser(
-                      controller.removeLeadingZero(
-                          controller.phoneNumber.text.trim()),
+                  controller.postUser(controller.phoneNumber.text.trim(),
                       controller.password.text.trim());
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
