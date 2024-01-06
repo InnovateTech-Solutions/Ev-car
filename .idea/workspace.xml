@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="added api for charge pages">
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="modify">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/charge_station_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/charge_station_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custom_cart_station.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/view/widget/custom_cart_station.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +32,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2ZGGGSTaUyAqD6hY8tou9U8y6f8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -140,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704502398313</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="modify">
+      <created>1704503531516</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1704503531516</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,7 +169,8 @@
     <MESSAGE value="added maintenance page and details page" />
     <MESSAGE value="added maintenance home" />
     <MESSAGE value="added api for charge pages" />
-    <option name="LAST_COMMIT_MESSAGE" value="added api for charge pages" />
+    <MESSAGE value="modify" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

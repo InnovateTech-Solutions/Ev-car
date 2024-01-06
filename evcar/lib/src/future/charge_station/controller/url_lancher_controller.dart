@@ -2,13 +2,11 @@ import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlLauncherController extends GetxController {
-  void openWhatsAppChat(String phoneNumber) async {
-    final url = 'https://wa.me/$phoneNumber';
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
-    } else {
+  Future<void> openWhatsAppChat(String phoneNumber) async {
+    final url = Uri.parse('https://api.whatsapp.com/send?phone=$phoneNumber');
+    try {
+      await launchUrl(url);
+    } catch (e) {
       Get.snackbar(
         'Error',
         'Could not launch WhatsApp',
@@ -19,11 +17,9 @@ class UrlLauncherController extends GetxController {
 
   Future<void> launchPhoneCall(String phoneNumber) async {
     final url = 'tel:$phoneNumber';
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
-    } else {
+    try {
+      await launchUrl(Uri.parse(url));
+    } catch (e) {
       throw 'Could not launch phone call';
     }
   }
