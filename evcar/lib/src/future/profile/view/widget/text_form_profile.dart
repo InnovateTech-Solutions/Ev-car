@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextFormProfile extends StatelessWidget {
-  const TextFormProfile({super.key, required this.label});
+  const TextFormProfile({super.key, required this.label, required this.textController});
 
   final String label;
+  final TextEditingController textController;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,11 @@ class TextFormProfile extends StatelessWidget {
                 color: Color.fromRGBO(142, 142, 147, 1),
               ),
               borderRadius: BorderRadius.circular(10),
+            
             )),
+            controller: textController,
+            readOnly: true,
+            
           ),
         ],
       ),
