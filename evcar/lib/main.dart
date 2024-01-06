@@ -1,5 +1,8 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/feature/profile/view/pages/profile_page.dart';
+import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
+import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,13 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Orange E-commerce',
-      theme: AppTheme.light,
-      locale: const Locale('ar', 'AE'),
-      initialRoute: AppRoutes.spalshPage,
-      getPages: AppRoutes.routes,
+    final SubRegisterController subRegisterController = SubRegisterController();
+    return Obx(
+      () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Ev Car',
+        theme: AppTheme.light,
+        locale: const Locale('ar', 'AE'),
+        home: subRegisterController.token.value.isEmpty
+            ? const SplashPage()
+            : const ProfilePage(),
+        getPages: AppRoutes.routes,
+      ),
     );
   }
 }
