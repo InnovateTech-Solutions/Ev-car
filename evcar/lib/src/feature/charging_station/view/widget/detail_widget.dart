@@ -1,3 +1,4 @@
+import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/charging_station/controller/charging_station_controller.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
@@ -21,7 +22,7 @@ class DetailWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 0.27 * screenHeight,
+            height: 0.2 * screenHeight,
             width: screenWidth,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
@@ -51,14 +52,18 @@ class DetailWidget extends StatelessWidget {
           SizedBox(
             height: 0.01 * screenHeight,
           ),
-          Expanded(
+          SizedBox(
               child: ListView.builder(
+                  shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  itemCount: detailModel.features.length,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return DetailText.descriptionText(
                         detailModel.features[index]);
                   })),
+          SizedBox(
+            height: context.screenHeight * 0.05,
+          ),
           DetailText.secText("أنواع الشواحن"),
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
@@ -76,7 +81,7 @@ class DetailWidget extends StatelessWidget {
               separatorBuilder: (context, index) {
                 return Column(
                   children: [
-                    // Image.network(detailModel.chargers[index].image),
+                    Image.network(detailModel.chargers[index].image),
                     DetailText.chargeText(detailModel.chargers[index].title)
                   ],
                 );

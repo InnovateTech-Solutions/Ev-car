@@ -1,6 +1,6 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/portable_charger/model/portable_charger.dart';
+import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
 import 'package:evcar/src/feature/portable_charger/view/widget/custem_favrite_icon.dart';
 import 'package:evcar/src/feature/portable_charger/view/widget/portable_button.dart';
 import 'package:evcar/src/feature/portable_charger/view/widget/portable_charger_text.dart';
@@ -17,7 +17,7 @@ class PortableChargerCard extends StatelessWidget {
   final RxBool seeMore;
   final RxBool isFav;
 
-  final PortableChargerModel model;
+  final ChargingStationModel model;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -48,9 +48,13 @@ class PortableChargerCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image.asset(model.image),
+              Container(
+                width: 0.25 * context.screenWidth,
+                height: 0.15 * context.screenHeight,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                        image: AssetImage(model.image), fit: BoxFit.cover)),
               ),
               SizedBox(
                 width: 0.03 * context.screenWidth,
@@ -58,25 +62,25 @@ class PortableChargerCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PortableChargerText.mainText(
-                    model.name,
-                  ),
+                  PortableChargerText.mainText(shortenText(
+                    model.title,
+                  )),
                   SizedBox(height: 0.01 * context.screenHeight),
                   SizedBox(
                     height: 0.05 * context.screenHeight,
                     width: 0.5 * context.screenWidth,
                     child: ListView.builder(
-                        itemCount: model.feature.length,
+                        itemCount: model.features.length,
                         itemBuilder: (context, index) {
                           return PortableChargerText.thirdText(
-                              "-${model.feature[index]}");
+                              "-${model.features[index]}");
                         }),
                   ),
                   SizedBox(height: 0.01 * context.screenHeight),
                   chargerTypeContainer(context, seeMore, model),
                   SizedBox(height: 0.01 * context.screenHeight),
-                  const PortableChargerButton(
-                    phone: '+962790973474',
+                  PortableChargerButton(
+                    phone: model.number,
                   )
                 ],
               ),
@@ -87,5 +91,13 @@ class PortableChargerCard extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+String shortenText(String text, {int maxLength = 20}) {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return '${text.substring(0, maxLength)}...';
   }
 }

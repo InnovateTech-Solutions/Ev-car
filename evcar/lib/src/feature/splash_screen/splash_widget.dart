@@ -1,3 +1,5 @@
+import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/on_board/view/widget/on_boarding_text_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -6,16 +8,21 @@ class SplashWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Image.asset(
-          "assets/images/splashImage.png",
+        Container(
+          width: context.screenWidth,
+          height: context.screenHeight * 0.6,
+          decoration: BoxDecoration(
+              color: AppTheme.lightAppColors.primary,
+              image: const DecorationImage(
+                  image: AssetImage("assets/images/splashImage.png"),
+                  fit: BoxFit.cover)),
         ),
         Image.asset(
           "assets/images/logo.png",
-          width: 0.35 * screenWidth,
+          width: 0.2 * context.screenWidth,
         ),
         mainText("مرحبا بك في تطبيق"),
         blueText("السيارت الكهربائية"),

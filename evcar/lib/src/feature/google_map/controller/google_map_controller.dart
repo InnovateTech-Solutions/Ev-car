@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:custom_info_window/custom_info_window.dart';
 import 'package:evcar/src/feature/charging_station/controller/charging_station_controller.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
@@ -25,7 +26,7 @@ class MapController extends GetxController {
     super.onInit();
     addCustomMarker();
     loadMarkers();
-    getCurrentLocation();
+    // getCurrentLocation();
   }
 
   Future<void> loadMarkers() async {

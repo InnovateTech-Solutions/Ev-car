@@ -8,6 +8,7 @@ import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
 import 'login_text.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -63,9 +64,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                           enableText: false,
                           textAligment: TextAlign.end,
                           hintText: '0000 000 000',
-                          invisible: true,
-                          validator: (password) =>
-                              controller.vaildPassword(password),
+                          invisible: false,
+                          validator: null,
                           type: TextInputType.phone,
                           inputFormat: [
                             LengthLimitingTextInputFormatter(10),
@@ -100,7 +100,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   textAligment: TextAlign.start,
                   controller: controller.password,
                   hintText: 'الرقم السري',
-                  invisible: false,
+                  invisible: true,
                   validator: (password) => controller.vaildPassword(password),
                   type: TextInputType.visiblePassword,
                   inputFormat: null,

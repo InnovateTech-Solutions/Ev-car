@@ -13,6 +13,7 @@ class _LoginFormWidgetState extends State<LoginFormWidget> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: widget.formModel.invisible,
       controller: widget.formModel.controller,
       readOnly: widget.formModel.enableText,
       textAlign: widget.formModel.textAligment!,

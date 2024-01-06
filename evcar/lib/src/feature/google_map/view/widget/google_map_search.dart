@@ -36,7 +36,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 controller.isExpanded.value = true;
               },
               style: TextStyle(
-                  color: AppTheme.lightAppColors.subTextcolor,
+                  color: AppTheme.lightAppColors.mainTextcolor,
                   fontFamily: 'cairo-Regular'),
               readOnly: !controller.isExpanded.value,
               cursorColor: AppTheme.lightAppColors.background,

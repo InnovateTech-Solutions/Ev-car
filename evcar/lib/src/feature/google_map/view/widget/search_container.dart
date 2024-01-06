@@ -58,7 +58,7 @@ SizedBox searchContainer(
   );
 }
 
-String shortenText(String text, {int maxLength = 30}) {
+String shortenText(String text, {int maxLength = 25}) {
   if (text.length <= maxLength) {
     return text;
   } else {

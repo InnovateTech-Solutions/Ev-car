@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -72,9 +73,10 @@ class LoginController extends GetxController {
           },
           body: jsonString,
         );
-        if (response.statusCode == 200) {
+        if (response.statusCode == 201) {
           print('Data sent successfully');
           print('Response: ${response.body}');
+          Get.to(const GoogleMapPage());
         } else {
           print('Failed to send data. Status code: ${response.statusCode}');
           print('Response: ${response.body}');
@@ -85,7 +87,6 @@ class LoginController extends GetxController {
           _saveToken(userToken);
           token.value = userToken;
         } else {}
-        Get.to(const GoogleMapPage());
       } catch (error) {
         print('Error sending data: $error');
       }

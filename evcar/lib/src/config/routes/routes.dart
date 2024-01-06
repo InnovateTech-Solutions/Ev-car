@@ -1,6 +1,5 @@
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/profile/view/pages/profile_page.dart';
-import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
