@@ -121,12 +121,14 @@ class _RegisterWidgetsState extends State<RegisterWidgets> {
               CustemButton(
                 text: 'إنشاء حساب',
                 onPressed: () {
-                  controller.onSignup(UserModel(
-                      phone:
-                          "962${controller.removeLeadingZero(controller.phoneNumber.text)}",
-                      username: controller.username.text,
-                      carType: controller.carType.text,
-                      password: controller.password.text));
+                  controller.onSignup(
+                    UserModel(
+                        phone:
+                            "962${controller.removeLeadingZero(controller.phoneNumber.text)}",
+                        username: controller.username.text,
+                        carType: controller.carType.text,
+                        password: controller.password.text),
+                  );
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

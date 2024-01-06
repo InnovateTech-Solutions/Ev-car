@@ -2,6 +2,7 @@ import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// ignore: must_be_immutable
 class OtpFormWidget extends StatelessWidget {
   OtpFormWidget({required this.controller, super.key});
 

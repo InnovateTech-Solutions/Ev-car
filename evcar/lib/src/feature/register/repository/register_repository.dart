@@ -1,12 +1,12 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+
 import 'package:evcar/src/core/controller/api_response.dart';
 import 'package:evcar/src/core/controller/api_service.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
-import 'package:http/http.dart' as http;
-
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RegisterRepository extends GetxController {
