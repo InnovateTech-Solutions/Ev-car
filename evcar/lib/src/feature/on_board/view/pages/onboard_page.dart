@@ -7,10 +7,11 @@ class OnBoardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: AppTheme.lightAppColors.buttoncolor,
-      body: const OnBoardingWidget(),
-    ));
+      body: const SafeArea(
+        child: OnBoardingWidget(),
+      ),
+    );
   }
 }

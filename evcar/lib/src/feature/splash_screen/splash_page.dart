@@ -30,7 +30,7 @@ class _SplashPageState extends State<SplashPage> {
     return SafeArea(
         child: Scaffold(
       backgroundColor: AppTheme.lightAppColors.primary,
-      body: const Center(child: SplashWidget()),
+      body: const SplashWidget(),
     ));
   }
 }

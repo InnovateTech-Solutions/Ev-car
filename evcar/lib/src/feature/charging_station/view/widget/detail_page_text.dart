@@ -40,7 +40,7 @@ class DetailText {
           style: const TextStyle(
             color: Color.fromRGBO(186, 92, 61, 1),
             fontFamily: 'cairo-Medium',
-            fontSize: 10,
+            fontSize: 12,
           ),
         ),
       ],
@@ -51,7 +51,7 @@ class DetailText {
     return Text(
       title,
       style: const TextStyle(
-        fontSize: 12,
+        fontSize: 15,
         fontFamily: 'cairo-Medium',
       ),
     );
@@ -63,6 +63,16 @@ class DetailText {
       style: const TextStyle(
         fontSize: 10,
         fontFamily: 'cairo-Medium',
+      ),
+    );
+  }
+
+  static secText(title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontSize: 15,
+        fontFamily: 'cairo-Bold',
       ),
     );
   }

@@ -5,27 +5,23 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
-class PortableChargerController extends GetxController {
-  final RxBool seeMore = false.obs;
+class ChargingStationController extends GetxController {
+  void openGoogleMap(coordinates) async {
+    final coordinate = coordinates;
+    final latLng = coordinate.split(',');
+    final latitude = double.tryParse(latLng[0].trim()) ?? 0.0;
+    final longitude = double.tryParse(latLng[1].trim()) ?? 0.0;
+    Uri mapUrl = Uri.parse(
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
 
-  void openWhatsAppChat(String phoneNumber) async {
-    final url = Uri.parse('https://wa.me/$phoneNumber');
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
-    }
-  }
-
-  Future<void> launchPhoneCall(String phoneNumber) async {
-    final url = Uri.parse('tel:$phoneNumber');
-
-    if (!await launchUrl(url)) {
-      throw Exception('Could not launch $url');
+    if (!await launchUrl(mapUrl)) {
+      throw Exception('Could not launch $mapUrl');
     }
   }
 
   Future<List<ChargingStationModel>> fetchData() async {
     final response = await http.get(Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/stations/getStationsByType/mobile_charging'));
+        'https://adventurous-yak-pajamas.cyclic.app/stations/getStationsByType/home_charging_provider'));
 
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);

@@ -45,8 +45,8 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
               },
               markers: mapController.markers.toSet(),
               initialCameraPosition: const CameraPosition(
-                target: LatLng(37.43296265331129, -122.08832357078792),
-                zoom: 15.151926040649414,
+                target: LatLng(31.951953582563146, 35.87940404680269),
+                zoom: 11.151926040649414,
               ),
               onMapCreated: (GoogleMapController controller) async {
                 mapController.customInfoWindowController.googleMapController =
@@ -94,14 +94,14 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
             alignment: Alignment.bottomCenter,
             child: Container(
               width: 0.75 * context.screenWidth,
-              height: 0.32 * context.screenHeight,
+              height: 0.35 * context.screenHeight,
               decoration: BoxDecoration(
                   color: AppTheme.lightAppColors.buttoncolor,
                   borderRadius:
                       const BorderRadius.vertical(top: Radius.circular(20))),
             ),
           ),
-          googleMapContainer(context)
+          const GoogleMapContainer()
         ],
       ),
     );
