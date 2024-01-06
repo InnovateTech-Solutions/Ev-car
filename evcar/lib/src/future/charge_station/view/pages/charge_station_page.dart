@@ -8,8 +8,8 @@ class ChargeStationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: ChargeStationAppBar(
+    return Scaffold(
+      appBar: const ChargeStationAppBar(
         title: 'الشحن المتنقل',
       ),
       body: ChargeStationWidget(),

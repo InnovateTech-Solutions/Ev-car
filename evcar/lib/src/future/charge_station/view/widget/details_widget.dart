@@ -1,10 +1,12 @@
 import 'package:evcar/src/future/charge_station/view/widget/custem_button_call.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/widget/text_widget/text_widget.dart';
+import '../../repository/charge_station_model/charge_model.dart';
 import 'custon_text_location.dart';
 
 class DetailsWidget extends StatelessWidget {
-  const DetailsWidget({super.key});
+  const DetailsWidget({super.key, required this.station});
+  final ChargeModel station;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class DetailsWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(15),
                 image: const DecorationImage(
                   image: AssetImage(
-                    'assets/images/station.png',
+                    'assets/images/chargeStation1.png',
                   ),
                   fit: BoxFit.cover,
                 )),
@@ -30,7 +32,7 @@ class DetailsWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              Styles.textstyle22('توب لنقاط الشحن'),
+              Styles.textstyle22(station.title),
               const Spacer(),
               const Image(
                 image: AssetImage(
@@ -46,24 +48,26 @@ class DetailsWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
           ),
-          const CustomTextLocation(
-            location: 'عمان-القويسمة',
+          CustomTextLocation(
+            location: station.address,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
           ),
-          Styles.textstyle(
-              'تتوفر لدينا خدمات اضافية مثل غسيل السيارات وكافيه\nللجلوس والانتظار لحين انتهاء الشحن',
-              Colors.black),
+          Column(
+            children: station.features.map((e) {
+              return Styles.textstyle(e, Colors.black);
+            }).toList(),
+          ),
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
-          ),
-          const Image(
-            image: AssetImage('assets/images/typecharge.png'),
           ),
           Row(
             children: [
-              CustemButtonCall(text: 'اتصل الان'),
+              CustemButtonCall(
+                text: 'اتصل الان',
+                station: station,
+              ),
             ],
           ),
         ],

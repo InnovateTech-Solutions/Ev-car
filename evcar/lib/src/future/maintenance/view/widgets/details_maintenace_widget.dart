@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/widget/text_widget/text_widget.dart';
+import '../../../charge_station/repository/charge_station_model/charge_model.dart';
 import '../../../charge_station/view/widget/custem_icons.dart';
 import 'appbar_maintenance.dart';
 import 'custom_location.dart';
@@ -7,7 +8,8 @@ import 'head_of_screen.dart';
 import 'listview_of_custom_item.dart';
 
 class DetailsMaintenanceWidget extends StatelessWidget {
-  const DetailsMaintenanceWidget({super.key});
+  const DetailsMaintenanceWidget({super.key, required this.station});
+  final ChargeModel station;
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +58,9 @@ class DetailsMaintenanceWidget extends StatelessWidget {
                 ],
               ),
               const CustomLocation(text: 'عمان - االبيادر'),
-              const CustemIcons(),
+              CustemIcons(
+                station: station,
+              ),
               Styles.textstyle16(
                 'توصيل مجاني وتركيب في اي مكان',
                 const Color.fromRGBO(68, 68, 68, 1),
@@ -71,7 +75,9 @@ class DetailsMaintenanceWidget extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .03,
               ),
-              const ListViewOfCustomItem(),
+              ListViewOfCustomItem(
+                station: station,
+              ),
             ],
           ),
         ),

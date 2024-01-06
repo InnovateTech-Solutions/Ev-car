@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 abstract class Styles {
+  static String truncateString(String text, int maxLength) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return "${text.substring(0, maxLength)}..";
+    }
+  }
+
   static Text textstyle(String title, Color color) {
     return Text(
       title,
@@ -58,7 +66,7 @@ abstract class Styles {
       textAlign: TextAlign.start,
       style: const TextStyle(
         overflow: TextOverflow.ellipsis,
-        fontSize: 10,
+        fontSize: 12,
         fontWeight: FontWeight.w600,
         fontFamily: 'cairo-Medium',
       ),
@@ -151,7 +159,7 @@ abstract class Styles {
     return Text(
       title,
       textAlign: TextAlign.center,
-      maxLines: 2,
+      //maxLines: 2,
       style: const TextStyle(
         overflow: TextOverflow.ellipsis,
         color: Color.fromRGBO(0, 0, 0, 1),
@@ -163,10 +171,11 @@ abstract class Styles {
   }
 
   static Text textstyle17(String title, Color color) {
+    String truncated = truncateString(title, 10);
     return Text(
-      title,
+      truncated,
       textAlign: TextAlign.center,
-      maxLines: 2,
+      maxLines: 1,
       style: TextStyle(
         overflow: TextOverflow.ellipsis,
         color: color,

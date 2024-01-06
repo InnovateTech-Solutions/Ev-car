@@ -40,6 +40,7 @@ dependencies:
   eva_icons_flutter: ^3.1.0
   url_launcher: ^6.2.2
   conditional_builder_null_safety: ^0.0.6
+  http: ^1.1.2
 
 
 

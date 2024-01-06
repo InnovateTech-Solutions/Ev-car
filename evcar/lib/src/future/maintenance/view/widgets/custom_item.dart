@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/widget/text_widget/text_widget.dart';
+import '../../../charge_station/repository/charge_station_model/charge_model.dart';
 import '../../../charge_station/view/widget/custem_button_call.dart';
 import 'details_maintenace_widget.dart';
 
 class CustomItem extends StatelessWidget {
-  const CustomItem({super.key});
+  const CustomItem({super.key, required this.station});
+  final ChargeModel station;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,9 @@ class CustomItem extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            Get.to(const DetailsMaintenanceWidget());
+            Get.to(DetailsMaintenanceWidget(
+              station: station,
+            ));
           },
           child: Container(
             height: MediaQuery.of(context).size.height * .15,
@@ -83,6 +87,7 @@ class CustomItem extends StatelessWidget {
               ),
               CustemButtonCall(
                 text: 'اطلب الان',
+                station: station,
               ),
             ],
           ),
