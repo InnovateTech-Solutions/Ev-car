@@ -76,6 +76,11 @@ class OTPController extends GetxController {
     } else {
       print('not allowed');
       Get.snackbar("ERROR", "Invalid Data",
+          messageText: const Align(
+            alignment: Alignment.topLeft, // Set your desired alignment
+            child: Text('"Invalid Data",'),
+          ),
+          snackStyle: SnackStyle.FLOATING,
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);

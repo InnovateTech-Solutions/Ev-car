@@ -59,7 +59,7 @@ class OtpWidget extends StatelessWidget {
                   formModel: FormModel(
                     enableText: false,
                     controller: first,
-                    hintText: 'OTP code',
+                    hintText: 'OTP Code',
                     invisible: false,
                     validator: null,
                     type: TextInputType.phone,
@@ -91,6 +91,7 @@ class OtpWidget extends StatelessWidget {
                 text: 'تأكيد',
                 onPressed: () {
                   controller.isMatch(first.text, userModel);
+                  print(first.text);
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

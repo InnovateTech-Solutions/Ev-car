@@ -25,10 +25,6 @@ class CustomCartProfile extends StatelessWidget {
           padding: EdgeInsets.all(MediaQuery.of(context).size.width * .04),
           child: Row(
             children: [
-              const CircleAvatar(
-                radius: 35,
-                backgroundImage: AssetImage('assets/images/profile.png'),
-              ),
               SizedBox(
                 width: MediaQuery.of(context).size.width * .02,
               ),

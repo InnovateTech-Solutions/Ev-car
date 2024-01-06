@@ -60,7 +60,7 @@ class LoginController extends GetxController {
     var apiUrl =
         Uri.parse('https://adventurous-yak-pajamas.cyclic.app/auth/login');
     var jsonData = {
-      'phone': number,
+      'phone': '962$number',
       'password': password,
     };
     var jsonString = jsonEncode(jsonData);

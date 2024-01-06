@@ -1,9 +1,11 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/register/controller/register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:evcar/src/feature/register/view/widget/register_text.dart';
+import 'package:evcar/src/feature/register/view/widget/user_exist_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -21,6 +23,7 @@ class RegisterWidgets extends StatefulWidget {
 class _RegisterWidgetsState extends State<RegisterWidgets> {
   final controller = Get.put(RegisterController());
 
+  final homecontroller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -120,15 +123,25 @@ class _RegisterWidgetsState extends State<RegisterWidgets> {
               const Spacer(),
               CustemButton(
                 text: 'إنشاء حساب',
-                onPressed: () {
-                  controller.onSignup(
-                    UserModel(
-                        phone:
-                            "962${controller.removeLeadingZero(controller.phoneNumber.text)}",
-                        username: controller.username.text,
-                        carType: controller.carType.text,
-                        password: controller.password.text),
-                  );
+                onPressed: () async {
+                  homecontroller.toggleValueAndNavigate();
+
+                  bool userExists = await controller
+                      .fetchUserExistence(controller.phoneNumber.text);
+
+                  if (!userExists) {
+                    controller.onSignup(
+                      UserModel(
+                          phone:
+                              "962${controller.removeLeadingZero(controller.phoneNumber.text)}",
+                          username: controller.username.text,
+                          carType: controller.carType.text,
+                          password: controller.password.text),
+                    );
+                  } else {
+                    // ignore: use_build_context_synchronously
+                    userExistDialog(context);
+                  }
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

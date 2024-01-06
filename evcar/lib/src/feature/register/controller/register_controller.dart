@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/otp/view/page/otp_page.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
@@ -17,6 +20,31 @@ class RegisterController extends GetxController {
   String removeLeadingZero(String input) {
     // Use regular expression to remove leading zeros
     return input.replaceAll(RegExp('^0+'), '');
+  }
+
+  Future<bool> fetchUserExistence(String number) async {
+    String apiUrl =
+        "https://adventurous-yak-pajamas.cyclic.app/users/userExists/$number";
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        // Parse the response JSON
+        Map<String, dynamic> data = json.decode(response.body);
+
+        // Return the boolean value directly
+        return data['result'];
+      } else {
+        print("Error: ${response.statusCode}");
+        // Return false in case of an error
+        return false;
+      }
+    } catch (error) {
+      print("Error: $error");
+      // Return false in case of an error
+      return false;
+    }
   }
 
   hidePassword() {

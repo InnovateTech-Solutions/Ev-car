@@ -1,6 +1,7 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/core/widgets/custem_button.dart';
+import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/login/view/widget/login_form_widget.dart';
 import 'package:evcar/src/feature/login/view/widget/login_partial.dart';
@@ -21,6 +22,7 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   final controller = Get.put(LoginController());
+  final homecontroller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -113,10 +115,13 @@ class _LoginWidgetState extends State<LoginWidget> {
               CustemButton(
                 text: 'التالي',
                 onPressed: () {
+                  homecontroller.toggleValueAndNavigate();
+
                   controller.postUser(
                       controller.removeLeadingZero(
                           controller.phoneNumber.text.trim()),
                       controller.password.text.trim());
+                  print(homecontroller.isGoogleMapEnabled.value);
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

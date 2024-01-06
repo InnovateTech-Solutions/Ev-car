@@ -1,5 +1,5 @@
 import 'package:evcar/src/config/theme/sizes.dart';
-import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
+import 'package:evcar/src/feature/otp/view/widget/otp_text.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../config/theme/theme.dart';
@@ -22,9 +22,9 @@ userExistDialog(BuildContext context) {
                   size: 0.2 * context.screenWidth,
                 ),
                 SizedBox(
-                  height: 0.05 * context.screenWidth,
+                  height: 0.03 * context.screenWidth,
                 ),
-                mapMainText("المستخدم موجود مسبقا")
+                OtpText.theridext("المستخدم موجود مسبقا")
               ],
             )),
       );

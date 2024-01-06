@@ -93,7 +93,7 @@ class SubRegisterController extends GetxController {
         Uri.parse('https://adventurous-yak-pajamas.cyclic.app/auth/register');
 
     final Map<String, dynamic> jsonData = {
-      'phone': userModel.username,
+      'phone': userModel.phone,
       'username': userModel.username,
       "carType": userModel.carType,
       'password': userModel.password,
@@ -133,12 +133,12 @@ class SubRegisterController extends GetxController {
     }
   }
 
-  @override
-  void dispose() {
-    phoneController.dispose();
-    usernameController.dispose();
-    passwordController.dispose();
-    carTypeController.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   phoneController.dispose();
+  //   usernameController.dispose();
+  //   passwordController.dispose();
+  //   carTypeController.dispose();
+  //   super.dispose();
+  // }
 }
