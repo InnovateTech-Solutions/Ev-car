@@ -7,26 +7,26 @@ const port = 3000;
 const host = '0.0.0.0';
 
 // Replace these with your MongoDB connection details
-const mongoURI = 'mongodb://localhost:27017';
-const dbName = 'your_database_name';
-const collectionName = 'your_collection_name';
+const mongoURI = 'mongodb+srv://dbuser:Afaomr2001!@cluster0.qsmru3l.mongodb.net/?retryWrites=true&w=majority';
+const dbName = 'Ev-Car';
+const collectionName = 'Admin';
 
-const database = new Database(mongoURI, dbName, collectionName);
+// const database = new Database(mongoURI, dbName, collectionName);
 
 app.get('/', async (req, res) => {
   try {
-    await database.connect();
+    await client.connect();
 
     // Insert a document into the collection
-    await database.insertDocument({ message: 'Hello from MongoDB!' });
+    await client.insertDocument({ message: 'Abdullah sa8t!' });
 
     // Fetch the inserted document
-    const result = await database.findOne({ message: 'Hello from MongoDB!' });
+    const result = await database.findOne({ message: 'Abdullah sa8t!' });
 
     res.send(`Message from MongoDB: ${result.message}`);
   } finally {
     // Close the connection when done
-    await database.close();
+    await client.close();
   }
 });
 
