@@ -26,7 +26,7 @@ class MapController extends GetxController {
     super.onInit();
     addCustomMarker();
     loadMarkers();
-    // getCurrentLocation();
+    getCurrentLocation();
   }
 
   Future<void> loadMarkers() async {

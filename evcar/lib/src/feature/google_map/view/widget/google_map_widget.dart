@@ -24,7 +24,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
     mapController.loadMapStyle();
     mapController.addCustomMarker();
     mapController.loadMarkers();
-    // mapController.getCurrentLocation();
+    mapController.getCurrentLocation();
   }
 
   @override
@@ -43,7 +43,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
               },
               markers: mapController.markers.toSet(),
               initialCameraPosition: const CameraPosition(
-                target: LatLng(40.71352370686058, -74.00539914855328),
+                target: LatLng(31.951953582563146, 35.87940404680269),
                 zoom: 11.151926040649414,
               ),
               onMapCreated: (GoogleMapController controller) async {
