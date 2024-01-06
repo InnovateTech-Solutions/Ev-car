@@ -60,7 +60,7 @@ class ChargeStationController extends GetxController {
 
   @override
   void onInit() {
-    fetchMobileCharging();
+    fetchHomeChargeProvider();
     super.onInit();
   }
 }

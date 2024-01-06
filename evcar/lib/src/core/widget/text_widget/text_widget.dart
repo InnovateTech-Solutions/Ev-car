@@ -114,18 +114,35 @@ abstract class Styles {
     );
   }
 
-  static Text textstyle22(String title) {
-    return Text(
-      title,
-      maxLines: 2,
-      textAlign: TextAlign.center,
-      style: const TextStyle(
-        overflow: TextOverflow.ellipsis,
-        fontSize: 22,
-        fontWeight: FontWeight.w400,
-        fontFamily: 'Cairo-Medium',
-      ),
-    );
+  static Text textstyle22(String title, {int maxLength = 20}) {
+    if (title.length <= maxLength) {
+      return Text(
+        title,
+        maxLines: 1,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          overflow: TextOverflow.ellipsis,
+          fontSize: 22,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Cairo-Medium',
+        ),
+      );
+    } else {
+      String modifiedText = '';
+      for (int i = 0; i < title.length; i += maxLength) {
+        modifiedText += '${title.substring(i, i + maxLength)}\n';
+      }
+      return Text(
+        modifiedText.trim(), // Remove trailing newline
+        maxLines: null, // Allow multiple lines
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          fontSize: 22,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Cairo-Medium',
+        ),
+      );
+    }
   }
 
   static Text textstyle22bold(String title) {
@@ -159,7 +176,6 @@ abstract class Styles {
     return Text(
       title,
       textAlign: TextAlign.center,
-      //maxLines: 2,
       style: const TextStyle(
         overflow: TextOverflow.ellipsis,
         color: Color.fromRGBO(0, 0, 0, 1),
