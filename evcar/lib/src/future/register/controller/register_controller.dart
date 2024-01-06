@@ -5,10 +5,10 @@ import 'package:get/get.dart';
 
 class RegisterController extends GetxController {
   static RegisterController get instance => Get.find();
-  final TextEditingController phoneNumber = TextEditingController();
-  final TextEditingController password = TextEditingController();
-  final TextEditingController username = TextEditingController();
-  final TextEditingController carType = TextEditingController();
+  final phoneNumber = TextEditingController();
+  final password = TextEditingController();
+  final username = TextEditingController();
+  final carType = TextEditingController();
   final fromKey = GlobalKey<FormState>();
   RxBool hide = true.obs;
   hidePassword() {
@@ -61,13 +61,17 @@ class RegisterController extends GetxController {
 
       //   print('Request Body: ${user.toJson()}');
 
-      //   if (response.statusCode == 200) {
-      //     final Map<String, dynamic> data = json.decode(response.body);
-      //     String token = data['token'];
-      //     print('Token: $token');
+      //   if (response.statusCode == 400 || response.statusCode == 403) {
+      //     if (response.statusCode == 200) {
+      //       final Map<String, dynamic> data = json.decode(response.body);
+      //       String token = data['token'];
+      //       print('Token: $token');
+      //     } else {
+      //       print('Failed to register. Status code: ${response.statusCode}');
+      //       print('Response: ${response.body}');
+      //     }
       //   } else {
-      //     print('Failed to register. Status code: ${response.statusCode}');
-      //     print('Response: ${response.body}');
+      //     print("lllll");
       //   }
       // } catch (error) {
       //   print('Error: $error');

@@ -1,5 +1,5 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/future/charging_station/controller/c/arging_station_controller.dart';
+import 'package:evcar/src/future/charging_station/controller/charging_station_controller.dart';
 import 'package:evcar/src/future/charging_station/model/detail_model.dart';
 import 'package:evcar/src/future/charging_station/view/widget/detail_button.dart';
 import 'package:evcar/src/future/charging_station/view/widget/detail_page_text.dart';
@@ -26,7 +26,7 @@ class DetailWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
-                  image: AssetImage(
+                  image: NetworkImage(
                     detailModel.image,
                   ),
                   fit: BoxFit.cover,
@@ -38,20 +38,28 @@ class DetailWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              DetailText.mainText(detailModel.name),
-              DetailText.ratingText(
-                detailModel.rate,
-              ),
+              DetailText.mainText(detailModel.title),
+              // DetailText.ratingText(
+              //   detailModel.rate,
+              // ),
             ],
           ),
           SizedBox(
             height: 0.01 * screenHeight,
           ),
-          DetailText.locationText(detailModel.location),
+          DetailText.locationText(detailModel.address),
           SizedBox(
             height: 0.01 * screenHeight,
           ),
-          DetailText.descriptionText(detailModel.description),
+          Expanded(
+              child: ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: detailModel.features.length,
+                  itemBuilder: (context, index) {
+                    return DetailText.descriptionText(
+                        detailModel.features[index]);
+                  })),
+          DetailText.secText("أنواع الشواحن"),
           SizedBox(
             height: MediaQuery.of(context).size.height / 60,
           ),
@@ -64,13 +72,12 @@ class DetailWidget extends StatelessWidget {
                 border: Border.all(color: Colors.black.withOpacity(0.2))),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: detailModel.charger.length + 1,
+              itemCount: detailModel.chargers.length + 1,
               separatorBuilder: (context, index) {
                 return Column(
                   children: [
-                    Image.asset(
-                        "assets/images/${detailModel.charger[index]}.png"),
-                    DetailText.chargeText(detailModel.charger[index])
+                    // Image.network(detailModel.chargers[index].image),
+                    DetailText.chargeText(detailModel.chargers[index].title)
                   ],
                 );
               },
@@ -84,13 +91,16 @@ class DetailWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              const CustemButtonCall(title: 'اتصل الان'),
+              CustemButtonCall(
+                title: 'اتصل الان',
+                phone: detailModel.number,
+              ),
               SizedBox(
                 width: 0.02 * screenWidth,
               ),
               GestureDetector(
                 onTap: () =>
-                    detailController.openGoogleMap(detailModel.coordinate),
+                    detailController.openGoogleMap(detailModel.coordinates),
                 child: Container(
                   padding: const EdgeInsets.all(7),
                   width: 0.12 * screenWidth,

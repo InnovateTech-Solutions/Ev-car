@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-import '../../../otp/view/page/otp_page.dart';
 import 'login_text.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -23,6 +22,7 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   final controller = Get.put(LoginController());
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,10 +64,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                       formModel: FormModel(
                           controller: controller.phoneNumber,
                           enableText: false,
+                          textAligment: TextAlign.end,
                           hintText: '0000 000 000',
                           invisible: true,
-                          validator: (phone) =>
-                              controller.validatePhoneNumber(phone),
+                          validator: (password) =>
+                              controller.vaildPassword(password),
                           type: TextInputType.phone,
                           inputFormat: [
                             LengthLimitingTextInputFormatter(10),
@@ -77,12 +78,37 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                   ),
                   verticalDivider(),
-                  LoginText.secText('962+'),
+                  Column(
+                    children: [
+                      SizedBox(
+                        height: context.screenHeight * 0.02,
+                      ),
+                      LoginText.secText('962+'),
+                      SizedBox(
+                        height: context.screenHeight * 0.015,
+                      ),
+                      Container(
+                        width: context.screenWidth * 0.1,
+                        height: 1,
+                        color: AppTheme.lightAppColors.bordercolor,
+                      )
+                    ],
+                  )
                 ],
               ),
-              Divider(
-                height: 1,
-                color: AppTheme.lightAppColors.bordercolor,
+              LoginFormWidget(
+                formModel: FormModel(
+                  enableText: false,
+                  icon: null,
+                  textAligment: TextAlign.start,
+                  controller: controller.password,
+                  hintText: 'الرقم السري',
+                  invisible: false,
+                  validator: (password) => controller.vaildPassword(password),
+                  type: TextInputType.visiblePassword,
+                  inputFormat: null,
+                  onTap: () {},
+                ),
               ),
               SizedBox(
                 height: 0.1 * context.screenHeight,
@@ -90,7 +116,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               CustemButton(
                 text: 'التالي',
                 onPressed: () {
-                  Get.to(const OtpPage());
+                  controller.postUser(
+                      controller.removeLeadingZero(
+                          controller.phoneNumber.text.trim()),
+                      controller.password.text.trim());
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

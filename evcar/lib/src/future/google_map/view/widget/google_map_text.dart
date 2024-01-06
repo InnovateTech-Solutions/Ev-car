@@ -7,7 +7,6 @@ mapMainText(String title) {
       margin: const EdgeInsets.only(right: 10),
       child: Text(
         title,
-        textAlign: TextAlign.end,
         style: TextStyle(
           fontFamily: "cairo-Regular",
           color: AppTheme.lightAppColors.mainTextcolor,
@@ -49,4 +48,14 @@ infoWindoSecText(String title, VoidCallback onTap) {
           style: GoogleFonts.cairo(
               textStyle: const TextStyle(fontSize: 14),
               color: AppTheme.lightAppColors.buttoncolor)));
+}
+
+searchsec(String title) {
+  return Text(
+    title,
+    style: TextStyle(
+        fontFamily: 'cairo-Regular',
+        color: AppTheme.lightAppColors.mainTextcolor,
+        fontSize: 12),
+  );
 }

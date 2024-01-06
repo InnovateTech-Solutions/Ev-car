@@ -6,7 +6,7 @@ mainText(String title) {
   return Container(
     margin: const EdgeInsets.only(right: 10),
     child: Text(title,
-        textAlign: TextAlign.end,
+        textAlign: TextAlign.center,
         style: GoogleFonts.cairo(
           textStyle: TextStyle(
             color: AppTheme.lightAppColors.mainTextcolor,
@@ -18,7 +18,7 @@ mainText(String title) {
 
 secText(String title) {
   return Text(title,
-      textAlign: TextAlign.end,
+      textAlign: TextAlign.center,
       style: GoogleFonts.cairo(
         textStyle: TextStyle(
             color: AppTheme.lightAppColors.mainTextcolor, fontSize: 14),

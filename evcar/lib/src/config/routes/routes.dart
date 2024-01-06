@@ -10,7 +10,7 @@ class AppRoutes {
   static final List<GetPage> routes = [
     GetPage(
       name: spalshPage,
-      page: () => const GoogleMapPage(),
+      page: () => GoogleMapPage(),
     ),
     // GetPage(
     //   name: register,

@@ -1,10 +1,11 @@
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/future/charging_station/model/detail_model.dart';
-import 'package:evcar/src/future/charging_station/view/page/detail_page.dart';
 import 'package:evcar/src/future/google_map/view/widget/google_map_button.dart';
 import 'package:evcar/src/future/google_map/view/widget/google_map_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../../charging_station/view/page/detail_page.dart';
 
 Column customWindow(
   ChargingStationModel detailModel,
@@ -24,8 +25,8 @@ Column customWindow(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              infoWindoMainText("توب لنقاط الشحن"),
-              infoWindoMainText("عمان - القويسمة"),
+              infoWindoMainText(detailModel.title),
+              infoWindoMainText(detailModel.address),
               const Spacer(),
               Row(
                 children: [

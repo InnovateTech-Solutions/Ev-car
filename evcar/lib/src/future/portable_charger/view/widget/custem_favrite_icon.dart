@@ -12,7 +12,6 @@ isFavWidget(RxBool isFav, BuildContext context) {
           } else {
             isFav.value = true;
           }
-          print(isFav);
         },
         child: Obx(() => isFav.value == false
             ? SvgPicture.asset('assets/images/favFalseIcon.svg')

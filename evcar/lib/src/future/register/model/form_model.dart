@@ -8,7 +8,7 @@ class FormModel {
   bool enableText;
   IconData? icon;
   VoidCallback? onTap;
-
+  TextAlign? textAligment;
   final String? Function(String?)? validator;
   TextInputType type;
   List<TextInputFormatter>? inputFormat;
@@ -17,6 +17,7 @@ class FormModel {
       {required this.controller,
       required this.enableText,
       this.icon,
+      this.textAligment,
       required this.hintText,
       required this.invisible,
       required this.validator,

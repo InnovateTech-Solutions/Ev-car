@@ -1,4 +1,4 @@
-import 'package:evcar/src/future/profile/view/widget/dividerHorizontal.dart';
+import 'package:evcar/src/future/profile/view/widget/divider_horizontal.dart';
 import 'package:evcar/src/future/profile/view/widget/text_widget.dart';
 import 'package:flutter/material.dart';
 

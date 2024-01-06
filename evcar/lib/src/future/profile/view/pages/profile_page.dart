@@ -13,7 +13,7 @@ class ProfilePage extends StatelessWidget {
         appBar: detailAppBar(
           'الحساب الشخصي',
         ),
-        body: ProfileWidget(),
+        body: const ProfileWidget(),
       ),
     );
   }
