@@ -26,7 +26,7 @@ class _CustomCartProfileState extends State<CustomCartProfile> {
     return FutureBuilder(
         future: userDetails,
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
+          if (snapshot.connectionState == ConnectionState.done) {
             if (snapshot.hasData) {
               return InkWell(
                 onTap: () {},

@@ -54,7 +54,7 @@ class PortableChargerCard extends StatelessWidget {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
-                        image: AssetImage(model.image), fit: BoxFit.cover)),
+                        image: NetworkImage(model.image), fit: BoxFit.cover)),
               ),
               SizedBox(
                 width: 0.03 * context.screenWidth,
@@ -85,20 +85,7 @@ class PortableChargerCard extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              isFavWidget(
-                  isFav,
-                  model.id,
-                  context,
-                  ChargingStationModel(
-                      id: model.id,
-                      title: model.title,
-                      image: model.image,
-                      address: model.address,
-                      coordinates: model.coordinates,
-                      number: model.number,
-                      features: model.features,
-                      type: model.type,
-                      chargers: model.chargers)),
+              isFavWidget(isFav, model.id, context)
             ],
           ),
         ),

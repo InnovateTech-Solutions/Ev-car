@@ -28,7 +28,7 @@ class ProfileController extends GetxController {
       },
     );
 
-    if (response.statusCode == 201) {
+    if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       final UserModel user = UserModel.fromJson(responseData);
       phoneNumber.text = user.phone;

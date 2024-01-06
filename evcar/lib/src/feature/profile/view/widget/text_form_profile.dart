@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
-class TextFormProfile extends StatelessWidget {
+class TextFormProfile extends StatefulWidget {
   const TextFormProfile(
-      {super.key, required this.label, required this.textController});
+      {super.key,
+      required this.label,
+      required this.textController,
+      required this.enable});
 
+  final bool enable;
   final String label;
   final TextEditingController textController;
 
+  @override
+  State<TextFormProfile> createState() => _TextFormProfileState();
+}
+
+class _TextFormProfileState extends State<TextFormProfile> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +26,7 @@ class TextFormProfile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            label,
+            widget.label,
             style: const TextStyle(
               color: Color.fromRGBO(142, 142, 147, 1),
               fontSize: 15,
@@ -32,8 +41,8 @@ class TextFormProfile extends StatelessWidget {
               ),
               borderRadius: BorderRadius.circular(10),
             )),
-            controller: textController,
-            readOnly: false,
+            controller: widget.textController,
+            readOnly: widget.enable,
           ),
         ],
       ),

@@ -24,6 +24,7 @@ class InformationWidget extends StatelessWidget {
             TextFormProfile(
               label: 'الاسم',
               textController: controller.username,
+              enable: false,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .03,
@@ -31,6 +32,7 @@ class InformationWidget extends StatelessWidget {
             TextFormProfile(
               label: 'رقم الهاتف',
               textController: controller.phoneNumber,
+              enable: true,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .03,
@@ -38,6 +40,7 @@ class InformationWidget extends StatelessWidget {
             TextFormProfile(
               label: 'نوع السيارة',
               textController: controller.carType,
+              enable: false,
             ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .08,

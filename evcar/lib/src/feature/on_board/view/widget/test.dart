@@ -120,35 +120,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class UserModel {
-  final String username;
-
-  UserModel({required this.username});
-
-  factory UserModel.fromJson(Map<String, dynamic> json) {
-    return UserModel(username: json['username']);
-  }
-}
-
-Future<UserModel> getUserDetails() async {
-  final response = await http.get(
-    Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/users/getUserDetails'),
-    headers: {
-      'Authorization':
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijk2Mjc3Nzc3Nzc3NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA0NTcyNDU5LCJleHAiOjE3MDUxNzcyNTl9.tVXRmXjK3n0Og-7sFVOZRht0aqeEAQDp0d3Fmd2mcgk',
-    },
-  );
-
-  if (response.statusCode == 200) {
-    final Map<String, dynamic> responseData = json.decode(response.body);
-    final UserModel user = UserModel.fromJson(responseData);
-    return user;
-  } else {
-    throw Exception('Failed to load user details');
-  }
-}
-
 void main() {
   runApp(MyApp());
 }
@@ -157,47 +128,96 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('User Details'),
-        ),
-        body: UserDetailsScreen(),
-      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class UserDetailsScreen extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
-  _UserDetailsScreenState createState() => _UserDetailsScreenState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _UserDetailsScreenState extends State<UserDetailsScreen> {
-  late Future<UserModel> userDetails;
+class _MyHomePageState extends State<MyHomePage> {
+  final String apiUrlAddFavorite =
+      "https://adventurous-yak-pajamas.cyclic.app/favorites/addFavorite";
+  final String apiUrlDeleteFavorite =
+      "https://adventurous-yak-pajamas.cyclic.app/favorites/deleteFavorite";
+  final String stationId = "659893d0ce5eef907d1f4623";
+  final String apiKey =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijk2Mjc3Nzc3Nzc3NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA0NTc1NzEyLCJleHAiOjE3MDUxODA1MTJ9.gD9iFT5A1I4G97Muu6YrR2Sm2r9BOEOXPSMha96ubEk"; // Replace with your actual API key
 
-  @override
-  void initState() {
-    super.initState();
-    userDetails = getUserDetails();
+  String favoriteId = "";
+
+  Future<void> addFavorite() async {
+    final response = await http.post(
+      Uri.parse(apiUrlAddFavorite),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijk2Mjc3Nzc3Nzc3NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA0NTc1NzEyLCJleHAiOjE3MDUxODA1MTJ9.gD9iFT5A1I4G97Muu6YrR2Sm2r9BOEOXPSMha96ubEk',
+      },
+      body: jsonEncode({
+        'stationId': stationId,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      favoriteId = jsonResponse['favoriteId'];
+      print('Favorite added successfully. FavoriteId: $favoriteId');
+    } else {
+      print('Failed to add favorite. Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      print(favoriteId);
+    }
+  }
+
+  Future<void> deleteFavorite() async {
+    if (favoriteId.isEmpty) {
+      print('No favorite to delete. Please add a favorite first.');
+      return;
+    }
+
+    final response = await http.delete(
+      Uri.parse('$apiUrlDeleteFavorite/$favoriteId'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijk2Mjc3Nzc3Nzc3NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA0NTc1NzEyLCJleHAiOjE3MDUxODA1MTJ9.gD9iFT5A1I4G97Muu6YrR2Sm2r9BOEOXPSMha96ubEk',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      print('Favorite deleted successfully');
+      favoriteId = ""; // Reset favoriteId after deletion
+    } else {
+      print('Failed to delete favorite. Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: FutureBuilder<UserModel>(
-        future: userDetails,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
-          } else if (snapshot.hasError) {
-            return Text('Error: ${snapshot.error}');
-          } else {
-            return Text(
-              'Username: ${snapshot.data!.username}',
-              style: TextStyle(fontSize: 20),
-            );
-          }
-        },
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter HTTP Requests'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: addFavorite,
+              child: Text('Add Favorite'),
+            ),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: deleteFavorite,
+              child: Text('Delete Favorite'),
+            ),
+          ],
+        ),
       ),
     );
   }
