@@ -24,9 +24,9 @@ class SplashWidget extends StatelessWidget {
           "assets/images/logo.png",
           width: 0.2 * context.screenWidth,
         ),
-        mainText("مرحبا بك في تطبيق"),
+        splashMainText("مرحبا بك في تطبيق"),
         blueText("السيارت الكهربائية"),
-        secText("جميع الخدمات لسيارتك الكهربائية شراء صيانة وشحن "),
+        splashSecText("جميع الخدمات لسيارتك الكهربائية شراء صيانة وشحن "),
       ],
     );
   }

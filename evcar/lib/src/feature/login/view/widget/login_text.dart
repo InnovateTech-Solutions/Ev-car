@@ -4,6 +4,7 @@ class LoginText {
   static mainText(String title) {
     return Text(
       title,
+      textAlign: TextAlign.center,
       style: const TextStyle(
         fontSize: 30,
         fontFamily: 'cairo-Bold',

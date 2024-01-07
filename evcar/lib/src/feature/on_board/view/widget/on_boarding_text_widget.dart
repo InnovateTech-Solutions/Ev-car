@@ -2,7 +2,7 @@ import 'package:evcar/src/config/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-mainText(String title) {
+splashMainText(String title) {
   return Container(
     margin: const EdgeInsets.only(right: 10),
     child: Text(title,
@@ -16,9 +16,32 @@ mainText(String title) {
   );
 }
 
+mainText(String title) {
+  return Container(
+    margin: const EdgeInsets.only(right: 10),
+    child: Text(title,
+        textAlign: TextAlign.start,
+        style: GoogleFonts.cairo(
+          textStyle: TextStyle(
+            color: AppTheme.lightAppColors.mainTextcolor,
+            fontSize: 30,
+          ),
+        )),
+  );
+}
+
+splashSecText(String title) {
+  return Text(title,
+      textAlign: TextAlign.start,
+      style: GoogleFonts.cairo(
+        textStyle: TextStyle(
+            color: AppTheme.lightAppColors.mainTextcolor, fontSize: 14),
+      ));
+}
+
 secText(String title) {
   return Text(title,
-      textAlign: TextAlign.center,
+      textAlign: TextAlign.start,
       style: GoogleFonts.cairo(
         textStyle: TextStyle(
             color: AppTheme.lightAppColors.mainTextcolor, fontSize: 14),
@@ -29,6 +52,7 @@ thirdText(String title) {
   return Container(
     margin: const EdgeInsets.only(right: 10),
     child: Text(title,
+        textAlign: TextAlign.start,
         style: GoogleFonts.cairo(
           textStyle: TextStyle(
               color: AppTheme.lightAppColors.mainTextcolor,
