@@ -1,12 +1,10 @@
-import 'dart:ffi';
-
 import 'package:evcar/src/core/constants/constants.dart';
+import 'package:evcar/src/feature/about/view/about_page.dart';
 import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
-import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
-import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
-import 'package:evcar/src/feature/splash_screen/splash_page.dart';
+import 'package:evcar/src/feature/contact/view/contact_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../pages/information_page.dart';
 import 'custom_button_profile.dart';
 import 'custom_cart_profile.dart';
@@ -43,14 +41,14 @@ class ProfileWidget extends StatelessWidget {
         ),
         CustomButtonProfile(
           onTap: () {
-            print(controller.loginController.token.value);
+            Get.to(const ContactPage());
           },
           title: 'اتصل بنا',
           icon: Icons.account_box_outlined,
         ),
         CustomButtonProfile(
           onTap: () {
-            print(controller.registerController.token.value);
+            Get.to(const AboutPage());
           },
           title: 'عن التطبيق',
           icon: Icons.error_outline_outlined,

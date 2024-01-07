@@ -21,10 +21,16 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
   @override
   void initState() {
     super.initState();
-    mapController.loadMapStyle();
-    mapController.addCustomMarker();
-    mapController.loadMarkers();
-    mapController.getCurrentLocation();
+    initializeMap();
+  }
+
+  void initializeMap() async {
+    await mapController.loadMapStyle();
+
+    await mapController.addCustomMarker();
+    await mapController.getCurrentLocation();
+
+    await mapController.loadMarkers();
   }
 
   @override
@@ -44,16 +50,15 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
               markers: mapController.markers.toSet(),
               initialCameraPosition: const CameraPosition(
                 target: LatLng(31.951953582563146, 35.87940404680269),
-                zoom: 11.151926040649414,
+                zoom: 15.151926040649414,
               ),
               onMapCreated: (GoogleMapController controller) async {
-                mapController.customInfoWindowController.googleMapController =
-                    controller;
+                controller.setMapStyle(mapController.mapStyleString);
                 mapController.controller.complete(controller);
 
-                await controller.setMapStyle(mapController.mapStyleString);
-
                 await mapController.loadMarkers();
+                mapController.customInfoWindowController.googleMapController =
+                    controller;
               },
             ),
           ),

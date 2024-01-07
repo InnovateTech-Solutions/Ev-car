@@ -21,13 +21,13 @@ class MapController extends GetxController {
   RxList<Marker> markers = <Marker>[].obs;
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
-  @override
-  void onInit() {
-    super.onInit();
-    addCustomMarker();
-    loadMarkers();
-    getCurrentLocation();
-  }
+  // @override
+  // void onInit() {
+  //   super.onInit();
+  //   addCustomMarker();
+  //   loadMarkers();
+  //   getCurrentLocation();
+  // }
 
   Future<void> loadMarkers() async {
     final newMarkers = await getMarkers();

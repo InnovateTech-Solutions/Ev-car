@@ -58,6 +58,9 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
                             color: AppTheme.lightAppColors.background,
                             onPressed: () {
                               mapController.isExpanded.value = false;
+                              searchController.stations.clear();
+
+                              searchController.searchText.clear();
                             },
                           )
                         : Container(),
@@ -88,6 +91,7 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
                 ),
                 SearchWidget(
                   search: SearchFormEntitiy(
+                    searchController: searchController.searchText,
                     hintText: "أدخل اسم المحطة",
                     type: TextInputType.text,
                     onChange: (value) {

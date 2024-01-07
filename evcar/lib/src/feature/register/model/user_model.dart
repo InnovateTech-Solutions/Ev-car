@@ -12,13 +12,23 @@ class UserModel {
       required this.password,
       this.role});
 
-  Map<String, dynamic> toJson() {
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
+      phone: json['phone'] ?? '',
+      username: json['username'] ?? '',
+      carType: json['carType'] ?? '',
+      password: json['password'] ?? '',
+      role: json['role'],
+    );
+  }
+
+  toJson() {
     return {
       'phone': phone,
       'username': username,
       'carType': carType,
       'password': password,
-      'role': 'user',
+      'role': role,
     };
   }
 }

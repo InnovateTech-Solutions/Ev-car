@@ -25,7 +25,7 @@ class _SearchWidgetState extends State<SearchWidget> {
             filled: true,
             fillColor: AppTheme.lightAppColors.primary,
             contentPadding: EdgeInsets.only(
-              bottom: 0.005 * screenWidth,
+              bottom: 0.008 * screenWidth,
             ),
           ),
         ),

@@ -43,7 +43,7 @@ class ChargingStationCard extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
-                    image: AssetImage(model.image), fit: BoxFit.cover)),
+                    image: NetworkImage(model.image), fit: BoxFit.cover)),
           ),
           SizedBox(
             width: 0.03 * context.screenWidth,

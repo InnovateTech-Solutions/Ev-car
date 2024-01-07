@@ -71,6 +71,7 @@ abstract class Styles {
   static Text textstyle19(String title) {
     return Text(
       title,
+      textAlign: TextAlign.start,
       style: const TextStyle(
         fontSize: 19.3,
         fontWeight: FontWeight.w600,
