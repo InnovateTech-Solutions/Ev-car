@@ -1,5 +1,8 @@
+import 'package:evcar/src/feature/about/view/about_page.dart';
+import 'package:evcar/src/feature/contact/view/contact_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../pages/information_page.dart';
 import 'custom_button_profile.dart';
 import 'custom_cart_profile.dart';
@@ -38,12 +41,16 @@ class ProfileWidget extends StatelessWidget {
           icon: Icons.language_outlined,
         ),
         CustomButtonProfile(
-          onTap: () {},
+          onTap: () {
+            Get.to(const ContactPage());
+          },
           title: 'اتصل بنا',
           icon: Icons.account_box_outlined,
         ),
         CustomButtonProfile(
-          onTap: () {},
+          onTap: () {
+            Get.to(const AboutPage());
+          },
           title: 'عن التطبيق',
           icon: Icons.error_outline_outlined,
         ),

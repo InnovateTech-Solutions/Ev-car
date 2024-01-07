@@ -17,7 +17,7 @@ isFavWidget(
     child: GestureDetector(
       onTap: () {
         controller.addChargingStation(chargingStationId);
-        favoriteController.toggleService();
+        // favoriteController.toggleService();
 
         isFav.value = true;
       },
