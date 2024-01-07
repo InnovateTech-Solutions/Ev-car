@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
@@ -14,8 +16,10 @@ class ProfileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(SubRegisterController());
-    final logincontroller = Get.put(LoginController());
+    // final controller = Get.put(SubRegisterController());
+    // final logincontroller = Get.put(LoginController());
+    final controller = Get.put(TokenController());
+
     return Column(
       children: [
         const CustomCartProfile(),
@@ -32,21 +36,21 @@ class ProfileWidget extends StatelessWidget {
         CustomButtonProfile(
           onTap: () {
             print(HomeController().isGoogleMapEnabled.value);
-            print(concatenatedTokens);
+            print(controller.concatenatedTokens.value);
           },
           title: 'المفضلة',
           icon: Icons.favorite_border,
         ),
         CustomButtonProfile(
           onTap: () {
-            print(controller.token.value);
+            print(controller.loginController.token.value);
           },
           title: 'اتصل بنا',
           icon: Icons.account_box_outlined,
         ),
         CustomButtonProfile(
           onTap: () {
-            print(logincontroller.token.value);
+            print(controller.registerController.token.value);
           },
           title: 'عن التطبيق',
           icon: Icons.error_outline_outlined,
@@ -56,9 +60,7 @@ class ProfileWidget extends StatelessWidget {
         ),
         MaterialButton(
           onPressed: () {
-            controller.clearToken();
-            Get.offAll(const SplashPage());
-            HomeController().logout();
+            controller.clearConcatenatedTokens();
           },
           height: MediaQuery.of(context).size.height * .06,
           shape: OutlineInputBorder(

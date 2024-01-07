@@ -25,7 +25,7 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final fromKey = GlobalKey<FormState>();
   final HomeController homeController = Get.put(HomeController());
-  removeLeadingZero(String input) {
+  String removeLeadingZero(String input) {
     return input.replaceAll(RegExp('^0+'), '');
   }
 
@@ -75,7 +75,7 @@ class LoginController extends GetxController {
         Uri.parse('https://adventurous-yak-pajamas.cyclic.app/auth/login');
 
     var jsonData = {
-      'phone': "962${phoneController.text}",
+      'phone': "962${removeLeadingZero(phoneController.text)}",
       'password': passwordController.text,
     };
 

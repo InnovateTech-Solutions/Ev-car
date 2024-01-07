@@ -48,7 +48,7 @@ class OtpWidget extends StatelessWidget {
                 height: 0.1 * context.screenHeight,
               ),
               OtpText.secText(
-                  'لقد ارسلنا رسالة مصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك ${userModel.phone}'),
+                  'لقد ارسلنا رسالة نصية قصيرة تحتوي على رمز\n  التفعيل إلى هاتفك 00${userModel.phone}'),
               SizedBox(
                 height: 0.05 * context.screenHeight,
               ),
