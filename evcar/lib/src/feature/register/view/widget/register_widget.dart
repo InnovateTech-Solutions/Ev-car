@@ -1,6 +1,5 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/register/controller/register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
@@ -23,7 +22,6 @@ class RegisterWidgets extends StatefulWidget {
 class _RegisterWidgetsState extends State<RegisterWidgets> {
   final controller = Get.put(RegisterController());
 
-  final homecontroller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -124,10 +122,11 @@ class _RegisterWidgetsState extends State<RegisterWidgets> {
               CustemButton(
                 text: 'إنشاء حساب',
                 onPressed: () async {
-                  homecontroller.toggleValueAndNavigate();
+                  print(
+                      "962${controller.removeLeadingZero(controller.phoneNumber.text)}");
 
-                  bool userExists = await controller
-                      .fetchUserExistence(controller.phoneNumber.text);
+                  bool userExists = await controller.fetchUserExistence(
+                      "962${controller.removeLeadingZero(controller.phoneNumber.text)}");
 
                   if (!userExists) {
                     controller.onSignup(

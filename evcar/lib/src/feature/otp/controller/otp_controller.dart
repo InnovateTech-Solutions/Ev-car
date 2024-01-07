@@ -2,7 +2,9 @@
 
 import 'dart:async';
 import 'dart:math';
+import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
+import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
 import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class OTPController extends GetxController {
   final String number;
   OTPController(this.number);
   final RxBool isButtonDisabled = false.obs;
-
+  final HomeController homeController = HomeController();
   final RxInt countdown = 5.obs;
 
   final RxString otp = 'not found'.obs;
@@ -71,19 +73,25 @@ class OTPController extends GetxController {
     if (code == otp.value) {
       print('allowed');
       SubRegisterController().postUser(user);
+      homeController.toggleValueAndNavigate();
       Get.offAll(const GoogleMapPage());
       return true;
     } else {
       print('not allowed');
       Get.snackbar("ERROR", "Invalid Data",
-          messageText: const Align(
-            alignment: Alignment.topLeft, // Set your desired alignment
-            child: Text('"Invalid Data",'),
+          titleText: Align(
+            alignment: Alignment.topRight, // Set your desired alignment
+            child: searchsec('حدث خطأ'),
+          ),
+          messageText: Align(
+            alignment: Alignment.topRight, // Set your desired alignment
+            child: searchsec('رمز ال OTP خطأ'),
           ),
           snackStyle: SnackStyle.FLOATING,
           snackPosition: SnackPosition.BOTTOM,
           colorText: Colors.white,
           backgroundColor: Colors.red);
+
       return false;
     }
   }

@@ -1,6 +1,4 @@
-import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
-import 'package:evcar/src/feature/login/controller/login_controller.dart';
-import 'package:evcar/src/feature/register/controller/register_controller.dart';
+import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
 import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:get/get.dart';

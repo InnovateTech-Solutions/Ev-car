@@ -7,8 +7,8 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarLogin(),
+    return Scaffold(
+      appBar: const AppBarLogin(),
       body: LoginWidget(),
     );
   }

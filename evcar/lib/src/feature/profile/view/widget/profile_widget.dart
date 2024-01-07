@@ -1,6 +1,6 @@
+import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
-import 'package:evcar/src/feature/charging_station/view/page/charging_station_page.dart';
-import 'package:evcar/src/feature/login/controller/login_controller.dart';
+import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
 import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +15,7 @@ class ProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SubRegisterController());
+    final logincontroller = Get.put(LoginController());
     return Column(
       children: [
         const CustomCartProfile(),
@@ -31,32 +32,21 @@ class ProfileWidget extends StatelessWidget {
         CustomButtonProfile(
           onTap: () {
             print(HomeController().isGoogleMapEnabled.value);
+            print(concatenatedTokens);
           },
           title: 'المفضلة',
           icon: Icons.favorite_border,
         ),
         CustomButtonProfile(
           onTap: () {
-            Get.to(const ChargingStationPage());
+            print(controller.token.value);
           },
-          title: 'الإشعارات',
-          icon: Icons.notifications_outlined,
-        ),
-        CustomButtonProfile(
-          onTap: () {
-            print(LoginController().token.value);
-          },
-          title: 'اللغة',
-          icon: Icons.language_outlined,
-        ),
-        CustomButtonProfile(
-          onTap: () {},
           title: 'اتصل بنا',
           icon: Icons.account_box_outlined,
         ),
         CustomButtonProfile(
           onTap: () {
-            print(controller.token.value);
+            print(logincontroller.token.value);
           },
           title: 'عن التطبيق',
           icon: Icons.error_outline_outlined,
