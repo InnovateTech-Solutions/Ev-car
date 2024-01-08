@@ -21,6 +21,9 @@ class MapController extends GetxController {
   RxList<Marker> markers = <Marker>[].obs;
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
+    late LatLng initialPosition = const LatLng(26.077444, 50.542476);
+
+      
   // @override
   // void onInit() {
   //   super.onInit();
@@ -79,6 +82,7 @@ class MapController extends GetxController {
     mapStyleString = await rootBundle.loadString('assets/style/mapStyle.json');
   }
 
+
   Future<void> getCurrentLocation() async {
     LocationPermission permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.denied) {
@@ -88,6 +92,9 @@ class MapController extends GetxController {
         Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high,
         );
+        initialPosition = LatLng(position.latitude, position.longitude);
+            print(position);
+
         goToPosition(position);
         // ignore: empty_catches
       } catch (e) {}
@@ -106,6 +113,7 @@ class MapController extends GetxController {
 
   void goToPosition(Position position) async {
     final GoogleMapController mapController = await controller.future;
+    print(position);
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         target: LatLng(position.latitude, position.longitude),

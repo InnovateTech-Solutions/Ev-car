@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:custom_info_window/custom_info_window.dart';
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
@@ -33,6 +35,13 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
     await mapController.loadMarkers();
   }
 
+
+  @override
+  void dispose() {
+    mapController.controller =Completer();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -48,14 +57,13 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                 mapController.customInfoWindowController.onCameraMove!();
               },
               markers: mapController.markers.toSet(),
-              initialCameraPosition: const CameraPosition(
-                target: LatLng(31.951953582563146, 35.87940404680269),
+              initialCameraPosition:  CameraPosition(
+                target: mapController.initialPosition,
                 zoom: 15.151926040649414,
               ),
               onMapCreated: (GoogleMapController controller) async {
                 controller.setMapStyle(mapController.mapStyleString);
                 mapController.controller.complete(controller);
-
                 await mapController.loadMarkers();
                 mapController.customInfoWindowController.googleMapController =
                     controller;
