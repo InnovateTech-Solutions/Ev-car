@@ -48,7 +48,6 @@ class SubRegisterController extends GetxController {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController carTypeController = TextEditingController();
-  final ProfileController profileController = Get.put(ProfileController());
 
   final ApiService apiService = ApiService();
 
@@ -57,7 +56,6 @@ class SubRegisterController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadToken();
   }
 
   loadToken() async {

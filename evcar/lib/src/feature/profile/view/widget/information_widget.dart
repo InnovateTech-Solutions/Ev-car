@@ -14,7 +14,6 @@ class InformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
-    final TokenController tokenController = Get.put(TokenController());
 
     final registerToken = Get.put(SubRegisterController());
     final loginToken = Get.put(LoginController());
