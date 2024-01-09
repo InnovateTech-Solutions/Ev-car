@@ -16,22 +16,18 @@ class FavoriteController extends GetxController {
   }
 
   void addFavorite(ChargingStationModel model) {
-    String stationId = model.id;
-    if (model.isFav.value == true) {
-      model.isFav.value = false;
-      favoriteList.remove(model);
-      print(model.isFav.value);
-      print(stationId);
-      print(favoriteList);
-    } else {
-      model.isFav.value = true;
+    if (!favoriteList.contains(model)) {
       favoriteList.add(model);
-      print(stationId);
-      print(model.isFav.value);
-
+      model.isFav.value = false;
       print(favoriteList);
+      update();
+    } else {
+      favoriteList.remove(model);
+
+      model.isFav.value = true;
+      print(favoriteList);
+      update();
     }
-    saveFavorites();
   }
 
   Future<void> saveFavorites() async {
