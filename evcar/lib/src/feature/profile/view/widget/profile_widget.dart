@@ -5,7 +5,6 @@ import 'package:evcar/src/feature/contact/view/contact_page.dart';
 import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
 import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
 import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
-import 'package:evcar/src/feature/register/view/widget/register_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

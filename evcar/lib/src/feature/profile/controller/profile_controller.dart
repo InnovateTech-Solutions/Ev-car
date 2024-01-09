@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

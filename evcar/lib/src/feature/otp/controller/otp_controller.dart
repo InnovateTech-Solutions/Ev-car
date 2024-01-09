@@ -2,12 +2,11 @@
 
 import 'dart:async';
 import 'dart:math';
+
 import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
 import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
-import 'package:evcar/src/feature/register/model/user_model.dart';
-import 'package:evcar/src/feature/register/view/widget/register_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
