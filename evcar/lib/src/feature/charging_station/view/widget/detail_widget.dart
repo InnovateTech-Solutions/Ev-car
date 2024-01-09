@@ -14,16 +14,16 @@ class DetailWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final detailController = Get.put(ChargingStationController());
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     return Container(
-      margin: const EdgeInsets.all(25.0),
+      margin: EdgeInsets.symmetric(
+          vertical: 0.04 * context.screenHeight,
+          horizontal: 0.04 * context.screenWidth),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: 0.2 * screenHeight,
-            width: screenWidth,
+            height: 0.2 * context.screenHeight,
+            width: context.screenWidth,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 image: DecorationImage(
@@ -34,7 +34,7 @@ class DetailWidget extends StatelessWidget {
                 )),
           ),
           SizedBox(
-            height: 0.04 * screenHeight,
+            height: 0.04 * context.screenHeight,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,11 +46,11 @@ class DetailWidget extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 0.01 * screenHeight,
+            height: 0.01 * context.screenHeight,
           ),
           DetailText.locationText(detailModel.address),
           SizedBox(
-            height: 0.01 * screenHeight,
+            height: 0.01 * context.screenHeight,
           ),
           SizedBox(
               child: ListView.builder(
@@ -69,9 +69,9 @@ class DetailWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.height / 60,
           ),
           Container(
-            height: 0.09 * screenHeight,
-            width: 0.65 * screenWidth,
-            padding: const EdgeInsets.only(top: 10),
+            height: 0.09 * context.screenHeight,
+            width: 0.65 * context.screenWidth,
+            padding: EdgeInsets.only(top: 0.015 * context.screenHeight),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black.withOpacity(0.2))),
@@ -87,12 +87,12 @@ class DetailWidget extends StatelessWidget {
                 );
               },
               itemBuilder: (BuildContext context, int index) {
-                return SizedBox(width: 0.07 * screenWidth);
+                return SizedBox(width: 0.07 * context.screenWidth);
               },
             ),
           ),
           SizedBox(
-            height: 0.02 * screenHeight,
+            height: 0.02 * context.screenHeight,
           ),
           Row(
             children: [
@@ -101,15 +101,15 @@ class DetailWidget extends StatelessWidget {
                 phone: detailModel.number,
               ),
               SizedBox(
-                width: 0.02 * screenWidth,
+                width: 0.02 * context.screenWidth,
               ),
               GestureDetector(
                 onTap: () =>
                     detailController.openGoogleMap(detailModel.coordinates),
                 child: Container(
                   padding: const EdgeInsets.all(7),
-                  width: 0.12 * screenWidth,
-                  height: 0.05 * screenHeight,
+                  width: 0.12 * context.screenWidth,
+                  height: 0.05 * context.screenHeight,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(

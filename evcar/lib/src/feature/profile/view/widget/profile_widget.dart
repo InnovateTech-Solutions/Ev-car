@@ -1,7 +1,7 @@
 import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/about/view/about_page.dart';
-import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
 import 'package:evcar/src/feature/contact/view/contact_page.dart';
+import 'package:evcar/src/feature/favorite/view/favorite_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -33,8 +33,7 @@ class ProfileWidget extends StatelessWidget {
         ),
         CustomButtonProfile(
           onTap: () {
-            print(HomeController().isGoogleMapEnabled.value);
-            print(controller.concatenatedTokens.value);
+            Get.to(FavoritePage());
           },
           title: 'المفضلة',
           icon: Icons.favorite_border,

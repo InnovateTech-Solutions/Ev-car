@@ -1,5 +1,7 @@
 import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
+import 'package:evcar/src/feature/favorite/view/favorite_page.dart';
 import 'package:evcar/src/feature/portable_charger/controller/portable_charger_controller.dart';
 import 'package:evcar/src/feature/portable_charger/view/widget/portable_charger_card.dart';
 import 'package:flutter/material.dart';
@@ -15,31 +17,45 @@ class PortableChargerWidget extends StatelessWidget {
       future: controller.fetchData(),
       builder: (context, AsyncSnapshot<List<ChargingStationModel>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return Center(
+              child: CircularProgressIndicator(
+            color: AppTheme.lightAppColors.bordercolor,
+          ));
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
           List<ChargingStationModel> stations = snapshot.data!;
-          return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 5),
-            child: ListView.separated(
-              itemCount: stations.length + 1,
-              separatorBuilder: (BuildContext context, int index) {
-                RxBool seeMore = false.obs;
-                RxBool isFav = false.obs;
+          return Column(
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.to(FavoritePage());
+                },
+                child: Text("sss"),
+              ),
+              Container(
+                height: 600,
+                margin: EdgeInsets.symmetric(
+                    horizontal: 0.012 * context.screenHeight),
+                child: ListView.separated(
+                  itemCount: stations.length + 1,
+                  separatorBuilder: (BuildContext context, int index) {
+                    RxBool seeMore = false.obs;
 
-                return PortableChargerCard(
-                  model: stations[index],
-                  seeMore: seeMore,
-                  isFav: isFav,
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  height: 0.04 * context.screenHeight,
-                );
-              },
-            ),
+                    return PortableChargerCard(
+                      model: stations[index],
+                      seeMore: seeMore,
+                      isFav: stations[index].isFav,
+                    );
+                  },
+                  itemBuilder: (BuildContext context, int index) {
+                    return SizedBox(
+                      height: 0.04 * context.screenHeight,
+                    );
+                  },
+                ),
+              ),
+            ],
           );
         }
       },

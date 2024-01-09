@@ -35,10 +35,9 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
     await mapController.loadMarkers();
   }
 
-
   @override
   void dispose() {
-    mapController.controller =Completer();
+    mapController.controller = Completer();
     super.dispose();
   }
 
@@ -57,7 +56,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                 mapController.customInfoWindowController.onCameraMove!();
               },
               markers: mapController.markers.toSet(),
-              initialCameraPosition:  CameraPosition(
+              initialCameraPosition: CameraPosition(
                 target: mapController.initialPosition,
                 zoom: 15.151926040649414,
               ),

@@ -86,7 +86,10 @@ class _CustomCartProfileState extends State<CustomCartProfile> {
               return Text('Error: ${snapshot.error}');
             }
           } else {
-            return const CircularProgressIndicator();
+            return Center(
+                child: CircularProgressIndicator(
+              color: AppTheme.lightAppColors.bordercolor,
+            ));
           }
         });
   }

@@ -21,16 +21,8 @@ class MapController extends GetxController {
   RxList<Marker> markers = <Marker>[].obs;
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
-    late LatLng initialPosition = const LatLng(26.077444, 50.542476);
-
-      
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //   addCustomMarker();
-  //   loadMarkers();
-  //   getCurrentLocation();
-  // }
+  late LatLng initialPosition =
+      const LatLng(31.951953582563146, 35.87940404680269);
 
   Future<void> loadMarkers() async {
     final newMarkers = await getMarkers();
@@ -82,7 +74,6 @@ class MapController extends GetxController {
     mapStyleString = await rootBundle.loadString('assets/style/mapStyle.json');
   }
 
-
   Future<void> getCurrentLocation() async {
     LocationPermission permission = await Geolocator.requestPermission();
     if (permission == LocationPermission.denied) {
@@ -93,7 +84,7 @@ class MapController extends GetxController {
           desiredAccuracy: LocationAccuracy.high,
         );
         initialPosition = LatLng(position.latitude, position.longitude);
-            print(position);
+        print(position);
 
         goToPosition(position);
         // ignore: empty_catches

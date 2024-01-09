@@ -21,14 +21,15 @@ class PortableChargerCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        print(model.isFav.value);
+      },
       child: Obx(
         () => Container(
-          padding: const EdgeInsets.only(
-            top: 10,
-            right: 10,
+          padding: EdgeInsets.only(
+            top: 0.02 * context.screenHeight,
+            right: 0.015 * context.screenWidth,
           ),
-          margin: const EdgeInsets.symmetric(horizontal: 10),
           height: seeMore.value == false
               ? 0.2 * context.screenHeight
               : 0.35 * context.screenHeight,
@@ -52,7 +53,8 @@ class PortableChargerCard extends StatelessWidget {
                 width: 0.25 * context.screenWidth,
                 height: 0.15 * context.screenHeight,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius:
+                        BorderRadius.circular(0.02 * context.screenHeight),
                     image: DecorationImage(
                         image: NetworkImage(model.image), fit: BoxFit.cover)),
               ),
@@ -85,7 +87,20 @@ class PortableChargerCard extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              isFavWidget(isFav, context),
+              isFavWidget(
+                  isFav,
+                  context,
+                  ChargingStationModel(
+                      id: model.id,
+                      title: model.title,
+                      image: model.image,
+                      address: model.address,
+                      coordinates: model.coordinates,
+                      number: model.number,
+                      features: model.features,
+                      type: model.type,
+                      chargers: model.chargers,
+                      isFav: model.isFav)),
             ],
           ),
         ),

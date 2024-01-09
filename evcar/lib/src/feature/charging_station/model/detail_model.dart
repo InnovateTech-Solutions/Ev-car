@@ -1,3 +1,5 @@
+import 'package:get/get.dart';
+
 class ChargingStationModel {
   final String id;
   final String title;
@@ -6,12 +8,14 @@ class ChargingStationModel {
   final String number;
   final String type;
   final String image;
+  final RxBool isFav;
   final List<ChargerModel> chargers;
   final List<dynamic> features;
 
   ChargingStationModel({
     required this.id,
     required this.title,
+    required this.isFav,
     required this.image,
     required this.address,
     required this.coordinates,
@@ -20,6 +24,19 @@ class ChargingStationModel {
     required this.type,
     required this.chargers,
   });
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'title': title,
+      'img': image,
+      'features': features,
+      'address': address,
+      'coordinates': coordinates,
+      'number': number,
+      'type': type,
+      'chargers': chargers.map((charger) => charger.toJson()).toList(),
+    };
+  }
 
   factory ChargingStationModel.fromJson(Map<String, dynamic> json) {
     return ChargingStationModel(
@@ -34,6 +51,7 @@ class ChargingStationModel {
       chargers: (json['chargers'] as List<dynamic>)
           .map((charger) => ChargerModel.fromJson(charger))
           .toList(),
+      isFav: false.obs,
     );
   }
 }
@@ -55,5 +73,12 @@ class ChargerModel {
       title: json['title'],
       image: json['image'],
     );
+  }
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'title': title,
+      'image': image,
+    };
   }
 }

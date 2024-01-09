@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/charging_station/controller/charging_station_controller.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
 import 'package:evcar/src/feature/charging_station/view/widget/charging_station_card.dart';
@@ -15,17 +16,21 @@ class ChargingStationWidget extends StatelessWidget {
       future: controller.fetchData(),
       builder: (context, AsyncSnapshot<List<ChargingStationModel>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return Center(
+              child: CircularProgressIndicator(
+            color: AppTheme.lightAppColors.bordercolor,
+          ));
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
           List<ChargingStationModel> stations = snapshot.data!;
           return Container(
-            margin: const EdgeInsets.symmetric(horizontal: 5),
+            margin:
+                EdgeInsets.symmetric(horizontal: 0.012 * context.screenHeight),
             child: ListView.separated(
               itemCount: stations.length + 1,
               separatorBuilder: (BuildContext context, int index) {
-                RxBool isFav = false.obs;
+                RxBool isFav = stations[index].isFav;
                 return ChargingStationCard(
                   model: stations[index],
                   isFav: isFav,

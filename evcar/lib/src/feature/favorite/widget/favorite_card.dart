@@ -1,15 +1,13 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
-import 'package:evcar/src/feature/portable_charger/view/widget/custem_favrite_icon.dart';
 import 'package:evcar/src/feature/portable_charger/view/widget/portable_button.dart';
 import 'package:evcar/src/feature/portable_charger/view/widget/portable_charger_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChargingStationCard extends StatelessWidget {
-  const ChargingStationCard(
-      {super.key, required this.model, required this.isFav});
+class FavoriteCard extends StatelessWidget {
+  const FavoriteCard({super.key, required this.model, required this.isFav});
   final RxBool isFav;
   final ChargingStationModel model;
   @override
@@ -72,20 +70,19 @@ class ChargingStationCard extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          isFavWidget(
-              model.isFav,
-              context,
-              ChargingStationModel(
-                  id: model.id,
-                  title: model.title,
-                  image: model.image,
-                  address: model.address,
-                  coordinates: model.coordinates,
-                  number: model.number,
-                  features: model.features,
-                  type: model.type,
-                  chargers: model.chargers,
-                  isFav: model.isFav)),
+          // isFavWidget(
+          //     isFav,
+          //     context,
+          //     ChargingStationModel(
+          //         id: model.id,
+          //         title: model.title,
+          //         image: model.image,
+          //         address: model.address,
+          //         coordinates: model.coordinates,
+          //         number: model.number,
+          //         features: model.features,
+          //         type: model.type,
+          //         chargers: model.chargers)),
         ],
       ),
     );
