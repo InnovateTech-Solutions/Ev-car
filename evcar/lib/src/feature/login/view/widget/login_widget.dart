@@ -51,10 +51,10 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _loadToken();
+    loadToken();
   }
 
-  _loadToken() async {
+  loadToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token.value = prefs.getString('LoginToken') ?? '';
   }

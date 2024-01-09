@@ -2,6 +2,9 @@ import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/about/view/about_page.dart';
 import 'package:evcar/src/feature/contact/view/contact_page.dart';
 import 'package:evcar/src/feature/favorite/view/favorite_page.dart';
+import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
+import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
+import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,18 +12,35 @@ import '../pages/information_page.dart';
 import 'custom_button_profile.dart';
 import 'custom_cart_profile.dart';
 
-class ProfileWidget extends StatelessWidget {
-  const ProfileWidget({super.key});
+class ProfileWidget extends StatefulWidget {
+  ProfileWidget({super.key});
+
+  @override
+  State<ProfileWidget> createState() => _ProfileWidgetState();
+}
+
+class _ProfileWidgetState extends State<ProfileWidget> {
+  final controller = Get.put(TokenController());
+
+  final getToken = Get.put(TokenGetter());
+  final registerToken = Get.put(SubRegisterController());
+  final loginToken = Get.put(LoginController());
+  final ProfileController profileController = Get.put(ProfileController());
+
+  @override
+  void initState() {
+    super.initState();
+    registerToken.loadToken();
+    loginToken.loadToken();
+  }
 
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(SubRegisterController());
-    // final logincontroller = Get.put(LoginController());
-    final controller = Get.put(TokenController());
-
     return Column(
       children: [
-        const CustomCartProfile(),
+        CustomCartProfile(
+          token: registerToken.token.value + loginToken.token.value,
+        ),
         SizedBox(
           height: MediaQuery.of(context).size.height * .03,
         ),
@@ -57,6 +77,9 @@ class ProfileWidget extends StatelessWidget {
         ),
         MaterialButton(
           onPressed: () {
+            controller.registerToken = '';
+            controller.loginToken = '';
+            getToken.userToken.value = '';
             controller.clearConcatenatedTokens();
           },
           height: MediaQuery.of(context).size.height * .06,

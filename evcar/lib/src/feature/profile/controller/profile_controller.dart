@@ -12,11 +12,9 @@ class ProfileController extends GetxController {
   final username = TextEditingController();
   final carType = TextEditingController();
   final fromKey = GlobalKey<FormState>();
-
   @override
   void onInit() {
     super.onInit();
-    getUserDetails();
   }
 
   vaildPhoneNumber(String? phoneNumber) {
@@ -40,16 +38,14 @@ class ProfileController extends GetxController {
     return null;
   }
 
-  Future<UserModel> getUserDetails() async {
+  Future<UserModel> getUserDetails(String token) async {
     final response = await http.get(
       Uri.parse(
           'https://adventurous-yak-pajamas.cyclic.app/users/getUserDetails'),
       headers: {
-        'Authorization':
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijk2Mjc3Nzc3Nzc3NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA0NTczODM0LCJleHAiOjE3MDUxNzg2MzR9.60avxilUR3FwUfMENXbRnlMfu9pHsj7754Pr7qhPDH0',
+        'Authorization': 'Bearer  $token',
       },
     );
-
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       final UserModel user = UserModel.fromJson(responseData);
@@ -62,7 +58,8 @@ class ProfileController extends GetxController {
     }
   }
 
-  Future<void> putUserDetails(String username, String carType) async {
+  Future<void> putUserDetails(
+      String username, String carType, String token) async {
     if (fromKey.currentState!.validate()) {
     } else {
       Get.snackbar("ERROR", "Invalid data",
@@ -74,8 +71,7 @@ class ProfileController extends GetxController {
       Uri.parse('https://adventurous-yak-pajamas.cyclic.app/users/update'),
       headers: {
         'Content-Type': 'application/json',
-        'Authorization':
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijk2Mjc3Nzc3Nzc3NyIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzA0NTczODM0LCJleHAiOjE3MDUxNzg2MzR9.60avxilUR3FwUfMENXbRnlMfu9pHsj7754Pr7qhPDH0',
+        'Authorization': 'Bearer $token',
       },
       body: json.encode({
         'username': username,

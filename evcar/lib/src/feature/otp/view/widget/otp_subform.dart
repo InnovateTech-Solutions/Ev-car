@@ -26,6 +26,7 @@ class _OTPFormWidgetState extends State<OTPFormWidget> {
             borderRadius: BorderRadius.all(Radius.circular(0.01 * screenWidth)),
           ),
           child: TextFormField(
+              maxLength: 4,
               textAlign: TextAlign.center,
               cursorColor: AppTheme.lightAppColors.primary,
               style: TextStyle(color: AppTheme.lightAppColors.primary),
