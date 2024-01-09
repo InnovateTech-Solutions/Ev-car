@@ -1,7 +1,10 @@
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/core/widgets/custem_button.dart';
+import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
 import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
 import 'package:evcar/src/feature/profile/view/widget/text_form_profile.dart';
+import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +14,10 @@ class InformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
+    final TokenController tokenController = Get.put(TokenController());
 
+    final registerToken = Get.put(SubRegisterController());
+    final loginToken = Get.put(LoginController());
     return SingleChildScrollView(
       child: Form(
         key: controller.fromKey,
@@ -59,7 +65,9 @@ class InformationWidget extends StatelessWidget {
                     child: CustemButton(
                       onPressed: () {
                         controller.putUserDetails(
-                            controller.username.text, controller.carType.text);
+                            controller.username.text,
+                            controller.carType.text,
+                            registerToken.token.value + loginToken.token.value);
                       },
                       text: 'تعديل',
                       colorText: AppTheme.lightAppColors.background,

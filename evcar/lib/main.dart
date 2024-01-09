@@ -13,7 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use Get.put outside of the build method to ensure a consistent instance.
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,

@@ -1,5 +1,6 @@
 import 'package:evcar/src/config/theme/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
 import 'package:evcar/src/feature/profile/view/widget/text_widget.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
@@ -7,20 +8,23 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomCartProfile extends StatefulWidget {
-  const CustomCartProfile({super.key});
-
+  const CustomCartProfile({required this.token, super.key});
+  final String token;
   @override
   State<CustomCartProfile> createState() => _CustomCartProfileState();
 }
 
 class _CustomCartProfileState extends State<CustomCartProfile> {
   final controlle = Get.put(ProfileController());
+  final tokengeeter = Get.put(TokenGetter());
+  final token = Get.put(TokenController());
+
   late Future<UserModel> userDetails;
 
   @override
   void initState() {
     super.initState();
-    userDetails = controlle.getUserDetails();
+    userDetails = controlle.getUserDetails(widget.token);
   }
 
   @override

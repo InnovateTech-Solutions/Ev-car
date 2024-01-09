@@ -7,6 +7,7 @@ import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
 import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
+import 'package:evcar/src/feature/register/view/widget/register_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -17,6 +18,8 @@ class OTPController extends GetxController {
   final RxBool isButtonDisabled = false.obs;
   final HomeController homeController = HomeController();
   final RxInt countdown = 5.obs;
+
+  final subregisterController = Get.put(SubRegisterController());
 
   final RxString otp = 'not found'.obs;
   final TextEditingController name = TextEditingController();
@@ -69,10 +72,10 @@ class OTPController extends GetxController {
     }
   }
 
-  Future<bool> isMatch(String code, UserModel user) async {
+  Future<bool> isMatch(String code) async {
     if (code == otp.value) {
       print('allowed');
-      SubRegisterController().postUser(user);
+
       homeController.toggleValueAndNavigate();
       Get.offAll(const GoogleMapPage());
       return true;

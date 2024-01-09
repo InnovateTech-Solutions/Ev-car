@@ -6,6 +6,7 @@ import 'package:evcar/src/core/widgets/custem_button.dart';
 import 'package:evcar/src/feature/otp/controller/otp_controller.dart';
 import 'package:evcar/src/feature/otp/view/widget/otp_subform.dart';
 import 'package:evcar/src/feature/otp/view/widget/otp_text.dart';
+import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,8 @@ class OtpWidget extends StatelessWidget {
   final thired = TextEditingController();
   final four = TextEditingController();
   final RxBool ispressed = true.obs;
+
+  final subRegisterController = Get.put(SubRegisterController());
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +92,12 @@ class OtpWidget extends StatelessWidget {
               ),
               CustemButton(
                 text: 'تأكيد',
-                onPressed: () {
-                  controller.isMatch(first.text, userModel);
+                onPressed: () async {
+                  bool isMatchResult = await controller.isMatch(first.text);
+
+                  if (isMatchResult) {
+                    subRegisterController.postUser(userModel);
+                  }
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

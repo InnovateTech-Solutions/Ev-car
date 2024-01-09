@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChargingStationWidget extends StatelessWidget {
-  // ignore: use_key_in_widget_constructors
   const ChargingStationWidget({Key? key});
   @override
   Widget build(BuildContext context) {
