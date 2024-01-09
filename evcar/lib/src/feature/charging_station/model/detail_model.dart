@@ -8,7 +8,7 @@ class ChargingStationModel {
   final String number;
   final String type;
   final String image;
-  final RxBool isFav;
+  RxBool isFav;
   final List<ChargerModel> chargers;
   final List<dynamic> features;
 

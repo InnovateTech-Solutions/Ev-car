@@ -12,7 +12,9 @@ class FavoriteWidget extends StatelessWidget {
     final controller = Get.put(FavoriteController());
 
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 0.012 * context.screenHeight),
+      margin: EdgeInsets.symmetric(
+          horizontal: 0.025 * context.screenWidth,
+          vertical: 0.025 * context.screenHeight),
       child: Obx(
         () => ListView.separated(
           itemCount: controller.favoriteList.length,
@@ -34,7 +36,7 @@ class FavoriteWidget extends StatelessWidget {
           },
           separatorBuilder: (BuildContext context, int index) {
             return SizedBox(
-              height: 0.05 * context.screenHeight,
+              height: 0.04 * context.screenHeight,
             );
           },
         ),
