@@ -1,5 +1,4 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/core/widgets/custem_button.dart';
 import 'package:evcar/src/feature/login/view/widget/login_widget.dart';
 import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
@@ -14,7 +13,6 @@ class InformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ProfileController());
-    final TokenController tokenController = Get.put(TokenController());
 
     final registerToken = Get.put(SubRegisterController());
     final loginToken = Get.put(LoginController());

@@ -39,6 +39,7 @@ class ProfileController extends GetxController {
   }
 
   Future<UserModel> getUserDetails(String token) async {
+    print(token);
     final response = await http.get(
       Uri.parse(
           'https://adventurous-yak-pajamas.cyclic.app/users/getUserDetails'),

@@ -3,6 +3,7 @@ import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
 import 'package:evcar/src/feature/profile/view/widget/text_widget.dart';
+import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ class _CustomCartProfileState extends State<CustomCartProfile> {
   final controlle = Get.put(ProfileController());
   final tokengeeter = Get.put(TokenGetter());
   final token = Get.put(TokenController());
+  final register = Get.put(SubRegisterController());
 
   late Future<UserModel> userDetails;
 
@@ -90,10 +92,7 @@ class _CustomCartProfileState extends State<CustomCartProfile> {
               return Text('Error: ${snapshot.error}');
             }
           } else {
-            return Center(
-                child: CircularProgressIndicator(
-              color: AppTheme.lightAppColors.bordercolor,
-            ));
+            return const CircularProgressIndicator();
           }
         });
   }

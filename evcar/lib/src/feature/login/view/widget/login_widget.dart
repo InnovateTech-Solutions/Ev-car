@@ -51,12 +51,12 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadToken();
   }
 
   loadToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     token.value = prefs.getString('LoginToken') ?? '';
+    print("token " + token.value);
   }
 
   clearToken() async {
@@ -68,6 +68,7 @@ class LoginController extends GetxController {
   _saveToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('LoginToken', token);
+    print("save token    ${prefs.getString('LoginToken') ?? ""}");
   }
 
   Future<void> postUser() async {

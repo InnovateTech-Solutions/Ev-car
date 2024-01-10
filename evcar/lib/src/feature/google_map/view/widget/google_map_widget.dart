@@ -28,9 +28,8 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
 
   @override
   void initState() {
-    super.initState();
     initializeMap();
-    register.loadToken();
+    super.initState();
   }
 
   void initializeMap() async {

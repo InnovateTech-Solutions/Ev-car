@@ -2,7 +2,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
-import 'package:evcar/src/feature/profile/controller/profile_controller.dart';
+
 import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,7 +48,6 @@ class SubRegisterController extends GetxController {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController carTypeController = TextEditingController();
-  final ProfileController profileController = Get.put(ProfileController());
 
   final ApiService apiService = ApiService();
 
@@ -57,7 +56,6 @@ class SubRegisterController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    loadToken();
   }
 
   loadToken() async {
