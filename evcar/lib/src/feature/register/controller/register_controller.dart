@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/otp/view/page/otp_page.dart';
@@ -7,6 +6,7 @@ import 'package:evcar/src/feature/register/model/user_model.dart';
 import 'package:evcar/src/feature/register/repository/register_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class RegisterController extends GetxController {
   static RegisterController get instance => Get.find();
@@ -70,14 +70,14 @@ class RegisterController extends GetxController {
   }
 
   validCar(String? car) {
-    if (!GetUtils.isUsername(car!)) {
+    if (car!.isEmpty) {
       return "نوع السيارة غير صالح";
     }
     return null;
   }
 
   validUsername(String? name) {
-    if (!GetUtils.isUsername(name!)) {
+    if (name!.isEmpty) {
       return "اسم المستخدم غير صالح";
     }
     return null;
