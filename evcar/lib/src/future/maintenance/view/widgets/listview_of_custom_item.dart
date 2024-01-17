@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../charge_station/repository/charge_station_model/charge_model.dart';
 import 'custom_item.dart';
 

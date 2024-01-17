@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'item_of_the_most_wanted.dart';
 
 class ListViewOfTheMostWanted extends StatelessWidget {

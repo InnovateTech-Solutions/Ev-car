@@ -47,6 +47,18 @@
       <excludeFolder url="file://$MODULE_DIR$/evcar/build" />
       <excludeFolder url="file://$MODULE_DIR$/evcar/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/evcar/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/example/build" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/linux/flutter/ephemeral/.plugin_symlinks/url_launcher_linux/build" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/evcar/windows/flutter/ephemeral/.plugin_symlinks/url_launcher_windows/build" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 33, extension level 4 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

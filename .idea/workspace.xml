@@ -4,14 +4,39 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="modify">
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="modify url lancher">
+      <change beforePath="$PROJECT_DIR$/.idea/EV-car.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/EV-car.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/charge_station/controller/url_lancher_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/battery_check_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/battery_check_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/computer_check_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/computer_check_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/external_maintenance_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/external_maintenance_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/home_maintenance.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/home_maintenance.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/maintenance_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/maintenance_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/periodic_maintenance_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/pages/periodic_maintenance_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/all_item_maintenance.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/all_item_maintenance.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/appbar_maintenance.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/appbar_maintenance.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_information_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_information_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_location.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_location.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_type_maintenance.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/custom_type_maintenance.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/details_maintenace_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/details_maintenace_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/head_of_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/head_of_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/home_maintenance_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/home_maintenance_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/item_of_the_most_wanted.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/item_of_the_most_wanted.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/item_of_the_top_rating.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/item_of_the_top_rating.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/item_widget_maintenance.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/item_widget_maintenance.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/list_view_of_the_most_wanted.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/list_view_of_the_most_wanted.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/list_view_of_the_top_rating.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/list_view_of_the_top_rating.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/listview_of_custom_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/maintenance/view/widgets/listview_of_custom_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/opening_screen/view/widget/opening_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/opening_screen/view/widget/opening_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -25,7 +50,7 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="form" />
+        <entry key="$PROJECT_DIR$" value="forms" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -47,8 +72,10 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "maintenance",
     "io.flutter.reload.alreadyRun": "true",
     "last_opened_file_path": "C:/Users/aliha/OneDrive/Desktop/last/Ev-car",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
@@ -147,7 +174,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704503531516</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="modify url lancher">
+      <created>1704504810245</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1704504810245</updated>
+    </task>
+    <task id="LOCAL-00012" summary="modify url lancher">
+      <created>1704504913279</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1704504913279</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +211,8 @@
     <MESSAGE value="added maintenance home" />
     <MESSAGE value="added api for charge pages" />
     <MESSAGE value="modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify" />
+    <MESSAGE value="modify url lancher" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify url lancher" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

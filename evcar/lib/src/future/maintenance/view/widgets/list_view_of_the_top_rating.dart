@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'item_of_the_top_rating.dart';
 
 class ListViewOfTheTopRating extends StatelessWidget {

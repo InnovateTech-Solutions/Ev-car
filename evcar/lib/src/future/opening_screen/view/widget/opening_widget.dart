@@ -13,7 +13,8 @@ class OpeningWidget extends StatelessWidget {
     return Center(
       child: Container(
         margin: EdgeInsets.symmetric(
-            vertical: MediaQuery.of(context).size.height * .13),
+          vertical: MediaQuery.of(context).size.height * .13,
+        ),
         child: Column(
           children: [
             const Image(
