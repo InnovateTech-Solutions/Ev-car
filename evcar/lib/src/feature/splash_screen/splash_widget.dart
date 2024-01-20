@@ -1,6 +1,6 @@
-import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/on_board/view/widget/on_boarding_text_widget.dart';
+import 'package:evcar/src/feature/on_board/view/text_widget/on_boarding_text_widget.dart';
 import 'package:flutter/material.dart';
 
 class SplashWidget extends StatelessWidget {

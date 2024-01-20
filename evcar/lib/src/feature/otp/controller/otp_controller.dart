@@ -3,10 +3,9 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:evcar/src/feature/charging_station/controller/home_controller.dart';
-import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
+import 'package:evcar/src/config/routes/routes.dart';
+import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
 import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
-import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -15,10 +14,8 @@ class OTPController extends GetxController {
   final String number;
   OTPController(this.number);
   final RxBool isButtonDisabled = false.obs;
-  final HomeController homeController = HomeController();
+  final HomePageController homeController = HomePageController();
   final RxInt countdown = 5.obs;
-
-  final subregisterController = Get.put(SubRegisterController());
 
   final RxString otp = 'not found'.obs;
   final TextEditingController name = TextEditingController();
@@ -76,7 +73,7 @@ class OTPController extends GetxController {
       print('allowed');
 
       homeController.toggleValueAndNavigate();
-      Get.offAll(const GoogleMapPage());
+      Get.offAllNamed(AppRoutes.googleMap);
       return true;
     } else {
       print('not allowed');
@@ -98,6 +95,7 @@ class OTPController extends GetxController {
     }
   }
 
+//Not Used
   sendOTP() {
     if (isButtonDisabled.value) {
       onButtonPressed();

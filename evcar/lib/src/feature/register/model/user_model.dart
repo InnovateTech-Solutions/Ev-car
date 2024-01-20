@@ -28,7 +28,7 @@ class UserModel {
       'username': username,
       'carType': carType,
       'password': password,
-      'role': role,
+      'role': 'user',
     };
   }
 }

@@ -1,4 +1,4 @@
-import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/feature/about/widget/about_text.dart';
 import 'package:flutter/material.dart';
 

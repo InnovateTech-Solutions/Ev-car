@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -20,8 +21,7 @@ class ChargingStationController extends GetxController {
   }
 
   Future<List<ChargingStationModel>> fetchData() async {
-    final response = await http.get(Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/stations/getStationsByType/home_charging_provider'));
+    final response = await http.get(Uri.parse(ApiKey.homeStations));
 
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);

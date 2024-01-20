@@ -1,4 +1,4 @@
-import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
 import 'package:evcar/src/feature/portable_charger/controller/portable_charger_controller.dart';

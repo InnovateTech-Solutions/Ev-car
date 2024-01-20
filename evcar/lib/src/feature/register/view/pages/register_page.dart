@@ -1,5 +1,5 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/register/view/widget/register_widget.dart';
+import 'package:evcar/src/feature/register/view/widget/main_widget/register_widget.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {

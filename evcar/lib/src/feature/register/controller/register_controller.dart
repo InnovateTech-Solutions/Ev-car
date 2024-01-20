@@ -1,9 +1,7 @@
 import 'dart:convert';
-
-import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/otp/view/page/otp_page.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
-import 'package:evcar/src/feature/register/repository/register_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -23,8 +21,7 @@ class RegisterController extends GetxController {
   }
 
   Future<bool> fetchUserExistence(String number) async {
-    String apiUrl =
-        "https://adventurous-yak-pajamas.cyclic.app/users/userExists/$number";
+    String apiUrl = ApiKey.userExits + number;
 
     try {
       final response = await http.get(Uri.parse(apiUrl));
@@ -81,11 +78,6 @@ class RegisterController extends GetxController {
       return "اسم المستخدم غير صالح";
     }
     return null;
-  }
-
-  userRegister(UserModel userModel) {
-    RegisterRepository().postUser(userModel);
-    Get.to(const GoogleMapPage());
   }
 
   onSignup(UserModel user) {

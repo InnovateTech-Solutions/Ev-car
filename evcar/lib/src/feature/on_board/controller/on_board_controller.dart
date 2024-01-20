@@ -1,4 +1,4 @@
-import 'package:evcar/src/feature/opening_screen/view/pages/opening_page.dart';
+import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class OnboardingController extends GetxController {
         curve: Curves.ease,
       );
     } else {
-      Get.offAll(const OpeningPage());
+      Get.offAll(const IntroPage());
     }
   }
 

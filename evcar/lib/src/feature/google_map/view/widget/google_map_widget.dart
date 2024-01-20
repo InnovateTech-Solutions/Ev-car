@@ -1,14 +1,13 @@
 import 'dart:async';
 
 import 'package:custom_info_window/custom_info_window.dart';
-import 'package:evcar/src/config/theme/sizes.dart';
+import 'package:evcar/src/config/routes/routes.dart';
+import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/core/constants/constants.dart';
 import 'package:evcar/src/feature/google_map/controller/google_map_controller.dart';
 import 'package:evcar/src/feature/google_map/view/widget/google_map_container.dart';
 import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
-import 'package:evcar/src/feature/profile/view/pages/profile_page.dart';
-import 'package:evcar/src/feature/register/controller/register_subcontroller.dart';
+import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -22,9 +21,7 @@ class GoogleMapWidget extends StatefulWidget {
 
 class _GoogleMapWidgetState extends State<GoogleMapWidget> {
   final mapController = Get.put(MapController());
-  final getToken = Get.put(TokenGetter());
-  final token = Get.put(TokenController());
-  final register = Get.put(SubRegisterController());
+  final register = Get.put(UserRegisterController());
 
   @override
   void initState() {
@@ -93,10 +90,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        getToken.updateUserToken(
-                            "${token.concatenatedTokens.value}");
-                        print(token.registerToken);
-                        Get.to(const ProfilePage());
+                        Get.toNamed(AppRoutes.profile);
                       },
                       icon: const Icon(Icons.person_2_outlined),
                       color: AppTheme.lightAppColors.background,
