@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 
 class DetailWidget extends StatelessWidget {
   const DetailWidget({super.key, required this.detailModel});
-  final ChargingStationModel detailModel;
+  final ChargingStation detailModel;
   @override
   Widget build(BuildContext context) {
     final detailController = Get.put(ChargingStationController());
@@ -77,12 +77,12 @@ class DetailWidget extends StatelessWidget {
                 border: Border.all(color: Colors.black.withOpacity(0.2))),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
-              itemCount: detailModel.chargers.length + 1,
+              itemCount: detailModel.chargers!.length + 1,
               separatorBuilder: (context, index) {
                 return Column(
                   children: [
-                    Image.network(detailModel.chargers[index].image),
-                    DetailText.chargeText(detailModel.chargers[index].title)
+                    Image.network(detailModel.chargers![index].image),
+                    DetailText.chargeText(detailModel.chargers![index].title)
                   ],
                 );
               },

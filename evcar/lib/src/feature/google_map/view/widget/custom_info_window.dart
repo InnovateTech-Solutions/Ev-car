@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import '../../../charging_station/view/page/detail_page.dart';
 
 Column customWindow(
-  ChargingStationModel detailModel,
+  ChargingStation detailModel,
   VoidCallback onTap,
 ) {
   return Column(

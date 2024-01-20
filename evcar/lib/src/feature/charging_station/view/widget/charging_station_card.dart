@@ -11,7 +11,7 @@ class ChargingStationCard extends StatelessWidget {
   const ChargingStationCard(
       {super.key, required this.model, required this.isFav});
   final RxBool isFav;
-  final ChargingStationModel model;
+  final ChargingStation model;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -73,19 +73,19 @@ class ChargingStationCard extends StatelessWidget {
           ),
           const Spacer(),
           isFavWidget(
-              model.isFav,
+              false,
               context,
-              ChargingStationModel(
-                  id: model.id,
-                  title: model.title,
-                  image: model.image,
-                  address: model.address,
-                  coordinates: model.coordinates,
-                  number: model.number,
-                  features: model.features,
-                  type: model.type,
-                  chargers: model.chargers,
-                  isFav: model.isFav)),
+              ChargingStation(
+                id: model.id,
+                title: model.title,
+                image: model.image,
+                address: model.address,
+                coordinates: model.coordinates,
+                number: model.number,
+                features: model.features,
+                type: model.type,
+                chargers: model.chargers,
+              )),
         ],
       ),
     );

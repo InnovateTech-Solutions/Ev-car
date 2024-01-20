@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Column chargerTypeContainer(
-    BuildContext context, RxBool seeMore, ChargingStationModel model) {
+    BuildContext context, RxBool seeMore, ChargingStation model) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
@@ -25,12 +25,12 @@ Column chargerTypeContainer(
                       border: Border.all(color: Colors.black.withOpacity(0.2))),
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
-                    itemCount: model.chargers.length + 1,
+                    itemCount: model.chargers!.length + 1,
                     separatorBuilder: (context, index) {
                       return Column(
                         children: [
-                          Image.network(model.chargers[index].image),
-                          DetailText.chargeText(model.chargers[index].title)
+                          Image.network(model.chargers![index].image),
+                          DetailText.chargeText(model.chargers![index].title)
                         ],
                       );
                     },

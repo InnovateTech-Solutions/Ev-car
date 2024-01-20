@@ -13,17 +13,14 @@ class PortableChargerCard extends StatelessWidget {
       {super.key,
       required this.model,
       required this.seeMore,
-      required this.isFav});
+      required this.widget});
   final RxBool seeMore;
-  final RxBool isFav;
-
-  final ChargingStationModel model;
+  final Widget widget;
+  final ChargingStation model;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        print(model.isFav.value);
-      },
+      onTap: () {},
       child: Obx(
         () => Container(
           padding: EdgeInsets.only(
@@ -87,20 +84,7 @@ class PortableChargerCard extends StatelessWidget {
                 ],
               ),
               const Spacer(),
-              isFavWidget(
-                  isFav,
-                  context,
-                  ChargingStationModel(
-                      id: model.id,
-                      title: model.title,
-                      image: model.image,
-                      address: model.address,
-                      coordinates: model.coordinates,
-                      number: model.number,
-                      features: model.features,
-                      type: model.type,
-                      chargers: model.chargers,
-                      isFav: model.isFav)),
+              widget
             ],
           ),
         ),

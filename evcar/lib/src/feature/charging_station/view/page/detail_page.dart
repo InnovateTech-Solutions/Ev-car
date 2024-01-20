@@ -7,7 +7,7 @@ import '../widget/detail_appbar.dart';
 
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key, required this.detailModel});
-  final ChargingStationModel detailModel;
+  final ChargingStation detailModel;
 
   @override
   Widget build(BuildContext context) {

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-isFavWidget(RxBool isFav, BuildContext contex, ChargingStationModel model) {
+isFavWidget(bool liked, BuildContext contex, ChargingStation model) {
   return Container(
     margin: const EdgeInsets.all(8),
     child: GestureDetector(
         onTap: () {},
-        child: Obx(() => isFav.value == false
+        child: Obx(() => liked == false
             ? SvgPicture.asset('assets/images/favFalseIcon.svg')
             : SvgPicture.asset('assets/images/favTrueHeart.svg'))),
   );

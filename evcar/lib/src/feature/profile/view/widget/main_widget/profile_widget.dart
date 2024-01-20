@@ -1,5 +1,7 @@
 import 'package:evcar/src/config/routes/routes.dart';
+import 'package:evcar/src/feature/favourite_page/fav_home.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
+import 'package:evcar/src/feature/home_page/view/home_page.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
 import 'package:evcar/src/feature/profile/view/widget/widget_collection/user_card.dart';
@@ -43,7 +45,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         ),
         ProfileButton(
           onTap: () {
-            Get.to(Scaffold());
+            Get.to(FavMainWidget());
           },
           title: 'المفضلة',
           icon: Icons.favorite_border,

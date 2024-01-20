@@ -50,7 +50,7 @@ class MapController extends GetxController {
                 onTap: () {
                   customInfoWindowController.addInfoWindow!(
                     customWindow(
-                      ChargingStationModel.fromJson(station),
+                      ChargingStation.fromJson(station),
                       () {
                         detailController.openGoogleMap(station['coordinates']);
                       },

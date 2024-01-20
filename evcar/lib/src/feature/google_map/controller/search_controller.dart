@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 class StationController extends GetxController {
   final searchText = TextEditingController();
 
-  RxList<ChargingStationModel> stations = <ChargingStationModel>[].obs;
+  RxList<ChargingStation> stations = <ChargingStation>[].obs;
 
   Future<void> searchStations(String query) async {
     final response = await http.get(Uri.parse(
@@ -17,7 +17,7 @@ class StationController extends GetxController {
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);
       stations.value = data
-          .map((dynamic station) => ChargingStationModel.fromJson(station))
+          .map((dynamic station) => ChargingStation.fromJson(station))
           .toList();
     } else {
       throw Exception('Failed to load stations');

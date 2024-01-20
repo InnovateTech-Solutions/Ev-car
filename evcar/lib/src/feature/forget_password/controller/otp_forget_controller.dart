@@ -1,7 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
-import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/feature/forget_password/view/pages/rest_password_page.dart';
 import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
 import 'package:flutter/material.dart';

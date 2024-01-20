@@ -14,7 +14,7 @@ class ChargingStationWidget extends StatelessWidget {
     final controller = Get.put(ChargingStationController());
     return FutureBuilder(
       future: controller.fetchData(),
-      builder: (context, AsyncSnapshot<List<ChargingStationModel>> snapshot) {
+      builder: (context, AsyncSnapshot<List<ChargingStation>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
@@ -23,17 +23,16 @@ class ChargingStationWidget extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
-          List<ChargingStationModel> stations = snapshot.data!;
+          List<ChargingStation> stations = snapshot.data!;
           return Container(
             margin:
                 EdgeInsets.symmetric(horizontal: 0.012 * context.screenHeight),
             child: ListView.separated(
               itemCount: stations.length + 1,
               separatorBuilder: (BuildContext context, int index) {
-                RxBool isFav = stations[index].isFav;
                 return ChargingStationCard(
                   model: stations[index],
-                  isFav: isFav,
+                  isFav: false.obs,
                 );
               },
               itemBuilder: (BuildContext context, int index) {

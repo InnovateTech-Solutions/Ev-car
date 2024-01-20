@@ -45,6 +45,7 @@ dependencies:
   custom_info_window: ^1.0.1
   url_launcher: ^6.2.2
   http: ^1.1.2
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:

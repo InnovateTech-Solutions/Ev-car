@@ -24,13 +24,13 @@ class PortableChargerController extends GetxController {
     }
   }
 
-  Future<List<ChargingStationModel>> fetchData() async {
+  Future<List<ChargingStation>> fetchData() async {
     final response = await http.get(Uri.parse(ApiKey.mobilestations));
 
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);
-      List<ChargingStationModel> stations =
-          data.map((item) => ChargingStationModel.fromJson(item)).toList();
+      List<ChargingStation> stations =
+          data.map((item) => ChargingStation.fromJson(item)).toList();
       return stations;
     } else {
       throw Exception('Failed to load data');

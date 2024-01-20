@@ -6,15 +6,21 @@ import 'package:evcar/src/feature/portable_charger/view/widget/portable_charger_
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class PortableChargerWidget extends StatelessWidget {
+class PortableChargerWidget extends StatefulWidget {
   const PortableChargerWidget({super.key});
+
+  @override
+  State<PortableChargerWidget> createState() => _PortableChargerWidgetState();
+}
+
+class _PortableChargerWidgetState extends State<PortableChargerWidget> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(PortableChargerController());
 
     return FutureBuilder(
       future: controller.fetchData(),
-      builder: (context, AsyncSnapshot<List<ChargingStationModel>> snapshot) {
+      builder: (context, AsyncSnapshot<List<ChargingStation>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
               child: CircularProgressIndicator(
@@ -23,7 +29,7 @@ class PortableChargerWidget extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Text('Error: ${snapshot.error}');
         } else {
-          List<ChargingStationModel> stations = snapshot.data!;
+          List<ChargingStation> stations = snapshot.data!;
           return Container(
             margin:
                 EdgeInsets.symmetric(horizontal: 0.012 * context.screenHeight),
@@ -33,10 +39,9 @@ class PortableChargerWidget extends StatelessWidget {
                 RxBool seeMore = false.obs;
 
                 return PortableChargerCard(
-                  model: stations[index],
-                  seeMore: seeMore,
-                  isFav: stations[index].isFav,
-                );
+                    model: stations[index],
+                    seeMore: seeMore,
+                    widget: Container());
               },
               itemBuilder: (BuildContext context, int index) {
                 return SizedBox(

@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/forget_password/view/pages/otp_forget_password.dart';
-import 'package:evcar/src/feature/forget_password/view/widget/main_widget/otp_forget_widget.dart';
 import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/user_exist_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
