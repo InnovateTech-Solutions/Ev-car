@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:custom_info_window/custom_info_window.dart';
-import 'package:evcar/src/feature/charging_station/controller/charging_station_controller.dart';
-import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
-import 'package:evcar/src/feature/google_map/view/widget/custom_info_window.dart';
+import 'package:evcar/src/feature/google_map/view/widget/widget_collection/custom_info_window.dart';
+import 'package:evcar/src/feature/home_charging_station/controller/charging_station_controller.dart';
+import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -62,6 +62,14 @@ class MapController extends GetxController {
             );
           } else {}
         }
+        newMarkers.add(
+          Marker(
+            markerId: MarkerId('currentLocation'),
+            icon: markerIcon.value,
+            position: initialPosition,
+            onTap: () {},
+          ),
+        );
       } else {
         throw Exception('Failed to load data');
       }
@@ -108,7 +116,7 @@ class MapController extends GetxController {
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         target: LatLng(position.latitude, position.longitude),
-        zoom: 15.0,
+        zoom: 14.5,
       ),
     ));
   }

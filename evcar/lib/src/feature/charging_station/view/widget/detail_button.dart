@@ -1,5 +1,5 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/portable_charger/controller/portable_charger_controller.dart';
+import 'package:evcar/src/feature/mobile_charger/controller/mobile_charger_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +9,7 @@ class CustemButtonCall extends StatelessWidget {
   final String phone;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(PortableChargerController());
+    final controller = Get.put(MobileChargerController());
 
     return MaterialButton(
       minWidth: 0.35 * MediaQuery.of(context).size.width,

@@ -1,10 +1,9 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
-import 'package:evcar/src/feature/favourite_page/google_map_charching.dart';
-import 'package:evcar/src/feature/favourite_page/home_charching.dart';
-import 'package:evcar/src/feature/favourite_page/mobile_charching.dart';
+import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
+import 'package:evcar/src/feature/home_charging_station/view/widget/home_charching.dart';
 import 'package:evcar/src/feature/home_page/view/home_page.dart';
+import 'package:evcar/src/feature/mobile_charger/view/widget/main_page/mobile_charging_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,7 @@ void main() async {
   Hive.init(appDocumentDirectory.path);
   Hive.registerAdapter(HomeCharchingStationsAdapter());
   Hive.registerAdapter(MobileCharchingStationsAdapter());
-  Hive.registerAdapter(GoogleMapCharchingStationsAdapter());
+  // Hive.registerAdapter(GoogleMapCharchingStationsAdapter());
   await Hive.openBox<ChargingStation>('charchingStation');
   await Hive.openBox<ChargingStation>('HomecharchingStation');
   await Hive.openBox<ChargingStation>('MobilecharchingStation');

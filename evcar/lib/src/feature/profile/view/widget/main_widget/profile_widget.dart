@@ -1,13 +1,13 @@
 import 'package:evcar/src/config/routes/routes.dart';
-import 'package:evcar/src/feature/favourite_page/fav_home.dart';
+import 'package:evcar/src/feature/favourite_page/view/favourite_page.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
-import 'package:evcar/src/feature/home_page/view/home_page.dart';
-import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
+import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/profile/view/widget/widget_collection/user_card.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../widget_collection/profile_button_profile.dart';
 
 class ProfileWidget extends StatefulWidget {
@@ -45,7 +45,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         ),
         ProfileButton(
           onTap: () {
-            Get.to(FavMainWidget());
+            Get.to(FavouritePage());
           },
           title: 'المفضلة',
           icon: Icons.favorite_border,

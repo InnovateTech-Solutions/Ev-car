@@ -1,6 +1,6 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/charging_station/model/detail_model.dart';
 import 'package:evcar/src/feature/charging_station/view/widget/detail_widget.dart';
+import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/detail_appbar.dart';

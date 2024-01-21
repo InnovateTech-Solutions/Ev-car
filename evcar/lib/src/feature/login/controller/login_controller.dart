@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
-import 'package:evcar/src/feature/google_map/view/widget/google_map_text.dart';
+import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,0 +1,35 @@
+import 'dart:convert';
+
+import 'package:evcar/src/core/constants/api_key.dart';
+import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
+
+class ChargingStationController extends GetxController {
+  void openGoogleMap(coordinates) async {
+    final coordinate = coordinates;
+    final latLng = coordinate.split(',');
+    final latitude = double.tryParse(latLng[0].trim()) ?? 0.0;
+    final longitude = double.tryParse(latLng[1].trim()) ?? 0.0;
+    Uri mapUrl = Uri.parse(
+        'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
+
+    if (!await launchUrl(mapUrl)) {
+      throw Exception('Could not launch $mapUrl');
+    }
+  }
+
+  Future<List<ChargingStation>> fetchData() async {
+    final response = await http.get(Uri.parse(ApiKey.homeStations));
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      List<ChargingStation> stations =
+          data.map((item) => ChargingStation.fromJson(item)).toList();
+      return stations;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+}
