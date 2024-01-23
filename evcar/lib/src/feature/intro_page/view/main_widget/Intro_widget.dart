@@ -1,6 +1,7 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/feature/create_account/create_account/view/pages/create_account_page.dart';
 import 'package:evcar/src/feature/intro_page/view/text_widget/opeing_text.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,12 @@ class IntroWidget extends StatelessWidget {
               colorText: AppTheme.lightAppColors.buttoncolor,
               text: 'إنشاء حساب',
               onPressed: () => Get.toNamed(AppRoutes.register),
+            ),
+            IntroPageButton(
+              colorButton: AppTheme.lightAppColors.background,
+              colorText: AppTheme.lightAppColors.buttoncolor,
+              text: 'إنشاء حساب',
+              onPressed: () => Get.to(CreateAccountPage()),
             ),
           ],
         ),

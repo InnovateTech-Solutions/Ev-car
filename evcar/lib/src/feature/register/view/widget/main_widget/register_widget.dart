@@ -1,5 +1,6 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/feature/login/view/widget/widget_collection/login_partial.dart';
 import 'package:evcar/src/feature/register/controller/register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
@@ -32,9 +33,32 @@ class RegisterWidgets extends StatelessWidget {
           key: controller.fromKey,
           child: Column(
             children: [
-              SizedBox(
-                  height: 0.1 * context.screenHeight,
-                  child: Image.asset('assets/images/photo2.png')),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                      height: 0.1 * context.screenHeight,
+                      child: Image.asset('assets/images/photo2.png')),
+                  // Container(
+                  //   height: 0.05 * context.screenHeight,
+                  //   width: context.screenWidth * 0.1,
+                  //   decoration: BoxDecoration(
+                  //       color: AppTheme.lightAppColors.mainTextcolor,
+                  //       border: Border.all(
+                  //         color: AppTheme.lightAppColors.bordercolor,
+                  //       ),
+                  //       borderRadius: BorderRadius.circular(5)),
+                  //   child: Center(
+                  //     child: IconButton(
+                  //       icon: Icon(Icons.arrow_forward_ios),
+                  //       onPressed: () {
+                  //         Get.back();
+                  //       },
+                  //     ),
+                  //   ),
+                  // ),
+                ],
+              ),
               SizedBox(
                 height: 0.01 * context.screenHeight,
               ),
@@ -44,20 +68,44 @@ class RegisterWidgets extends StatelessWidget {
               SizedBox(
                 height: 0.05 * context.screenHeight,
               ),
-              FormWidget(
-                formModel: FormModel(
-                  enableText: false,
-                  controller: controller.phoneNumber,
-                  hintText: 'رقم الموبايل',
-                  invisible: false,
-                  validator: (phone) => controller.vaildPhoneNumber(phone),
-                  type: TextInputType.phone,
-                  inputFormat: [
-                    LengthLimitingTextInputFormatter(10),
-                    FilteringTextInputFormatter.digitsOnly,
-                  ],
-                  onTap: () {},
-                ),
+              Stack(
+                children: [
+                  FormWidget(
+                    formModel: FormModel(
+                      enableText: false,
+                      controller: controller.phoneNumber,
+                      hintText: 'رقم الموبايل',
+                      invisible: false,
+                      validator: (phone) => controller.vaildPhoneNumber(phone),
+                      type: TextInputType.phone,
+                      inputFormat: [
+                        LengthLimitingTextInputFormatter(10),
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      onTap: () {},
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      verticalDivider(),
+                      Text(
+                        "+962",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 15),
+                      ),
+                      SizedBox(
+                        width: context.screenWidth * 0.02,
+                      ),
+                      SizedBox(
+                          height: 0.05 * context.screenHeight,
+                          child: Image.asset("assets/images/jordan.png")),
+                      SizedBox(
+                        width: context.screenWidth * 0.02,
+                      )
+                    ],
+                  ),
+                ],
               ),
               SizedBox(
                 height: 0.02 * context.screenHeight,

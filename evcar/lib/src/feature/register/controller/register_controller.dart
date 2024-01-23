@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/otp/view/page/otp_page.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';

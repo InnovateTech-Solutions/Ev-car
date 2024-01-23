@@ -1,10 +1,12 @@
 import 'dart:convert';
-import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
+
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
+import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../home_page/controller/home_controller.dart';
 
 class LoginController extends GetxController {
@@ -95,7 +97,7 @@ class LoginController extends GetxController {
         token.value = userToken;
 
         homeController.toggleValueAndNavigate();
-        Get.offAll(const GoogleMapPage());
+        Get.offAll(const NavBarWidget());
       } else {
         // Handle error case
         Get.snackbar("ERROR", "Invalid Data",

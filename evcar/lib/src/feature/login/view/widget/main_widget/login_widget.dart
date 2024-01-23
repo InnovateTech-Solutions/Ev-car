@@ -11,6 +11,7 @@ import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+
 import '../text_widget/login_text.dart';
 
 class LoginWidget extends StatelessWidget {
@@ -75,12 +76,22 @@ class LoginWidget extends StatelessWidget {
                       SizedBox(
                         height: context.screenHeight * 0.02,
                       ),
-                      LoginText.subLoginText('962+'),
+                      Row(
+                        children: [
+                          LoginText.subLoginText('962+'),
+                          SizedBox(
+                            width: context.screenWidth * 0.01,
+                          ),
+                          SizedBox(
+                              height: context.screenHeight * 0.03,
+                              child: Image.asset("assets/images/jordan.png")),
+                        ],
+                      ),
                       SizedBox(
                         height: context.screenHeight * 0.015,
                       ),
                       Container(
-                        width: context.screenWidth * 0.1,
+                        width: context.screenWidth * 0.15,
                         height: 1,
                         color: AppTheme.lightAppColors.bordercolor,
                       )

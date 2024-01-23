@@ -78,6 +78,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/navBar/
     - assets/style/
   #   - images/a_dot_ham.jpeg
 

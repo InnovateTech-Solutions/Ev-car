@@ -5,6 +5,7 @@ import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/information_page/view/page/information_page.dart';
 import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
 import 'package:evcar/src/feature/login/view/pages/login_page.dart';
+import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:evcar/src/feature/profile/view/pages/profile_page.dart';
 import 'package:evcar/src/feature/register/view/pages/register_page.dart';
 import 'package:get/get.dart';
@@ -24,6 +25,7 @@ class AppRoutes {
   static const String connectUs = '/ConnectPage';
   static const String aboutUs = '/AboutPage';
   static const String forgetPassword = '/ForgetPassword';
+  static const String navBar = '/NavBar';
 
   static final List<GetPage> routes = [
     GetPage(
@@ -51,6 +53,7 @@ class AppRoutes {
       page: () => const GoogleMapPage(),
     ),
     GetPage(name: informatioPage, page: () => const InformationPage()),
+    GetPage(name: navBar, page: () => const NavBarWidget()),
     GetPage(name: aboutUs, page: () => const AboutPage()),
     GetPage(name: connectUs, page: () => const ContactPage()),
     GetPage(name: forgetPassword, page: () => const ForgetPasswordPage())

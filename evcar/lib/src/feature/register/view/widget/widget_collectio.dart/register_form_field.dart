@@ -1,3 +1,4 @@
+import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:flutter/material.dart';
@@ -19,11 +20,11 @@ class FormWidget extends StatefulWidget {
 class _FormWidgetState extends State<FormWidget> {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
       child: Container(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(0.01 * screenWidth)),
+            borderRadius:
+                BorderRadius.all(Radius.circular(0.01 * context.screenWidth)),
           ),
           child: TextFormField(
               cursorColor: AppTheme.lightAppColors.primary,
@@ -46,14 +47,14 @@ class _FormWidgetState extends State<FormWidget> {
                         color: Colors.black.withOpacity(0.2),
                       ),
                       borderRadius: BorderRadius.all(
-                          Radius.circular(0.03 * screenWidth))),
+                          Radius.circular(0.03 * context.screenWidth))),
                   border: const OutlineInputBorder(),
                   enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Colors.black.withOpacity(0.2),
                       ),
                       borderRadius: BorderRadius.all(
-                          Radius.circular(0.03 * screenWidth))),
+                          Radius.circular(0.03 * context.screenWidth))),
                   hintText: widget.formModel.hintText,
                   hintStyle: TextStyle(
                       fontFamily: 'cairo-Regular',

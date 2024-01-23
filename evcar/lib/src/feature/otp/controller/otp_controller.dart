@@ -73,7 +73,7 @@ class OTPController extends GetxController {
       print('allowed');
 
       homeController.toggleValueAndNavigate();
-      Get.offAllNamed(AppRoutes.googleMap);
+      Get.offAllNamed(AppRoutes.navBar);
       return true;
     } else {
       print('not allowed');

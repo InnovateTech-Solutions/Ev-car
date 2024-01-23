@@ -1,8 +1,13 @@
-import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
+import 'package:evcar/src/feature/on_board/controller/on_board_controller.dart';
+import 'package:evcar/src/feature/on_board/view/text_widget/on_boarding_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+final controller = Get.put(OnboardingController());
 
 onBaordingButton(BuildContext context) {
   return Container(
@@ -13,30 +18,30 @@ onBaordingButton(BuildContext context) {
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Column(
-        //   crossAxisAlignment: CrossAxisAlignment.start,
-        //   children: [
-        //     SmoothPageIndicator(
-        //       effect: ExpandingDotsEffect(
-        //         dotColor: Colors.white.withOpacity(.5),
-        //         activeDotColor: AppTheme.lightAppColors.background,
-        //         dotHeight: 0.01 * context.screenHeight,
-        //         dotWidth: 0.02 * context.screenWidth,
-        //       ),
-        //       controller: controller.pageController,
-        //       count: 3,
-        //     ),
-        //     SizedBox(
-        //       height: 0.01 * context.screenHeight,
-        //     ),
-        //     GestureDetector(
-        //       onTap: () {
-        //         Get.offAll(const OpeningPage());
-        //       },
-        //       child: thirdText("Skip"),
-        //     ),
-        //   ],
-        // ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SmoothPageIndicator(
+              effect: ExpandingDotsEffect(
+                dotColor: Colors.white.withOpacity(.5),
+                activeDotColor: AppTheme.lightAppColors.background,
+                dotHeight: 0.01 * context.screenHeight,
+                dotWidth: 0.02 * context.screenWidth,
+              ),
+              controller: controller.pageController,
+              count: 3,
+            ),
+            SizedBox(
+              height: 0.01 * context.screenHeight,
+            ),
+            GestureDetector(
+              onTap: () {
+                Get.offAll(IntroPage());
+              },
+              child: thirdText("Skip"),
+            ),
+          ],
+        ),
         Stack(
           alignment: Alignment.center,
           children: [
@@ -54,7 +59,7 @@ onBaordingButton(BuildContext context) {
             ),
             GestureDetector(
               onTap: () {
-                Get.toNamed(AppRoutes.introPage);
+                controller.nextPage();
               },
               child: Container(
                 width: 0.13 * context.screenWidth,
@@ -63,12 +68,13 @@ onBaordingButton(BuildContext context) {
                   shape: BoxShape.circle,
                   color: AppTheme.lightAppColors.mainTextcolor,
                 ),
-                child: Icon(
-                  Icons.arrow_forward_ios_rounded,
-                  color: const Color(0xffB7ABFC),
-                  // color: controller
-                  //     .getIconColor(controller.currentPageIndex.value),
-                  size: 0.05 * context.screenWidth,
+                child: Obx(
+                  () => Icon(
+                    Icons.arrow_forward_ios_rounded,
+                    color: controller
+                        .getIconColor(controller.currentPageIndex.value),
+                    size: 0.05 * context.screenWidth,
+                  ),
                 ),
               ),
             ),

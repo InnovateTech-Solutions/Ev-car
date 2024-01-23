@@ -15,5 +15,6 @@ class AppTheme {
     bordercolor: const Color(0xffD9D9D9),
     subTextcolor: const Color(0xffA9A9A9),
     mainTextcolor: const Color(0xffFFFFFF),
+    containercolor: const Color(0xffF4F5F7),
   );
 }
