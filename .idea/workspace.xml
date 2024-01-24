@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="dashboard added" />
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="dashboard added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/vendor/view/widgets/home_vendor_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/vendor/view/widgets/home_vendor_widget.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

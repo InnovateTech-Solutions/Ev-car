@@ -13,9 +13,7 @@ import 'list_title_with_image_of_item.dart';
 import 'onboarding_vendor_widget.dart';
 
 class HomeVendorWidget extends StatelessWidget {
-  HomeVendorWidget({super.key});
-
-  final VendorController controller = Get.put(VendorController());
+  const HomeVendorWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
