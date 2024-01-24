@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'custom_item.dart';
+import 'item_change_maintenance.dart';
 
-class ListViewOfCustomItem extends StatelessWidget {
-  const ListViewOfCustomItem({
-    super.key,
-  });
+class ListOfItemChangeMaintenance extends StatelessWidget {
+  const ListOfItemChangeMaintenance({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +11,9 @@ class ListViewOfCustomItem extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => const CustomItem(),
+        itemBuilder: (context, index) => const ItemChangeMaintenance(),
         separatorBuilder: (context, index) =>
-            SizedBox(width: MediaQuery.of(context).size.width * .03),
+            SizedBox(width: MediaQuery.of(context).size.width * .06),
         itemCount: 2,
       ),
     );

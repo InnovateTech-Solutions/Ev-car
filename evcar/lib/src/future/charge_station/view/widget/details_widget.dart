@@ -32,7 +32,7 @@ class DetailsWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              Styles.textstyle22(station.title),
+              Styles.textstyle22(station.title, Colors.black),
               const Spacer(),
               const Image(
                 image: AssetImage(

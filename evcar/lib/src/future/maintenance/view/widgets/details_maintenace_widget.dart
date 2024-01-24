@@ -29,7 +29,7 @@ class DetailsMaintenanceWidget extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Styles.textstyle22('اضوية خلفية'),
+                  Styles.textstyle22('اضوية خلفية', Colors.black),
                   const Spacer(),
                   Styles.textstyle28('13,00 دينار', Colors.red),
                 ],
@@ -75,9 +75,7 @@ class DetailsMaintenanceWidget extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .03,
               ),
-              ListViewOfCustomItem(
-                station: station,
-              ),
+              const ListViewOfCustomItem(),
             ],
           ),
         ),

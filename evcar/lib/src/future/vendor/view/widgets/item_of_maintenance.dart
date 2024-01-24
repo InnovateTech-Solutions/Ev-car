@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import '../../../../core/widget/text_widget/text_widget.dart';
 
-class ItemOfTheTopRating extends StatelessWidget {
-  const ItemOfTheTopRating(
-      {super.key,
-      this.h1 = .15,
-      this.w1 = .4,
-      this.r1 = 30,
-      this.h2 = .07,
-      this.w2 = .4,
-      this.r2 = 30});
+class ItemOfMaintenance extends StatelessWidget {
+  const ItemOfMaintenance({
+    super.key,
+    this.h1 = .15,
+    this.w1 = .4,
+    this.r1 = 30,
+    this.h2 = .07,
+    this.w2 = .4,
+    this.r2 = 30,
+  });
 
   final double h1, h2;
   final double w1, w2;

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/widget/text_widget/text_widget.dart';
-import '../../../charge_station/view/widget/custem_button_call.dart';
+import 'custom_cell_button_vender.dart';
 
-class CustomItem extends StatelessWidget {
-  const CustomItem({
-    super.key,
-  });
+class ItemOfAccessoriseOfCars extends StatelessWidget {
+  const ItemOfAccessoriseOfCars({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +14,11 @@ class CustomItem extends StatelessWidget {
           onTap: () {},
           child: Container(
             height: MediaQuery.of(context).size.height * .15,
-            width: MediaQuery.of(context).size.width * .3,
+            width: MediaQuery.of(context).size.width * .4,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/mainphoto.png'),
-                fit: BoxFit.fitHeight,
+                image: AssetImage('assets/images/key.png'),
+                fit: BoxFit.fill,
               ),
             ),
             child: Column(
@@ -28,7 +26,10 @@ class CustomItem extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {},
-                  child: Image.asset('assets/images/Iconsax.png'),
+                  child: Image.asset(
+                    'assets/images/Iconsax.png',
+                    fit: BoxFit.cover,
+                  ),
                 ),
                 const Spacer(),
                 Styles.textstyle10(
@@ -41,16 +42,16 @@ class CustomItem extends StatelessWidget {
         ),
         SizedBox(
           height: MediaQuery.of(context).size.height * .15,
-          width: MediaQuery.of(context).size.width * .3,
+          width: MediaQuery.of(context).size.width * .4,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Styles.textstyle12('اضوية خلفية', Colors.black),
+              Styles.textstyle12('مفتاح', Colors.black),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .005,
               ),
               Styles.textstyle10(
-                'تويوتا كامري 2006',
+                'ليكزس أصلي موديل CT200',
                 const Color.fromRGBO(77, 77, 77, 1),
               ),
               SizedBox(
@@ -62,7 +63,9 @@ class CustomItem extends StatelessWidget {
                     '13,00 دينار',
                     Colors.red,
                   ),
-                  const Spacer(),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .1,
+                  ),
                   const Image(
                     image:
                         AssetImage('assets/images/star.leadinghalf.filled.png'),
@@ -79,7 +82,7 @@ class CustomItem extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .005,
               ),
-              CustemButtonCall(
+              const CustomCallBottunVendor(
                 text: 'اطلب الان',
               ),
             ],

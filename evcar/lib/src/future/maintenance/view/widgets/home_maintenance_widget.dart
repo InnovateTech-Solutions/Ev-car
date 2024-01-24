@@ -20,7 +20,11 @@ class HomeMaintenanceWidget extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const CustomInformationWidget(),
+            const CustomInformationWidget(
+              title: 'صباح الخير ,',
+              text: 'مسلم العبسي',
+              pic: 'assets/images/profile.png',
+            ),
             SizedBox(
               height: MediaQuery.of(context).size.height * .04,
             ),

@@ -41,6 +41,7 @@ dependencies:
   url_launcher: ^6.2.2
   conditional_builder_null_safety: ^0.0.6
   http: ^1.1.2
+  smooth_page_indicator: ^1.1.0
 
 
 

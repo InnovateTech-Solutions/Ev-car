@@ -62,9 +62,7 @@ class MaintenanceWidget extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.01,
             ),
-            ListViewOfCustomItem(
-              station: station,
-            ),
+            const ListViewOfCustomItem(),
             Styles.textstyle16(
               'إكسسوارات السيارات',
               Colors.black,
@@ -77,9 +75,7 @@ class MaintenanceWidget extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => CustomItem(
-                  station: station,
-                ),
+                itemBuilder: (context, index) => const CustomItem(),
                 separatorBuilder: (context, index) =>
                     SizedBox(width: MediaQuery.of(context).size.width * .03),
                 itemCount: 10,

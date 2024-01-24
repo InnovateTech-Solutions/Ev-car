@@ -87,6 +87,20 @@ abstract class Styles {
     );
   }
 
+  static Text textstyle29(String title, Color color) {
+    return Text(
+      title,
+      maxLines: 2,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: color,
+        overflow: TextOverflow.ellipsis,
+        fontSize: 29,
+        fontFamily: 'cairo-Medium',
+      ),
+    );
+  }
+
   static Text textstyle28(String title, Color color) {
     return Text(
       title,
@@ -114,13 +128,28 @@ abstract class Styles {
     );
   }
 
-  static Text textstyle22(String title, {int maxLength = 20}) {
+  static Text textstyle24(String title, Color color) {
+    return Text(
+      title,
+      maxLines: 2,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: color,
+        overflow: TextOverflow.ellipsis,
+        fontSize: 24,
+        fontFamily: 'cairo-Medium',
+      ),
+    );
+  }
+
+  static Text textstyle22(String title, Color color, {int maxLength = 20}) {
     if (title.length <= maxLength) {
       return Text(
         title,
         maxLines: 1,
         textAlign: TextAlign.center,
-        style: const TextStyle(
+        style: TextStyle(
+          color: color,
           overflow: TextOverflow.ellipsis,
           fontSize: 22,
           fontWeight: FontWeight.w400,
@@ -145,16 +174,31 @@ abstract class Styles {
     }
   }
 
-  static Text textstyle22bold(String title) {
+  static Text textstyle22bold(String title, Color color) {
     return Text(
       title,
       maxLines: 2,
       textAlign: TextAlign.center,
-      style: const TextStyle(
+      style: TextStyle(
+        color: color,
         overflow: TextOverflow.ellipsis,
         fontSize: 22,
         fontWeight: FontWeight.w400,
         fontFamily: 'Cairo-bold',
+      ),
+    );
+  }
+
+  static Text textstyle20(String title, Color color) {
+    return Text(
+      title,
+      maxLines: 2,
+      style: TextStyle(
+        overflow: TextOverflow.ellipsis,
+        fontSize: 20,
+        color: color,
+        fontWeight: FontWeight.w400,
+        fontFamily: 'Cairo-Regular',
       ),
     );
   }
@@ -201,6 +245,18 @@ abstract class Styles {
     );
   }
 
+  static Text textstyle17normal(String title, Color color) {
+    return Text(
+      title,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        color: color,
+        fontSize: 17,
+        fontFamily: 'cairo-Medium',
+      ),
+    );
+  }
+
   static Text textstyle16(String title, Color color) {
     return Text(
       title,
@@ -213,6 +269,39 @@ abstract class Styles {
         fontFamily: 'cairo-Medium',
       ),
     );
+  }
+
+  static Text textstyle15(String title, Color color, {int maxLength = 5}) {
+    if (title.length != maxLength) {
+      return Text(
+        title,
+        maxLines: 2,
+        textAlign: TextAlign.start,
+        style: TextStyle(
+          color: color,
+          overflow: TextOverflow.ellipsis,
+          fontSize: 15,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Cairo-Medium',
+        ),
+      );
+    } else {
+      String modifiedText = '';
+      for (int i = 0; i < title.length; i += maxLength) {
+        modifiedText += '${title.substring(i, i + maxLength)}\n';
+      }
+      return Text(
+        modifiedText.trim(),
+        maxLines: 3,
+        textAlign: TextAlign.start,
+        style: TextStyle(
+          color: color,
+          fontSize: 15,
+          fontWeight: FontWeight.w400,
+          fontFamily: 'Cairo-Medium',
+        ),
+      );
+    }
   }
 
   static Text textstyle14(String title, Color color) {

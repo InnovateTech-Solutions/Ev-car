@@ -7,13 +7,13 @@ class CustemButtonCall extends StatelessWidget {
   CustemButtonCall({
     super.key,
     required this.text,
-    required this.station,
+    this.station,
   });
 
   final UrlLauncherController phoneController =
       Get.put(UrlLauncherController());
   final String text;
-  final ChargeModel station;
+  final ChargeModel? station;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CustemButtonCall extends StatelessWidget {
       ),
       color: const Color.fromRGBO(0, 168, 168, 1),
       onPressed: () {
-        phoneController.launchPhoneCall(station.number);
+        phoneController.launchPhoneCall(station!.number);
       },
       child: Text(
         text,
