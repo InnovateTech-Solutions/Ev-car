@@ -252,6 +252,7 @@ abstract class Styles {
       style: TextStyle(
         color: color,
         fontSize: 17,
+        fontWeight: FontWeight.w700,
         fontFamily: 'cairo-Medium',
       ),
     );
@@ -302,6 +303,21 @@ abstract class Styles {
         ),
       );
     }
+  }
+
+  static Text textstyle14bold(String title, Color color) {
+    return Text(
+      title,
+      maxLines: 2,
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        overflow: TextOverflow.ellipsis,
+        color: color,
+        fontSize: 14,
+        //fontWeight: FontWeight.bold,
+        fontFamily: 'cairo-Bold',
+      ),
+    );
   }
 
   static Text textstyle14(String title, Color color) {

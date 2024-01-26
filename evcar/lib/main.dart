@@ -1,6 +1,6 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/future/vendor/view/pages/home_vendor_screen.dart';
+import 'package:evcar/src/future/car_show/page/car_show_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       initialRoute: AppRoutes.onBoard,
       locale: const Locale('ar', 'AR'),
       getPages: AppRoutes.routes,
-      home: const HomeVendorScreen(),
+      home: const CarShowPage(),
     );
   }
 }
