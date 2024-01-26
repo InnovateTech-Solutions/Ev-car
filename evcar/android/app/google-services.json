@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974147774933",
+    "project_id": "evcar-48b5e",
+    "storage_bucket": "evcar-48b5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974147774933:android:9287c139630164f17d755c",
+        "android_client_info": {
+          "package_name": "com.example.evcar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjXh_mHY7qvC0ovJ2nC_umdfSwyKe-PJs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
