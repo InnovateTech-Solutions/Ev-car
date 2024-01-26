@@ -1,0 +1,241 @@
+Index: evcar/lib/src/future/car_show/widget/item_car_widget.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter/material.dart';\r\nimport '../../../core/widget/text_widget/text_widget.dart';\r\nimport 'custom_button_car_show_widget.dart';\r\n\r\nclass ItemCarWidget extends StatelessWidget {\r\n  const ItemCarWidget(\r\n      {super.key,\r\n      required this.name,\r\n      required this.text1,\r\n      required this.text2,\r\n      required this.image,\r\n      required this.price});\r\n\r\n  final String name;\r\n  final String text1;\r\n  final String text2;\r\n  final String image;\r\n  final String price;\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Container(\r\n      height: MediaQuery.of(context).size.height * .197,\r\n      width: MediaQuery.of(context).size.width,\r\n      padding: EdgeInsets.symmetric(\r\n        horizontal: MediaQuery.of(context).size.width * .01,\r\n        vertical: MediaQuery.of(context).size.height * .02,\r\n      ),\r\n      decoration: BoxDecoration(\r\n        color: Colors.white,\r\n        boxShadow: const [\r\n          BoxShadow(\r\n            color: Color.fromRGBO(218, 218, 218, 1),\r\n            spreadRadius: 3,\r\n            blurRadius: 20,\r\n            offset: Offset(0, 0),\r\n          ),\r\n        ],\r\n        borderRadius: BorderRadius.circular(20),\r\n      ),\r\n      child: Row(\r\n        children: [\r\n          Image(\r\n            image: AssetImage(image),\r\n          ),\r\n          SizedBox(\r\n            width: MediaQuery.of(context).size.width * .03,\r\n          ),\r\n          Column(\r\n            crossAxisAlignment: CrossAxisAlignment.start,\r\n            children: [\r\n              Styles.textstyle14bold(name, Colors.black),\r\n              Styles.textstyle12(text1, Colors.black),\r\n              Styles.textstyle12(text2, Colors.black),\r\n              SizedBox(\r\n                height: MediaQuery.of(context).size.height * .007,\r\n              ),\r\n              Styles.textstyle14(price, Colors.red),\r\n              Row(\r\n                children: [\r\n                  CustemButtonCarShowWidget(\r\n                    text: 'تفاصيل',\r\n                    colorText: const Color.fromRGBO(0, 168, 168, 1),\r\n                    colorButton: Colors.white,\r\n                    onPressed: () {},\r\n                  ),\r\n                  SizedBox(\r\n                    width: MediaQuery.of(context).size.width * .007,\r\n                  ),\r\n                  CustemButtonCarShowWidget(\r\n                    text: 'تواصل',\r\n                    colorText: Colors.white,\r\n                    colorButton: const Color.fromRGBO(0, 168, 168, 1),\r\n                    onPressed: () {},\r\n                  ),\r\n                ],\r\n              ),\r\n            ],\r\n          ),\r\n          Align(\r\n            alignment: Alignment.topLeft,\r\n            child: InkWell(\r\n                onTap: () {},\r\n                child: const Image(\r\n                    image: AssetImage('assets/images/favriteicon.png'))),\r\n          ),\r\n        ],\r\n      ),\r\n    );\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/evcar/lib/src/future/car_show/widget/item_car_widget.dart b/evcar/lib/src/future/car_show/widget/item_car_widget.dart
+--- a/evcar/lib/src/future/car_show/widget/item_car_widget.dart	
++++ b/evcar/lib/src/future/car_show/widget/item_car_widget.dart	
+@@ -19,72 +19,75 @@
+ 
+   @override
+   Widget build(BuildContext context) {
+-    return Container(
+-      height: MediaQuery.of(context).size.height * .197,
+-      width: MediaQuery.of(context).size.width,
+-      padding: EdgeInsets.symmetric(
+-        horizontal: MediaQuery.of(context).size.width * .01,
+-        vertical: MediaQuery.of(context).size.height * .02,
+-      ),
+-      decoration: BoxDecoration(
+-        color: Colors.white,
+-        boxShadow: const [
+-          BoxShadow(
+-            color: Color.fromRGBO(218, 218, 218, 1),
+-            spreadRadius: 3,
+-            blurRadius: 20,
+-            offset: Offset(0, 0),
+-          ),
+-        ],
+-        borderRadius: BorderRadius.circular(20),
+-      ),
+-      child: Row(
+-        children: [
+-          Image(
+-            image: AssetImage(image),
+-          ),
+-          SizedBox(
+-            width: MediaQuery.of(context).size.width * .03,
+-          ),
+-          Column(
+-            crossAxisAlignment: CrossAxisAlignment.start,
+-            children: [
+-              Styles.textstyle14bold(name, Colors.black),
+-              Styles.textstyle12(text1, Colors.black),
+-              Styles.textstyle12(text2, Colors.black),
+-              SizedBox(
+-                height: MediaQuery.of(context).size.height * .007,
+-              ),
+-              Styles.textstyle14(price, Colors.red),
+-              Row(
+-                children: [
+-                  CustemButtonCarShowWidget(
+-                    text: 'تفاصيل',
+-                    colorText: const Color.fromRGBO(0, 168, 168, 1),
+-                    colorButton: Colors.white,
+-                    onPressed: () {},
+-                  ),
+-                  SizedBox(
+-                    width: MediaQuery.of(context).size.width * .007,
+-                  ),
+-                  CustemButtonCarShowWidget(
+-                    text: 'تواصل',
+-                    colorText: Colors.white,
+-                    colorButton: const Color.fromRGBO(0, 168, 168, 1),
+-                    onPressed: () {},
+-                  ),
+-                ],
+-              ),
+-            ],
+-          ),
+-          Align(
+-            alignment: Alignment.topLeft,
+-            child: InkWell(
+-                onTap: () {},
+-                child: const Image(
+-                    image: AssetImage('assets/images/favriteicon.png'))),
+-          ),
+-        ],
++    return InkWell(
++      onTap: () {},
++      child: Container(
++        height: MediaQuery.of(context).size.height * .197,
++        width: MediaQuery.of(context).size.width,
++        padding: EdgeInsets.symmetric(
++          horizontal: MediaQuery.of(context).size.width * .01,
++          vertical: MediaQuery.of(context).size.height * .02,
++        ),
++        decoration: BoxDecoration(
++          color: Colors.white,
++          boxShadow: const [
++            BoxShadow(
++              color: Color.fromRGBO(218, 218, 218, 1),
++              spreadRadius: 3,
++              blurRadius: 20,
++              offset: Offset(0, 0),
++            ),
++          ],
++          borderRadius: BorderRadius.circular(20),
++        ),
++        child: Row(
++          children: [
++            Image(
++              image: AssetImage(image),
++            ),
++            SizedBox(
++              width: MediaQuery.of(context).size.width * .03,
++            ),
++            Column(
++              crossAxisAlignment: CrossAxisAlignment.start,
++              children: [
++                Styles.textstyle14bold(name, Colors.black),
++                Styles.textstyle12(text1, Colors.black),
++                Styles.textstyle12(text2, Colors.black),
++                SizedBox(
++                  height: MediaQuery.of(context).size.height * .007,
++                ),
++                Styles.textstyle14(price, Colors.red),
++                Row(
++                  children: [
++                    CustemButtonCarShowWidget(
++                      text: 'تفاصيل',
++                      colorText: const Color.fromRGBO(0, 168, 168, 1),
++                      colorButton: Colors.white,
++                      onPressed: () {},
++                    ),
++                    SizedBox(
++                      width: MediaQuery.of(context).size.width * .007,
++                    ),
++                    CustemButtonCarShowWidget(
++                      text: 'تواصل',
++                      colorText: Colors.white,
++                      colorButton: const Color.fromRGBO(0, 168, 168, 1),
++                      onPressed: () {},
++                    ),
++                  ],
++                ),
++              ],
++            ),
++            Align(
++              alignment: Alignment.topLeft,
++              child: InkWell(
++                  onTap: () {},
++                  child: const Image(
++                      image: AssetImage('assets/images/favriteicon.png'))),
++            ),
++          ],
++        ),
+       ),
+     );
+   }
+Index: evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter/material.dart';\r\nimport 'package:get/get.dart';\r\n\r\nclass ChargeStationAppBar extends StatelessWidget\r\n    implements PreferredSizeWidget {\r\n  const ChargeStationAppBar({super.key, required this.title});\r\n\r\n  final String title;\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return AppBar(\r\n      leading: const Icon(null),\r\n      title: Center(\r\n        child: Text(\r\n          title,\r\n          style: const TextStyle(\r\n            fontSize: 22,\r\n            fontFamily: 'cairo-SemiBold',\r\n          ),\r\n        ),\r\n      ),\r\n      actions: [\r\n        IconButton(\r\n          icon: const Icon(\r\n            Icons.arrow_forward_ios_outlined,\r\n          ),\r\n          onPressed: () {\r\n            Get.back();\r\n          },\r\n        ),\r\n      ],\r\n    );\r\n  }\r\n\r\n  @override\r\n  // TODO: implement preferredSize\r\n  Size get preferredSize => const Size.fromHeight(kToolbarHeight);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart b/evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart
+--- a/evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart	
++++ b/evcar/lib/src/future/charge_station/view/widget/charge_station_appbar.dart	
+@@ -33,6 +33,5 @@
+   }
+ 
+   @override
+-  // TODO: implement preferredSize
+   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+ }
+Index: evcar/lib/src/future/ads/widget/custom_app_bar_ads.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter/material.dart';\r\n\r\nimport 'package:get/get.dart';\r\n\r\nclass CustomAppBarAds extends StatelessWidget implements PreferredSizeWidget {\r\n  const CustomAppBarAds({\r\n    super.key,\r\n  });\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return AppBar(\r\n      leading: const Icon(null),\r\n      actions: [\r\n        IconButton(\r\n          icon: const Icon(\r\n            Icons.close,\r\n            size: 30,\r\n          ),\r\n          onPressed: () {\r\n            Get.back();\r\n          },\r\n        ),\r\n        const Spacer(),\r\n        IconButton(\r\n          icon: const Icon(\r\n            Icons.arrow_forward_ios_outlined,\r\n            size: 30,\r\n          ),\r\n          onPressed: () {\r\n            Get.back();\r\n          },\r\n        ),\r\n      ],\r\n    );\r\n  }\r\n\r\n  @override\r\n  // TODO: implement preferredSize\r\n  Size get preferredSize => const Size.fromHeight(kToolbarHeight);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/evcar/lib/src/future/ads/widget/custom_app_bar_ads.dart b/evcar/lib/src/future/ads/widget/custom_app_bar_ads.dart
+--- a/evcar/lib/src/future/ads/widget/custom_app_bar_ads.dart	
++++ b/evcar/lib/src/future/ads/widget/custom_app_bar_ads.dart	
+@@ -36,6 +36,5 @@
+   }
+ 
+   @override
+-  // TODO: implement preferredSize
+   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+ }
+Index: evcar/lib/src/future/login/view/widget/login_appbar.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter/material.dart';\r\nimport 'package:get/get.dart';\r\n\r\nclass AppBarLogin extends StatelessWidget implements PreferredSizeWidget {\r\n  const AppBarLogin({super.key});\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return AppBar(\r\n      leading: const Icon(null),\r\n      actions: [\r\n        Container(\r\n          margin: EdgeInsets.symmetric(\r\n            horizontal: MediaQuery.of(context).size.width * .04,\r\n          ),\r\n          child: InkWell(\r\n            onTap: () {\r\n              Get.back();\r\n            },\r\n            child: const Stack(\r\n              alignment: Alignment.center,\r\n              children: [\r\n                Image(\r\n                  image: AssetImage('assets/images/border.png'),\r\n                ),\r\n                Image(\r\n                  image: AssetImage('assets/images/arrowback.png'),\r\n                ),\r\n              ],\r\n            ),\r\n          ),\r\n        ),\r\n      ],\r\n    );\r\n  }\r\n\r\n  @override\r\n  // TODO: implement preferredSize\r\n  Size get preferredSize => const Size.fromHeight(kToolbarHeight);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/evcar/lib/src/future/login/view/widget/login_appbar.dart b/evcar/lib/src/future/login/view/widget/login_appbar.dart
+--- a/evcar/lib/src/future/login/view/widget/login_appbar.dart	
++++ b/evcar/lib/src/future/login/view/widget/login_appbar.dart	
+@@ -35,6 +35,5 @@
+   }
+ 
+   @override
+-  // TODO: implement preferredSize
+   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+ }
+Index: evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter/material.dart';\r\n\r\nclass CustomItemOfCarShowWidget extends StatelessWidget {\r\n  const CustomItemOfCarShowWidget({super.key, required this.image});\r\n\r\n  final String image;\r\n\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    return Container(\r\n      height: MediaQuery.of(context).size.height * .3,\r\n      width: MediaQuery.of(context).size.width * .3,\r\n      decoration: BoxDecoration(\r\n        color: Colors.red,\r\n        borderRadius: BorderRadius.circular(15),\r\n        image: DecorationImage(\r\n          image: AssetImage(image),\r\n          fit: BoxFit.cover,\r\n        ),\r\n      ),\r\n    );\r\n  }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart b/evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart
+--- a/evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart	
++++ b/evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart	
+@@ -7,15 +7,18 @@
+ 
+   @override
+   Widget build(BuildContext context) {
+-    return Container(
+-      height: MediaQuery.of(context).size.height * .3,
+-      width: MediaQuery.of(context).size.width * .3,
+-      decoration: BoxDecoration(
+-        color: Colors.red,
+-        borderRadius: BorderRadius.circular(15),
+-        image: DecorationImage(
+-          image: AssetImage(image),
+-          fit: BoxFit.cover,
++    return InkWell(
++      onTap: () {},
++      child: Container(
++        height: MediaQuery.of(context).size.height * .3,
++        width: MediaQuery.of(context).size.width * .3,
++        decoration: BoxDecoration(
++          color: Colors.red,
++          borderRadius: BorderRadius.circular(15),
++          image: DecorationImage(
++            image: AssetImage(image),
++            fit: BoxFit.cover,
++          ),
+         ),
+       ),
+     );
