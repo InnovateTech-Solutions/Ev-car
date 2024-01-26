@@ -23,6 +23,7 @@ class RegisterText {
           TextSpan(
             text: 'الشروط والأحكام الخاصة بنا ',
             style: const TextStyle(
+              decoration: TextDecoration.underline,
               fontSize: 15,
               fontFamily: 'cairo-SemiBold',
             ),

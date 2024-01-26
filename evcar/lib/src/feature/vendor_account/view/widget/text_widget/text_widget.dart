@@ -22,4 +22,28 @@ class TextWidget {
       ),
     );
   }
+
+  static subVendorTextError(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 20,
+        fontFamily: 'cairo-Regular',
+        color: Colors.red,
+      ),
+    );
+  }
+
+  static vendorTextFiledLabel(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontWeight: FontWeight.w400,
+        fontSize: 15,
+        fontFamily: 'cairo-Regular',
+        color: Color(0xff000000),
+      ),
+    );
+  }
 }

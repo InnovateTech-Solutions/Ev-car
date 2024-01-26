@@ -3,14 +3,16 @@ import 'package:evcar/src/feature/vendor_account/view/widget/main_widget/vendor_
 import 'package:flutter/material.dart';
 
 class VendorRegisterPage extends StatelessWidget {
-  const VendorRegisterPage({super.key});
-
+  const VendorRegisterPage({required this.type, super.key});
+  final String type;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: AppBarLogin(),
-        body: VendorRegisterWidget(),
+        body: VendorRegisterWidget(
+          type: type,
+        ),
       ),
     );
   }

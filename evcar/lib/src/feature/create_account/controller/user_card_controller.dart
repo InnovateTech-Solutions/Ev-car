@@ -9,7 +9,7 @@ class UserCardController extends GetxController {
       title: ' حساب شخصي ',
       description:
           'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
-      image: 'assets/images/untitled_2.png',
+      image: 'assets/images/untitled (2).png',
       voidCallback: () => Get.toNamed(AppRoutes.register),
     ),
     UserCardModel(
@@ -21,13 +21,14 @@ class UserCardController extends GetxController {
               type: 'Technician',
             ))),
     UserCardModel(
-        title: 'فني صيانة',
-        description:
-            'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
-        image: 'assets/images/untitled_5.png',
-        voidCallback: () => Get.to(VendorRegisterPage(
-              type: 'Person',
-            ))),
+      title: 'فني صيانة',
+      description:
+          'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
+      image: 'assets/images/untitled (5).png',
+      voidCallback: () => Get.to(VendorRegisterPage(
+        type: 'Person',
+      )),
+    ),
 
     // UserCardModel(
     //     title: 'معرض سيارت',

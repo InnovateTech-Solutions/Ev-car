@@ -8,11 +8,12 @@ class VFormWidget extends StatefulWidget {
   VFormWidget({
     required this.vendorFormModel,
     this.ontap,
+    this.line,
     super.key,
   });
   VendorFormModel vendorFormModel;
   VoidCallback? ontap;
-
+  int? line;
   @override
   State<VFormWidget> createState() => _VFormWidgetState();
 }
@@ -26,37 +27,40 @@ class _VFormWidgetState extends State<VFormWidget> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(0.01 * screenWidth)),
           ),
-          child: TextFormField(
-              cursorColor: AppTheme.lightAppColors.primary,
-              style: TextStyle(color: AppTheme.lightAppColors.primary),
-              readOnly: widget.vendorFormModel.enableText,
-              inputFormatters: widget.vendorFormModel.inputFormat,
-              keyboardType: widget.vendorFormModel.type,
-              validator: widget.vendorFormModel.validator,
-              obscureText: widget.vendorFormModel.invisible,
-              controller: widget.vendorFormModel.controller,
-              decoration: InputDecoration(
-                  suffixIcon: widget.vendorFormModel.ll,
-                  filled: true,
-                  fillColor: AppTheme.lightAppColors.background,
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black.withOpacity(0.2),
-                      ),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(0.03 * screenWidth))),
-                  border: const OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black.withOpacity(0.2),
-                      ),
-                      borderRadius: BorderRadius.all(
-                          Radius.circular(0.03 * screenWidth))),
-                  hintText: widget.vendorFormModel.hintText,
-                  hintStyle: TextStyle(
-                      fontFamily: 'cairo-Regular',
-                      color: Colors.black.withOpacity(0.5),
-                      fontSize: 17)))),
+          child: GestureDetector(
+            child: TextFormField(
+                maxLines: widget.line,
+                cursorColor: AppTheme.lightAppColors.primary,
+                style: TextStyle(color: AppTheme.lightAppColors.primary),
+                readOnly: widget.vendorFormModel.enableText,
+                inputFormatters: widget.vendorFormModel.inputFormat,
+                keyboardType: widget.vendorFormModel.type,
+                validator: widget.vendorFormModel.validator,
+                obscureText: widget.vendorFormModel.invisible,
+                controller: widget.vendorFormModel.controller,
+                decoration: InputDecoration(
+                    prefixIcon: widget.vendorFormModel.icon,
+                    filled: true,
+                    fillColor: AppTheme.lightAppColors.background,
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(0.03 * screenWidth))),
+                    border: const OutlineInputBorder(),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black.withOpacity(0.2),
+                        ),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(0.03 * screenWidth))),
+                    hintText: widget.vendorFormModel.hintText,
+                    hintStyle: TextStyle(
+                        fontFamily: 'cairo-Regular',
+                        color: Colors.black.withOpacity(0.5),
+                        fontSize: 17))),
+          )),
     );
   }
 }
