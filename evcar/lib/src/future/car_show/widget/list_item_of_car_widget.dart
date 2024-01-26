@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'item_car_widget.dart';
 
 class ListItemOfCarWidget extends StatelessWidget {

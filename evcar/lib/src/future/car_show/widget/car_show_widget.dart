@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../maintenance/view/widgets/custom_information_widget.dart';
 import '../../maintenance/view/widgets/search_widget.dart';
 import '../../maintenance/view/widgets/title_bar.dart';

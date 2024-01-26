@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/widget/text_widget/text_widget.dart';
 import 'custom_button_car_show_widget.dart';
 

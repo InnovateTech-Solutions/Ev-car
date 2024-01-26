@@ -4,6 +4,7 @@ class CustomItemOfCarShowWidget extends StatelessWidget {
   const CustomItemOfCarShowWidget({super.key, required this.image});
 
   final String image;
+
   @override
   Widget build(BuildContext context) {
     return Container(
