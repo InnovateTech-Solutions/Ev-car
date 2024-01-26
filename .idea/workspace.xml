@@ -4,42 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="added dashboard">
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/Rectangle 2589.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/Rectangle 2594.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/lets-icons_img-box-duotone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/mdi_camera.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/wpf_maintenance.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/assets/images/zondicons_add-outline.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/core/widgets/custom_bottun_add_photo.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/controller/ads_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/page/ads_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/add_photo_ads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/ads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/custom_app_bar_ads.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/custom_button_aads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/custom_button_type_ads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/custom_text_form_ads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/delivery_button.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/delivery_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/details_ads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/number_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/price_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/save_ads_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/state_of_item.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/type_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/page/car_show_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/car_show_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/custom_button_car_show_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/item_car_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/list_item_of_car_show_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/list_item_of_car_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/core/widget/text_widget/text_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/vendor/view/pages/home_vendor_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/vendor/view/pages/home_vendor_screen.dart" afterDir="false" />
-    </list>
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="added car show and ads" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -246,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706118974246</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added car show and ads">
+      <option name="closed" value="true" />
+      <created>1706236524567</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706236524567</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -273,7 +246,8 @@
     <MESSAGE value="added maintenance" />
     <MESSAGE value="dashboard added" />
     <MESSAGE value="added dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dashboard" />
+    <MESSAGE value="added car show and ads" />
+    <option name="LAST_COMMIT_MESSAGE" value="added car show and ads" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
