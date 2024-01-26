@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'add_photo_ads_widget.dart';
 import 'custom_button_aads_widget.dart';
 

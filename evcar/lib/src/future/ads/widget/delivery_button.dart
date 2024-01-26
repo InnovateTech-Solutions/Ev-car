@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/widget/text_widget/text_widget.dart';
 import 'package:get/get.dart';
-
 import '../controller/ads_controller.dart';
 
 class DeliveryButton extends StatelessWidget {

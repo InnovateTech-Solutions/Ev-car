@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../core/widget/text_widget/text_widget.dart';
 
 class CustomBottunTypeAdsWidget extends StatelessWidget {

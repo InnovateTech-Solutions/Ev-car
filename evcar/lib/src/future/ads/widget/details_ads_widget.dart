@@ -3,7 +3,6 @@ import 'package:evcar/src/future/ads/widget/custom_app_bar_ads.dart';
 import 'package:evcar/src/future/ads/widget/price_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../core/widgets/custem_button.dart';
 import 'custom_text_form_ads_widget.dart';
 

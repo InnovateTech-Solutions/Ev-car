@@ -1,7 +1,6 @@
 import 'package:evcar/src/future/ads/widget/state_of_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../../core/widget/text_widget/text_widget.dart';
 import '../controller/ads_controller.dart';
 import 'custom_app_bar_ads.dart';

@@ -3,7 +3,6 @@ import 'package:evcar/src/future/ads/widget/custom_app_bar_ads.dart';
 import 'package:evcar/src/future/ads/widget/details_ads_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'custom_button_type_ads_widget.dart';
 
 class StateOfItem extends StatelessWidget {
