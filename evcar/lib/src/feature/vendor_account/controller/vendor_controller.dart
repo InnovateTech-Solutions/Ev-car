@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
+import 'package:evcar/src/feature/vendor_account/view/page/otp_vendor_page.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -217,6 +218,10 @@ class VendorController extends GetxController {
         // Success - Handle the success response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
+
+        Get.to(OTPVendorPage(
+          number: phoneNumber.text,
+        ));
       } else if (response.statusCode == 409) {
         // Vendor already exists - Handle the conflict response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
@@ -300,6 +305,7 @@ class VendorController extends GetxController {
             tags: serviceID,
             description: description.text,
             status: 'Pending'));
+
         // print(vendor.title);
         // print(vendor.subtitle);
         // print(vendor.description);
