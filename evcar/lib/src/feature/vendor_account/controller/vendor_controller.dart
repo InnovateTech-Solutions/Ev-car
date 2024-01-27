@@ -8,6 +8,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:http/http.dart' as http;
 
 class VendorController extends GetxController {
   static VendorController get instance => Get.find();
@@ -28,21 +29,24 @@ class VendorController extends GetxController {
   RxString imageLicense = ''.obs;
   RxBool isTap = false.obs;
   List<String> serviceName = [];
-  RxBool isEmpty = false.obs;
-
-  List<ServiceModel> serviceList = <ServiceModel>[
-    ServiceModel(name: 'صيانة دورية', isTaped: false.obs),
-    ServiceModel(name: ' فحص البطارية', isTaped: false.obs),
-    ServiceModel(name: 'فحص كمبيوتر', isTaped: false.obs),
-    ServiceModel(name: 'تركيب إطارات ', isTaped: false.obs),
-  ].obs;
+  List<String> serviceID = [];
+  RxList<ServiceModel> serviceList = <ServiceModel>[].obs;
   File? sotreImageFile;
   String imageUrl = '';
   Rx<File?> storeImage = Rx<File?>(null);
   RxString storeImageUrl = RxString('');
-
   File? storeLicence;
   String licenceUrl = '';
+
+  RxBool serviceIsEmpty = false.obs;
+  RxBool imageIsEmpty = false.obs;
+  RxBool licenseIsEmpty = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchData();
+  }
 
   String? validatePhoneNumber(String? phoneNumber) {
     if (phoneNumber != null && phoneNumber.length == 10) {
@@ -96,7 +100,7 @@ class VendorController extends GetxController {
       sotreImageFile = File(result.files.single.path!);
       selectedImage.value = result.files.single;
       imagePath.value = result.files.single.path!;
-      pictureBase64.text = result.files.single.path!;
+
       print(imagePath.value);
     }
   }
@@ -110,7 +114,7 @@ class VendorController extends GetxController {
       storeLicence = File(result.files.single.path!);
       selectedImage.value = result.files.single;
       imageLicense.value = result.files.single.path!;
-      pBase64.text = result.files.single.path!;
+
       print(imageLicense.value);
     }
   }
@@ -135,7 +139,7 @@ class VendorController extends GetxController {
     if (sotreImageFile != null) {
       String fileName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference storageReference =
-          FirebaseStorage.instance.ref().child('images/$fileName');
+          FirebaseStorage.instance.ref().child('images/$fileName.png');
       UploadTask uploadTask = storageReference.putFile(sotreImageFile!);
       TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
       imageUrl = await taskSnapshot.ref.getDownloadURL();
@@ -149,10 +153,11 @@ class VendorController extends GetxController {
     if (storeLicence != null) {
       String fileName = DateTime.now().millisecondsSinceEpoch.toString();
       Reference storageReference =
-          FirebaseStorage.instance.ref().child('images/$fileName');
+          FirebaseStorage.instance.ref().child('images/$fileName.png');
       UploadTask uploadTask = storageReference.putFile(storeLicence!);
       TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
       licenceUrl = await taskSnapshot.ref.getDownloadURL();
+
       update(); // Notify listeners that the state has changed
     } else {
       print('No image selected.');
@@ -163,19 +168,72 @@ class VendorController extends GetxController {
     bool serviceExists = serviceName.contains(service.name);
 
     if (serviceExists) {
+      serviceID.remove(service.id);
       serviceName.remove(service.name);
     } else {
       serviceName.add(service.name);
+      serviceID.add(service.id);
     }
 
     service.isTaped.value = !service.isTaped.value;
     print("The value: ${service.isTaped.value}, ${service.name}");
     print(serviceName);
-
+    print(serviceID);
     update();
   }
 
-  onSignup(Vendor vendor) async {
+  Future<void> fetchData() async {
+    try {
+      final response = await http.get(Uri.parse(
+          'https://adventurous-yak-pajamas.cyclic.app/tags/getalltags'));
+
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        serviceList.assignAll(data.map((item) => ServiceModel.fromJson(item)));
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
+    }
+  }
+
+  Future<void> registerVendor(Vendor vendor) async {
+    final String apiUrl =
+        'https://adventurous-yak-pajamas.cyclic.app/vendorAuth/register';
+
+    var requestBody = jsonEncode(vendor.toJson());
+
+    try {
+      final http.Response response = await http.post(
+        Uri.parse(apiUrl),
+        headers: <String, String>{
+          'Content-Type': 'application/json',
+        },
+        body: requestBody,
+      );
+
+      if (response.statusCode == 201) {
+        // Success - Handle the success response
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        print(responseData['message']);
+      } else if (response.statusCode == 409) {
+        // Vendor already exists - Handle the conflict response
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        print(responseData['message']);
+      } else {
+        // Other errors - Handle the error response
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        print(responseData['message']);
+      }
+    } catch (error) {
+      // Handle network or other errors
+      print('Error: $error');
+    }
+  }
+
+  onSignup(String type) async {
+    print('the image $imageUrl');
     if (vendorKey.currentState!.validate()) {
       if (serviceName.isEmpty) {
         Get.snackbar("ERROR", "Invalid Data",
@@ -191,26 +249,73 @@ class VendorController extends GetxController {
             snackPosition: SnackPosition.BOTTOM,
             colorText: Colors.white,
             backgroundColor: Colors.red);
-        isEmpty.value = true;
+        serviceIsEmpty.value = true;
+      } else if (imagePath.value.isEmpty) {
+        Get.snackbar("ERROR", "Invalid Data",
+            titleText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('حدث خطأ'),
+            ),
+            messageText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('الرجاء اختيار صورة للمركز '),
+            ),
+            snackStyle: SnackStyle.FLOATING,
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+
+        imageIsEmpty.value = true;
+      } else if (imageLicense.isEmpty) {
+        Get.snackbar("ERROR", "Invalid Data",
+            titleText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('حدث خطأ'),
+            ),
+            messageText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('الرجاء اختيار صورة للسجل التجاري '),
+            ),
+            snackStyle: SnackStyle.FLOATING,
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+        licenseIsEmpty.value = true;
       } else {
-        uploadStoreImage();
-        uploadStoreLicence();
-        print(vendor.title);
-        print(vendor.subtitle);
-        print(vendor.description);
-        print(vendor.tags);
-        print(vendor.type);
-        print(vendor.address);
-        print(vendor.commercialLicense);
-        print(vendor.img);
-        String base64Image = await imageToBase64(vendor.img);
-        print('Base64 Image: $base64Image');
-        print(licenceUrl);
-        print(imageUrl);
+        await uploadStoreImage();
+        await uploadStoreLicence();
+        // print(vendor.commercialLicense);
+
+        print("the imag  $licenceUrl"); // licence
+        print("the image $imageUrl"); // store img
+        await registerVendor(Vendor(
+            title: username.text,
+            subtitle: subTitle.text,
+            img: imageUrl,
+            address: address.text,
+            number: phoneNumber.text,
+            commercialLicense: licenceUrl,
+            password: password.text,
+            type: type,
+            tags: serviceID,
+            description: description.text,
+            status: 'Pending'));
+        // print(vendor.title);
+        // print(vendor.subtitle);
+        // print(vendor.description);
+        // print(vendor.tags);
+        // print(vendor.type);
+        // print(vendor.address);
+        // print(vendor.commercialLicense);
+        // print(vendor.img);
+        // String base64Image = await imageToBase64(vendor.img);
+        // print('Base64 Image: $base64Image');'
+
+        print(serviceID);
       }
     }
     print(serviceName.isEmpty);
-    print(isEmpty.value);
+    print(serviceIsEmpty.value);
     update();
   }
 }

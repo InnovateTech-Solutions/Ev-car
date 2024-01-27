@@ -1,3 +1,4 @@
+import 'package:evcar/firebase_options.dart';
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
@@ -9,9 +10,12 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:firebase_core/firebase_core.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   final appDocumentDirectory =
       await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);

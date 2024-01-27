@@ -18,7 +18,7 @@ class UserCardController extends GetxController {
             'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
         image: 'assets/images/untitled.png',
         voidCallback: () => Get.to(VendorRegisterPage(
-              type: 'Technician',
+              type: 'store',
             ))),
     UserCardModel(
         title: 'فني صيانة',
@@ -26,7 +26,7 @@ class UserCardController extends GetxController {
             'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
         image: 'assets/images/untitled_5.png',
         voidCallback: () => Get.to(VendorRegisterPage(
-              type: 'Person',
+              type: 'individual',
             ))),
 
     // UserCardModel(

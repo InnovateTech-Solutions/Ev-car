@@ -12,7 +12,7 @@ class CreateAccountWidget extends GetView<UserCardController> {
   Widget build(BuildContext context) {
     Get.put(UserCardController());
     return Container(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(15),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

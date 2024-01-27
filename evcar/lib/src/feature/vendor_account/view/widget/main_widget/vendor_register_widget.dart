@@ -14,7 +14,6 @@ import 'package:evcar/src/feature/vendor_account/view/widget/widget_collection/v
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class VendorRegisterWidget extends StatelessWidget {
   const VendorRegisterWidget({required this.type, super.key});
@@ -166,8 +165,7 @@ class VendorRegisterWidget extends StatelessWidget {
                                   ? 'اختر صورة'
                                   : 'تم الاختيار شكر لك',
                               invisible: false,
-                              validator: (image) =>
-                                  controller.validtionFiled(image),
+                              validator: null,
                               type: TextInputType.none,
                               inputFormat: [],
                               onTap: () {},
@@ -233,8 +231,7 @@ class VendorRegisterWidget extends StatelessWidget {
                                   ? 'اختر صورة'
                                   : 'تم الاختيار شكر لك',
                               invisible: false,
-                              validator: (image) =>
-                                  controller.validtionFiled(image),
+                              validator: null,
                               type: TextInputType.name,
                               inputFormat: [],
                               onTap: () {},
@@ -257,7 +254,7 @@ class VendorRegisterWidget extends StatelessWidget {
                     SizedBox(height: context.screenHeight * 0.06),
                     Column(
                       children: [
-                        Obx(() => controller.isEmpty.value
+                        Obx(() => controller.serviceIsEmpty.value
                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -291,32 +288,34 @@ class VendorRegisterWidget extends StatelessWidget {
                     // TextWidget.vendorTextFiledLabel(
                     //     'اختر الخدمات التي تقدمها في مركز الصيانة الخاص بك'),
                     SizedBox(height: context.screenHeight * 0.018),
-                    Expanded(
-                      flex: controller.isEmpty.value ? 2 : 1,
-                      child: ListView.builder(
-                        itemCount: (controller.serviceList.length),
-                        itemBuilder: (context, index) {
-                          final startIndex = index * 3;
+                    Obx(
+                      () => Expanded(
+                        flex: controller.serviceIsEmpty.value ? 2 : 1,
+                        child: ListView.builder(
+                          itemCount: (controller.serviceList.length),
+                          itemBuilder: (context, index) {
+                            final startIndex = index * 3;
 
-                          return Row(
-                            children: List.generate(3, (i) {
-                              if (startIndex + i <
-                                  controller.serviceList.length) {
-                                final service =
-                                    controller.serviceList[startIndex + i];
-                                return Expanded(
-                                  child: ServiceContainer(
-                                    service: service,
-                                    callback: () =>
-                                        controller.isSelectedService(service),
-                                  ),
-                                );
-                              } else {
-                                return Expanded(child: SizedBox.shrink());
-                              }
-                            }),
-                          );
-                        },
+                            return Row(
+                              children: List.generate(3, (i) {
+                                if (startIndex + i <
+                                    controller.serviceList.length) {
+                                  final service =
+                                      controller.serviceList[startIndex + i];
+                                  return Expanded(
+                                    child: ServiceContainer(
+                                      service: service,
+                                      callback: () =>
+                                          controller.isSelectedService(service),
+                                    ),
+                                  );
+                                } else {
+                                  return Expanded(child: SizedBox.shrink());
+                                }
+                              }),
+                            );
+                          },
+                        ),
                       ),
                     ),
                     SizedBox(height: context.screenHeight * 0.018),
@@ -339,18 +338,25 @@ class VendorRegisterWidget extends StatelessWidget {
                     IntroPageButton(
                       text: 'إنشاء حساب',
                       onPressed: () {
-                        (controller.onSignup(Vendor(
-                            title: controller.username.text,
-                            subtitle: controller.subTitle.text,
-                            img: (controller.imagePath.value),
-                            address: controller.address.text,
-                            number: controller.phoneNumber.text,
-                            commercialLicense: controller.imageLicense.value,
-                            password: controller.password.text,
-                            type: type,
-                            tags: controller.serviceName,
-                            description: controller.description.text,
-                            status: 'Pendding')));
+                        print('object');
+                        controller.onSignup(type);
+
+                        // (
+
+                        //  controller.onSignup(Vendor(
+                        //     title: controller.username.text,
+                        //     subtitle: controller.subTitle.text,
+                        //     img: controller.imageUrl,
+                        //     address: controller.address.text,
+                        //     number: controller.phoneNumber.text,
+                        //     commercialLicense: controller.licenceUrl,
+                        //     password: controller.password.text,
+                        //     type: type,
+                        //     tags: [],
+                        //     description: controller.description.text,
+                        //     status: 'Pending'))
+
+                        //     );
                       },
                       colorText: AppTheme.lightAppColors.mainTextcolor,
                       colorButton: AppTheme.lightAppColors.buttoncolor,
