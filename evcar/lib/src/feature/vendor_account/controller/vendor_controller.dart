@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
@@ -219,8 +220,8 @@ class VendorController extends GetxController {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
 
-        Get.to(OTPVendorPage(
-          number: phoneNumber.text,
+        Get.offAll(OTPVendorPage(
+          number: removeLeadingZero(phoneNumber.text),
         ));
       } else if (response.statusCode == 409) {
         // Vendor already exists - Handle the conflict response
@@ -234,6 +235,31 @@ class VendorController extends GetxController {
     } catch (error) {
       // Handle network or other errors
       print('Error: $error');
+    }
+  }
+
+  Future<bool> fetchVendorExistence(String number) async {
+    print('powrt');
+    String apiUrl = ApiKey.vednorExits + number;
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        // Parse the response JSON
+        Map<String, dynamic> data = json.decode(response.body);
+
+        // Return the boolean value directly
+        return data['result'];
+      } else {
+        print("Error: ${response.statusCode}");
+        // Return false in case of an error
+        return false;
+      }
+    } catch (error) {
+      print("Error: $error");
+      // Return false in case of an error
+      return false;
     }
   }
 
@@ -319,7 +345,7 @@ class VendorController extends GetxController {
 
         print(serviceID);
       }
-    }
+    } else {}
     print(serviceName.isEmpty);
     print(serviceIsEmpty.value);
     update();

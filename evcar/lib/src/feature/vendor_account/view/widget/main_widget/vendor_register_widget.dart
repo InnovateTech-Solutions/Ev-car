@@ -5,6 +5,7 @@ import 'package:evcar/src/feature/login/view/widget/widget_collection/login_part
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/register/view/widget/text_widget/register_text.dart';
 import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/register_form_field.dart';
+import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/user_exist_dialog.dart';
 import 'package:evcar/src/feature/vendor_account/controller/vendor_controller.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vendor_form_model.dart';
@@ -292,6 +293,7 @@ class VendorRegisterWidget extends StatelessWidget {
                       () => Expanded(
                         flex: controller.serviceIsEmpty.value ? 2 : 1,
                         child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
                           itemCount: (controller.serviceList.length),
                           itemBuilder: (context, index) {
                             final startIndex = index * 3;
@@ -337,12 +339,19 @@ class VendorRegisterWidget extends StatelessWidget {
                     Expanded(child: Container()),
                     IntroPageButton(
                       text: 'إنشاء حساب',
-                      onPressed: () {
+                      onPressed: () async {
                         print('object');
-                        controller.onSignup(type);
+
+                        bool vendorExits = await controller.fetchVendorExistence(
+                            '962${controller.removeLeadingZero(controller.phoneNumber.text)}');
+
+                        if (!vendorExits) {
+                          controller.onSignup(type);
+                        } else {
+                          userExistDialog(context, ("المستخدم موجود مسبقا"));
+                        }
 
                         // (
-
                         //  controller.onSignup(Vendor(
                         //     title: controller.username.text,
                         //     subtitle: controller.subTitle.text,
@@ -355,7 +364,6 @@ class VendorRegisterWidget extends StatelessWidget {
                         //     tags: [],
                         //     description: controller.description.text,
                         //     status: 'Pending'))
-
                         //     );
                       },
                       colorText: AppTheme.lightAppColors.mainTextcolor,
