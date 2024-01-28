@@ -26,7 +26,9 @@ class IntroPageButton extends StatelessWidget {
         shape: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
-            color: AppTheme.lightAppColors.buttoncolor,
+            color: colorButton == AppTheme.lightAppColors.bordercolor
+                ? AppTheme.lightAppColors.buttoncolor
+                : AppTheme.lightAppColors.mainTextcolor,
           ),
         ),
         child: Text(

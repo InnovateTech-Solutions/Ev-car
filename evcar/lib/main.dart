@@ -1,9 +1,11 @@
+import 'package:evcar/firebase_options.dart';
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
 import 'package:evcar/src/feature/home_charging_station/view/widget/home_charching.dart';
 import 'package:evcar/src/feature/home_page/view/home_page.dart';
 import 'package:evcar/src/feature/mobile_charger/view/widget/main_page/mobile_charging_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -22,6 +24,10 @@ void main() async {
   await Hive.openBox<ChargingStation>('HomecharchingStation');
   await Hive.openBox<ChargingStation>('MobilecharchingStation');
   await Hive.openBox<ChargingStation>('GoogleMapcharchingStation');
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

@@ -5,8 +5,10 @@ import 'package:evcar/src/feature/product/widget/widget_collection/product_appba
 import 'package:evcar/src/feature/product/widget/widget_collection/product_phone_button.dart';
 import 'package:evcar/src/feature/shop/model/shop_model.dart';
 import 'package:evcar/src/feature/shop/widget/shop_product_widget.dart';
+import 'package:evcar/src/feature/shop/widget/shop_rating.dart';
 import 'package:evcar/src/feature/shop/widget/shop_type_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ShopWidget extends StatelessWidget {
   const ShopWidget({super.key, required this.shopModel});
@@ -39,9 +41,17 @@ class ShopWidget extends StatelessWidget {
             children: [
               ProductText.mainProductText(shopModel.name, Colors.black),
               const Spacer(),
-              Icon(
-                Icons.star,
-                color: Color(0xffF2C94C),
+              GestureDetector(
+                onTap: () {
+                  Get.dialog(RatingDialog(
+                      image: shopModel.image,
+                      name: shopModel.name,
+                      description: shopModel.description));
+                },
+                child: Icon(
+                  Icons.star,
+                  color: Color(0xffF2C94C),
+                ),
               ),
               ProductText.mainProductText(
                   shopModel.rate, AppTheme.lightAppColors.subTextcolor),

@@ -46,6 +46,12 @@ dependencies:
   url_launcher: ^6.2.2
   http: ^1.1.2
   hive_flutter: ^1.1.0
+  image_picker: ^1.0.7
+  firebase_core: ^2.24.2
+  firebase_storage: ^11.6.0
+  flutter_rating_bar: ^4.0.1
+  loading_animation_widget: ^1.2.0+4
+  
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +84,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/vendor/
     - assets/images/navBar/
     - assets/style/
   #   - images/a_dot_ham.jpeg
