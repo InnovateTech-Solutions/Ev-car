@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../maintenance/view/widgets/custom_information_widget.dart';
-import '../../maintenance/view/widgets/search_widget.dart';
-import '../../maintenance/view/widgets/title_bar.dart';
-import '../../vendor/view/widgets/list_title_widget.dart';
+import '../../../maintenance/view/widgets/custom_information_widget.dart';
+import '../../../maintenance/view/widgets/search_widget.dart';
+import '../../../maintenance/view/widgets/title_bar.dart';
 import 'list_item_of_car_show_widget.dart';
 import 'list_item_of_car_widget.dart';
+import 'list_title_car_show_widget.dart';
 
 class CarShowWidget extends StatelessWidget {
   const CarShowWidget({super.key});
@@ -45,11 +45,11 @@ class CarShowWidget extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * .03,
               ),
-              ListTitleWidget(),
+              ListTitleCarShowWidget(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * .03,
               ),
-              const ListItemOfCarWidget()
+              ListItemOfCarWidget()
             ],
           ),
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/widget/text_widget/text_widget.dart';
+import '../../../../core/widget/text_widget/text_widget.dart';
 import 'custom_button_car_show_widget.dart';
 
 class ItemCarWidget extends StatelessWidget {
@@ -43,7 +43,9 @@ class ItemCarWidget extends StatelessWidget {
         child: Row(
           children: [
             Image(
-              image: AssetImage(image),
+              image: NetworkImage(image),
+              height: MediaQuery.of(context).size.height * .4,
+              width: MediaQuery.of(context).size.width * .35,
             ),
             SizedBox(
               width: MediaQuery.of(context).size.width * .03,

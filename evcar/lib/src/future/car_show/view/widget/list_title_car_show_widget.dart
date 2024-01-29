@@ -1,11 +1,12 @@
-import 'package:evcar/src/future/vendor/view/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../controller/vendor_controller.dart';
 
-class ListTitleWidget extends StatelessWidget {
-  ListTitleWidget({super.key});
-  final VendorController controller = Get.put(VendorController());
+import '../../controller/car_controller.dart';
+import 'custom_button_title_car_show_widget.dart';
+
+class ListTitleCarShowWidget extends StatelessWidget {
+  ListTitleCarShowWidget({super.key});
+  final CarController controller = Get.put(CarController());
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +15,13 @@ class ListTitleWidget extends StatelessWidget {
       height: MediaQuery.of(context).size.height * .04,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => CustomButtonWidget(
-          text: 'الكل',
+        itemBuilder: (context, index) => CustomButtonTitleCarShowWidget(
+          text: const ['all', 'bmw', 'ford', 'mercedes-benz'],
           controller: controller,
           index: index,
+          onPressed: () {
+            controller.changeTitle(index);
+          },
         ),
         separatorBuilder: (context, index) => SizedBox(
           width: MediaQuery.of(context).size.width * .03,

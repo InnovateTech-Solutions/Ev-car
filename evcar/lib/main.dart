@@ -1,6 +1,6 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/future/car_show/page/car_show_page.dart';
+import 'package:evcar/src/future/car_show/view/page/car_show_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
