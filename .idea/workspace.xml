@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="car show modify">
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/controller/car_controller.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/model/car_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/custom_button_title_car_show_widget.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/list_title_car_show_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/save_ads_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/ads/widget/save_ads_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/page/car_show_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/page/car_show_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/car_show_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/car_show_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/custom_button_car_show_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/custom_button_car_show_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/custom_item_of_car_show_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/custom_item_of_car_show_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/item_car_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/item_car_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/list_item_of_car_show_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/list_item_of_car_show_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/car_show/widget/list_item_of_car_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/car_show/view/widget/list_item_of_car_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evcar/lib/src/future/vendor/view/widgets/list_title_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/evcar/lib/src/future/vendor/view/widgets/list_title_widget.dart" afterDir="false" />
-    </list>
+    <list default="true" id="75e03a15-2f7f-44e2-8ca9-bb797f1cc0f7" name="Changes" comment="car show modify title with item" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -251,7 +235,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706286599115</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="car show modify title with item">
+      <option name="closed" value="true" />
+      <created>1706511784209</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1706511784209</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,7 +272,8 @@
     <MESSAGE value="added dashboard" />
     <MESSAGE value="added car show and ads" />
     <MESSAGE value="car show modify" />
-    <option name="LAST_COMMIT_MESSAGE" value="car show modify" />
+    <MESSAGE value="car show modify title with item" />
+    <option name="LAST_COMMIT_MESSAGE" value="car show modify title with item" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
