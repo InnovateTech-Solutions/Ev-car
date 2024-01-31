@@ -6,7 +6,7 @@ class VendorFormModel {
   String hintText;
   bool invisible;
   bool enableText;
-  Widget? ll;
+  Widget? icon;
   VoidCallback? onTap;
   TextAlign? textAligment;
   final String? Function(String?)? validator;
@@ -16,7 +16,7 @@ class VendorFormModel {
   VendorFormModel(
       {required this.controller,
       required this.enableText,
-      this.ll,
+      this.icon,
       this.textAligment,
       required this.hintText,
       required this.invisible,

@@ -51,6 +51,7 @@ dependencies:
   firebase_storage: ^11.6.0
   flutter_rating_bar: ^4.0.1
   loading_animation_widget: ^1.2.0+4
+  file_picker: ^6.1.1
   
 
 dev_dependencies:

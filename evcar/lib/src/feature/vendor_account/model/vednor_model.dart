@@ -49,7 +49,7 @@ class Vendor {
   }
 
   // You can also add a method to convert the Vendor to a Map for serialization
-  Map<String, dynamic> toMap() {
+  toJson() {
     return {
       'title': title,
       'subtitle': subtitle,
@@ -60,7 +60,6 @@ class Vendor {
       'commercialLicense': commercialLicense,
       'password': password,
       'type': type,
-      'rating': rating,
       'tags': tags,
       'description': description,
       'status': status,

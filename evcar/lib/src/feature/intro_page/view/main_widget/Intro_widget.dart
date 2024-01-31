@@ -35,12 +35,12 @@ class IntroWidget extends StatelessWidget {
             SizedBox(
               height: MediaQuery.of(context).size.height / 45,
             ),
-            IntroPageButton(
-              colorButton: AppTheme.lightAppColors.background,
-              colorText: AppTheme.lightAppColors.buttoncolor,
-              text: 'إنشاء حساب',
-              onPressed: () => Get.toNamed(AppRoutes.register),
-            ),
+            // IntroPageButton(
+            //   colorButton: AppTheme.lightAppColors.background,
+            //   colorText: AppTheme.lightAppColors.buttoncolor,
+            //   text: 'إنشاء حساب',
+            //   onPressed: () => Get.toNamed(AppRoutes.register),
+            // ),
             IntroPageButton(
               colorButton: AppTheme.lightAppColors.background,
               colorText: AppTheme.lightAppColors.buttoncolor,

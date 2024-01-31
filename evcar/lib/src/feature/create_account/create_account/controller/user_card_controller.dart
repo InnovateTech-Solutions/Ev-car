@@ -17,13 +17,17 @@ class UserCardController extends GetxController {
         description:
             'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
         image: 'assets/images/untitled.png',
-        voidCallback: () => Get.to(VendorRegisterPage())),
+        voidCallback: () => Get.to(VendorRegisterPage(
+              type: 'store',
+            ))),
     UserCardModel(
         title: 'فني صيانة',
         description:
             'تستطيع الوصول لجميع الخدمات بشكل مجاني والقدرة \nعلى تقديم خدمات الصيانة وبيع القطع والسيارات الكهربائية',
         image: 'assets/images/untitled_5.png',
-        voidCallback: () => Get.to(VendorRegisterPage())),
+        voidCallback: () => Get.to(VendorRegisterPage(
+              type: 'individual',
+            ))),
 
     // UserCardModel(
     //     title: 'معرض سيارت',

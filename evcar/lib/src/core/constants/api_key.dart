@@ -18,4 +18,7 @@ class ApiKey {
 
   static String restPassword =
       'https://adventurous-yak-pajamas.cyclic.app/users/resetPassword';
+
+  static String vednorExits =
+      'https://adventurous-yak-pajamas.cyclic.app/vendors/vendorExists/';
 }
