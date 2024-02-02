@@ -28,7 +28,7 @@ class IntroPageButton extends StatelessWidget {
           borderSide: BorderSide(
             color: colorButton == AppTheme.lightAppColors.bordercolor
                 ? AppTheme.lightAppColors.buttoncolor
-                : AppTheme.lightAppColors.mainTextcolor,
+                : AppTheme.lightAppColors.buttoncolor,
           ),
         ),
         child: Text(
