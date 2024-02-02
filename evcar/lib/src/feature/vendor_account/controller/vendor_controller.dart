@@ -3,10 +3,10 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:evcar/src/core/constants/api_key.dart';
+import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:evcar/src/feature/vendor_account/view/page/otp_vendor_page.dart';
-import 'package:evcar/src/feature/vendor_dashboard/view/page/vendor_dashboard_page.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -221,9 +221,9 @@ class VendorController extends GetxController {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
 
-        Get.offAll(OTPVendorPage(
-          number: removeLeadingZero(phoneNumber.text),
-        ));
+        // Get.offAll(OTPVendorPage(
+        //   number: removeLeadingZero(phoneNumber.text),
+        // ));
       } else if (response.statusCode == 409) {
         // Vendor already exists - Handle the conflict response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
@@ -240,9 +240,8 @@ class VendorController extends GetxController {
   }
 
   Future<bool> fetchVendorExistence(String number) async {
-    print('powrt');
     String apiUrl = ApiKey.vednorExits + number;
-
+    print(number);
     try {
       final response = await http.get(Uri.parse(apiUrl));
 
@@ -267,90 +266,88 @@ class VendorController extends GetxController {
   onSignup(String type) async {
     print('the image $imageUrl');
     if (vendorKey.currentState!.validate()) {
-      Get.to(VendorDashboardPage());
-      // if (serviceName.isEmpty) {
-      //   Get.snackbar("ERROR", "Invalid Data",
-      //       titleText: Align(
-      //         alignment: Alignment.topRight, // Set your desired alignment
-      //         child: searchsec('حدث خطأ'),
-      //       ),
-      //       messageText: Align(
-      //         alignment: Alignment.topRight, // Set your desired alignment
-      //         child: searchsec('الرجاء اختيار الخدمات التي تقدمها '),
-      //       ),
-      //       snackStyle: SnackStyle.FLOATING,
-      //       snackPosition: SnackPosition.BOTTOM,
-      //       colorText: Colors.white,
-      //       backgroundColor: Colors.red);
-      //   serviceIsEmpty.value = true;
-      // } else if (imagePath.value.isEmpty) {
-      //   Get.snackbar("ERROR", "Invalid Data",
-      //       titleText: Align(
-      //         alignment: Alignment.topRight, // Set your desired alignment
-      //         child: searchsec('حدث خطأ'),
-      //       ),
-      //       messageText: Align(
-      //         alignment: Alignment.topRight, // Set your desired alignment
-      //         child: searchsec('الرجاء اختيار صورة للمركز '),
-      //       ),
-      //       snackStyle: SnackStyle.FLOATING,
-      //       snackPosition: SnackPosition.BOTTOM,
-      //       colorText: Colors.white,
-      //       backgroundColor: Colors.red);
+      if (serviceName.isEmpty) {
+        Get.snackbar("ERROR", "Invalid Data",
+            titleText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('حدث خطأ'),
+            ),
+            messageText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('الرجاء اختيار الخدمات التي تقدمها '),
+            ),
+            snackStyle: SnackStyle.FLOATING,
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+        serviceIsEmpty.value = true;
+      } else if (imagePath.value.isEmpty) {
+        Get.snackbar("ERROR", "Invalid Data",
+            titleText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('حدث خطأ'),
+            ),
+            messageText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('الرجاء اختيار صورة للمركز '),
+            ),
+            snackStyle: SnackStyle.FLOATING,
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
 
-      //   imageIsEmpty.value = true;
-      // } else if (imageLicense.isEmpty) {
-      //   Get.snackbar("ERROR", "Invalid Data",
-      //       titleText: Align(
-      //         alignment: Alignment.topRight, // Set your desired alignment
-      //         child: searchsec('حدث خطأ'),
-      //       ),
-      //       messageText: Align(
-      //         alignment: Alignment.topRight, // Set your desired alignment
-      //         child: searchsec('الرجاء اختيار صورة للسجل التجاري '),
-      //       ),
-      //       snackStyle: SnackStyle.FLOATING,
-      //       snackPosition: SnackPosition.BOTTOM,
-      //       colorText: Colors.white,
-      //       backgroundColor: Colors.red);
-      //   licenseIsEmpty.value = true;
-      // } else {
-      //   await uploadStoreImage();
-      //   await uploadStoreLicence();
-      //   // print(vendor.commercialLicense);
+        imageIsEmpty.value = true;
+      } else if (imageLicense.isEmpty) {
+        Get.snackbar("ERROR", "Invalid Data",
+            titleText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('حدث خطأ'),
+            ),
+            messageText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('الرجاء اختيار صورة للسجل التجاري '),
+            ),
+            snackStyle: SnackStyle.FLOATING,
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.red);
+        licenseIsEmpty.value = true;
+      } else {
+        await uploadStoreImage();
+        await uploadStoreLicence();
+        // print(vendor.commercialLicense);
+        print('962${removeLeadingZero(phoneNumber.text)}');
+        print("the imag  $licenceUrl"); // licence
+        print("the image $imageUrl"); // store img
+        await registerVendor(Vendor(
+            title: username.text,
+            subtitle: subTitle.text,
+            img: imageUrl,
+            address: address.text,
+            number: '962${removeLeadingZero(phoneNumber.text)}',
+            commercialLicense: licenceUrl,
+            password: password.text,
+            type: type,
+            tags: serviceID,
+            description: description.text,
+            status: 'Pending'));
 
-      //   print("the imag  $licenceUrl"); // licence
-      //   print("the image $imageUrl"); // store img
-      //   // await registerVendor(Vendor(
-      //   //     title: username.text,
-      //   //     subtitle: subTitle.text,
-      //   //     img: imageUrl,
-      //   //     address: address.text,
-      //   //     number: phoneNumber.text,
-      //   //     commercialLicense: licenceUrl,
-      //   //     password: password.text,
-      //   //     type: type,
-      //   //     tags: serviceID,
-      //   //     description: description.text,
-      //   //     status: 'Pending'));
+        //  print(vendor.title);
+        //  print(vendor.subtitle);
+        //  print(vendor.description);
+        //  print(vendor.tags);
+        //  print(vendor.type);
+        //  print(vendor.address);
+        //  print(vendor.commercialLicense);
+        //  print(vendor.img);
+        //  String base64Image = await imageToBase64(vendor.img);
+        //  print('Base64 Image: $base64Image');
 
-      //   // print(vendor.title);
-      //   // print(vendor.subtitle);
-      //   // print(vendor.description);
-      //   // print(vendor.tags);
-      //   // print(vendor.type);
-      //   // print(vendor.address);
-      //   // print(vendor.commercialLicense);
-      //   // print(vendor.img);
-      //   // String base64Image = await imageToBase64(vendor.img);
-      //   // print('Base64 Image: $base64Image');'
-
-      //   print(serviceID);
-      //   }
-      // } else {}
-      // print(serviceName.isEmpty);
-      // print(serviceIsEmpty.value);
-      // update();
-    }
+        print(serviceID);
+      }
+    } else {}
+    print(serviceName.isEmpty);
+    print(serviceIsEmpty.value);
+    update();
   }
 }

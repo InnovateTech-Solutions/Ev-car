@@ -29,43 +29,51 @@ class _MaintenanceAppBarState extends State<MaintenanceAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: profileController
-          .getUserDetails(registerToken.token.value + loginToken.token.value),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          if (snapshot.hasData) {
-            return Row(
-              children: [
-                const CircleAvatar(
-                  radius: 35,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .02,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    MaintenanceText.appBarSecText(
-                      'صباح الخير,',
-                    ),
-                    MaintenanceText.appBarMainText(snapshot.data!.username),
-                  ],
-                ),
-                const Spacer(),
-                InkWell(
-                  onTap: () {},
-                  child: const Image(
-                    image: AssetImage('assets/images/heart-circle.png'),
+    return Obx(
+      () => FutureBuilder(
+        future: profileController
+            .getUserDetails(registerToken.token.value + loginToken.token.value),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              return Row(
+                children: [
+                  const CircleAvatar(
+                    radius: 35,
+                    backgroundImage: AssetImage('assets/images/profile.png'),
                   ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .02,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MaintenanceText.appBarSecText(
+                        'صباح الخير,',
+                      ),
+                      MaintenanceText.appBarMainText(snapshot.data!.username),
+                    ],
+                  ),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {},
+                    child: const Image(
+                      image: AssetImage('assets/images/heart-circle.png'),
+                    ),
+                  ),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * .03,
+                  ),
+                ],
+              );
+            } else {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: AppTheme.lightAppColors.bordercolor,
                 ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * .03,
-                ),
-              ],
-            );
+              );
+            }
           } else {
             return Center(
               child: CircularProgressIndicator(
@@ -73,14 +81,8 @@ class _MaintenanceAppBarState extends State<MaintenanceAppBar> {
               ),
             );
           }
-        } else {
-          return Center(
-            child: CircularProgressIndicator(
-              color: AppTheme.lightAppColors.bordercolor,
-            ),
-          );
-        }
-      },
+        },
+      ),
     );
   }
 }

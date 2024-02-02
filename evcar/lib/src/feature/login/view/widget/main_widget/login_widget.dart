@@ -114,8 +114,15 @@ class LoginWidget extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 0.020 * context.screenHeight),
-              LoginText.forgetPassword('هل نسيت كلمة السر ؟',
-                  () => Get.toNamed(AppRoutes.forgetPassword)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  LoginText.forgetPassword('هل نسيت كلمة السر ؟',
+                      () => Get.toNamed(AppRoutes.forgetPassword)),
+                  LoginText.forgetPassword(
+                      'مزود خدمة ', () => Get.toNamed(AppRoutes.forgetPassword))
+                ],
+              ),
               SizedBox(height: 0.1 * context.screenHeight),
               IntroPageButton(
                 text: 'التالي',
