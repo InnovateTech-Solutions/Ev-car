@@ -350,7 +350,7 @@ class VendorRegisterWidget extends StatelessWidget {
                         } else {
                           userExistDialog(context, ("المستخدم موجود مسبقا"));
                         }
-
+                        print('the value $vendorExits');
                         // (
                         //  controller.onSignup(Vendor(
                         //     title: controller.username.text,

@@ -7,6 +7,7 @@ class AppBarLogin extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      scrolledUnderElevation: 0,
       leading: InkWell(
         onTap: () {
           Get.back();
