@@ -7,7 +7,6 @@ import 'package:evcar/src/feature/register/view/widget/text_widget/register_text
 import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/register_form_field.dart';
 import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/user_exist_dialog.dart';
 import 'package:evcar/src/feature/vendor_account/controller/vendor_controller.dart';
-import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vendor_form_model.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/widget_collection/service_container.dart';

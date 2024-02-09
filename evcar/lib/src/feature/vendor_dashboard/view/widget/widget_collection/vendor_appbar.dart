@@ -17,7 +17,6 @@ class _ProductAppBarState extends State<VendorAppBar> {
   final profileController = Get.put(ProfileController());
   final registerToken = Get.put(UserRegisterController());
 
-  // final registerToken = Get.put(SubRegisterController());
   final loginToken = Get.put(LoginController());
 
   @override

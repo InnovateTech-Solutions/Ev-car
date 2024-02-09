@@ -19,14 +19,22 @@ class ServicesContainer extends StatelessWidget {
             maxRadius: 35,
             backgroundColor: const Color.fromRGBO(215, 255, 255, 1),
             child: Image(
-              image: AssetImage(servicesModel.image),
+              image: NetworkImage(servicesModel.image),
             ),
           ),
-          MaintenanceText.serviceText(
+          MaintenanceText.serviceText(shortenText(
             servicesModel.title,
-          ),
+          )),
         ],
       ),
     );
+  }
+
+  String shortenText(String text, {int maxLength = 12}) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
   }
 }

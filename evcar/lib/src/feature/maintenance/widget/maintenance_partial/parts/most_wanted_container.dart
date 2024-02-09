@@ -2,26 +2,21 @@ import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/maintenance/widget/text/maintenance_text.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
-import 'package:evcar/src/feature/product/view/product_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+import '../../../../product/view/product_page.dart';
+
 class MostWantedContainer extends StatelessWidget {
   const MostWantedContainer({super.key, required this.partsModel});
-  final PartsModel partsModel;
+  final Product partsModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Get.to(ProductPage(
-            productModel: PartsModel(
-                title: partsModel.title,
-                type: partsModel.type,
-                phone: partsModel.phone,
-                image: partsModel.image,
-                price: partsModel.price,
-                vendor: partsModel.vendor,
-                vendorAddress: partsModel.vendorAddress)));
+          productId: partsModel.id,
+        ));
       },
       child: Container(
         height: MediaQuery.of(context).size.height * .14,
@@ -41,9 +36,9 @@ class MostWantedContainer extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MaintenanceText.orderMainText(
+                  MaintenanceText.orderMainText(shortenText(
                     partsModel.title,
-                  ),
+                  )),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .01,
                   ),
@@ -54,16 +49,16 @@ class MostWantedContainer extends StatelessWidget {
                       SizedBox(
                         width: MediaQuery.of(context).size.width * .03,
                       ),
-                      MaintenanceText.orderSecText(
-                        partsModel.vendor,
-                      )
+                      MaintenanceText.orderSecText(shortenText(
+                        partsModel.description,
+                      ))
                     ],
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .02,
                   ),
                   MaintenanceText.orderPriceText(
-                    partsModel.price,
+                    partsModel.price + "دينار",
                   )
                 ],
               ),
@@ -73,11 +68,12 @@ class MostWantedContainer extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppTheme.lightAppColors.background,
-                  // image: const DecorationImage(
+                  // image: DecorationImage(
                   //   alignment: Alignment.bottomCenter,
-                  //   image: AssetImage(
-                  //    partsModel.image,
+                  //   image: NetworkImage(
+                  //     partsModel.img,
                   //   ),
+                  //   fit: BoxFit.cover,
                   // ),
                 ),
               ),
@@ -86,5 +82,13 @@ class MostWantedContainer extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+String shortenText(String text, {int maxLength = 15}) {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return '${text.substring(0, maxLength)}...';
   }
 }

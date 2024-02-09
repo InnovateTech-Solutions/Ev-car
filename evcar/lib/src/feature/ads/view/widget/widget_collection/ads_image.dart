@@ -108,7 +108,8 @@ class AdsImage extends StatelessWidget {
                                                   ),
                                                   fit: BoxFit.cover)
                                               : DecorationImage(
-                                                  image: AssetImage(""))),
+                                                  image: AssetImage(
+                                                      "assets/images/immg.png"))),
                                     ),
                                   ));
                             },

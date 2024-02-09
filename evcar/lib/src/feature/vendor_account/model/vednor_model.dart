@@ -1,4 +1,5 @@
 class Vendor {
+  String id;
   String title;
   String subtitle;
   String img;
@@ -14,6 +15,7 @@ class Vendor {
   String status;
 
   Vendor({
+    required this.id,
     required this.title,
     required this.subtitle,
     required this.img,
@@ -32,6 +34,7 @@ class Vendor {
   // You might want to add a factory constructor to convert a Map to Vendor
   factory Vendor.fromMap(Map<String, dynamic> map) {
     return Vendor(
+      id: map['_id'],
       title: map['title'],
       subtitle: map['subtitle'],
       img: map['img'] ?? "",
@@ -41,7 +44,7 @@ class Vendor {
       commercialLicense: map['commercialLicense'] ?? "",
       password: map['password'],
       type: map['type'],
-      rating: map['rating'] ?? "",
+      //  rating: map['rating'] ?? "",
       tags: List<String>.from(map['tags'] ?? []),
       description: map['description'] ?? "",
       status: map['status'],

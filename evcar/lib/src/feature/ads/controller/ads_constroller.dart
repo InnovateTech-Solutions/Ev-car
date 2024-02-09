@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -91,22 +92,24 @@ class AdsController extends GetxController {
       imageUrlList.add(imageUrl);
       print(imageUrlList[i]);
     }
-
-    // String imageUrl = await storageReference.getDownloadURL();
-
-    //   // print(file);
-    // }
   }
 
-  // Future<void> pickImage(int index) async {
-  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-  //   if (pickedFile != null) {
-  //     final bytes = await pickedFile.readAsBytes();
-  //     adsImage.length > index
-  //         ? adsImage[index] = base64Encode(bytes)
-  //         : adsImage.add(base64Encode(bytes));
-  //   }
-  //   print(adsImage.length);
-  // }
+  Future<void> addAds() async {
+    if (fromKey.currentState!.validate()) {
+      if (imageUrlList.isNotEmpty) {
+      } else {
+        Get.snackbar("ERROR", "Invalid Data",
+            titleText: Align(
+              alignment: Alignment.bottomCenter,
+              child: searchsec('حدث خطأ'),
+            ));
+      }
+    } else {
+      Get.snackbar("ERROR", "Invalid Data",
+          titleText: Align(
+            alignment: Alignment.bottomCenter,
+            child: searchsec('حدث خطأ'),
+          ));
+    }
+  }
 }

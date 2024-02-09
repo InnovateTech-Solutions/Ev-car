@@ -7,6 +7,7 @@ import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.da
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:evcar/src/feature/vendor_account/view/page/otp_vendor_page.dart';
+import 'package:evcar/src/feature/vendor_dashboard/view/page/vendor_dashboard_page.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -189,7 +190,7 @@ class VendorController extends GetxController {
     try {
       final response = await http.get(Uri.parse(
           'https://adventurous-yak-pajamas.cyclic.app/tags/getalltags'));
-
+      print(response.body);
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
         serviceList.assignAll(data.map((item) => ServiceModel.fromJson(item)));
@@ -221,9 +222,9 @@ class VendorController extends GetxController {
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
 
-        // Get.offAll(OTPVendorPage(
-        //   number: removeLeadingZero(phoneNumber.text),
-        // ));
+        Get.offAll(OTPVendorPage(
+          number: removeLeadingZero(phoneNumber.text),
+        ));
       } else if (response.statusCode == 409) {
         // Vendor already exists - Handle the conflict response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
@@ -240,8 +241,9 @@ class VendorController extends GetxController {
   }
 
   Future<bool> fetchVendorExistence(String number) async {
+    print('powrt');
     String apiUrl = ApiKey.vednorExits + number;
-    print(number);
+
     try {
       final response = await http.get(Uri.parse(apiUrl));
 
@@ -266,6 +268,7 @@ class VendorController extends GetxController {
   onSignup(String type) async {
     print('the image $imageUrl');
     if (vendorKey.currentState!.validate()) {
+      Get.to(VendorDashboardPage());
       if (serviceName.isEmpty) {
         Get.snackbar("ERROR", "Invalid Data",
             titleText: Align(
@@ -316,32 +319,32 @@ class VendorController extends GetxController {
         await uploadStoreImage();
         await uploadStoreLicence();
         // print(vendor.commercialLicense);
-        print('962${removeLeadingZero(phoneNumber.text)}');
+
         print("the imag  $licenceUrl"); // licence
         print("the image $imageUrl"); // store img
-        await registerVendor(Vendor(
-            title: username.text,
-            subtitle: subTitle.text,
-            img: imageUrl,
-            address: address.text,
-            number: '962${removeLeadingZero(phoneNumber.text)}',
-            commercialLicense: licenceUrl,
-            password: password.text,
-            type: type,
-            tags: serviceID,
-            description: description.text,
-            status: 'Pending'));
+        // await registerVendor(Vendor(
+        //     title: username.text,
+        //     subtitle: subTitle.text,
+        //     img: imageUrl,
+        //     address: address.text,
+        //     number: phoneNumber.text,
+        //     commercialLicense: licenceUrl,
+        //     password: password.text,
+        //     type: type,
+        //     tags: serviceID,
+        //     description: description.text,
+        //     status: 'Pending'));
 
-        //  print(vendor.title);
-        //  print(vendor.subtitle);
-        //  print(vendor.description);
-        //  print(vendor.tags);
-        //  print(vendor.type);
-        //  print(vendor.address);
-        //  print(vendor.commercialLicense);
-        //  print(vendor.img);
-        //  String base64Image = await imageToBase64(vendor.img);
-        //  print('Base64 Image: $base64Image');
+        // print(vendor.title);
+        // print(vendor.subtitle);
+        // print(vendor.description);
+        // print(vendor.tags);
+        // print(vendor.type);
+        // print(vendor.address);
+        // print(vendor.commercialLicense);
+        // print(vendor.img);
+        // String base64Image = await imageToBase64(vendor.img);
+        // print('Base64 Image: $base64Image');'
 
         print(serviceID);
       }

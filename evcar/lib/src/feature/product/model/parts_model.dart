@@ -1,20 +1,31 @@
-class PartsModel {
-  String title;
-  String vendor;
-  String type;
-  String vendorAddress;
-  String price;
-  String phone;
+class Product {
+  final String id;
+  final String price;
+  final String title;
+  final List img;
+  final String description;
+  final String typeOfProduct;
+  final String vendor;
 
-  String image;
-
-  PartsModel({
+  Product({
+    required this.id,
     required this.title,
-    required this.type,
-    required this.phone,
-    required this.image,
+    required this.img,
     required this.price,
+    required this.description,
+    required this.typeOfProduct,
     required this.vendor,
-    required this.vendorAddress,
   });
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['_id'],
+      title: json['title'] ?? '',
+      img: json['img'] ?? '',
+      price: json['price'] ?? '',
+      description: json['description'] ?? '',
+      typeOfProduct: json['typeOfProduct'] ?? '',
+      vendor: json['vendor'] ?? '',
+    );
+  }
 }

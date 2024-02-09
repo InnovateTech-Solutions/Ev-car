@@ -25,33 +25,36 @@ class MaintenanceText {
     );
   }
 
-  static seeMore(title) {
-    return Row(
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.w400,
-            fontFamily: 'Cairo-bold',
+  static seeMore(title, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Text(
+            title,
+            style: const TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Cairo-bold',
+            ),
           ),
-        ),
-        const Spacer(),
-        Text(
-          'المزيد',
-          style: TextStyle(
+          const Spacer(),
+          Text(
+            'المزيد',
+            style: TextStyle(
+              color: AppTheme.lightAppColors.buttoncolor,
+              fontSize: 12,
+              fontWeight: FontWeight.w400,
+              fontFamily: 'Cairo-Medium',
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward_ios,
             color: AppTheme.lightAppColors.buttoncolor,
-            fontSize: 12,
-            fontWeight: FontWeight.w400,
-            fontFamily: 'Cairo-Medium',
+            size: 14,
           ),
-        ),
-        Icon(
-          Icons.arrow_forward_ios,
-          color: AppTheme.lightAppColors.buttoncolor,
-          size: 14,
-        ),
-      ],
+        ],
+      ),
     );
   }
 

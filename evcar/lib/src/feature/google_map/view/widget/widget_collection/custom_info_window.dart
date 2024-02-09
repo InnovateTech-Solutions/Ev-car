@@ -1,6 +1,7 @@
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/google_map/view/widget/widget_collection/google_map_button.dart';
+import 'package:evcar/src/feature/google_map/view/widget/widget_collection/search_container.dart';
 import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,7 +27,7 @@ Column customWindow(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               infoWindoMainText(detailModel.title),
-              infoWindoMainText(detailModel.address),
+              infoWindoMainText(shortenText(detailModel.address)),
               const Spacer(),
               Row(
                 children: [

@@ -1,14 +1,16 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/feature/on_board/controller/on_board_controller.dart';
 import 'package:evcar/src/feature/on_board/view/widget_collection/on_boarding_button.dart';
 import 'package:evcar/src/feature/on_board/view/widget_collection/on_boarding_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class OnBoardingWidget extends StatelessWidget {
   const OnBoardingWidget({super.key});
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(OnboardingController());
+    final controller = Get.put(OnboardingController());
     return Column(
       children: [
         Expanded(

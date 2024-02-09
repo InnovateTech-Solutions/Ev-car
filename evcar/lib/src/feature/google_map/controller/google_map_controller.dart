@@ -22,7 +22,7 @@ class MapController extends GetxController {
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
   late LatLng initialPosition =
-      const LatLng(31.951953582563146, 35.87940404680269);
+      const LatLng(31.89184570652702, 35.868479497347224);
 
   Future<void> loadMarkers() async {
     final newMarkers = await getMarkers();
@@ -35,32 +35,35 @@ class MapController extends GetxController {
         'https://adventurous-yak-pajamas.cyclic.app/stations/getStationsByType/charging_station';
     try {
       final response = await http.get(Uri.parse(apiUrl));
+
       if (response.statusCode == 200) {
         final List<dynamic> stationData = jsonDecode(response.body);
+        print(stationData.length);
         for (var station in stationData) {
+          print(response.body);
+
           final coordinates = station['coordinates'].split(',');
-          final latitude = double.tryParse(coordinates[0]);
-          final longitude = double.tryParse(coordinates[1]);
-          if (latitude != null && longitude != null) {
-            newMarkers.add(
-              Marker(
-                markerId: MarkerId(station['_id']),
-                icon: markerIcon.value,
-                position: LatLng(latitude, longitude),
-                onTap: () {
-                  customInfoWindowController.addInfoWindow!(
-                    customWindow(
-                      ChargingStation.fromJson(station),
-                      () {
-                        detailController.openGoogleMap(station['coordinates']);
-                      },
-                    ),
-                    LatLng(latitude, longitude),
-                  );
-                },
-              ),
-            );
-          } else {}
+          final double latitude = double.tryParse(coordinates[0])!;
+          final double longitude = double.tryParse(coordinates[1])!;
+
+          newMarkers.add(
+            Marker(
+              markerId: MarkerId(station['_id']),
+              icon: markerIcon.value,
+              position: LatLng(latitude, longitude),
+              onTap: () {
+                customInfoWindowController.addInfoWindow!(
+                  customWindow(
+                    ChargingStation.fromJson(station),
+                    () {
+                      detailController.openGoogleMap(station['coordinates']);
+                    },
+                  ),
+                  LatLng(latitude, longitude),
+                );
+              },
+            ),
+          );
         }
         newMarkers.add(
           Marker(

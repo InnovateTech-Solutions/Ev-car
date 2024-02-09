@@ -8,6 +8,7 @@ import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_form_widget.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_partial.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
+import 'package:evcar/src/feature/vendor_login/view/page/vendor_login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -120,7 +121,7 @@ class LoginWidget extends StatelessWidget {
                   LoginText.forgetPassword('هل نسيت كلمة السر ؟',
                       () => Get.toNamed(AppRoutes.forgetPassword)),
                   LoginText.forgetPassword(
-                      'مزود خدمة ', () => Get.toNamed(AppRoutes.forgetPassword))
+                      'مزود خدمة ', () => Get.to(VendorLoginPage()))
                 ],
               ),
               SizedBox(height: 0.1 * context.screenHeight),

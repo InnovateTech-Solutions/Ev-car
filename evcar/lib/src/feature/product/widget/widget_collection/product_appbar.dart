@@ -35,10 +35,6 @@ class _ProductAppBarState extends State<ProductAppBar> {
           if (snapshot.hasData) {
             return Row(
               children: [
-                const CircleAvatar(
-                  radius: 35,
-                  backgroundImage: AssetImage('assets/images/profile.png'),
-                ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .02,
                 ),

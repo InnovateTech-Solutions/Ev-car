@@ -33,7 +33,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
     await mapController.loadMapStyle();
 
     await mapController.addCustomMarker();
-    await mapController.getCurrentLocation();
+    //await mapController.getCurrentLocation();
 
     await mapController.loadMarkers();
   }

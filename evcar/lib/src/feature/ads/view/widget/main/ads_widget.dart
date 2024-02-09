@@ -26,7 +26,6 @@ class AdsWidget extends StatelessWidget {
         child: SingleChildScrollView(
           child: Form(
             key: controller.fromKey,
-            autovalidateMode: AutovalidateMode.disabled,
             child: Column(
               children: [
                 AdsImage(),
@@ -112,26 +111,24 @@ class AdsWidget extends StatelessWidget {
                   colorButton: Color(0xffCA7A02),
                   text: 'حفظ ونشر الإعلان',
                   onPressed: () {
-                    controller.addFile();
-
-                    // if (controller.fromKey.currentState!.validate()) {
-                    //   print(controller.adsImage.length);
-                    //   print(controller.adsName.text);
-                    //   print(controller.description.text);
-                    //   print(controller.phone.text);
-                    //   print(controller.price.text);
-                    //   print(controller.TypeValue);
-                    //   print(controller.driveValue);
-                    // } else {
-                    //   Get.snackbar(
-                    //     "ERROR",
-                    //     "Invalid Data",
-                    //     titleText: Align(
-                    //       alignment:
-                    //           Alignment.topRight, // Set your desired alignment
-                    //     ),
-                    //   );
-                    // }
+                    if (controller.fromKey.currentState!.validate()) {
+                      print(controller.adsImage.length);
+                      print(controller.adsName.text);
+                      print(controller.description.text);
+                      print(controller.phone.text);
+                      print(controller.price.text);
+                      print(controller.TypeValue);
+                      print(controller.driveValue);
+                    } else {
+                      Get.snackbar(
+                        "ERROR",
+                        "Invalid Data",
+                        titleText: Align(
+                          alignment:
+                              Alignment.topRight, // Set your desired alignment
+                        ),
+                      );
+                    }
                   },
                   colorText: AppTheme.lightAppColors.mainTextcolor,
                 )

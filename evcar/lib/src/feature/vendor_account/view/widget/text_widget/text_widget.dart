@@ -38,11 +38,11 @@ class TextWidget {
   static vendorTextFiledLabel(String title) {
     return Text(
       title,
-      style: const TextStyle(
+      style: TextStyle(
         fontWeight: FontWeight.w400,
         fontSize: 15,
         fontFamily: 'cairo-Regular',
-        color: Color(0xff000000),
+        color: Color(0xff000000).withOpacity(0.5),
       ),
     );
   }

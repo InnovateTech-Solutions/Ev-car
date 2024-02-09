@@ -7,9 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-final controller = Get.put(OnboardingController());
-
 onBaordingButton(BuildContext context) {
+  final controller = Get.put(OnboardingController());
   return Container(
     margin: EdgeInsets.only(
         left: 0.05 * context.screenWidth,

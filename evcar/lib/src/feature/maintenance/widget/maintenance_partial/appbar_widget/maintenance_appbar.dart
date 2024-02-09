@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/feature/favourite_page/view/favourite_page.dart';
 import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/maintenance/widget/text/maintenance_text.dart';
@@ -38,10 +39,6 @@ class _MaintenanceAppBarState extends State<MaintenanceAppBar> {
             if (snapshot.hasData) {
               return Row(
                 children: [
-                  const CircleAvatar(
-                    radius: 35,
-                    backgroundImage: AssetImage('assets/images/profile.png'),
-                  ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .02,
                   ),
@@ -57,7 +54,9 @@ class _MaintenanceAppBarState extends State<MaintenanceAppBar> {
                   ),
                   const Spacer(),
                   InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(FavouritePage());
+                    },
                     child: const Image(
                       image: AssetImage('assets/images/heart-circle.png'),
                     ),

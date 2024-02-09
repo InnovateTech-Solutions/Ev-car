@@ -4,18 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProductImageSlider extends StatelessWidget {
-  const ProductImageSlider({super.key});
-
+  const ProductImageSlider({super.key, required this.images});
+  final List<String> images;
   @override
   Widget build(BuildContext context) {
     final PageController _pageController = PageController();
     var currentPage = 0.obs;
 
-    final List<String> images = [
-      'assets/images/mainphoto.png',
-      'assets/images/heart-circle.png',
-      'assets/images/heart-circle.png',
-    ];
     return Column(
       children: [
         Container(
@@ -29,7 +24,7 @@ class ProductImageSlider extends StatelessWidget {
               currentPage.value = index;
             },
             itemBuilder: (context, index) {
-              return Image.asset(
+              return Image.network(
                 images[index],
                 fit: BoxFit.contain,
               );

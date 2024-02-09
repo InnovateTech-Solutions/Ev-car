@@ -3,18 +3,21 @@ import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/widget/text/product_text.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_appbar.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_phone_button.dart';
-import 'package:evcar/src/feature/shop/model/shop_model.dart';
+import 'package:evcar/src/feature/shop/controller/shop_controller.dart';
+import 'package:evcar/src/feature/shop/widget/accessories_widget.dart';
 import 'package:evcar/src/feature/shop/widget/shop_product_widget.dart';
 import 'package:evcar/src/feature/shop/widget/shop_rating.dart';
 import 'package:evcar/src/feature/shop/widget/shop_type_widget.dart';
+import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ShopWidget extends StatelessWidget {
   const ShopWidget({super.key, required this.shopModel});
-  final ShopModel shopModel;
+  final Vendor shopModel;
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ShopController());
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: context.screenHeight * 0.02,
@@ -31,7 +34,7 @@ class ShopWidget extends StatelessWidget {
             height: 0.25 * context.screenHeight,
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(shopModel.image), fit: BoxFit.cover),
+                    image: NetworkImage(shopModel.img), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(20)),
           ),
           SizedBox(
@@ -39,13 +42,13 @@ class ShopWidget extends StatelessWidget {
           ),
           Row(
             children: [
-              ProductText.mainProductText(shopModel.name, Colors.black),
+              ProductText.mainProductText(shopModel.title, Colors.black),
               const Spacer(),
               GestureDetector(
                 onTap: () {
                   Get.dialog(RatingDialog(
-                      image: shopModel.image,
-                      name: shopModel.name,
+                      image: shopModel.img,
+                      name: shopModel.title,
                       description: shopModel.description));
                 },
                 child: Icon(
@@ -54,7 +57,7 @@ class ShopWidget extends StatelessWidget {
                 ),
               ),
               ProductText.mainProductText(
-                  shopModel.rate, AppTheme.lightAppColors.subTextcolor),
+                  shopModel.rating, AppTheme.lightAppColors.subTextcolor),
             ],
           ),
           SizedBox(
@@ -75,17 +78,28 @@ class ShopWidget extends StatelessWidget {
             height: MediaQuery.of(context).size.width * 0.04,
           ),
           ProductPhoneButton(
-            phone: shopModel.phone,
+            phone: shopModel.number,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.02,
           ),
-          ProductText.productDescriptionText(shopModel.info),
+          ProductText.productDescriptionText(shopModel.subtitle),
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.02,
           ),
-          ProductText.headerText("قطع متشابهة"),
-          ShopProductWidge()
+          ProductText.headerText("قطع غيار السيارات"),
+          ShopProductWidget(
+            vendorId: shopModel.id,
+            phone: shopModel.number,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.width * 0.02,
+          ),
+          ProductText.headerText("إكسسوارات السيارات"),
+          AccessoriesWidget(
+            vendorId: shopModel.id,
+            phone: shopModel.number,
+          )
         ]),
       ),
     );

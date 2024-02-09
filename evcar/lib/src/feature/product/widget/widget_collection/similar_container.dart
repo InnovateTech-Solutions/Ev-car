@@ -1,29 +1,21 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
-import 'package:evcar/src/feature/product/view/product_page.dart';
 import 'package:evcar/src/feature/product/widget/text/product_text.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/custem_button_call.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class SimilarContainer extends StatelessWidget {
-  const SimilarContainer({super.key, required this.product});
-  final PartsModel product;
+  const SimilarContainer(
+      {super.key, required this.product, required this.phone});
+  final Product product;
+  final String phone;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(ProductPage(
-            productModel: PartsModel(
-                title: product.title,
-                type: product.type,
-                phone: product.phone,
-                image: product.image,
-                price: product.price,
-                vendor: product.vendor,
-                vendorAddress: product.vendorAddress)));
+        // Get.to(ProductDetails());
       },
       child: Container(
         margin: EdgeInsets.all(10),
@@ -65,13 +57,13 @@ class SimilarContainer extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .005,
                   ),
-                  ProductText.similarThirdText(product.price),
+                  ProductText.similarThirdText(product.price + "دينار"),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .005,
                   ),
                   CustemButtonCall(
                     text: 'اطلب الان',
-                    phone: product.phone,
+                    phone: phone,
                   ),
                 ],
               ),
