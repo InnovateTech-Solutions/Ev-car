@@ -54,12 +54,6 @@ class _ProductAppBarState extends State<VendorAppBar> {
                   ],
                 ),
                 const Spacer(),
-                InkWell(
-                  onTap: () {},
-                  child: const Image(
-                    image: AssetImage('assets/images/heart-circle.png'),
-                  ),
-                ),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .03,
                 ),

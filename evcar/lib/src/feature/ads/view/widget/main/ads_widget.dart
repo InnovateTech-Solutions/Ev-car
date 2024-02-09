@@ -3,7 +3,6 @@ import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/ads/controller/ads_constroller.dart';
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/ads_form_container.dart';
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/ads_image.dart';
-import 'package:evcar/src/feature/ads/view/widget/widget_collection/category_widget.dart';
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/drive_widget.dart';
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/type_widget.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
@@ -32,10 +31,10 @@ class AdsWidget extends StatelessWidget {
                 SizedBox(
                   height: context.screenHeight * 0.02,
                 ),
-                CategoryWidget(),
-                SizedBox(
-                  height: context.screenHeight * 0.02,
-                ),
+                // CategoryWidget(),
+                // SizedBox(
+                //   height: context.screenHeight * 0.02,
+                // ),
                 TypeWidget(),
                 SizedBox(
                   height: context.screenHeight * 0.02,
@@ -45,11 +44,11 @@ class AdsWidget extends StatelessWidget {
                   height: context.screenHeight * 0.02,
                 ),
                 AdsFormContainer(
-                  title: "اسم الاعلان",
+                  title: "اسم القطعة",
                   formModel: FormModel(
                       controller: controller.adsName,
                       enableText: false,
-                      hintText: "اسم الاعلان",
+                      hintText: "اسم القطعة",
                       invisible: false,
                       validator: (name) => controller.validAdsName(name),
                       type: TextInputType.name,
@@ -60,11 +59,11 @@ class AdsWidget extends StatelessWidget {
                   height: context.screenHeight * 0.02,
                 ),
                 AdsFormContainer(
-                  title: "وصف الاعلان ",
+                  title: "وصف القطعة ",
                   formModel: FormModel(
                       controller: controller.description,
                       enableText: false,
-                      hintText: "وصف الاعلان ",
+                      hintText: "وصف القطعة ",
                       invisible: false,
                       validator: (phone) => controller.validDescription(phone),
                       type: TextInputType.name,
@@ -109,7 +108,7 @@ class AdsWidget extends StatelessWidget {
                 ),
                 IntroPageButton(
                   colorButton: Color(0xffCA7A02),
-                  text: 'حفظ ونشر الإعلان',
+                  text: 'حفظ ونشر ',
                   onPressed: () {
                     if (controller.fromKey.currentState!.validate()) {
                       print(controller.adsImage.length);
