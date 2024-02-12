@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:math';
-import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
+import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/user_exist_dialog.dart';
+import 'package:evcar/src/feature/vendor_login/view/page/vendor_login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -64,10 +65,11 @@ class VendorOTPcontroller extends GetxController {
     }
   }
 
-  Future<bool> isMatch(String code) async {
+  Future<bool> isMatch(BuildContext context, String code) async {
     if (code == otp.value) {
       print('allowed');
-      Get.toNamed(AppRoutes.login);
+      await userExistDialog(context, 'سوف يتم قبولك قريبا');
+      Get.offAll(VendorLoginPage());
       return true;
     } else {
       print('not allowed');

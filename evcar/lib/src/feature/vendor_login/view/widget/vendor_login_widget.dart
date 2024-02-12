@@ -126,7 +126,9 @@ class VendorLoginWidget extends StatelessWidget {
               IntroPageButton(
                 text: 'التالي',
                 onPressed: () async {
-                  if (controller.fromKey.currentState!.validate()) {}
+                  if (controller.fromKey.currentState!.validate()) {
+                    controller.postUser();
+                  }
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,

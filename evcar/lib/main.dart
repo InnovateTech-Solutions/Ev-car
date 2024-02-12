@@ -25,9 +25,7 @@ void main() async {
   await Hive.openBox<ChargingStation>('MobilecharchingStation');
   await Hive.openBox<ChargingStation>('GoogleMapcharchingStation');
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -44,7 +42,7 @@ class MyApp extends StatelessWidget {
       title: 'Ev Car',
       theme: AppTheme.light,
       locale: const Locale('ar', 'AE'),
-      home: const MainWidget(),
+      home: MainWidget(),
       getPages: AppRoutes.routes,
     );
   }

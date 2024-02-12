@@ -1,41 +1,49 @@
+import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
+import 'package:evcar/src/feature/on_board/view/pages/onboard_page.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/splash_screen/splash_page.dart';
+import 'package:evcar/src/feature/vendor_dashboard/view/page/vendor_dashboard_page.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePageController extends GetxController {
   RxBool isGoogleMapEnabled = false.obs;
 
-  @override
-  void onInit() {
-    _loadPreferences();
-    super.onInit();
-  }
-
-  Future<void> _loadPreferences() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    isGoogleMapEnabled.value = prefs.getBool('isGoogleMapEnabled') ?? false;
-  }
-
-  Future<void> toggleValueAndNavigate() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    isGoogleMapEnabled.value = true;
-    await prefs.setBool('isGoogleMapEnabled', isGoogleMapEnabled.value);
-
-    // isGoogleMapEnabled.value
-    //     ? Get.offAll(() => const GoogleMapPage())
-    //     : Get.offAll(() => const SplashPage());
-  }
-
   void logout() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     await prefs.clear();
+    await prefs.remove('userType');
     isGoogleMapEnabled.value = false;
     LoginController().clearToken();
     UserRegisterController().clearToken();
     Get.offAll(() => const SplashPage());
+  }
+
+  Future<String?> getUserType() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('userType');
+  }
+
+  Widget navigateToDashboard(String? userType) {
+    switch (userType) {
+      case 'user':
+        return const GoogleMapPage();
+      case 'vendor':
+        return const VendorDashboardPage();
+
+      default:
+        // Handle invalid user type
+        return OnBoardPage();
+    }
+  }
+
+  login(String userType) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('userType', userType);
+    Get.offAll(() => navigateToDashboard(userType));
   }
 
   // clearConcatenatedTokens() {
