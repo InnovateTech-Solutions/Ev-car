@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
+import 'package:evcar/src/feature/loading/loading_page.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:evcar/src/feature/vendor_map/view/page/vendor_map_page.dart';
@@ -320,19 +321,21 @@ class VendorController extends GetxController {
         print("the imag  $licenceUrl"); // licence
         print("the image $imageUrl"); // store img
         await registerVendor(Vendor(
-            title: username.text,
-            subtitle: subTitle.text,
-            img: imageUrl,
-            address: address.text,
-            number: '962${removeLeadingZero(phoneNumber.text)}',
-            commercialLicense: licenceUrl,
-            password: password.text,
-            type: type,
-            tags: serviceID,
-            description: description.text,
-            status: 'Pending',
-            id: ''));
-
+          title: username.text,
+          subtitle: subTitle.text,
+          img: imageUrl,
+          address: address.text,
+          number: '962${removeLeadingZero(phoneNumber.text)}',
+          commercialLicense: licenceUrl,
+          password: password.text,
+          type: type,
+          tags: serviceID,
+          description: description.text,
+          status: 'Pending',
+          id: '',
+        ));
+        Get.to(
+            LoadingPage(number: '962${removeLeadingZero(phoneNumber.text)}'));
         //  print(vendor.title);
         //  print(vendor.subtitle);
         //  print(vendor.description);

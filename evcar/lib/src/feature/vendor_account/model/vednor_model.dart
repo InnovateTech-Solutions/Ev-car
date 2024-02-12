@@ -25,7 +25,7 @@ class Vendor {
     required this.commercialLicense,
     required this.password,
     required this.type,
-    required this.rating,
+    this.rating = "",
     required this.tags,
     required this.description,
     required this.status,

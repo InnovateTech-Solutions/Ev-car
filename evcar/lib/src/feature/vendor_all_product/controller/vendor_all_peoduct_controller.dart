@@ -17,7 +17,7 @@ class VendorAllProductController extends GetxController {
   //     throw Exception('Failed to load products');
   //   }
   // }
-  Future<Map<String, dynamic>> fetchData() async {
+  Future<Map<String, dynamic>> fetchData(String id) async {
     final response = await http.get(Uri.parse(
         'https://adventurous-yak-pajamas.cyclic.app/vendors/getAllVendorProductsClassified/65bd7c0dfce0a971d9dfd769'));
     print(response.body);

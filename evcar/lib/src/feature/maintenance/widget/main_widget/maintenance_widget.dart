@@ -1,6 +1,5 @@
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
-import 'package:evcar/src/feature/loading/loading_page.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/maintenance/controller/maintenance_controller.dart';
 import 'package:evcar/src/feature/maintenance/widget/maintenance_partial/appbar_widget/maintenance_appbar.dart';
@@ -9,6 +8,7 @@ import 'package:evcar/src/feature/maintenance/widget/maintenance_partial/search/
 import 'package:evcar/src/feature/maintenance/widget/maintenance_partial/services/services_widget.dart';
 import 'package:evcar/src/feature/maintenance/widget/maintenance_partial/top_rated/top_rated_widget.dart';
 import 'package:evcar/src/feature/maintenance/widget/text/maintenance_text.dart';
+import 'package:evcar/src/feature/maintenance_shop/view/page/maintenance_shop_page.dart';
 import 'package:evcar/src/feature/product/view/all_product_page.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/search_shop/view/page/search_page.dart';
@@ -107,7 +107,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                   ),
                   // Top Rated
                   MaintenanceText.seeMore("المحلات الرائجة", () {
-                    Get.to(LoadingPage());
+                    Get.to(MaintenanceShopPage());
                   }),
                   TopRatedWidget(),
                   // the most wanted
