@@ -81,7 +81,7 @@ class TopRated extends StatelessWidget {
                                     color: Color(0xffF2C94C),
                                   ),
                                   MaintenanceText.orderMainText(
-                                      shopModel.rating)
+                                      ratingshortenText(shopModel.rating))
                                 ],
                               )
                             ]),
@@ -93,5 +93,13 @@ class TopRated extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String ratingshortenText(String text, {int maxLength = 3}) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}';
+    }
   }
 }

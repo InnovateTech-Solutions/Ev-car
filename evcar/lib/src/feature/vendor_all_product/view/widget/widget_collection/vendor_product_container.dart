@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class VendorProductContainer extends StatelessWidget {
   const VendorProductContainer({super.key, required this.partsModel});
-  final Product partsModel;
+  final VendorProduct partsModel;
   @override
   Widget build(BuildContext context) {
     return Container(

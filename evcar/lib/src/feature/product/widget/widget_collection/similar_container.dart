@@ -1,6 +1,7 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
+import 'package:evcar/src/feature/product/view/product_page.dart';
 import 'package:evcar/src/feature/product/widget/text/product_text.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/custem_button_call.dart';
 import 'package:flutter/material.dart';
@@ -8,14 +9,20 @@ import 'package:flutter/material.dart';
 class SimilarContainer extends StatelessWidget {
   const SimilarContainer(
       {super.key, required this.product, required this.phone});
-  final Product product;
+  final VendorProduct product;
   final String phone;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(ProductDetails());
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ProductPage(
+                    productId: product.id,
+                  )),
+        );
       },
       child: Container(
         margin: EdgeInsets.all(10),
@@ -33,14 +40,28 @@ class SimilarContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
+              height: context.screenHeight * 0.005,
+            ),
+            SizedBox(
               height: MediaQuery.of(context).size.height * .15,
               width: MediaQuery.of(context).size.width * .3,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/mainphoto.png'),
-                  fit: BoxFit.fitHeight,
-                ),
+              child: ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 1,
+                itemBuilder: (BuildContext context, int index) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height * .15,
+                    width: MediaQuery.of(context).size.width * .3,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: AppTheme.lightAppColors.background,
+                    ),
+                    child: Image.network(
+                      product.img.firstOrNull!,
+                    ),
+                  );
+                },
               ),
             ),
             SizedBox(
@@ -53,7 +74,7 @@ class SimilarContainer extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .005,
                   ),
-                  ProductText.similarSecText(product.vendor),
+                  ProductText.similarSecText(product.description),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .005,
                   ),

@@ -29,3 +29,29 @@ class Product {
     );
   }
 }
+
+class VendorProduct {
+  final String id;
+  final String title;
+  final List<String> img;
+  final String description;
+  final String price;
+
+  VendorProduct({
+    required this.id,
+    required this.title,
+    required this.img,
+    required this.price,
+    required this.description,
+  });
+
+  factory VendorProduct.fromJson(Map<String, dynamic> json) {
+    return VendorProduct(
+      id: json['_id'],
+      title: json['title'] ?? '',
+      img: List<String>.from(json['img'] ?? []),
+      price: json['price'] ?? '',
+      description: json['description'] ?? '',
+    );
+  }
+}

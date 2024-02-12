@@ -4,15 +4,15 @@ import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.da
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SearchWidget extends StatefulWidget {
-  const SearchWidget({required this.search, super.key});
+class SearchForm extends StatefulWidget {
+  const SearchForm({required this.search, super.key});
   final SearchFormEntitiy search;
 
   @override
-  State<SearchWidget> createState() => _SearchWidgetState();
+  State<SearchForm> createState() => _SearchWidgetState();
 }
 
-class _SearchWidgetState extends State<SearchWidget> {
+class _SearchWidgetState extends State<SearchForm> {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;

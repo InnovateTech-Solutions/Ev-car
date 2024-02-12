@@ -41,6 +41,5 @@ class ServicesListContainer extends StatelessWidget {
         ),
       );
     }));
-    ;
   }
 }

@@ -12,6 +12,7 @@ detailAppBar(String title) {
         )),
     backgroundColor: AppTheme.lightAppColors.background,
     elevation: 0,
+    scrolledUnderElevation: 0,
     centerTitle: true,
     title: Text(title,
         style: TextStyle(

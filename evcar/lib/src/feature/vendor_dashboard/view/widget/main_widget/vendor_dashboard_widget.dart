@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/feature/ads/view/pages/ads_page.dart';
 import 'package:evcar/src/feature/basic_info/view/page/basic_info_page.dart';
 import 'package:evcar/src/feature/services/view/page/vendor_services.dart';
 import 'package:evcar/src/feature/vendor_all_product/view/page/vendor_all_product_page.dart';
@@ -8,8 +9,6 @@ import 'package:evcar/src/feature/vendor_dashboard/view/widget/widget_collection
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
-import '../../../../offers/page/offers_page.dart';
 
 class VendorDashboardWidget extends StatelessWidget {
   const VendorDashboardWidget({super.key});
@@ -33,7 +32,7 @@ class VendorDashboardWidget extends StatelessWidget {
           widget: SvgPicture.asset("assets/vendor/offers.svg"),
           title: "العروض",
           onTap: () {
-            Get.to(OffersPage());
+            Get.to(AdsPage());
           }),
       CategoryModel(
           widget: SvgPicture.asset("assets/vendor/product.svg"),

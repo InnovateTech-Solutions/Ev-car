@@ -44,14 +44,13 @@ class VendorAllProductWidget extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         final product = products[index];
                         return VendorProductContainer(
-                          partsModel: Product(
-                              id: product['_id'],
-                              title: product['title'],
-                              img: product['img'],
-                              price: product['price'],
-                              description: product['description'],
-                              typeOfProduct: '',
-                              vendor: ''),
+                          partsModel: VendorProduct(
+                            id: product['_id'],
+                            title: product['title'],
+                            img: product['img'],
+                            price: product['price'],
+                            description: product['description'],
+                          ),
                         );
                       },
                     ),

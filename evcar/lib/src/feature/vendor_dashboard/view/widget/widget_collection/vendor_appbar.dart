@@ -54,6 +54,7 @@ class _ProductAppBarState extends State<VendorAppBar> {
                   ],
                 ),
                 const Spacer(),
+                IconButton(onPressed: () {}, icon: Icon(Icons.logout_rounded)),
                 SizedBox(
                   width: MediaQuery.of(context).size.width * .03,
                 ),

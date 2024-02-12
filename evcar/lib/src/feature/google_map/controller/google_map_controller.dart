@@ -21,8 +21,7 @@ class MapController extends GetxController {
   RxList<Marker> markers = <Marker>[].obs;
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
-  late LatLng initialPosition =
-      const LatLng(31.89184570652702, 35.868479497347224);
+  late LatLng initialPosition = const LatLng(32.0333332, 35.7333304);
 
   Future<void> loadMarkers() async {
     final newMarkers = await getMarkers();
@@ -52,6 +51,7 @@ class MapController extends GetxController {
               icon: markerIcon.value,
               position: LatLng(latitude, longitude),
               onTap: () {
+                print("object");
                 customInfoWindowController.addInfoWindow!(
                   customWindow(
                     ChargingStation.fromJson(station),

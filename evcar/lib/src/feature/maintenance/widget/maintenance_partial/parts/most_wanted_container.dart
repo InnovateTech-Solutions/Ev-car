@@ -2,8 +2,7 @@ import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/maintenance/widget/text/maintenance_text.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../product/view/product_page.dart';
 
@@ -14,9 +13,13 @@ class MostWantedContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(ProductPage(
-          productId: partsModel.id,
-        ));
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ProductPage(
+                    productId: partsModel.id,
+                  )),
+        );
       },
       child: Container(
         height: MediaQuery.of(context).size.height * .14,
@@ -62,19 +65,32 @@ class MostWantedContainer extends StatelessWidget {
                   )
                 ],
               ),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height * .3,
                 width: MediaQuery.of(context).size.width * .35,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: AppTheme.lightAppColors.background,
-                  // image: DecorationImage(
-                  //   alignment: Alignment.bottomCenter,
-                  //   image: NetworkImage(
-                  //     partsModel.img,
-                  //   ),
-                  //   fit: BoxFit.cover,
-                  // ),
+                child: ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: 1,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      height: MediaQuery.of(context).size.height * .1,
+                      width: MediaQuery.of(context).size.width * .35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppTheme.lightAppColors.background,
+                        image: DecorationImage(
+                          image: NetworkImage(
+                            partsModel.img.firstOrNull!,
+                          ),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Image.network(
+                        partsModel.img.firstOrNull!,
+                        fit: BoxFit.cover,
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
