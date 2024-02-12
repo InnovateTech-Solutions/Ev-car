@@ -84,8 +84,11 @@ class _MapWidgetState extends State<MapWidget> {
             child: IntroPageButton(
               colorButton: AppTheme.lightAppColors.buttoncolor,
               text: 'Next',
-              onPressed: () {
-                Get.offAll(OTPVendorPage(
+              onPressed: () async {
+                await mapController.putCoordinates(
+                    widget.number, mapController.coordinate.text);
+
+                await Get.offAll(OTPVendorPage(
                   number: widget.number,
                 ));
               },

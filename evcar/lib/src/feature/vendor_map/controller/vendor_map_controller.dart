@@ -1,5 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
+import 'dart:convert';
 
+import 'package:http/http.dart' as http;
 import 'package:evcar/src/feature/vendor_map/view/widgets/vendor_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -98,6 +100,36 @@ class AddLocation extends GetxController {
       print(address.value);
     } catch (e) {
       print("Error: $e");
+    }
+  }
+
+  Future<void> putCoordinates(String number, String coordinates) async {
+    try {
+      print('coordinates ${number}');
+
+      print('coordinates ${coordinates}');
+      final response = await http.put(
+        Uri.parse(
+            'https://adventurous-yak-pajamas.cyclic.app/vendors/updateVendorCoordinates/962${number}'),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({
+          "coordinates": coordinates,
+        }),
+      );
+
+      if (response.statusCode == 201) {
+        final responseData = json.decode(response.body);
+        print('Updated user details: $responseData');
+        // Assuming you want to update UI with the new data, you can put your UI update logic here
+      } else {
+        throw Exception(
+            'Failed to update user details: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+      // Show error message to the user using SnackBar
     }
   }
 
