@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
+import 'package:evcar/src/feature/vendor_account/model/tagData.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -22,6 +23,8 @@ class VendorServiceaController extends GetxController {
   final dialogKey = GlobalKey<FormState>();
   RxBool serviceIsEmpty = false.obs;
   RxList<ServiceModel> serviceList = <ServiceModel>[].obs;
+    RxList<TagData> serviceList1 = <TagData>[].obs;
+
 
   List<String> services = [
     'فحص البطارية',
@@ -133,6 +136,22 @@ class VendorServiceaController extends GetxController {
       print(servicesList);
     }
   }
+
+  Future<void> fetchVendorTags() async {
+  try {
+    final response = await http.get(Uri.parse('http://localhost:3000/vendors/allVendorTags/65bac6f821e1dbf0671b8298'));
+    print(response.body);
+    if (response.statusCode == 200) {
+
+      final List<dynamic> data = json.decode(response.body)['tags'];
+      serviceList1.assignAll(data.map((item) => TagData.fromJson(item)));
+    } else {
+      throw Exception('Failed to load data');
+    }
+  } catch (e) {
+    print('Error fetching data: $e');
+  }
+}
 
   Future<void> addNewService() async {
     if (dialogKey.currentState!.validate()) {
