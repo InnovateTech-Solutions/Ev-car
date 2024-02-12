@@ -1,51 +1,45 @@
-// import 'package:evcar/src/config/sizes/sizes.dart';
-// import 'package:evcar/src/config/theme/theme.dart';
-// import 'package:evcar/src/feature/product/model/parts_model.dart';
-// import 'package:evcar/src/feature/product/widget/widget_collection/similar_container.dart';
-// import 'package:flutter/material.dart';
+import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/feature/product/controller/product_controller.dart';
+import 'package:evcar/src/feature/product/widget/widget_collection/similar_container.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-// class SimilarWidget extends StatelessWidget {
-//   const SimilarWidget({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//         future: null,
-//         builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-//           if (ConnectionState == ConnectionState.done) {
-//             if (snapshot.hasData) {
-//               List<Product> list = snapshot.data!;
-
-//               return SizedBox(
-//                 height: context.screenHeight * 0.33,
-//                 child: ListView.builder(
-//                   scrollDirection: Axis.horizontal,
-//                   itemCount: list.length,
-//                   // separatorBuilder: (BuildContext context, int index) {
-//                   //   return SizedBox(
-//                   //     width: context.screenWidth * 0.05,
-//                   //   );
-//                   // },
-//                   itemBuilder: (BuildContext context, int index) {
-//                     return Center(
-//                         child: SimilarContainer(product: list[index]));
-//                   },
-//                 ),
-//               );
-//             } else {
-//               return Center(
-//                 child: CircularProgressIndicator(
-//                   color: AppTheme.lightAppColors.bordercolor,
-//                 ),
-//               );
-//             }
-//           } else {
-//             return Center(
-//               child: CircularProgressIndicator(
-//                 color: AppTheme.lightAppColors.bordercolor,
-//               ),
-//             );
-//           }
-//         });
-//   }
-// }
+class SimilarWidget extends StatelessWidget {
+  const SimilarWidget({super.key, required this.typeId, required this.numbre});
+  final String typeId;
+  final String numbre;
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.put(ProductController());
+    return FutureBuilder(
+      future: controller.fetchProductByType(typeId),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text('Error: ${snapshot.error}'),
+          );
+        } else {
+          final products = snapshot.data!;
+          return SizedBox(
+            height: context.screenHeight * 0.33,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: products.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Center(
+                    child: SimilarContainer(
+                  product: products[index],
+                  phone: numbre,
+                ));
+              },
+            ),
+          );
+        }
+      },
+    );
+  }
+}

@@ -2,6 +2,7 @@ import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/mobile_charger/view/widget/text/mobile_charger_text.dart';
 import 'package:evcar/src/feature/mobile_charger/view/widget/widget_collection/mobile_button.dart';
+import 'package:evcar/src/feature/product/widget/text/product_text.dart';
 import 'package:evcar/src/feature/shop/view/shop_page.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +27,10 @@ class MaintenanceShopCard extends StatelessWidget {
             horizontal: 0.022 * context.screenWidth,
             vertical: 0.012 * context.screenHeight),
         padding: EdgeInsets.only(
-          top: 0.02 * context.screenHeight,
-          bottom: 0.02 * context.screenHeight,
-          right: 0.015 * context.screenWidth,
-        ),
+            top: 0.02 * context.screenHeight,
+            bottom: 0.02 * context.screenHeight,
+            right: 0.015 * context.screenWidth,
+            left: 0.01 * context.screenWidth),
         height: 0.18 * context.screenHeight,
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
@@ -45,6 +46,7 @@ class MaintenanceShopCard extends StatelessWidget {
           ],
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -73,10 +75,40 @@ class MaintenanceShopCard extends StatelessWidget {
                 )
               ],
             ),
+            model.rating != ""
+                ? Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ProductText.mainProductText(
+                          ratingshortenText(model.rating),
+                          AppTheme.lightAppColors.subTextcolor),
+                      Icon(
+                        Icons.star,
+                        color: Color(0xffF2C94C),
+                      ),
+                    ],
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Color(0xffF2C94C),
+                      ),
+                    ],
+                  )
           ],
         ),
       ),
     );
+  }
+}
+
+String ratingshortenText(String text, {int maxLength = 3}) {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return '${text.substring(0, maxLength)}';
   }
 }
 

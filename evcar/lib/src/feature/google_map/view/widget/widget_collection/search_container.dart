@@ -40,7 +40,7 @@ SizedBox searchContainer(
                       searchController.stations[index].title,
                     )),
                     searchsec(
-                      searchController.stations[index].address,
+                      shortenText(searchController.stations[index].address),
                     ),
                   ],
                 ),
@@ -58,7 +58,7 @@ SizedBox searchContainer(
   );
 }
 
-String shortenText(String text, {int maxLength = 25}) {
+String shortenText(String text, {int maxLength = 20}) {
   if (text.length <= maxLength) {
     return text;
   } else {

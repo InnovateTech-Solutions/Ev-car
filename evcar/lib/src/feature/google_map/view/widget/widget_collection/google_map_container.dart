@@ -87,7 +87,7 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
                 SizedBox(
                   height: 0.02 * context.screenHeight,
                 ),
-                SearchWidget(
+                SearchForm(
                   search: SearchFormEntitiy(
                     searchController: searchController.searchText,
                     hintText: "أدخل اسم المحطة",
@@ -119,6 +119,7 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
                           ButtonWidget(
                               onTap: () {
                                 Get.to(const MobileChargerPage());
+                                mapController.getMarkers();
                               },
                               title: "الشحن المتنقل",
                               color: AppTheme.lightAppColors.buttoncolor),

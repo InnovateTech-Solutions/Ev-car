@@ -61,9 +61,6 @@ class _MobileCharchingStationsState extends State<MobileCharchingStations> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-          horizontal: 0.012 * context.screenHeight,
-          vertical: 0.01 * context.screenHeight),
       child: ValueListenableBuilder(
         valueListenable: mobileCharchingBox.listenable(),
         builder: (context, Box<ChargingStation> box, _) {

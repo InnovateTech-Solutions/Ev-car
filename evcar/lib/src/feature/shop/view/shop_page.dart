@@ -1,4 +1,4 @@
-import 'package:evcar/src/feature/shop/widget/shop_widget.dart';
+import 'package:evcar/src/feature/shop/widget/main/shop_widget.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
 

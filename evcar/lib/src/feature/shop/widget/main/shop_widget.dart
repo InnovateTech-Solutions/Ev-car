@@ -3,11 +3,11 @@ import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/widget/text/product_text.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_appbar.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_phone_button.dart';
-import 'package:evcar/src/feature/shop/controller/shop_controller.dart';
-import 'package:evcar/src/feature/shop/widget/accessories_widget.dart';
-import 'package:evcar/src/feature/shop/widget/shop_product_widget.dart';
-import 'package:evcar/src/feature/shop/widget/shop_rating.dart';
-import 'package:evcar/src/feature/shop/widget/shop_type_widget.dart';
+import 'package:evcar/src/feature/review/controller/rating_controller.dart';
+import 'package:evcar/src/feature/review/view/page/review_page.dart';
+import 'package:evcar/src/feature/shop/widget/rating/shop_type_widget.dart';
+import 'package:evcar/src/feature/shop/widget/widget_collection.dart/accessories_widget.dart';
+import 'package:evcar/src/feature/shop/widget/widget_collection.dart/shop_product_widget.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +17,7 @@ class ShopWidget extends StatelessWidget {
   final Vendor shopModel;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ShopController());
+    final controller = Get.put(RatinggController());
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: context.screenHeight * 0.02,
@@ -44,20 +44,41 @@ class ShopWidget extends StatelessWidget {
             children: [
               ProductText.mainProductText(shopModel.title, Colors.black),
               const Spacer(),
-              GestureDetector(
-                onTap: () {
-                  Get.dialog(RatingDialog(
-                      image: shopModel.img,
-                      name: shopModel.title,
-                      description: shopModel.description));
-                },
-                child: Icon(
-                  Icons.star,
-                  color: Color(0xffF2C94C),
-                ),
-              ),
-              ProductText.mainProductText(
-                  shopModel.rating, AppTheme.lightAppColors.subTextcolor),
+              shopModel.rating != ""
+                  ? GestureDetector(
+                      onTap: () {
+                        Get.to(ReviewPage(
+                          shopModel: shopModel,
+                        ));
+                      },
+                      child: Row(
+                        children: [
+                          ProductText.mainProductText(shopModel.rating,
+                              AppTheme.lightAppColors.subTextcolor),
+                          Icon(
+                            Icons.star,
+                            color: Color(0xffF2C94C),
+                          ),
+                        ],
+                      ),
+                    )
+                  : GestureDetector(
+                      onTap: () {
+                        Get.to(ReviewPage(
+                          shopModel: shopModel,
+                        ));
+                      },
+                      child: Row(
+                        children: [
+                          ProductText.mainProductText(
+                              "تقييم", AppTheme.lightAppColors.subTextcolor),
+                          Icon(
+                            Icons.star,
+                            color: Color(0xffF2C94C),
+                          ),
+                        ],
+                      ),
+                    )
             ],
           ),
           SizedBox(
@@ -77,8 +98,13 @@ class ShopWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.04,
           ),
-          ProductPhoneButton(
-            phone: shopModel.number,
+          GestureDetector(
+            onTap: () {
+              controller.toggleReviewed(shopModel.id);
+            },
+            child: ProductPhoneButton(
+              phone: shopModel.number,
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.02,

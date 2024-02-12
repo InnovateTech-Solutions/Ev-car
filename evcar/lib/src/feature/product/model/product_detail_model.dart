@@ -1,3 +1,5 @@
+import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
+
 class ProductDetails {
   final String id;
   final String title;
@@ -25,7 +27,7 @@ class ProductDetails {
       description: json['description'] ?? '',
       price: json['price'] ?? '',
       typeOfProduct: TypeOfProduct.fromJson(json['typeOfProduct'] ?? ''),
-      vendor: Vendor.fromJson(json['vendor'] ?? ''),
+      vendor: Vendor.fromMap(json['vendor'] ?? ''),
     );
   }
 }
@@ -43,26 +45,6 @@ class TypeOfProduct {
     return TypeOfProduct(
       id: json['_id'],
       title: json['title'],
-    );
-  }
-}
-
-class Vendor {
-  final String name;
-  final String address;
-  final String phone;
-
-  Vendor({
-    required this.name,
-    required this.address,
-    required this.phone,
-  });
-
-  factory Vendor.fromJson(Map<String, dynamic> json) {
-    return Vendor(
-      name: json['name'],
-      address: json['address'],
-      phone: json['phone'],
     );
   }
 }

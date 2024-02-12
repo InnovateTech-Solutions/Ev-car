@@ -6,6 +6,8 @@ import 'package:evcar/src/feature/mobile_charger/view/widget/text/mobile_charger
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../maintenance/widget/maintenance_partial/parts/most_wanted_container.dart';
+
 Column chargerTypeContainer(
     BuildContext context, RxBool seeMore, ChargingStation model) {
   return Column(
@@ -30,7 +32,8 @@ Column chargerTypeContainer(
                       return Column(
                         children: [
                           Image.network(model.chargers![index].image),
-                          DetailText.chargeText(model.chargers![index].title)
+                          DetailText.chargeText(
+                              shortenText(model.chargers![index].title))
                         ],
                       );
                     },

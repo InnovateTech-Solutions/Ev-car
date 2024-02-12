@@ -22,6 +22,9 @@ class MobileChargerCard extends StatelessWidget {
       onTap: () {},
       child: Obx(
         () => Container(
+          margin: EdgeInsets.symmetric(
+              horizontal: 0.022 * context.screenWidth,
+              vertical: 0.01 * context.screenHeight),
           padding: EdgeInsets.only(
             top: 0.02 * context.screenHeight,
             right: 0.015 * context.screenWidth,

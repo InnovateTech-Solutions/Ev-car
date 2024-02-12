@@ -21,19 +21,18 @@ class ServicesWidget extends StatelessWidget {
                 height: context.screenHeight * 0.15,
                 width: context.screenHeight,
                 child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return ServicesContainer(
-                        servicesModel: tags[index], onTap: () {});
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return SizedBox(
-                      width: context.screenWidth * 0.05,
-                    );
-                  },
-                  itemCount: tags.length,
-                ),
+                    scrollDirection: Axis.horizontal,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return ServicesContainer(
+                          servicesModel: tags[index], onTap: () {});
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(
+                        width: context.screenWidth * 0.05,
+                      );
+                    },
+                    itemCount: 4),
               );
             } else {
               return Center();

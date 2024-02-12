@@ -20,6 +20,7 @@ class VendorAllProductController extends GetxController {
   Future<Map<String, dynamic>> fetchData() async {
     final response = await http.get(Uri.parse(
         'https://adventurous-yak-pajamas.cyclic.app/vendors/getAllVendorProductsClassified/65bd7c0dfce0a971d9dfd769'));
+    print(response.body);
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
