@@ -115,7 +115,7 @@ class ShopWidget extends StatelessWidget {
           ),
           ProductText.headerText("قطع غيار السيارات"),
           ShopProductWidget(
-            vendorId: shopModel.id,
+            vendorId: shopModel.id ?? '',
             phone: shopModel.number,
           ),
           SizedBox(

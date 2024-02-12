@@ -1,14 +1,15 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
+import 'package:evcar/src/feature/vendor_account/view/page/otp_vendor_page.dart';
 import 'package:evcar/src/feature/vendor_map/controller/vendor_map_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapWidget extends StatefulWidget {
-  const MapWidget({Key? key}) : super(key: key);
-
+  const MapWidget({required this.number, Key? key}) : super(key: key);
+  final String number;
   @override
   State<MapWidget> createState() => _MapWidgetState();
 }
@@ -83,7 +84,14 @@ class _MapWidgetState extends State<MapWidget> {
             child: IntroPageButton(
               colorButton: AppTheme.lightAppColors.buttoncolor,
               text: 'Next',
-              onPressed: () {},
+              onPressed: () async {
+                await mapController.putCoordinates(
+                    widget.number, mapController.coordinate.text);
+
+                await Get.offAll(OTPVendorPage(
+                  number: widget.number,
+                ));
+              },
               colorText: AppTheme.lightAppColors.mainTextcolor,
             ))
       ],

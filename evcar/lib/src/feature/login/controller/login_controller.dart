@@ -96,7 +96,7 @@ class LoginController extends GetxController {
         _saveToken(userToken);
         token.value = userToken;
 
-        homeController.toggleValueAndNavigate();
+        homeController.login('user');
         Get.offAll(const NavBarWidget());
       } else {
         // Handle error case

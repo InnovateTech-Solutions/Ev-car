@@ -71,8 +71,7 @@ class OTPController extends GetxController {
   Future<bool> isMatch(String code) async {
     if (code == otp.value) {
       print('allowed');
-
-      homeController.toggleValueAndNavigate();
+      homeController.login('user');
       Get.offAllNamed(AppRoutes.navBar);
       return true;
     } else {

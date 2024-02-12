@@ -1,6 +1,8 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
+import 'package:evcar/src/feature/login/controller/login_controller.dart';
+import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/services/controller/vendor_services_controller.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/add_service_widget.dart';
@@ -10,13 +12,27 @@ import 'package:evcar/src/feature/vendor_account/view/widget/widget_collection/s
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class VendorServicesWidget extends StatelessWidget {
+class VendorServicesWidget extends StatefulWidget {
   const VendorServicesWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(VendorServiceaController());
+  State<VendorServicesWidget> createState() => _VendorServicesWidgetState();
+}
 
+class _VendorServicesWidgetState extends State<VendorServicesWidget> {
+  final controller = Get.put(VendorServiceaController());
+  final registerToken = Get.put(UserRegisterController());
+  final loginToken = Get.put(LoginController());
+
+  @override
+  void initState() {
+    controller
+        .getUserDetails(registerToken.token.value + loginToken.token.value);
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Container(
       height: context.screenHeight,
       margin: EdgeInsets.symmetric(
@@ -136,7 +152,9 @@ class VendorServicesWidget extends StatelessWidget {
                 IntroPageButton(
                     text: "تاكيد",
                     onPressed: () {
-                      controller.addService();
+                      controller.addService(
+                          registerToken.token.value + loginToken.token.value,
+                          controller.description.text);
                     },
                     colorText: AppTheme.lightAppColors.mainTextcolor,
                     colorButton: AppTheme.lightAppColors.buttoncolor)

@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../vendor_account/model/vednor_model.dart';
+
 class VendorServiceaController extends GetxController {
   RxBool isClicked = false.obs;
   RxList servicesList = [].obs;
@@ -94,6 +96,34 @@ class VendorServiceaController extends GetxController {
     }
   }
 
+  Future<void> putVendorServiceDetails(
+      {required List<String> serviceList,
+      required String token,
+      required String description}) async {
+    try {
+      final response = await http.put(
+        Uri.parse('https://adventurous-yak-pajamas.cyclic.app/vendors/update'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: json.encode({"tags": serviceList, "description": description}),
+      );
+
+      if (response.statusCode == 201) {
+        final responseData = json.decode(response.body);
+        print('Updated user details: $responseData');
+        // Assuming you want to update UI with the new data, you can put your UI update logic here
+      } else {
+        throw Exception(
+            'Failed to update user details: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error: $e');
+      // Show error message to the user using SnackBar
+    }
+  }
+
   click(String service) {
     if (servicesList.contains(service)) {
       servicesList.remove(service);
@@ -143,22 +173,64 @@ class VendorServiceaController extends GetxController {
     }
   }
 
-  Future<void> addService() async {
+  Future<void> addService(String token, String description) async {
     if (vendorKey.currentState!.validate()) {
-      if (servicesList.isNotEmpty) {
+      if (description.isNotEmpty) {
+        try {
+          // Attempt to add service
+          await putVendorServiceDetails(
+              token: token, description: description, serviceList: serviceID);
+          // Show success message
+          Get.snackbar("Success", "Service Added Successfully",
+              titleText: Align(
+                alignment: Alignment.bottomCenter,
+                child: searchsec('تمت الإضافة بنجاح'),
+              ));
+        } catch (error) {
+          // Handle error from putVendorServiceDetails
+          Get.snackbar("Error", "Failed to add service: $error",
+              titleText: Align(
+                alignment: Alignment.bottomCenter,
+                child: searchsec('حدث خطأ'),
+              ));
+        }
       } else {
-        Get.snackbar("ERROR", "Invalid Data",
+        // Show error for empty description
+        Get.snackbar("Error", "Description cannot be empty",
             titleText: Align(
-              alignment: Alignment.bottomCenter, // Set your desired alignment
+              alignment: Alignment.topRight,
               child: searchsec('حدث خطأ'),
             ));
       }
     } else {
-      Get.snackbar("ERROR", "Invalid Data",
+      // Show error for invalid data
+      Get.snackbar("Error", "Invalid Data",
           titleText: Align(
-            alignment: Alignment.topRight, // Set your desired alignment
+            alignment: Alignment.topRight,
             child: searchsec('حدث خطأ'),
           ));
+    }
+  }
+
+  Future<Vendor> getUserDetails(String token) async {
+    print(token);
+    final response = await http.get(
+      Uri.parse(
+          'https://adventurous-yak-pajamas.cyclic.app/vendors/getVendorDetails'),
+      headers: {
+        'Authorization': 'Bearer  $token',
+      },
+    );
+    if (response.statusCode == 200) {
+      final Map<String, dynamic> responseData = json.decode(response.body);
+      final Vendor vendor = Vendor.fromMap(responseData);
+      serviceID = vendor.tags;
+
+      description.text = vendor.description;
+
+      return vendor;
+    } else {
+      throw Exception('Failed to load user details');
     }
   }
 }

@@ -344,6 +344,9 @@ class VendorRegisterWidget extends StatelessWidget {
                         bool vendorExits = await controller.fetchVendorExistence(
                             '962${controller.removeLeadingZero(controller.phoneNumber.text)}');
 
+                        print(controller.fetchVendorExistence(
+                            '962${controller.removeLeadingZero(controller.phoneNumber.text)}'));
+
                         if (!vendorExits) {
                           controller.onSignup(type);
                         } else {

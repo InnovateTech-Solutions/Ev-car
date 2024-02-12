@@ -2,9 +2,9 @@ import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/basic_info/controller/basic_info_controller.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
+import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_partial.dart';
-import 'package:evcar/src/feature/register/model/form_model.dart';
-import 'package:evcar/src/feature/register/view/widget/widget_collectio.dart/register_form_field.dart';
+import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/vendor_account/controller/vendor_controller.dart';
 import 'package:evcar/src/feature/vendor_account/model/vendor_form_model.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
@@ -21,11 +21,19 @@ class BasicInformationWidget extends StatefulWidget {
 }
 
 class _BasicInformationWidgetState extends State<BasicInformationWidget> {
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(BasicInformationController());
-    final vendorController = Get.put(VendorController());
+  final controller = Get.put(BasicInformationController());
+  final vendorController = Get.put(VendorController());
+  final registerToken = Get.put(UserRegisterController());
+  final loginToken = Get.put(LoginController());
 
+  @override
+  void initState() {
+    controller
+        .getUserDetails(registerToken.token.value + loginToken.token.value);
+    super.initState();
+  }
+
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
           vertical: context.screenHeight * 0.01,
@@ -52,14 +60,13 @@ class _BasicInformationWidgetState extends State<BasicInformationWidget> {
                   VFormWidget(
                       vendorFormModel: VendorFormModel(
                     controller: controller.phoneNumber,
-                    enableText: false,
+                    enableText: true,
                     hintText: 'مثال : 0799393945',
                     invisible: false,
-                    validator: (phone) =>
-                        vendorController.validatePhoneNumber(phone),
+                    validator: null,
                     type: TextInputType.phone,
                     inputFormat: [
-                      LengthLimitingTextInputFormatter(10),
+                      LengthLimitingTextInputFormatter(13),
                       FilteringTextInputFormatter.digitsOnly,
                     ],
                     onTap: () {},
@@ -87,29 +94,6 @@ class _BasicInformationWidgetState extends State<BasicInformationWidget> {
                 ],
               ),
               SizedBox(height: context.screenHeight * 0.018),
-              TextWidget.vendorTextFiledLabel('الرقم السري'),
-              SizedBox(height: context.screenHeight * 0.01),
-              Obx(
-                () => FormWidget(
-                  ontap: () {
-                    vendorController.hidePassword();
-                  },
-                  formModel: FormModel(
-                    enableText: false,
-                    icon: vendorController.hide.value == true
-                        ? Icons.visibility_off_outlined
-                        : Icons.visibility_outlined,
-                    controller: controller.password,
-                    hintText: 'الرقم السري',
-                    invisible: vendorController.hide.value,
-                    validator: (password) =>
-                        vendorController.vaildPassword(password),
-                    type: TextInputType.visiblePassword,
-                    inputFormat: null,
-                    onTap: () {},
-                  ),
-                ),
-              ),
               SizedBox(height: context.screenHeight * 0.018),
               TextWidget.vendorTextFiledLabel('إسم المركز'),
               SizedBox(height: context.screenHeight * 0.01),
@@ -141,8 +125,7 @@ class _BasicInformationWidgetState extends State<BasicInformationWidget> {
                             ? 'اختر صورة'
                             : 'تم الاختيار شكر لك',
                         invisible: false,
-                        validator: (username) =>
-                            vendorController.validtionImageFiled(username),
+                        validator: null,
                         type: TextInputType.none,
                         inputFormat: [],
                         onTap: () {},
@@ -196,12 +179,13 @@ class _BasicInformationWidgetState extends State<BasicInformationWidget> {
                 child: IntroPageButton(
                     text: "تاكيد",
                     onPressed: () {
+                      controller.onUpdate(
+                          token: registerToken.token.value +
+                              loginToken.token.value,
+                          userName: controller.username.text,
+                          address: controller.address.text);
+
                       if (controller.formKey.currentState!.validate()) {
-                        print(controller.phoneNumber.text);
-                        print(controller.password.text);
-                        print(controller.username.text);
-                        print(controller.imagePath);
-                        print(controller.address.text);
                       } else {
                         print("NotValid");
                       }

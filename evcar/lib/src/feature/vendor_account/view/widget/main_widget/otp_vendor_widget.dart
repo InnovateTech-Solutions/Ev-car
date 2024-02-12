@@ -69,8 +69,8 @@ class VendorOTPwidget extends GetView<VendorOTPcontroller> {
               IntroPageButton(
                 text: 'تأكيد',
                 onPressed: () async {
-                  bool isMatchResult =
-                      await controller.isMatch(controller.otpTextediting.text);
+                  bool isMatchResult = await controller.isMatch(
+                      context, controller.otpTextediting.text);
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,
                 colorButton: AppTheme.lightAppColors.buttoncolor,
