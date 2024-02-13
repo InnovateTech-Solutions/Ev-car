@@ -4,7 +4,6 @@ import 'dart:typed_data';
 
 import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
-import 'package:evcar/src/feature/loading/loading_page.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:evcar/src/feature/vendor_map/view/page/vendor_map_page.dart';

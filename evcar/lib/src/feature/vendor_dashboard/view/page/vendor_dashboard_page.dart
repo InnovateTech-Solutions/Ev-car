@@ -1,7 +1,6 @@
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
-import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/vendor_dashboard/view/widget/main_widget/vendor_dashboard_widget.dart';
@@ -17,7 +16,6 @@ class VendorDashboardPage extends StatelessWidget {
     final registerToken = Get.put(UserRegisterController());
     final loginToken = Get.put(LoginController());
     final homeController = Get.put(HomePageController());
-    final ProfileController profileController = Get.put(ProfileController());
 
     return SafeArea(
       child: Scaffold(
@@ -38,7 +36,7 @@ class VendorDashboardPage extends StatelessWidget {
                     Icons.camera_alt,
                     color: AppTheme.lightAppColors.background,
                   ),
-                  VendorDashboardText.buttonText("إضافة إعلان")
+                  VendorDashboardText.buttonText("إضافة قطعة")
                 ],
               )),
           body: Center(

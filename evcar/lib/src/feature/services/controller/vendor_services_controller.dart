@@ -4,7 +4,6 @@ import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.da
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/tagData.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -119,6 +118,15 @@ class VendorServiceaController extends GetxController {
 
       if (response.statusCode == 201) {
         final responseData = json.decode(response.body);
+        Get.snackbar("Success", "Data Updated Successfully",
+            titleText: Align(
+              alignment: Alignment.topRight, // Set your desired alignment
+              child: searchsec('تم التعديل بنجاح '),
+            ),
+            snackStyle: SnackStyle.FLOATING,
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.white,
+            backgroundColor: Colors.green);
         print('Updated user details: $responseData');
         // Assuming you want to update UI with the new data, you can put your UI update logic here
       } else {
@@ -205,18 +213,21 @@ class VendorServiceaController extends GetxController {
           await putVendorServiceDetails(
               token: token, description: description, serviceList: serviceIDS);
           // Show success message
-          Get.snackbar("Success", "Service Added Successfully",
-              titleText: Align(
-                alignment: Alignment.bottomCenter,
-                child: searchsec('تمت الإضافة بنجاح'),
-              ));
         } catch (error) {
           // Handle error from putVendorServiceDetails
-          Get.snackbar("Error", "Failed to add service: $error",
+          Get.snackbar("ERROR", "Invalid Data",
               titleText: Align(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.topRight, // Set your desired alignment
                 child: searchsec('حدث خطأ'),
-              ));
+              ),
+              messageText: Align(
+                alignment: Alignment.topRight, // Set your desired alignment
+                child: searchsec('رمز ال OTP خطأ'),
+              ),
+              snackStyle: SnackStyle.FLOATING,
+              snackPosition: SnackPosition.BOTTOM,
+              colorText: Colors.white,
+              backgroundColor: Colors.red);
         }
       } else {
         // Show error for empty description

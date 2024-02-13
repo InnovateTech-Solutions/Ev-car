@@ -1,9 +1,9 @@
 import 'dart:convert';
+
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
-import 'package:evcar/src/feature/services/controller/vendor_services_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;

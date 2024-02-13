@@ -100,7 +100,7 @@ class _VendorServicesWidgetState extends State<VendorServicesWidget> {
                         Obx(
                           () => TextWidget.vendorTextFiledLabel(
                               controller.title.value == ""
-                                  ? 'إسم الخدمه'
+                                  ? 'اضف خدمة'
                                   : controller.title.value),
                         ),
                         Icon(

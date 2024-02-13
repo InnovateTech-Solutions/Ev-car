@@ -1,4 +1,3 @@
-import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
@@ -114,10 +113,8 @@ class VendorLoginWidget extends StatelessWidget {
               ),
               SizedBox(height: 0.020 * context.screenHeight),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  LoginText.forgetPassword('هل نسيت كلمة السر ؟',
-                      () => Get.toNamed(AppRoutes.forgetPassword)),
                   LoginText.forgetPassword(
                       'مستخدم', () => Get.to(VendorLoginPage()))
                 ],

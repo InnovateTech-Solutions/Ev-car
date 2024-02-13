@@ -26,7 +26,7 @@ class AllProductWidget extends StatelessWidget {
                     List<Product> list = snapshot.data!;
 
                     return SizedBox(
-                      height: context.screenHeight * 0.15 * list.length,
+                      height: context.screenHeight * 0.145 * list.length,
                       child: ListView.separated(
                         scrollDirection: Axis.vertical,
                         itemCount: list.length,
