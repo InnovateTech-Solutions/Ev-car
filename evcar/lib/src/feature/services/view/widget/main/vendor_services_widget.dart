@@ -5,10 +5,10 @@ import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/services/controller/vendor_services_controller.dart';
+import 'package:evcar/src/feature/services/view/test_view.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/add_service_widget.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/service_form.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
-import 'package:evcar/src/feature/vendor_account/view/widget/widget_collection/service_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +23,7 @@ class _VendorServicesWidgetState extends State<VendorServicesWidget> {
   final controller = Get.put(VendorServiceaController());
   final registerToken = Get.put(UserRegisterController());
   final loginToken = Get.put(LoginController());
-
+  final selectServiceController = Get.put(SelectServiceController());
   @override
   void initState() {
     controller
@@ -71,38 +71,15 @@ class _VendorServicesWidgetState extends State<VendorServicesWidget> {
                 SizedBox(height: context.screenHeight * 0.018),
                 Obx(
                   () => SizedBox(
-                    height: controller.serviceIsEmpty.value
-                        ? null
-                        : context.screenHeight * 0.15,
-                    child: ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: (controller.serviceList.length),
-                      itemBuilder: (context, index) {
-                        final startIndex = index * 3;
-
-                        return Row(
-                          children: List.generate(3, (i) {
-                            if (startIndex + i <
-                                controller.serviceList.length) {
-                              final service =
-                                  controller.serviceList[startIndex + i];
-                              return Container(
-                                margin: EdgeInsets.all(
-                                    context.screenHeight * 0.002),
-                                child: ServiceContainer(
-                                  service: service,
-                                  callback: () =>
-                                      controller.isSelectedService(service),
-                                ),
-                              );
-                            } else {
-                              return Expanded(child: SizedBox.shrink());
-                            }
-                          }),
-                        );
-                      },
-                    ),
-                  ),
+                      height: controller.serviceIsEmpty.value
+                          ? null
+                          : context.screenHeight * 0.15,
+                      child: Obx(
+                        () => SelectServiceWidget(
+                          token: registerToken.token.value +
+                              loginToken.token.value,
+                        ),
+                      )),
                 ),
                 SizedBox(height: context.screenHeight * 0.018),
                 GestureDetector(
@@ -154,7 +131,8 @@ class _VendorServicesWidgetState extends State<VendorServicesWidget> {
                     onPressed: () {
                       controller.addService(
                           registerToken.token.value + loginToken.token.value,
-                          controller.description.text);
+                          controller.description.text,
+                          selectServiceController.serviceID);
                     },
                     colorText: AppTheme.lightAppColors.mainTextcolor,
                     colorButton: AppTheme.lightAppColors.buttoncolor)

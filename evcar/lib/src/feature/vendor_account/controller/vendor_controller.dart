@@ -331,7 +331,8 @@ class VendorController extends GetxController {
             tags: serviceID,
             description: description.text,
             status: 'Pending',
-            id: ''));
+            id: '',
+            rating: ''));
 
         //  print(vendor.title);
         //  print(vendor.subtitle);
