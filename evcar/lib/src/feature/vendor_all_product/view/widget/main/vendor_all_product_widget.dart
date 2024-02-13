@@ -1,3 +1,4 @@
+import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
 import 'package:evcar/src/feature/vendor_all_product/controller/vendor_all_peoduct_controller.dart';
@@ -6,20 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VendorAllProductWidget extends StatelessWidget {
-  const VendorAllProductWidget({super.key});
-
+  const VendorAllProductWidget({super.key, required this.id});
+  final String id;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(VendorAllProductController());
     return Container(
       margin: EdgeInsets.all(10),
       child: FutureBuilder<Map<String, dynamic>>(
-        future: controller.fetchData(),
+        future: controller.fetchData(id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return Center(
+                child: TextWidget.subVendorText('There Is No Product'));
           } else {
             final data = snapshot.data!;
             return ListView.builder(
@@ -37,7 +39,7 @@ class VendorAllProductWidget extends StatelessWidget {
                         category,
                       ),
                     ),
-                    ListView.builder(
+                    ListView.separated(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: products.length,
@@ -51,6 +53,11 @@ class VendorAllProductWidget extends StatelessWidget {
                             price: product['price'],
                             description: product['description'],
                           ),
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return SizedBox(
+                          height: context.screenHeight * 0.05,
                         );
                       },
                     ),

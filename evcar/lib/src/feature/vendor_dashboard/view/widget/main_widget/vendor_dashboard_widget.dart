@@ -38,7 +38,9 @@ class VendorDashboardWidget extends StatelessWidget {
           widget: SvgPicture.asset("assets/vendor/product.svg"),
           title: "قطع الغيار والاكسسورات",
           onTap: () {
-            Get.to(AllProductPage());
+            Get.to(AllProductPage(
+              id: '',
+            ));
           }),
     ];
     return Container(

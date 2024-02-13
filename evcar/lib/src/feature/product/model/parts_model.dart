@@ -33,7 +33,7 @@ class Product {
 class VendorProduct {
   final String id;
   final String title;
-  final List<String> img;
+  final List<dynamic> img;
   final String description;
   final String price;
 
@@ -49,7 +49,7 @@ class VendorProduct {
     return VendorProduct(
       id: json['_id'],
       title: json['title'] ?? '',
-      img: List<String>.from(json['img'] ?? []),
+      img: List<dynamic>.from(json['img'] ?? []),
       price: json['price'] ?? '',
       description: json['description'] ?? '',
     );
