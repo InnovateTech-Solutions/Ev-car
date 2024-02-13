@@ -62,7 +62,8 @@ class TopRated extends StatelessWidget {
                         child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              MaintenanceText.shopMainText(shopModel.title),
+                              MaintenanceText.shopMainText(
+                                  shortenText(shopModel.title)),
                               SizedBox(
                                 height: context.screenHeight * 0.01,
                               ),
@@ -74,7 +75,7 @@ class TopRated extends StatelessWidget {
                               Row(
                                 children: [
                                   MaintenanceText.addressText(
-                                      shortenText(shopModel.address)),
+                                      addressshortenText(shopModel.address)),
                                   const Spacer(),
                                   Icon(
                                     Icons.star,
@@ -93,6 +94,14 @@ class TopRated extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String addressshortenText(String text, {int maxLength = 7}) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
   }
 
   String ratingshortenText(String text, {int maxLength = 3}) {

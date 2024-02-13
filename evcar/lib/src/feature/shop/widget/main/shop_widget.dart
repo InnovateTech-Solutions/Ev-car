@@ -7,7 +7,6 @@ import 'package:evcar/src/feature/review/controller/rating_controller.dart';
 import 'package:evcar/src/feature/review/view/page/review_page.dart';
 import 'package:evcar/src/feature/shop/widget/rating/shop_type_widget.dart';
 import 'package:evcar/src/feature/shop/widget/widget_collection.dart/accessories_widget.dart';
-import 'package:evcar/src/feature/shop/widget/widget_collection.dart/shop_product_widget.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -113,17 +112,9 @@ class ShopWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.02,
           ),
-          ProductText.headerText("قطع غيار السيارات"),
-          ShopProductWidget(
-            vendorId: shopModel.id ?? '',
-            phone: shopModel.number,
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.width * 0.02,
-          ),
           ProductText.headerText("إكسسوارات السيارات"),
           AccessoriesWidget(
-            vendorId: shopModel.id,
+            id: shopModel.id,
             phone: shopModel.number,
           )
         ]),

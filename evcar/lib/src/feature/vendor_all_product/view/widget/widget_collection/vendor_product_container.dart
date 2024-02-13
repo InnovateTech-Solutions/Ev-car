@@ -3,7 +3,10 @@ import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/maintenance/widget/maintenance_partial/parts/most_wanted_container.dart';
 import 'package:evcar/src/feature/maintenance/widget/text/maintenance_text.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
+import 'package:evcar/src/feature/vendor_all_product/view/widget/widget_collection/delete_dialog.dart';
+import 'package:evcar/src/feature/vendor_all_product/view/widget/widget_collection/edit_product.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class VendorProductContainer extends StatelessWidget {
   const VendorProductContainer({super.key, required this.partsModel});
@@ -24,8 +27,33 @@ class VendorProductContainer extends StatelessWidget {
             horizontal: context.screenWidth * 0.03),
         child: Stack(
           children: [
-            Align(alignment: Alignment.topLeft, child: Icon(Icons.delete)),
-            Align(alignment: Alignment.centerLeft, child: Icon(Icons.edit)),
+            Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                  onPressed: () {
+                    Get.dialog(DeleteDialog(
+                      id: partsModel.id,
+                    ));
+                  },
+                  icon: Icon(Icons.delete),
+                )),
+            Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  onPressed: () {
+                    Get.dialog(EditProduct(
+                      product: Product(
+                          id: partsModel.id,
+                          title: partsModel.title,
+                          img: partsModel.img,
+                          price: partsModel.price,
+                          description: partsModel.description,
+                          typeOfProduct: '',
+                          vendor: ''),
+                    ));
+                  },
+                  icon: Icon(Icons.edit),
+                )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -58,24 +86,6 @@ class VendorProductContainer extends StatelessWidget {
                     )
                   ],
                 ),
-                // SizedBox(
-                //   height: context.screenHeight * 0.1,
-                //   width: context.screenHeight * 0.1,
-                //   child: ListView.builder(
-                //       itemCount: 1,
-                //       itemBuilder: ((context, index) {
-                //         return Container(
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(10),
-                //             color: AppTheme.lightAppColors.background,
-                //           ),
-                //           child: Image.network(
-                //             partsModel.img[index],
-                //             fit: BoxFit.cover,
-                //           ),
-                //         );
-                //       })),
-                // ),
               ],
             ),
           ],

@@ -87,14 +87,12 @@ class BasicInformationController extends GetxController {
       if (response.statusCode == 201) {
         final responseData = json.decode(response.body);
         print('Updated user details: $responseData');
-        // Assuming you want to update UI with the new data, you can put your UI update logic here
       } else {
         throw Exception(
             'Failed to update user details: ${response.statusCode}');
       }
     } catch (e) {
       print('Error: $e');
-      // Show error message to the user using SnackBar
     }
   }
 

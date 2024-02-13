@@ -78,7 +78,7 @@ class accessoriesContainer extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .005,
                   ),
-                  ProductText.similarSecText(product.vendor),
+                  ProductText.similarSecText(product.description),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .005,
                   ),

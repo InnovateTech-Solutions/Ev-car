@@ -67,7 +67,8 @@ class MaintenanceShopCard extends StatelessWidget {
                 MobileChargerText.mainText(shortenText(
                   model.title,
                 )),
-                MobileChargerText.thirdText(model.subtitle),
+                MobileChargerText.thirdText(
+                    discriptionhortenText(model.subtitle)),
                 SizedBox(height: 0.01 * context.screenHeight),
                 Spacer(),
                 MobileChargerButton(
@@ -104,6 +105,14 @@ class MaintenanceShopCard extends StatelessWidget {
   }
 }
 
+String discriptionhortenText(String text, {int maxLength = 20}) {
+  if (text.length <= maxLength) {
+    return text;
+  } else {
+    return '${text.substring(0, maxLength)}...';
+  }
+}
+
 String ratingshortenText(String text, {int maxLength = 3}) {
   if (text.length <= maxLength) {
     return text;
@@ -112,7 +121,7 @@ String ratingshortenText(String text, {int maxLength = 3}) {
   }
 }
 
-String shortenText(String text, {int maxLength = 10}) {
+String shortenText(String text, {int maxLength = 15}) {
   if (text.length <= maxLength) {
     return text;
   } else {
