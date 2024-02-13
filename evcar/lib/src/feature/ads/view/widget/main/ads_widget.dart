@@ -114,27 +114,8 @@ class AdsWidget extends StatelessWidget {
                   colorButton: Color(0xffCA7A02),
                   text: 'حفظ ونشر ',
                   onPressed: () {
-                    if (controller.fromKey.currentState!.validate()) {
-                      controller.addAds(
-                          registerToken.token.value + loginToken.token.value);
-                      print(controller.imageUrlList.length);
-                      print(controller.adsName.text);
-                      print(controller.description.text);
-                      print(controller.phone.text);
-                      print(controller.price.text);
-                      print(controller.TypeValue.text);
-                      print(controller.driveValue);
-                      // controller.imageUrlList.clear();
-                    } else {
-                      Get.snackbar(
-                        "ERROR",
-                        "Invalid Data",
-                        titleText: Align(
-                          alignment:
-                              Alignment.topRight, // Set your desired alignment
-                        ),
-                      );
-                    }
+                    controller.addAds(
+                        registerToken.token.value + loginToken.token.value);
                   },
                   colorText: AppTheme.lightAppColors.mainTextcolor,
                 )

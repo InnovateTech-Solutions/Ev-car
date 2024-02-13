@@ -119,23 +119,40 @@ class AdsController extends GetxController {
 
           if (response.statusCode == 201) {
             print(json.decode(response.body));
+            Get.snackbar("Success", " Added Product successfully",
+                titleText: Align(
+                  alignment: Alignment.topRight, // Set your desired alignment
+                  child: searchsec('تم اضافة القطعة '),
+                ),
+                snackStyle: SnackStyle.FLOATING,
+                snackPosition: SnackPosition.BOTTOM,
+                colorText: Colors.white,
+                backgroundColor: Colors.green);
           } else {
             throw Exception('Failed to load data');
           }
         } else {
           Get.snackbar("ERROR", "Invalid Data",
               titleText: Align(
-                alignment: Alignment.bottomCenter,
-                child: searchsec('حدثsd خطأ'),
-              ));
+                alignment: Alignment.topRight, // Set your desired alignment
+                child: searchsec('حدث خطأ'),
+              ),
+              snackStyle: SnackStyle.FLOATING,
+              snackPosition: SnackPosition.BOTTOM,
+              colorText: Colors.white,
+              backgroundColor: Colors.red);
         }
       }
     } else {
       Get.snackbar("ERROR", "Invalid Data",
           titleText: Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.topRight, // Set your desired alignment
             child: searchsec('حدث خطأ'),
-          ));
+          ),
+          snackStyle: SnackStyle.FLOATING,
+          snackPosition: SnackPosition.TOP,
+          colorText: Colors.white,
+          backgroundColor: Colors.red);
     }
   }
 
