@@ -1,4 +1,3 @@
-import 'package:evcar/src/feature/google_map/view/pages/google_map_page.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:evcar/src/feature/on_board/view/pages/onboard_page.dart';

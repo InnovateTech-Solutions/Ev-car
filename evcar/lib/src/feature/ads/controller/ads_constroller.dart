@@ -1,9 +1,11 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
 class AdsController extends GetxController {
@@ -111,5 +113,35 @@ class AdsController extends GetxController {
             child: searchsec('حدث خطأ'),
           ));
     }
+  }
+
+  var typeList = [].obs; // Observable list to hold product types
+
+  @override
+  void onInit() {
+    super.onInit();
+    fetchProductTypes();
+  }
+
+  // Function to fetch product types from the API
+  Future<void> fetchProductTypes() async {
+    try {
+      final response = await http.get(Uri.parse(
+          'https://adventurous-yak-pajamas.cyclic.app/typeOfProducts/getAllTypeOfProducts'));
+      if (response.statusCode == 200) {
+        final List<dynamic> types = json.decode(response.body);
+        updateTypeList(types);
+      } else {
+        throw Exception('Failed to fetch product types');
+      }
+    } catch (e) {
+      print('Error fetching product types: $e');
+    }
+  }
+
+  // Method to update the list of product types
+  void updateTypeList(List<dynamic> newTypes) {
+    typeList.clear(); // Clear the existing list
+    typeList.addAll(newTypes); // Add new types to the list
   }
 }

@@ -61,7 +61,7 @@ class MostWantedContainer extends StatelessWidget {
                     height: MediaQuery.of(context).size.height * .02,
                   ),
                   MaintenanceText.orderPriceText(
-                    partsModel.price + "دينار",
+                    partsModel.price + "  دينار ",
                   )
                 ],
               ),
@@ -101,7 +101,7 @@ class MostWantedContainer extends StatelessWidget {
   }
 }
 
-String shortenText(String text, {int maxLength = 15}) {
+String shortenText(String text, {int maxLength = 25}) {
   if (text.length <= maxLength) {
     return text;
   } else {

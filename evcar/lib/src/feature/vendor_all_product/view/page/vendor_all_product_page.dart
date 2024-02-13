@@ -23,9 +23,7 @@ class AllProductPage extends StatelessWidget {
               color: AppTheme.lightAppColors.background,
             )),
         appBar: detailAppBar("القطع والاكسسوارات"),
-        body: VendorAllProductWidget(
-          id: id,
-        ),
+        body: VendorAllProductWidget(),
       ),
     );
   }

@@ -122,7 +122,7 @@ class ReviewWidget extends StatelessWidget {
           Obx(() {
             if (controller.isPostReviewed(shopModel.id)) {
               return IntroPageButton(
-                  text: "اضافة اعلان",
+                  text: "اضافة تقييم",
                   onPressed: () {
                     Get.dialog(RatingDialog(
                       image: shopModel.img,

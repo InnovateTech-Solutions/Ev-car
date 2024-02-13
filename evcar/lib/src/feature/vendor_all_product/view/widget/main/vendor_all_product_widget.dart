@@ -1,5 +1,7 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
+import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
 import 'package:evcar/src/feature/vendor_all_product/controller/vendor_all_peoduct_controller.dart';
 import 'package:evcar/src/feature/vendor_all_product/view/widget/widget_collection/vendor_product_container.dart';
@@ -7,15 +9,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VendorAllProductWidget extends StatelessWidget {
-  const VendorAllProductWidget({super.key, required this.id});
-  final String id;
+  const VendorAllProductWidget({
+    super.key,
+  });
+
   @override
   Widget build(BuildContext context) {
+    final registerToken = Get.put(UserRegisterController());
+    final loginToken = Get.put(LoginController());
     final controller = Get.put(VendorAllProductController());
     return Container(
       margin: EdgeInsets.all(10),
       child: FutureBuilder<Map<String, dynamic>>(
-        future: controller.fetchData(id),
+        future: controller
+            .fetchDataToken(registerToken.token.value + loginToken.token.value),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
