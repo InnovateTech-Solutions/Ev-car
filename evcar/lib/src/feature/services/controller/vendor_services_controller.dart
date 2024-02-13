@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/tagData.dart';
+import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-
-import '../../vendor_account/model/vednor_model.dart';
 
 class VendorServiceaController extends GetxController {
   RxBool isClicked = false.obs;
@@ -251,6 +251,7 @@ class VendorServiceaController extends GetxController {
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
       final Vendor vendor = Vendor.fromMap(responseData);
+
       serviceID = vendor.tags;
 
       description.text = vendor.description;

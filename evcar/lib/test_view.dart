@@ -39,10 +39,12 @@ class CombinedServiceModel {
 }
 
 class SelectServiceWidget extends StatefulWidget {
-  const SelectServiceWidget({required this.token, super.key});
   final String token;
+
+  SelectServiceWidget({required this.token, super.key});
+
   @override
-  State<SelectServiceWidget> createState() => _SelectServiceWidgetState();
+  _SelectServiceWidgetState createState() => _SelectServiceWidgetState();
 }
 
 class _SelectServiceWidgetState extends State<SelectServiceWidget> {
@@ -54,13 +56,13 @@ class _SelectServiceWidgetState extends State<SelectServiceWidget> {
 
   @override
   void initState() {
-    controller.getUserDetails(widget.token);
+    controller.getVendorServiceDetails(widget.token);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return SelectService();
+    return SelectService(); // UniqueKey() will ensure the widget is recreated
   }
 
   Obx SelectService() {
@@ -98,11 +100,11 @@ class SelectServiceController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    fetchData();
+    fetchAllTagsData();
     // Replace "token" with actual token
   }
 
-  Future<void> fetchData() async {
+  Future<void> fetchAllTagsData() async {
     try {
       final response = await http.get(Uri.parse(
           'https://adventurous-yak-pajamas.cyclic.app/tags/getalltags'));
@@ -118,7 +120,7 @@ class SelectServiceController extends GetxController {
     }
   }
 
-  Future<void> getUserDetails(String token) async {
+  Future<void> getVendorServiceDetails(String token) async {
     final response = await http.get(
       Uri.parse(
           'https://adventurous-yak-pajamas.cyclic.app/vendors/getVendorDetails'),
@@ -144,17 +146,6 @@ class SelectServiceController extends GetxController {
         name: service.name,
         existsInBoth: existsInBoth,
       ));
-    }
-
-    for (String id in serviceID) {
-      bool existsInServiceList = serviceList.any((service) => service.id == id);
-      if (!existsInServiceList) {
-        combinedList.add(CombinedServiceModel(
-          id: id,
-          name: "Unknown",
-          existsInBoth: false,
-        ));
-      }
     }
 
     return combinedList;

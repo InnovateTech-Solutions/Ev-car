@@ -5,7 +5,7 @@ import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/services/controller/vendor_services_controller.dart';
-import 'package:evcar/src/feature/services/view/test_view.dart';
+import 'package:evcar/test_view.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/add_service_widget.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/service_form.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
