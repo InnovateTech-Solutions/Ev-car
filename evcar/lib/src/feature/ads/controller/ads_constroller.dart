@@ -13,14 +13,13 @@ class AdsController extends GetxController {
   final adsName = TextEditingController();
   final price = TextEditingController();
   final phone = TextEditingController();
+  final TypeValue = TextEditingController();
   final description = TextEditingController();
   final fromKey = GlobalKey<FormState>();
   Rx<File?> image = Rx<File?>(null);
 
   final RegExp _priceRegex = RegExp(r'^\d+(\.\d{1,2})?$');
   //type
-  var TypeValue = "x".obs;
-  List<String> TypeList = ['x', 'Option 2', 'Option 3', 'Option 4'];
   //type
   var categoryValue = "عروض".obs;
   List<String> categoryList = [
@@ -79,8 +78,8 @@ class AdsController extends GetxController {
           ? adsImage[index] = File(pickedFile.path)
           : adsImage.add(File(pickedFile.path));
     }
-    // print(adsImage);
-    // print(adsImage.length);
+    print(adsImage);
+    print(adsImage.length);
   }
 
   Future<void> addFile() async {
@@ -88,23 +87,48 @@ class AdsController extends GetxController {
       Reference storageReference = FirebaseStorage.instance
           .ref()
           .child('images')
-          .child('filename${i + 1}.jpg');
-      await storageReference.putFile(File(adsImage[i].path));
+          .child('filename${adsName.text}.jpg');
+      final xx = await storageReference.putFile(File(adsImage[i].path));
       String imageUrl = await storageReference.getDownloadURL();
       imageUrlList.add(imageUrl);
-      print(imageUrlList[i]);
+      print(xx);
     }
   }
 
-  Future<void> addAds() async {
+  Future<void> addAds(String token) async {
     if (fromKey.currentState!.validate()) {
-      if (imageUrlList.isNotEmpty) {
-      } else {
-        Get.snackbar("ERROR", "Invalid Data",
-            titleText: Align(
-              alignment: Alignment.bottomCenter,
-              child: searchsec('حدث خطأ'),
-            ));
+      if (adsImage.isNotEmpty) {
+        await addFile();
+        if (imageUrlList.isNotEmpty) {
+          final response = await http.post(
+              Uri.parse(
+                  'https://adventurous-yak-pajamas.cyclic.app/vendors/addVendorProduct'),
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer $token',
+              },
+              body: json.encode(
+                {
+                  "title": adsName.text,
+                  "img": imageUrlList,
+                  "description": description.text,
+                  "typeOfProduct": TypeValue.text,
+                  "price": price.text
+                },
+              ));
+
+          if (response.statusCode == 201) {
+            print(json.decode(response.body));
+          } else {
+            throw Exception('Failed to load data');
+          }
+        } else {
+          Get.snackbar("ERROR", "Invalid Data",
+              titleText: Align(
+                alignment: Alignment.bottomCenter,
+                child: searchsec('حدثsd خطأ'),
+              ));
+        }
       }
     } else {
       Get.snackbar("ERROR", "Invalid Data",

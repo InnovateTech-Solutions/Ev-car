@@ -6,6 +6,8 @@ import 'package:evcar/src/feature/ads/view/widget/widget_collection/ads_image.da
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/drive_widget.dart';
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/type_widget.dart';
 import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button.dart';
+import 'package:evcar/src/feature/login/controller/login_controller.dart';
+import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,6 +18,8 @@ class AdsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final registerToken = Get.put(UserRegisterController());
+    final loginToken = Get.put(LoginController());
     final controller = Get.put(AdsController());
 
     return Container(
@@ -111,13 +115,16 @@ class AdsWidget extends StatelessWidget {
                   text: 'حفظ ونشر ',
                   onPressed: () {
                     if (controller.fromKey.currentState!.validate()) {
-                      print(controller.adsImage.length);
+                      controller.addAds(
+                          registerToken.token.value + loginToken.token.value);
+                      print(controller.imageUrlList.length);
                       print(controller.adsName.text);
                       print(controller.description.text);
                       print(controller.phone.text);
                       print(controller.price.text);
-                      print(controller.TypeValue);
+                      print(controller.TypeValue.text);
                       print(controller.driveValue);
+                      // controller.imageUrlList.clear();
                     } else {
                       Get.snackbar(
                         "ERROR",

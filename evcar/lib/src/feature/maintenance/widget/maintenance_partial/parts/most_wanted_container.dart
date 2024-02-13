@@ -22,7 +22,7 @@ class MostWantedContainer extends StatelessWidget {
         );
       },
       child: Container(
-        height: MediaQuery.of(context).size.height * .14,
+        height: context.screenHeight * .14,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           border: Border.all(

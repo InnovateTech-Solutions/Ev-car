@@ -15,7 +15,7 @@ class AdsImage extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.only(
-          right: context.screenWidth * 0.03, top: context.screenHeight * 0.04),
+          right: context.screenWidth * 0.03, top: context.screenHeight * 0.02),
       width: context.screenWidth,
       height: context.screenHeight * 0.25,
       decoration: BoxDecoration(

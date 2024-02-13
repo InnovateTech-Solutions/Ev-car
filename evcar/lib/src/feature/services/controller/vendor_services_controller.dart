@@ -205,18 +205,21 @@ class VendorServiceaController extends GetxController {
           await putVendorServiceDetails(
               token: token, description: description, serviceList: serviceIDS);
           // Show success message
-          Get.snackbar("Success", "Service Added Successfully",
-              titleText: Align(
-                alignment: Alignment.bottomCenter,
-                child: searchsec('تمت الإضافة بنجاح'),
-              ));
         } catch (error) {
           // Handle error from putVendorServiceDetails
-          Get.snackbar("Error", "Failed to add service: $error",
+          Get.snackbar("ERROR", "Invalid Data",
               titleText: Align(
-                alignment: Alignment.bottomCenter,
+                alignment: Alignment.topRight, // Set your desired alignment
                 child: searchsec('حدث خطأ'),
-              ));
+              ),
+              messageText: Align(
+                alignment: Alignment.topRight, // Set your desired alignment
+                child: searchsec('رمز ال OTP خطأ'),
+              ),
+              snackStyle: SnackStyle.FLOATING,
+              snackPosition: SnackPosition.BOTTOM,
+              colorText: Colors.white,
+              backgroundColor: Colors.red);
         }
       } else {
         // Show error for empty description

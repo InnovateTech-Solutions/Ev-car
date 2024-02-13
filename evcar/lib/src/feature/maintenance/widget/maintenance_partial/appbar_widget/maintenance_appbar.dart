@@ -46,9 +46,6 @@ class _MaintenanceAppBarState extends State<MaintenanceAppBar> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      MaintenanceText.appBarSecText(
-                        'صباح الخير,',
-                      ),
                       MaintenanceText.appBarMainText(snapshot.data!.username),
                     ],
                   ),
