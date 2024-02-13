@@ -321,21 +321,19 @@ class VendorController extends GetxController {
         print("the imag  $licenceUrl"); // licence
         print("the image $imageUrl"); // store img
         await registerVendor(Vendor(
-          title: username.text,
-          subtitle: subTitle.text,
-          img: imageUrl,
-          address: address.text,
-          number: '962${removeLeadingZero(phoneNumber.text)}',
-          commercialLicense: licenceUrl,
-          password: password.text,
-          type: type,
-          tags: serviceID,
-          description: description.text,
-          status: 'Pending',
-          id: '',
-        ));
-        Get.to(
-            LoadingPage(number: '962${removeLeadingZero(phoneNumber.text)}'));
+            title: username.text,
+            subtitle: subTitle.text,
+            img: imageUrl,
+            address: address.text,
+            number: '962${removeLeadingZero(phoneNumber.text)}',
+            commercialLicense: licenceUrl,
+            password: password.text,
+            type: type,
+            tags: serviceID,
+            description: description.text,
+            status: 'Pending',
+            id: ''));
+
         //  print(vendor.title);
         //  print(vendor.subtitle);
         //  print(vendor.description);

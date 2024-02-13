@@ -23,8 +23,7 @@ class VendorServiceaController extends GetxController {
   final dialogKey = GlobalKey<FormState>();
   RxBool serviceIsEmpty = false.obs;
   RxList<ServiceModel> serviceList = <ServiceModel>[].obs;
-    RxList<TagData> serviceList1 = <TagData>[].obs;
-
+  RxList<TagData> serviceList1 = <TagData>[].obs;
 
   List<String> services = [
     'فحص البطارية',
@@ -38,6 +37,7 @@ class VendorServiceaController extends GetxController {
   void onInit() {
     super.onInit();
     fetchData();
+    fetchVendorTags();
   }
 
   String? validatePhoneNumber(String? phoneNumber) {
@@ -90,6 +90,7 @@ class VendorServiceaController extends GetxController {
     print("The value: ${service.isTaped.value}, ${service.name}");
     print(serviceName);
     print(serviceID);
+
     update();
   }
 
@@ -110,7 +111,10 @@ class VendorServiceaController extends GetxController {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
         },
-        body: json.encode({"tags": serviceList, "description": description}),
+        body: json.encode({
+          "tags": serviceList,
+          "description": description,
+        }),
       );
 
       if (response.statusCode == 201) {
@@ -138,20 +142,20 @@ class VendorServiceaController extends GetxController {
   }
 
   Future<void> fetchVendorTags() async {
-  try {
-    final response = await http.get(Uri.parse('http://localhost:3000/vendors/allVendorTags/65bac6f821e1dbf0671b8298'));
-    print(response.body);
-    if (response.statusCode == 200) {
-
-      final List<dynamic> data = json.decode(response.body)['tags'];
-      serviceList1.assignAll(data.map((item) => TagData.fromJson(item)));
-    } else {
-      throw Exception('Failed to load data');
+    try {
+      final response = await http.get(Uri.parse(
+          'https://adventurous-yak-pajamas.cyclic.app/vendors/allVendorTags/65bac6f821e1dbf0671b8298'));
+      print(" ttttyty ${response.body}");
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body)['tags'];
+        serviceList1.assignAll(data.map((item) => TagData.fromJson(item)));
+      } else {
+        throw Exception('Failed to load data');
+      }
+    } catch (e) {
+      print('Error fetching data: $e');
     }
-  } catch (e) {
-    print('Error fetching data: $e');
   }
-}
 
   Future<void> addNewService() async {
     if (dialogKey.currentState!.validate()) {
@@ -192,13 +196,14 @@ class VendorServiceaController extends GetxController {
     }
   }
 
-  Future<void> addService(String token, String description) async {
+  Future<void> addService(
+      String token, String description, List<String> serviceIDS) async {
     if (vendorKey.currentState!.validate()) {
       if (description.isNotEmpty) {
         try {
           // Attempt to add service
           await putVendorServiceDetails(
-              token: token, description: description, serviceList: serviceID);
+              token: token, description: description, serviceList: serviceIDS);
           // Show success message
           Get.snackbar("Success", "Service Added Successfully",
               titleText: Align(
