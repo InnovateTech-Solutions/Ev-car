@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/vendor_account/model/service_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/tagData.dart';
@@ -36,7 +37,7 @@ class VendorServiceaController extends GetxController {
   void onInit() {
     super.onInit();
     fetchData();
-    fetchVendorTags();
+    //   fetchVendorTags();
   }
 
   String? validatePhoneNumber(String? phoneNumber) {
@@ -53,8 +54,7 @@ class VendorServiceaController extends GetxController {
 
   Future<void> fetchData() async {
     try {
-      final response = await http.get(Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/tags/getalltags'));
+      final response = await http.get(Uri.parse(ApiKey.fetchTags));
       print(response.body);
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
@@ -105,7 +105,7 @@ class VendorServiceaController extends GetxController {
       required String description}) async {
     try {
       final response = await http.put(
-        Uri.parse('https://adventurous-yak-pajamas.cyclic.app/vendors/update'),
+        Uri.parse(ApiKey.putVendorDetails),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -149,28 +149,27 @@ class VendorServiceaController extends GetxController {
     }
   }
 
-  Future<void> fetchVendorTags() async {
-    try {
-      final response = await http.get(Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/allVendorTags/65bac6f821e1dbf0671b8298'));
-      print(" ttttyty ${response.body}");
-      if (response.statusCode == 200) {
-        final List<dynamic> data = json.decode(response.body)['tags'];
-        serviceList1.assignAll(data.map((item) => TagData.fromJson(item)));
-      } else {
-        throw Exception('Failed to load data');
-      }
-    } catch (e) {
-      print('Error fetching data: $e');
-    }
-  }
+  // Future<void> fetchVendorTags(String id) async {
+  //   try {
+  //     final response = await http.get(Uri.parse(
+  //         'https://adventurous-yak-pajamas.cyclic.app/vendors/allVendorTags/$Id'));
+  //     print(" ttttyty ${response.body}");
+  //     if (response.statusCode == 200) {
+  //       final List<dynamic> data = json.decode(response.body)['tags'];
+  //       serviceList1.assignAll(data.map((item) => TagData.fromJson(item)));
+  //     } else {
+  //       throw Exception('Failed to load data');
+  //     }
+  //   } catch (e) {
+  //     print('Error fetching data: $e');
+  //   }
+  // }
 
   Future<void> addNewService() async {
     if (dialogKey.currentState!.validate()) {
       title.value = newService.text;
       servicesList.add(newService.text);
-      var url = Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/suggestions/create');
+      var url = Uri.parse(ApiKey.addNewService);
 
       var requestBody = jsonEncode(
           {"description": description.text, "vendorNumber": phoneNumber.text});
@@ -250,8 +249,7 @@ class VendorServiceaController extends GetxController {
   Future<Vendor> getUserDetails(String token) async {
     print(token);
     final response = await http.get(
-      Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/getVendorDetails'),
+      Uri.parse(ApiKey.getVendorDetails),
       headers: {
         'Authorization': 'Bearer  $token',
       },

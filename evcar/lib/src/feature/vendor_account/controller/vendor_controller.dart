@@ -187,8 +187,7 @@ class VendorController extends GetxController {
 
   Future<void> fetchData() async {
     try {
-      final response = await http.get(Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/tags/getalltags'));
+      final response = await http.get(Uri.parse(ApiKey.fetchTags));
 
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
@@ -202,8 +201,7 @@ class VendorController extends GetxController {
   }
 
   Future<void> registerVendor(Vendor vendor) async {
-    final String apiUrl =
-        'https://adventurous-yak-pajamas.cyclic.app/vendorAuth/register';
+    final String apiUrl = ApiKey.registerVendor;
 
     var requestBody = jsonEncode(vendor.toJson());
 

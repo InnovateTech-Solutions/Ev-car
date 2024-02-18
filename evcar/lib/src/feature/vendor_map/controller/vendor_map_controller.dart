@@ -1,7 +1,7 @@
 // ignore_for_file: depend_on_referenced_packages
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/vendor_map/view/widgets/vendor_map.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 import 'package:google_api_headers/google_api_headers.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart';
+import 'package:http/http.dart' as http;
 
 class AddLocation extends GetxController {
   static AddLocation get instance => Get.find();
@@ -109,8 +110,7 @@ class AddLocation extends GetxController {
 
       print('coordinates ${coordinates}');
       final response = await http.put(
-        Uri.parse(
-            'https://adventurous-yak-pajamas.cyclic.app/vendors/updateVendorCoordinates/962${number}'),
+        Uri.parse('${ApiKey.putCoordinates}962${number}'),
         headers: {
           'Content-Type': 'application/json',
         },

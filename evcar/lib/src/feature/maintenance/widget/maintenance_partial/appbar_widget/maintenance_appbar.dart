@@ -46,6 +46,9 @@ class _MaintenanceAppBarState extends State<MaintenanceAppBar> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      DateTime.now().hour < 12
+                          ? MaintenanceText.appBarSecText("صباح الخير")
+                          : MaintenanceText.appBarSecText("مساء الخير"),
                       MaintenanceText.appBarMainText(snapshot.data!.username),
                     ],
                   ),

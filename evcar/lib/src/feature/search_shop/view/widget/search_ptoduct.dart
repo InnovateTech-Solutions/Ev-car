@@ -82,9 +82,6 @@ class SearchProductWidget extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: Image.network(
-                        partsModel.images.firstOrNull!,
-                      ),
                     );
                   },
                 ),

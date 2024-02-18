@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/config/sizes/text_short.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/charging_station/view/widget/detail_button.dart';
 import 'package:evcar/src/feature/charging_station/view/widget/detail_page_text.dart';
@@ -48,7 +49,10 @@ class DetailWidget extends StatelessWidget {
           SizedBox(
             height: 0.01 * context.screenHeight,
           ),
-          DetailText.locationText(detailModel.address),
+          GestureDetector(
+            onTap: () {},
+            child: DetailText.locationText(detailModel.address),
+          ),
           SizedBox(
             height: 0.01 * context.screenHeight,
           ),
@@ -70,19 +74,21 @@ class DetailWidget extends StatelessWidget {
           ),
           Container(
             height: 0.09 * context.screenHeight,
-            width: 0.65 * context.screenWidth,
+            width: 0.7 * context.screenWidth,
             padding: EdgeInsets.only(top: 0.015 * context.screenHeight),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black.withOpacity(0.2))),
             child: ListView.separated(
+              physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: detailModel.chargers!.length + 1,
               separatorBuilder: (context, index) {
                 return Column(
                   children: [
                     Image.network(detailModel.chargers![index].image),
-                    DetailText.chargeText(detailModel.chargers![index].title)
+                    DetailText.chargeText(TextLength.addressShortenText(
+                        detailModel.chargers![index].title))
                   ],
                 );
               },

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -51,8 +52,7 @@ class BasicInformationController extends GetxController {
   Future<Vendor> getUserDetails(String token) async {
     print(token);
     final response = await http.get(
-      Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/getVendorDetails'),
+      Uri.parse(ApiKey.getVendorDetails),
       headers: {
         'Authorization': 'Bearer  $token',
       },
@@ -76,7 +76,7 @@ class BasicInformationController extends GetxController {
       String img, String username, String address, String token) async {
     try {
       final response = await http.put(
-        Uri.parse('https://adventurous-yak-pajamas.cyclic.app/vendors/update'),
+        Uri.parse(ApiKey.putVendorDetails),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',

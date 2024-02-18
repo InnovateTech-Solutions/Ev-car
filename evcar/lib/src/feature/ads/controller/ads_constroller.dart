@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,8 @@ class AdsController extends GetxController {
     'اعلان',
   ];
   //drive
-  var driveValue = "No".obs;
-  List<String> driveList = ['No', 'Yes'];
+  var driveValue = "لا".obs;
+  List<String> driveList = ['لا', 'نعم'];
 
   //validation
   bool isValidPrice(String value) {
@@ -100,9 +101,7 @@ class AdsController extends GetxController {
       if (adsImage.isNotEmpty) {
         await addFile();
         if (imageUrlList.isNotEmpty) {
-          final response = await http.post(
-              Uri.parse(
-                  'https://adventurous-yak-pajamas.cyclic.app/vendors/addVendorProduct'),
+          final response = await http.post(Uri.parse(ApiKey.addAds),
               headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer $token',
@@ -119,20 +118,21 @@ class AdsController extends GetxController {
 
           if (response.statusCode == 201) {
             print(json.decode(response.body));
-            Get.snackbar("Success", " Added Product successfully",
+            Get.snackbar("تمت العملية", "تم اضافة القطعة ",
                 titleText: Align(
                   alignment: Alignment.topRight, // Set your desired alignment
-                  child: searchsec('تم اضافة القطعة '),
+                  child: searchsec(''),
                 ),
                 snackStyle: SnackStyle.FLOATING,
                 snackPosition: SnackPosition.BOTTOM,
                 colorText: Colors.white,
                 backgroundColor: Colors.green);
+            Get.back();
           } else {
             throw Exception('Failed to load data');
           }
         } else {
-          Get.snackbar("ERROR", "Invalid Data",
+          Get.snackbar("خطأ", " المعلومات غير صحيحة",
               titleText: Align(
                 alignment: Alignment.topRight, // Set your desired alignment
                 child: searchsec('حدث خطأ'),
@@ -144,7 +144,7 @@ class AdsController extends GetxController {
         }
       }
     } else {
-      Get.snackbar("ERROR", "Invalid Data",
+      Get.snackbar("خطأ", " المعلومات غير صحيحة",
           titleText: Align(
             alignment: Alignment.topRight, // Set your desired alignment
             child: searchsec('حدث خطأ'),
@@ -167,8 +167,7 @@ class AdsController extends GetxController {
   // Function to fetch product types from the API
   Future<void> fetchProductTypes() async {
     try {
-      final response = await http.get(Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/typeOfProducts/getAllTypeOfProducts'));
+      final response = await http.get(Uri.parse(ApiKey.fetchProductType));
       if (response.statusCode == 200) {
         final List<dynamic> types = json.decode(response.body);
         updateTypeList(types);

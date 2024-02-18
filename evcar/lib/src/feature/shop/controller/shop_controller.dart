@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,8 +23,8 @@ class ShopController extends GetxController {
   }
 
   Future<void> fetchProductsByVendorId(String vendorId) async {
-    final response = await http.get(Uri.parse(
-        "https://adventurous-yak-pajamas.cyclic.app/vendors/getAllVendorProductsClassified/$vendorId"));
+    final response = await http
+        .get(Uri.parse("${ApiKey.fetchAllVendorProductsClassified}$vendorId"));
 
     if (response.body.isEmpty) {
       throw Exception('Failed to load datsa');
@@ -71,7 +72,7 @@ class ShopController extends GetxController {
           backgroundColor: Colors.red);
     }
     final response = await http.post(
-      Uri.parse("https://adventurous-yak-pajamas.cyclic.app/users/addReview"),
+      Uri.parse(ApiKey.addReview),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $token',

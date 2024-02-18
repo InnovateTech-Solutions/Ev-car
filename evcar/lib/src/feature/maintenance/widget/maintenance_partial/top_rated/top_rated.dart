@@ -1,6 +1,6 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/config/sizes/text_short.dart';
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/home_charging_station/view/widget/home_charging_card.dart';
 import 'package:evcar/src/feature/maintenance/widget/text/maintenance_text.dart';
 import 'package:evcar/src/feature/shop/view/shop_page.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
@@ -63,26 +63,29 @@ class TopRated extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               MaintenanceText.shopMainText(
-                                  shortenText(shopModel.title)),
+                                  TextLength.nameShortenText(shopModel.title)),
                               SizedBox(
                                 height: context.screenHeight * 0.01,
                               ),
                               MaintenanceText.shopSecText(
-                                  shortenText(shopModel.description)),
+                                  TextLength.DiscriptionShortenText(
+                                      shopModel.description)),
                               SizedBox(
                                 height: context.screenHeight * 0.02,
                               ),
                               Row(
                                 children: [
                                   MaintenanceText.addressText(
-                                      addressshortenText(shopModel.address)),
+                                      TextLength.addressShortenText(
+                                          shopModel.address)),
                                   const Spacer(),
                                   Icon(
                                     Icons.star,
                                     color: Color(0xffF2C94C),
                                   ),
                                   MaintenanceText.orderMainText(
-                                      ratingshortenText(shopModel.rating))
+                                      TextLength.ratingshortenText(
+                                          shopModel.rating))
                                 ],
                               )
                             ]),
@@ -94,21 +97,5 @@ class TopRated extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String addressshortenText(String text, {int maxLength = 7}) {
-    if (text.length <= maxLength) {
-      return text;
-    } else {
-      return '${text.substring(0, maxLength)}...';
-    }
-  }
-
-  String ratingshortenText(String text, {int maxLength = 3}) {
-    if (text.length <= maxLength) {
-      return text;
-    } else {
-      return '${text.substring(0, maxLength)}';
-    }
   }
 }

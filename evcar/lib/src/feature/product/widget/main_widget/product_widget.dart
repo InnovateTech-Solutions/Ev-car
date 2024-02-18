@@ -2,11 +2,11 @@ import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/feature/product/controller/product_controller.dart';
 import 'package:evcar/src/feature/product/model/product_detail_model.dart';
 import 'package:evcar/src/feature/product/widget/text/product_text.dart';
-import 'package:evcar/src/feature/product/widget/widget_collection/product_appbar.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_image.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_phone_button.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/similar_widget.dart';
 import 'package:evcar/src/feature/shop/view/shop_page.dart';
+import 'package:evcar/src/feature/shop/widget/widget_collection.dart/shop_app_bar.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -42,7 +42,7 @@ class ProductWidget extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ProductAppBar(),
+                    ShopAppBar(),
                     SizedBox(height: context.screenHeight * 0.01),
                     ProductImageSlider(images: productData.images),
                     SizedBox(height: context.screenHeight * 0.01),
@@ -54,7 +54,7 @@ class ProductWidget extends StatelessWidget {
                         ),
                         const Spacer(),
                         ProductText.productPriceText(
-                          productData.price + "دينار",
+                          productData.price + " " + "دينار",
                         ),
                       ],
                     ),
@@ -89,6 +89,7 @@ class ProductWidget extends StatelessWidget {
                     SizedBox(height: MediaQuery.of(context).size.width * 0.04),
                     ProductPhoneButton(
                       phone: productData.vendor.number,
+                      id: "",
                     ),
                     SizedBox(height: MediaQuery.of(context).size.width * 0.04),
                     ProductText.productDescriptionText(

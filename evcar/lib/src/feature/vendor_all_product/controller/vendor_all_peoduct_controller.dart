@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -35,8 +36,8 @@ class VendorAllProductController extends GetxController {
   }
 
   Future<Map<String, dynamic>> fetchData(String id) async {
-    final response = await http.get(Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/vendors/getAllVendorProductsClassified/$id'));
+    final response = await http
+        .get(Uri.parse('${ApiKey.fetchAllVendorProductsClassified}$id'));
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
@@ -46,8 +47,7 @@ class VendorAllProductController extends GetxController {
 
   Future<Map<String, dynamic>> fetchDataToken(String id) async {
     final response = await http.get(
-      Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/getAllVendorProductsByToken'),
+      Uri.parse(ApiKey.fetchDataToken),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer $id',
@@ -57,7 +57,7 @@ class VendorAllProductController extends GetxController {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
-
+      update();
       return responseData;
     } else {
       throw Exception('Failed to load data');
@@ -67,8 +67,7 @@ class VendorAllProductController extends GetxController {
   Future<void> deleteProduct(String productId) async {
     try {
       final response = await http.delete(
-        Uri.parse(
-            'https://adventurous-yak-pajamas.cyclic.app/vendors/deleteProduct/$productId'),
+        Uri.parse('${ApiKey.deleteProduct}$productId'),
       );
 
       if (response.statusCode == 200) {
@@ -85,19 +84,18 @@ class VendorAllProductController extends GetxController {
 
   Future<void> updateProduct(String productId) async {
     try {
-      final response = await http.put(
-          Uri.parse(
-              'https://adventurous-yak-pajamas.cyclic.app/vendors/updateProduct/$productId'),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: json.encode(
-            {
-              'title': title.text,
-              'description': discription.text,
-              'price': price.text,
-            },
-          ));
+      final response =
+          await http.put(Uri.parse('${ApiKey.updateProduct}$productId'),
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: json.encode(
+                {
+                  'title': title.text,
+                  'description': discription.text,
+                  'price': price.text,
+                },
+              ));
 
       update();
       if (response.statusCode == 200) {

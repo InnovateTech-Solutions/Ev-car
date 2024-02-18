@@ -52,8 +52,10 @@ class _NavBarWidgetState extends State<NavBarWidget> {
               label: 'شواحن',
             ),
             BottomNavigationBarItem(
-              icon: Icon(
-                Icons.build_outlined,
+              icon: Image.asset(
+                'assets/images/navBar/toolNav.png',
+                width: 24,
+                height: 24,
               ),
               label: 'الصيانه',
             ),

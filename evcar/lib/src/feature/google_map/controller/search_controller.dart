@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,8 +12,8 @@ class StationController extends GetxController {
   RxList<ChargingStation> stations = <ChargingStation>[].obs;
 
   Future<void> searchStations(String query) async {
-    final response = await http.get(Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/stations/search/$query'));
+    final response =
+        await http.get(Uri.parse('${ApiKey.searchStations}$query'));
 
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);

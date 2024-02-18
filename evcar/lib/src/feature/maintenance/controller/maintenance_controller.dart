@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/maintenance/model/services_model.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
@@ -8,8 +9,7 @@ import 'package:http/http.dart' as http;
 
 class MaintenanceController extends GetxController {
   Future<List<ServicesModel>> fetchTags() async {
-    final response = await http.get(Uri.parse(
-        "https://adventurous-yak-pajamas.cyclic.app/tags/getalltags"));
+    final response = await http.get(Uri.parse(ApiKey.fetchTags));
 
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);
@@ -22,8 +22,8 @@ class MaintenanceController extends GetxController {
   }
 
   Future<List<Vendor>> fetchVendors() async {
-    final response = await http.get(Uri.parse(
-        "https://adventurous-yak-pajamas.cyclic.app/vendors/getVendors/5"));
+    final response =
+        await http.get(Uri.parse("${ApiKey.fetchNumberOfVendors}5"));
 
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
@@ -42,8 +42,7 @@ class MaintenanceController extends GetxController {
   }
 
   Future<List<Product>> FetchProductNumber() async {
-    final response = await http.get(Uri.parse(
-        "https://adventurous-yak-pajamas.cyclic.app/vendors/getProducts/5"));
+    final response = await http.get(Uri.parse("${ApiKey.FetchProductNumber}5"));
 
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);

@@ -8,13 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(SelectServiceWidget(
-    token:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJudW1iZXIiOiI5NjI3Nzc1NTM1NTQiLCJ0eXBlIjoic3RvcmUiLCJpYXQiOjE3MDc4NDU1NDksImV4cCI6MTcwODQ1MDM0OX0.xCgiwA5CvlqNzYRCDSYLl6SVj3PovAH5Xt7bXsslynE',
-  ));
-}
-
 class ServiceModel {
   final String id;
   final String name;
@@ -107,7 +100,7 @@ class SelectServiceController extends GetxController {
   Future<void> fetchAllTagsData() async {
     try {
       final response = await http.get(Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/tags/getalltags'));
+          'https://good-plum-agouti-hose.cyclic.app/tags/getalltags'));
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
         serviceList.value =
@@ -123,7 +116,7 @@ class SelectServiceController extends GetxController {
   Future<void> getVendorServiceDetails(String token) async {
     final response = await http.get(
       Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/getVendorDetails'),
+          'https://good-plum-agouti-hose.cyclic.app/vendors/getVendorDetails'),
       headers: {'Authorization': 'Bearer $token'},
     );
     if (response.statusCode == 200) {

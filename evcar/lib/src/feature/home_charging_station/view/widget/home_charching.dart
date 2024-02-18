@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
 import 'package:evcar/src/feature/home_charging_station/view/widget/home_charging_card.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +28,7 @@ class _HomeCharchingStationsState extends State<HomeCharchingStations> {
   }
 
   Future<void> fetchCharching() async {
-    final response = await http.get(Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/stations/getStationsByType/home_charging_provider'));
+    final response = await http.get(Uri.parse(ApiKey.homeStations));
     if (response.statusCode == 200) {
       final List<dynamic> jsonData = json.decode(response.body);
 

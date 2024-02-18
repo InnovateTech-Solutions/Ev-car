@@ -70,7 +70,9 @@ class MaintenanceText {
     );
   }
 
-  static shopMainText(title) {
+  static shopMainText(
+    title,
+  ) {
     return Text(
       title,
       style: TextStyle(

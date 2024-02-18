@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/product/model/product_detail_model.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:get/get.dart';
@@ -17,8 +18,7 @@ class SearchControllerr extends GetxController {
   Future<void> searchForTab1(String query) async {
     // Make API call for Tab 1
     final response = await http.get(
-      Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/search/0/$query'),
+      Uri.parse('${ApiKey.productsearch}$query'),
     );
     print(response.statusCode);
     if (response.statusCode == 200) {
@@ -35,8 +35,7 @@ class SearchControllerr extends GetxController {
   Future<void> searchForTab2(String query) async {
     // Make API call for Tab 2
     final response = await http.get(
-      Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/vendors/search/1/$query'),
+      Uri.parse('${ApiKey.shopSearch}$query'),
     );
     if (response.statusCode == 200) {
       List<dynamic> data = json.decode(response.body);

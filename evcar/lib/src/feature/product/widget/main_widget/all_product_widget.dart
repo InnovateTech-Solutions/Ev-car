@@ -15,48 +15,42 @@ class AllProductWidget extends StatelessWidget {
     return Container(
       color: AppTheme.lightAppColors.background,
       margin: EdgeInsets.symmetric(horizontal: context.screenWidth * 0.03),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          FutureBuilder(
-              future: controller.fetchProducts(),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
-                  if (snapshot.hasData) {
-                    List<Product> list = snapshot.data!;
+      child: FutureBuilder(
+          future: controller.fetchProducts(),
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasData) {
+                List<Product> list = snapshot.data!;
 
-                    return SizedBox(
-                      height: context.screenHeight * 0.145 * list.length,
-                      child: ListView.separated(
-                        scrollDirection: Axis.vertical,
-                        itemCount: list.length,
-                        separatorBuilder: (context, index) {
-                          return SizedBox(
-                            height: context.screenHeight * 0.01,
-                          );
-                        },
-                        itemBuilder: (BuildContext context, int index) {
-                          return Center(
-                              child:
-                                  MostWantedContainer(partsModel: list[index]));
-                        },
-                      ),
-                    );
-                  } else {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.amber,
-                      ),
-                    );
-                  }
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }),
-        ],
-      ),
+                return SizedBox(
+                  height: context.screenHeight * 0.5 * list.length,
+                  child: ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemCount: list.length,
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        height: context.screenHeight * 0.01,
+                      );
+                    },
+                    itemBuilder: (BuildContext context, int index) {
+                      return Center(
+                          child: MostWantedContainer(partsModel: list[index]));
+                    },
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(
+                      color: AppTheme.lightAppColors.bordercolor),
+                );
+              }
+            } else {
+              return Center(
+                child: CircularProgressIndicator(
+                    color: AppTheme.lightAppColors.bordercolor),
+              );
+            }
+          }),
     );
   }
 }

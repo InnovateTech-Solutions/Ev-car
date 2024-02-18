@@ -85,10 +85,6 @@ class MostWantedContainer extends StatelessWidget {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: Image.network(
-                        partsModel.img.firstOrNull!,
-                        fit: BoxFit.cover,
-                      ),
                     );
                   },
                 ),

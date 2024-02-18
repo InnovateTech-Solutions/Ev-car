@@ -1,13 +1,14 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class TagController extends GetxController {
   Future<List<Vendor>> fetchVenodrByTags(String id) async {
-    final response = await http.get(Uri.parse(
-        "https://adventurous-yak-pajamas.cyclic.app/vendors/getVendorsByTag/$id"));
+    final response =
+        await http.get(Uri.parse("${ApiKey.fetchVenodrByTags}$id"));
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       if (data.containsKey("vendors")) {

@@ -1,10 +1,11 @@
 import 'dart:convert';
+
+import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
 import 'package:evcar/src/feature/vendor_dashboard/view/page/vendor_dashboard_page.dart';
-import 'package:http/http.dart' as http;
-import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class VendorLoginController extends GetxController {
@@ -61,8 +62,8 @@ class VendorLoginController extends GetxController {
   }
 
   Future<void> postUser() async {
-    var apiUrl = Uri.parse(
-        'https://adventurous-yak-pajamas.cyclic.app/vendorAuth/login');
+    var apiUrl =
+        Uri.parse('https://good-plum-agouti-hose.cyclic.app/vendorAuth/login');
 
     var jsonData = {
       'number': "962${removeLeadingZero(phoneController.text)}",

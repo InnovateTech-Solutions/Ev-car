@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/ads/controller/ads_constroller.dart';
 import 'package:evcar/src/feature/ads/view/widget/text/ads_text.dart';
 import 'package:evcar/src/feature/ads/view/widget/widget_collection/dropdown_type.dart';
@@ -30,8 +31,7 @@ class _TypeWidgetState extends State<TypeWidget> {
 
   Future<void> fetchData() async {
     try {
-      final response = await http.get(Uri.parse(
-          'https://adventurous-yak-pajamas.cyclic.app/typeOfProducts/getAllTypeOfProducts'));
+      final response = await http.get(Uri.parse(ApiKey.fetchProductType));
       if (response.statusCode == 200) {
         final List<dynamic> responseData = json.decode(response.body);
         setState(() {

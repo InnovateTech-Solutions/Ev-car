@@ -41,6 +41,9 @@ class accessoriesContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
+              height: context.screenHeight * 0.01,
+            ),
+            SizedBox(
               height: MediaQuery.of(context).size.height * .15,
               width: MediaQuery.of(context).size.width * .3,
               child: ListView.builder(
@@ -59,10 +62,6 @@ class accessoriesContainer extends StatelessWidget {
                         ),
                         fit: BoxFit.cover,
                       ),
-                    ),
-                    child: Image.network(
-                      product.img.firstOrNull!,
-                      fit: BoxFit.cover,
                     ),
                   );
                 },

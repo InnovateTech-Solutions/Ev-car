@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:custom_info_window/custom_info_window.dart';
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/widget_collection/custom_info_window.dart';
 import 'package:evcar/src/feature/home_charging_station/controller/charging_station_controller.dart';
 import 'package:evcar/src/feature/home_charging_station/model/charging_model.dart';
@@ -30,8 +31,7 @@ class MapController extends GetxController {
 
   Future<Set<Marker>> getMarkers() async {
     final newMarkers = <Marker>{};
-    const apiUrl =
-        'https://adventurous-yak-pajamas.cyclic.app/stations/getStationsByType/charging_station';
+    final apiUrl = ApiKey.getMarkers;
     try {
       final response = await http.get(Uri.parse(apiUrl));
 

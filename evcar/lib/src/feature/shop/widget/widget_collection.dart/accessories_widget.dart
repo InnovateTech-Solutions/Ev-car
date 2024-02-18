@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
 import 'package:evcar/src/feature/shop/widget/widget_collection.dart/accessories_container.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
@@ -14,15 +15,17 @@ class AccessoriesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(VendorAllProductController());
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(5),
       child: FutureBuilder<Map<String, dynamic>>(
         future: controller.fetchData(id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
             return Center(
-                child: TextWidget.subVendorText('There Is No Product'));
+                child: CircularProgressIndicator(
+              color: AppTheme.lightAppColors.bordercolor,
+            ));
+          } else if (snapshot.hasError) {
+            return Center(child: TextWidget.subVendorText('لا يوجد قطع'));
           } else {
             final data = snapshot.data!;
             return SizedBox(

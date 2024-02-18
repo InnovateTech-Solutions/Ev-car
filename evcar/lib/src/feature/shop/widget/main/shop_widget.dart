@@ -1,12 +1,11 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/widget/text/product_text.dart';
-import 'package:evcar/src/feature/product/widget/widget_collection/product_appbar.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/product_phone_button.dart';
-import 'package:evcar/src/feature/review/controller/rating_controller.dart';
 import 'package:evcar/src/feature/review/view/page/review_page.dart';
 import 'package:evcar/src/feature/shop/widget/rating/shop_type_widget.dart';
 import 'package:evcar/src/feature/shop/widget/widget_collection.dart/accessories_widget.dart';
+import 'package:evcar/src/feature/shop/widget/widget_collection.dart/shop_app_bar.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +15,6 @@ class ShopWidget extends StatelessWidget {
   final Vendor shopModel;
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RatinggController());
     return Container(
       margin: EdgeInsets.symmetric(
         vertical: context.screenHeight * 0.02,
@@ -24,7 +22,7 @@ class ShopWidget extends StatelessWidget {
       ),
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          ProductAppBar(),
+          ShopAppBar(),
           SizedBox(
             height: context.screenHeight * 0.01,
           ),
@@ -52,7 +50,8 @@ class ShopWidget extends StatelessWidget {
                       },
                       child: Row(
                         children: [
-                          ProductText.mainProductText(shopModel.rating,
+                          ProductText.mainProductText(
+                              ratingshortenText(shopModel.rating),
                               AppTheme.lightAppColors.subTextcolor),
                           Icon(
                             Icons.star,
@@ -97,13 +96,9 @@ class ShopWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.04,
           ),
-          GestureDetector(
-            onTap: () {
-              controller.toggleReviewed(shopModel.id);
-            },
-            child: ProductPhoneButton(
-              phone: shopModel.number,
-            ),
+          ProductPhoneButton(
+            phone: shopModel.number,
+            id: shopModel.id,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.02,
@@ -112,7 +107,7 @@ class ShopWidget extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.02,
           ),
-          ProductText.headerText("إكسسوارات السيارات"),
+          //  ProductText.headerText("إكسسوارات السيارات"),
           AccessoriesWidget(
             id: shopModel.id,
             phone: shopModel.number,
@@ -120,5 +115,13 @@ class ShopWidget extends StatelessWidget {
         ]),
       ),
     );
+  }
+
+  String ratingshortenText(String text, {int maxLength = 3}) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}';
+    }
   }
 }

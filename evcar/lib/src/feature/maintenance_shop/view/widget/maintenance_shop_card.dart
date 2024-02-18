@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/config/sizes/text_short.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/mobile_charger/view/widget/text/mobile_charger_text.dart';
 import 'package:evcar/src/feature/mobile_charger/view/widget/widget_collection/mobile_button.dart';
@@ -46,7 +47,6 @@ class MaintenanceShopCard extends StatelessWidget {
           ],
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
@@ -64,11 +64,11 @@ class MaintenanceShopCard extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                MobileChargerText.mainText(shortenText(
+                MobileChargerText.mainText(TextLength.DiscriptionShortenText(
                   model.title,
                 )),
                 MobileChargerText.thirdText(
-                    discriptionhortenText(model.subtitle)),
+                    TextLength.longText(model.subtitle)),
                 SizedBox(height: 0.01 * context.screenHeight),
                 Spacer(),
                 MobileChargerButton(
@@ -76,12 +76,13 @@ class MaintenanceShopCard extends StatelessWidget {
                 )
               ],
             ),
+            Spacer(),
             model.rating != ""
                 ? Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       ProductText.mainProductText(
-                          ratingshortenText(model.rating),
+                          TextLength.ratingshortenText(model.rating),
                           AppTheme.lightAppColors.subTextcolor),
                       Icon(
                         Icons.star,
@@ -102,29 +103,5 @@ class MaintenanceShopCard extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-String discriptionhortenText(String text, {int maxLength = 20}) {
-  if (text.length <= maxLength) {
-    return text;
-  } else {
-    return '${text.substring(0, maxLength)}...';
-  }
-}
-
-String ratingshortenText(String text, {int maxLength = 3}) {
-  if (text.length <= maxLength) {
-    return text;
-  } else {
-    return '${text.substring(0, maxLength)}';
-  }
-}
-
-String shortenText(String text, {int maxLength = 15}) {
-  if (text.length <= maxLength) {
-    return text;
-  } else {
-    return '${text.substring(0, maxLength)}...';
   }
 }

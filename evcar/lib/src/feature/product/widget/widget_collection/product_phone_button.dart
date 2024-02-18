@@ -1,15 +1,19 @@
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/mobile_charger/controller/mobile_charger_controller.dart';
+import 'package:evcar/src/feature/review/controller/rating_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ProductPhoneButton extends StatelessWidget {
-  const ProductPhoneButton({super.key, required this.phone});
+  const ProductPhoneButton({super.key, required this.phone, required this.id});
   final String phone;
+  final String id;
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(MobileChargerController());
+    final controllerr = Get.put(RatinggController());
+
     return Row(
       children: [
         Container(
@@ -22,6 +26,7 @@ class ProductPhoneButton extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 controller.launchPhoneCall(phone);
+                controllerr.toggleReviewed(id);
               },
               child: Text(
                 'اتصل الان',

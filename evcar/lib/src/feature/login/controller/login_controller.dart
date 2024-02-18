@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
 import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -62,8 +63,7 @@ class LoginController extends GetxController {
   }
 
   Future<void> postUser() async {
-    var apiUrl =
-        Uri.parse('https://adventurous-yak-pajamas.cyclic.app/auth/login');
+    var apiUrl = Uri.parse(ApiKey.login);
 
     var jsonData = {
       'phone': "962${removeLeadingZero(phoneController.text)}",

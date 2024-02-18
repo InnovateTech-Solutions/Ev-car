@@ -14,7 +14,7 @@ class MapWidget extends StatefulWidget {
   State<MapWidget> createState() => _MapWidgetState();
 }
 
-const kGoogleApiKey = 'AIzaSyBWEtkLBMq5z_dYE1jnuATj6cgW2nyoGCw';
+const kGoogleApiKey = 'AIzaSyBJTNVgozL5JDsZvWNqGJBxc_jIWVEVx6w';
 final homeScaffoldKey = GlobalKey<ScaffoldState>();
 
 class _MapWidgetState extends State<MapWidget> {
@@ -69,7 +69,7 @@ class _MapWidgetState extends State<MapWidget> {
                       )),
                   child: Center(
                     child: Text(
-                      "Click to choose an Address",
+                      "انقر هنا للبحث عن الموقع",
                       style: TextStyle(
                           fontFamily: 'cairo-Regular',
                           color: AppTheme.lightAppColors.mainTextcolor,

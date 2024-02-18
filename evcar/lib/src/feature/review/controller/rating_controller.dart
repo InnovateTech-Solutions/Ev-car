@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/review/model/review_model.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -28,8 +29,7 @@ class RatinggController extends GetxController {
   }
 
   Future<List<Review>> fetchReviews(String id) async {
-    final response = await http.get(Uri.parse(
-        "https://adventurous-yak-pajamas.cyclic.app//vendors/getAllReviews/$id"));
+    final response = await http.get(Uri.parse("${ApiKey.fetchReviewById}$id"));
     if (response.statusCode == 200) {
       Map<String, dynamic> data = json.decode(response.body);
       if (data.containsKey("reviews")) {
