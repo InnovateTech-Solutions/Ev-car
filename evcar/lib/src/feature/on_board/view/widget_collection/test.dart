@@ -535,6 +535,7 @@
 // // import 'package:evcar/src/feature/vendor_all_product/controller/vendor_all_peoduct_controller.dart';
 // // import 'package:flutter/material.dart';
 // // import 'package:get/get.dart';
+// // import 'package:get/get.dart';
 
 // // class Test extends StatelessWidget {
 // //   const Test({super.key, required this.id, required this.phone});
@@ -616,6 +617,8 @@
 // //     );
 // //   }
 // // }
+// import 'dart:convert';
+
 // import 'dart:convert';
 
 // import 'package:flutter/material.dart';
