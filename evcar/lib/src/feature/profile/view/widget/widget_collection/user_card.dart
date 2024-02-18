@@ -1,3 +1,4 @@
+import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
@@ -38,7 +39,7 @@ class _UserCardState extends State<UserCard> {
             if (snapshot.connectionState == ConnectionState.done) {
               if (snapshot.hasData) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () => Get.toNamed(AppRoutes.informatioPage),
                   child: Container(
                     width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height * .12,
