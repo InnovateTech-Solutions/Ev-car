@@ -2,6 +2,7 @@ import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/feature/favourite_page/view/favourite_page.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
 import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
+import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/profile/view/widget/widget_collection/user_card.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
@@ -67,7 +68,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
           onPressed: () {
             registerToken.token.value = '';
             loginToken.token.value = '';
-            Get.offAllNamed(AppRoutes.spalshPage);
+            Get.to(IntroPage());
             homeController.logout();
           },
           height: MediaQuery.of(context).size.height * .06,

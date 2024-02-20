@@ -31,6 +31,14 @@ class TextLength {
     }
   }
 
+  static String tenText(String text, {int maxLength = 10}) {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return '${text.substring(0, maxLength)}...';
+    }
+  }
+
   static String ratingshortenText(String text, {int maxLength = 3}) {
     if (text.length <= maxLength) {
       return text;

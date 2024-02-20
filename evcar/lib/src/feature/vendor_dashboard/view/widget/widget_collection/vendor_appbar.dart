@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/core/constants/api_key.dart';
+import 'package:evcar/src/feature/basic_info/view/page/basic_info_page.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
 import 'package:evcar/src/feature/information_page/controller/profile_controller.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
@@ -63,9 +64,12 @@ class _ProductAppBarState extends State<VendorAppBar> {
             if (snapshot.hasData) {
               return Row(
                 children: [
-                  CircleAvatar(
-                    radius: 35,
-                    backgroundImage: NetworkImage(snapshot.data!.img),
+                  GestureDetector(
+                    onTap: () => {Get.to(BasicInformationPage())},
+                    child: CircleAvatar(
+                      radius: 35,
+                      backgroundImage: NetworkImage(snapshot.data!.img),
+                    ),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .02,

@@ -47,7 +47,7 @@ class RatingDialog extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextWidget.subVendorText('تقييم'),
+              TextWidget.subVendorText("لا تقييم"),
               SizedBox(
                 height: context.screenHeight * 0.01,
               ),

@@ -50,7 +50,9 @@ class DetailWidget extends StatelessWidget {
             height: 0.01 * context.screenHeight,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              detailController.openGoogleMap(detailModel.coordinates);
+            },
             child: DetailText.locationText(detailModel.address),
           ),
           SizedBox(
@@ -80,7 +82,7 @@ class DetailWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.black.withOpacity(0.2))),
             child: ListView.separated(
-              physics: NeverScrollableScrollPhysics(),
+              // physics: NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: detailModel.chargers!.length + 1,
               separatorBuilder: (context, index) {

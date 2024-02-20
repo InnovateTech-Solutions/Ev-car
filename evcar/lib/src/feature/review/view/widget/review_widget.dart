@@ -40,7 +40,7 @@ class ReviewWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ProductText.mainProductText(
-                        "تقييم", AppTheme.lightAppColors.subTextcolor),
+                        "لا تقييم", AppTheme.lightAppColors.subTextcolor),
                     Icon(
                       Icons.star,
                       color: Color(0xffF2C94C),

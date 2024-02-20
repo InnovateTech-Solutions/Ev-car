@@ -24,9 +24,15 @@ class ProductImageSlider extends StatelessWidget {
               currentPage.value = index;
             },
             itemBuilder: (context, index) {
-              return Image.network(
-                images[index],
-                fit: BoxFit.contain,
+              return Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        images[index],
+                      ),
+                      fit: BoxFit.cover,
+                    )),
               );
             },
           ),

@@ -94,7 +94,9 @@ class _UserCardState extends State<UserCard> {
                 return Text('Error: ${snapshot.error}');
               }
             } else {
-              return const CircularProgressIndicator();
+              return CircularProgressIndicator(
+                color: AppTheme.lightAppColors.bordercolor,
+              );
             }
           }),
     );

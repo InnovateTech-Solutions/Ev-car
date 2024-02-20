@@ -69,7 +69,7 @@ class ShopWidget extends StatelessWidget {
                       child: Row(
                         children: [
                           ProductText.mainProductText(
-                              "تقييم", AppTheme.lightAppColors.subTextcolor),
+                              "لا تقييم", AppTheme.lightAppColors.subTextcolor),
                           Icon(
                             Icons.star,
                             color: Color(0xffF2C94C),

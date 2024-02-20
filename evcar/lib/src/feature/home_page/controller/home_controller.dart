@@ -1,8 +1,8 @@
+import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:evcar/src/feature/on_board/view/pages/onboard_page.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
-import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:evcar/src/feature/vendor_dashboard/view/page/vendor_dashboard_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +19,7 @@ class HomePageController extends GetxController {
     isGoogleMapEnabled.value = false;
     LoginController().clearToken();
     UserRegisterController().clearToken();
-    Get.offAll(() => const SplashPage());
+    Get.offAll(() => const IntroPage());
   }
 
   Future<String?> getUserType() async {

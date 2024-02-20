@@ -11,7 +11,7 @@ class RestPasswordAppbar extends StatelessWidget
     return AppBar(
       leading: InkWell(
         onTap: () {
-          Get.offAllNamed(AppRoutes.introPage);
+          Get.offAllNamed(AppRoutes.login);
         },
         child: const Stack(
           alignment: Alignment.center,
