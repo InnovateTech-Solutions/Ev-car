@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
-import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -97,7 +96,6 @@ class LoginController extends GetxController {
         token.value = userToken;
 
         homeController.login('user');
-        Get.offAll(const NavBarWidget());
       } else {
         // Handle error case
         Get.snackbar("ERROR", "Invalid Data",

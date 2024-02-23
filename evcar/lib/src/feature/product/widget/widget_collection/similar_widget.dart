@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/product/controller/product_controller.dart';
 import 'package:evcar/src/feature/product/widget/widget_collection/similar_container.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,8 @@ class SimilarWidget extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(),
+            child: CircularProgressIndicator(
+                color: AppTheme.lightAppColors.bordercolor),
           );
         } else if (snapshot.hasError) {
           return Center(

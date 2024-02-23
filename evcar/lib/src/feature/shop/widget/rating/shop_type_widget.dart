@@ -18,7 +18,7 @@ class ShopTypeWidget extends StatelessWidget {
           Icons.maps_home_work_outlined,
           size: 20,
         ),
-        Text(title,
+        Text(title == "store" ? "مركز صيانة" : "فني الصيانة",
             style: TextStyle(
               fontSize: 12,
               fontFamily: 'cairo-Regular',

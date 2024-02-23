@@ -127,7 +127,6 @@ class AdsController extends GetxController {
                 snackPosition: SnackPosition.BOTTOM,
                 colorText: Colors.white,
                 backgroundColor: Colors.green);
-            Get.back();
           } else {
             throw Exception('Failed to load data');
           }

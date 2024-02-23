@@ -113,9 +113,20 @@ class AdsWidget extends StatelessWidget {
                 IntroPageButton(
                   colorButton: Color(0xffCA7A02),
                   text: 'حفظ ونشر ',
-                  onPressed: () {
-                    controller.addAds(
+                  onPressed: () async {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                    );
+                    await controller.addAds(
                         registerToken.token.value + loginToken.token.value);
+                    Navigator.of(context, rootNavigator: true).pop();
+                    Navigator.pop(context);
                   },
                   colorText: AppTheme.lightAppColors.mainTextcolor,
                 )

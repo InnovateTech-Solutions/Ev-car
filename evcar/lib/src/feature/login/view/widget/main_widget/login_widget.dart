@@ -1,5 +1,4 @@
 // ignore_for_file: avoid_print
-
 import 'package:evcar/src/config/routes/routes.dart';
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
@@ -7,6 +6,7 @@ import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_form_widget.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_partial.dart';
+import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/vendor_login/view/page/vendor_login_page.dart';
 import 'package:flutter/material.dart';
@@ -129,7 +129,22 @@ class LoginWidget extends StatelessWidget {
                 text: 'التالي',
                 onPressed: () async {
                   if (controller.fromKey.currentState!.validate()) {
+                    // Show circular progress indicator
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: AppTheme.lightAppColors.bordercolor,
+                          ),
+                        );
+                      },
+                    );
+
                     await controller.postUser();
+                    Navigator.of(context, rootNavigator: true).pop();
+                    Get.offAll(const NavBarWidget());
                   }
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,

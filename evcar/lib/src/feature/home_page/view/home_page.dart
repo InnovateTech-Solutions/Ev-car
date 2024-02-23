@@ -1,3 +1,4 @@
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
 import 'package:evcar/src/feature/on_board/view/pages/onboard_page.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,9 @@ class MainWidget extends StatelessWidget {
       future: controller.getUserType(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
+          return CircularProgressIndicator(
+            color: AppTheme.lightAppColors.bordercolor,
+          );
         } else {
           if (snapshot.hasData) {
             return controller.navigateToDashboard(snapshot.data);

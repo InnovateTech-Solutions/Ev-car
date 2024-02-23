@@ -1,4 +1,5 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
+import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/product/model/parts_model.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
@@ -26,7 +27,9 @@ class VendorAllProductWidget extends StatelessWidget {
               registerToken.token.value + loginToken.token.value),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: CircularProgressIndicator(
+                      color: AppTheme.lightAppColors.bordercolor));
             } else if (snapshot.hasError) {
               return Center(child: TextWidget.mainVendorText('لا يوجد قطع'));
             } else {
