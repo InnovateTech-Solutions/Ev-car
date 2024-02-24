@@ -72,8 +72,8 @@ class _GoogleMapContainerState extends State<GoogleMapContainer> {
                     mapSecText("قاعدة \nشحن سريع"),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {
-                        mapController.getCurrentLocation();
+                      onTap: () async {
+                        await mapController.getCurrentLocationButton();
                         mapController.isExpanded.value = false;
                       },
                       child: SvgPicture.asset(

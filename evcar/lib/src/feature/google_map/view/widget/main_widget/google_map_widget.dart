@@ -33,7 +33,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
     await mapController.loadMapStyle();
 
     await mapController.addCustomMarker();
-    //await mapController.getCurrentLocation();
+    await mapController.getCurrentLocation();
 
     await mapController.loadMarkers();
   }
@@ -61,7 +61,7 @@ class _GoogleMapWidgetState extends State<GoogleMapWidget> {
               markers: mapController.markers.toSet(),
               initialCameraPosition: CameraPosition(
                 target: mapController.initialPosition,
-                zoom: 15.151926040649414,
+                zoom: 11.151926040649414,
               ),
               onMapCreated: (GoogleMapController controller) async {
                 controller.setMapStyle(mapController.mapStyleString);

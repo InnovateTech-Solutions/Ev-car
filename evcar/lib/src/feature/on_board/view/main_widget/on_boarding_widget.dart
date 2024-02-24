@@ -65,18 +65,6 @@ class OnBoardingWidget extends StatelessWidget {
                 ],
               ),
             ),
-            OnBoardingWidgets(
-              title: "شحن السيارات الكهربائية",
-              secText:
-                  "قم بالبحث عن اقرب نقاط شحن سيارتك الثابتة او احجز مع خدمة الشحن المتنقل",
-              image: SvgPicture.asset("assets/images/onBoarding2.svg",
-                  height: context.screenWidth > 375
-                      ? 0.5 * context.screenHeight
-                      : 0.4 * context.screenHeight,
-                  width: context.screenWidth > 375
-                      ? 0.5 * context.screenWidth
-                      : 0.3 * context.screenWidth),
-            ),
           ],
         )),
         onBaordingButton(context)

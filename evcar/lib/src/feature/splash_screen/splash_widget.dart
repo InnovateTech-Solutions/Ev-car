@@ -2,9 +2,30 @@ import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/on_board/view/text_widget/on_boarding_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class SplashWidget extends StatelessWidget {
+import '../on_board/view/pages/onboard_page.dart';
+
+class SplashWidget extends StatefulWidget {
   const SplashWidget({super.key});
+
+  @override
+  State<SplashWidget> createState() => _SplashWidgetState();
+}
+
+class _SplashWidgetState extends State<SplashWidget> {
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 3), () {
+      Get.offAll(
+        const OnBoardPage(),
+        transition: Transition.fade,
+        duration: const Duration(seconds: 2),
+        curve: Curves.easeInOut,
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

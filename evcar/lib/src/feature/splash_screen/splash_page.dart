@@ -1,5 +1,6 @@
 import 'package:evcar/src/config/theme/theme.dart';
-import 'package:evcar/src/feature/on_board/view/pages/onboard_page.dart';
+import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
+import 'package:evcar/src/feature/on_board/controller/on_board_controller.dart';
 import 'package:evcar/src/feature/splash_screen/splash_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,25 +13,24 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  final controller = Get.put(OnboardingController());
   @override
   void initState() {
+    print(controller.isFirstTime.value);
+    controller.checkFirstTime();
     super.initState();
-    Future.delayed(const Duration(seconds: 3), () {
-      Get.offAll(
-        const OnBoardPage(),
-        transition: Transition.fade,
-        duration: const Duration(seconds: 2),
-        curve: Curves.easeInOut,
-      );
-    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
-      backgroundColor: AppTheme.lightAppColors.primary,
-      body: const SplashWidget(),
-    ));
+    if (controller.isFirstTime.value == true) {
+      return SafeArea(
+          child: Scaffold(
+        backgroundColor: AppTheme.lightAppColors.primary,
+        body: const SplashWidget(),
+      ));
+    } else {
+      return IntroPage();
+    }
   }
 }

@@ -1,10 +1,26 @@
 import 'package:evcar/src/feature/intro_page/view/pages/Intro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class OnboardingController extends GetxController {
   final PageController pageController = PageController();
   final RxInt currentPageIndex = 0.obs;
+  RxBool isFirstTime = true.obs;
+
+  Future<void> checkFirstTime() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFirstTimee = prefs.getBool('isFirstTime')!;
+
+    isFirstTime.value = isFirstTimee;
+  }
+
+  Future<void> completeOnboarding() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isFirstTime', false);
+
+    isFirstTime.value = false;
+  }
 
   double get progress => currentPageIndex.value / 2;
 

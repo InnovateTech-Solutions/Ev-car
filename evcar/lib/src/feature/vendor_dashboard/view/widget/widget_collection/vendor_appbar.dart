@@ -92,7 +92,7 @@ class _ProductAppBarState extends State<VendorAppBar> {
                       onPressed: () => {
                             registerToken.token.value = '',
                             loginToken.token.value = '',
-                            Get.offAllNamed(AppRoutes.spalshPage),
+                            Get.offAllNamed(AppRoutes.introPage),
                             homeController.logout()
                           },
                       icon: Icon(Icons.logout))

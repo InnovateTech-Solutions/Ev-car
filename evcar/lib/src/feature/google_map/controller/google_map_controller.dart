@@ -22,7 +22,8 @@ class MapController extends GetxController {
   RxList<Marker> markers = <Marker>[].obs;
   CustomInfoWindowController customInfoWindowController =
       CustomInfoWindowController();
-  late LatLng initialPosition = const LatLng(32.0333332, 35.7333304);
+  late LatLng initialPosition =
+      const LatLng(31.900883058179527, 35.9346984671693);
 
   Future<void> loadMarkers() async {
     final newMarkers = await getMarkers();
@@ -103,6 +104,24 @@ class MapController extends GetxController {
     }
   }
 
+  Future<void> getCurrentLocationButton() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+    } else if (permission == LocationPermission.deniedForever) {
+    } else {
+      try {
+        Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+        );
+        initialPosition = LatLng(position.latitude, position.longitude);
+        print(position);
+
+        goToPositionButton(position);
+        // ignore: empty_catches
+      } catch (e) {}
+    }
+  }
+
   Future<void> addCustomMarker() async {
     ImageConfiguration configuration =
         const ImageConfiguration(size: Size(100, 100));
@@ -119,7 +138,18 @@ class MapController extends GetxController {
     mapController.animateCamera(CameraUpdate.newCameraPosition(
       CameraPosition(
         target: LatLng(position.latitude, position.longitude),
-        zoom: 14.5,
+        zoom: 15.151926040649414,
+      ),
+    ));
+  }
+
+  void goToPositionButton(Position position) async {
+    final GoogleMapController mapController = await controller.future;
+    print(position);
+    mapController.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(
+        target: LatLng(position.latitude, position.longitude),
+        zoom: 10.151926040649414,
       ),
     ));
   }

@@ -34,20 +34,6 @@ class VendorLoginWidget extends StatelessWidget {
               SizedBox(
                 height: 0.05 * context.screenHeight,
               ),
-              Divider(
-                height: 1,
-                color: AppTheme.lightAppColors.bordercolor,
-              ),
-              Container(
-                margin: const EdgeInsets.all(15.0),
-                child: LoginText.subLoginText(
-                  'الاردن',
-                ),
-              ),
-              Divider(
-                height: 1,
-                color: AppTheme.lightAppColors.bordercolor,
-              ),
               Row(
                 children: [
                   Expanded(
@@ -124,7 +110,18 @@ class VendorLoginWidget extends StatelessWidget {
                 text: 'التالي',
                 onPressed: () async {
                   if (controller.fromKey.currentState!.validate()) {
-                    controller.postUser();
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: AppTheme.lightAppColors.bordercolor,
+                          ),
+                        );
+                      },
+                    );
+                    await controller.postUser(context);
                   }
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,

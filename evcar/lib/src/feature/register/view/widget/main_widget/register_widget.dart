@@ -39,24 +39,6 @@ class RegisterWidgets extends StatelessWidget {
                   SizedBox(
                       height: 0.1 * context.screenHeight,
                       child: Image.asset('assets/images/photo2.png')),
-                  // Container(
-                  //   height: 0.05 * context.screenHeight,
-                  //   width: context.screenWidth * 0.1,
-                  //   decoration: BoxDecoration(
-                  //       color: AppTheme.lightAppColors.mainTextcolor,
-                  //       border: Border.all(
-                  //         color: AppTheme.lightAppColors.bordercolor,
-                  //       ),
-                  //       borderRadius: BorderRadius.circular(5)),
-                  //   child: Center(
-                  //     child: IconButton(
-                  //       icon: Icon(Icons.arrow_forward_ios),
-                  //       onPressed: () {
-                  //         Get.back();
-                  //       },
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
               SizedBox(

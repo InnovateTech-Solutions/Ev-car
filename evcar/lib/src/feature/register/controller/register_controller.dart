@@ -54,7 +54,7 @@ class RegisterController extends GetxController {
   }
 
   vaildPhoneNumber(String? phoneNumber) {
-    if (GetUtils.isPhoneNumber(phoneNumber!)) {
+    if (GetUtils.isPhoneNumber(phoneNumber!) && phoneNumber.length >= 9) {
       return null;
     }
     return 'رقم الهاتف غير صالح';

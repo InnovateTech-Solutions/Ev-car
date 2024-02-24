@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:evcar/src/core/constants/api_key.dart';
 import 'package:evcar/src/feature/google_map/view/widget/text/google_map_text.dart';
+import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -20,7 +21,7 @@ class LoginController extends GetxController {
   }
 
   String? validatePhoneNumber(String? phoneNumber) {
-    if (phoneNumber != null && phoneNumber.length == 10) {
+    if (phoneNumber != null && phoneNumber.length >= 9) {
       if (GetUtils.isPhoneNumber(phoneNumber)) {
         return null;
       } else {
@@ -61,7 +62,7 @@ class LoginController extends GetxController {
     print("save token    ${prefs.getString('LoginToken') ?? ""}");
   }
 
-  Future<void> postUser() async {
+  Future<void> postUser(context) async {
     var apiUrl = Uri.parse(ApiKey.login);
 
     var jsonData = {
@@ -96,7 +97,12 @@ class LoginController extends GetxController {
         token.value = userToken;
 
         homeController.login('user');
+        Navigator.of(context, rootNavigator: true).pop();
+
+        Get.offAll(const NavBarWidget());
       } else {
+        Navigator.of(context, rootNavigator: true).pop();
+
         // Handle error case
         Get.snackbar("ERROR", "Invalid Data",
             titleText: Align(

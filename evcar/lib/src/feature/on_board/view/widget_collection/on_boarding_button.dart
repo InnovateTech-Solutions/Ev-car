@@ -9,6 +9,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 onBaordingButton(BuildContext context) {
   final controller = Get.put(OnboardingController());
+  final ccontroller = Get.put(OnboardingController());
+
   return Container(
     margin: EdgeInsets.only(
         left: 0.05 * context.screenWidth,
@@ -35,6 +37,7 @@ onBaordingButton(BuildContext context) {
             ),
             GestureDetector(
               onTap: () {
+                ccontroller.completeOnboarding();
                 Get.offAll(IntroPage());
               },
               child: thirdText("Skip"),
@@ -59,6 +62,7 @@ onBaordingButton(BuildContext context) {
             GestureDetector(
               onTap: () {
                 controller.nextPage();
+                ccontroller.completeOnboarding();
               },
               child: Container(
                 width: 0.13 * context.screenWidth,

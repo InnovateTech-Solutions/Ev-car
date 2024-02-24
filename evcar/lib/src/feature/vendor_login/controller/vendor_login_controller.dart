@@ -20,7 +20,7 @@ class VendorLoginController extends GetxController {
   }
 
   String? validatePhoneNumber(String? phoneNumber) {
-    if (phoneNumber != null && phoneNumber.length == 10) {
+    if (phoneNumber != null && phoneNumber.length >= 9) {
       if (GetUtils.isPhoneNumber(phoneNumber)) {
         return null;
       } else {
@@ -61,7 +61,7 @@ class VendorLoginController extends GetxController {
     print("save token    ${prefs.getString('LoginToken') ?? ""}");
   }
 
-  Future<void> postUser() async {
+  Future<void> postUser(context) async {
     var apiUrl =
         Uri.parse('https://good-plum-agouti-hose.cyclic.app/vendorAuth/login');
 
@@ -86,6 +86,8 @@ class VendorLoginController extends GetxController {
         print('Data sent successfully');
         print('Response: ${response.body}');
       } else {
+        Navigator.of(context, rootNavigator: true).pop();
+
         print('Failed to send data. Status code: ${response.statusCode}');
         print('Response: ${response.body}');
       }
@@ -98,6 +100,8 @@ class VendorLoginController extends GetxController {
         token.value = userToken;
 
         homeController.login('vendor');
+        Navigator.of(context, rootNavigator: true).pop();
+
         Get.offAll(const VendorDashboardPage());
       } else {
         // Handle error case

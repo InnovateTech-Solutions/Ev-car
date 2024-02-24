@@ -6,7 +6,6 @@ import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button
 import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_form_widget.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_partial.dart';
-import 'package:evcar/src/feature/nav_bar/nav_bar.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/vendor_login/view/page/vendor_login_page.dart';
 import 'package:flutter/material.dart';
@@ -36,20 +35,6 @@ class LoginWidget extends StatelessWidget {
               ),
               SizedBox(
                 height: 0.05 * context.screenHeight,
-              ),
-              Divider(
-                height: 1,
-                color: AppTheme.lightAppColors.bordercolor,
-              ),
-              Container(
-                margin: const EdgeInsets.all(15.0),
-                child: LoginText.subLoginText(
-                  'الاردن',
-                ),
-              ),
-              Divider(
-                height: 1,
-                color: AppTheme.lightAppColors.bordercolor,
               ),
               Row(
                 children: [
@@ -142,9 +127,7 @@ class LoginWidget extends StatelessWidget {
                       },
                     );
 
-                    await controller.postUser();
-                    Navigator.of(context, rootNavigator: true).pop();
-                    Get.offAll(const NavBarWidget());
+                    await controller.postUser(context);
                   }
                 },
                 colorText: AppTheme.lightAppColors.mainTextcolor,

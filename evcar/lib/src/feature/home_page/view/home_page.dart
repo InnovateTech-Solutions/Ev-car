@@ -1,6 +1,6 @@
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/home_page/controller/home_controller.dart';
-import 'package:evcar/src/feature/on_board/view/pages/onboard_page.dart';
+import 'package:evcar/src/feature/splash_screen/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +19,7 @@ class MainWidget extends StatelessWidget {
           if (snapshot.hasData) {
             return controller.navigateToDashboard(snapshot.data);
           } else {
-            return OnBoardPage();
+            return SplashPage();
           }
         }
       },

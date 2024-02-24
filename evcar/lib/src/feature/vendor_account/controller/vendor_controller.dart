@@ -52,7 +52,7 @@ class VendorController extends GetxController {
   }
 
   String? validatePhoneNumber(String? phoneNumber) {
-    if (phoneNumber != null && phoneNumber.length == 10) {
+    if (phoneNumber != null && phoneNumber.length >= 9) {
       if (GetUtils.isPhoneNumber(phoneNumber)) {
         return null;
       } else {
