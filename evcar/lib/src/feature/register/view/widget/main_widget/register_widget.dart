@@ -151,14 +151,25 @@ class RegisterWidgets extends StatelessWidget {
 
                   print(controller.phoneNumber.text);
                   if (!userExists) {
-                    controller.onSignup(
-                      UserModel(
-                          phone:
-                              "962${controller.removeLeadingZero(controller.phoneNumber.text)}",
-                          username: controller.username.text,
-                          carType: controller.carType.text,
-                          password: controller.password.text),
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (BuildContext context) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            color: AppTheme.lightAppColors.bordercolor,
+                          ),
+                        );
+                      },
                     );
+                    controller.onSignup(
+                        UserModel(
+                            phone:
+                                "962${controller.removeLeadingZero(controller.phoneNumber.text)}",
+                            username: controller.username.text,
+                            carType: controller.carType.text,
+                            password: controller.password.text),
+                        context);
                   } else {
                     userExistDialog(context, ("المستخدم موجود مسبقا"));
                   }

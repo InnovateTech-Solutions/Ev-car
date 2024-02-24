@@ -13,6 +13,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../config/theme/theme.dart';
+
 class VendorController extends GetxController {
   static VendorController get instance => Get.find();
   final TextEditingController phoneNumber = TextEditingController();
@@ -200,7 +202,7 @@ class VendorController extends GetxController {
     }
   }
 
-  Future<void> registerVendor(Vendor vendor) async {
+  Future<void> registerVendor(Vendor vendor, context) async {
     final String apiUrl = ApiKey.registerVendor;
 
     var requestBody = jsonEncode(vendor.toJson());
@@ -215,6 +217,8 @@ class VendorController extends GetxController {
       );
 
       if (response.statusCode == 201) {
+        Navigator.of(context, rootNavigator: true).pop();
+
         // Success - Handle the success response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
@@ -223,10 +227,14 @@ class VendorController extends GetxController {
           number: removeLeadingZero(phoneNumber.text),
         ));
       } else if (response.statusCode == 409) {
+        Navigator.of(context, rootNavigator: true).pop();
+
         // Vendor already exists - Handle the conflict response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
       } else {
+        Navigator.of(context, rootNavigator: true).pop();
+
         // Other errors - Handle the error response
         final Map<String, dynamic> responseData = jsonDecode(response.body);
         print(responseData['message']);
@@ -261,7 +269,7 @@ class VendorController extends GetxController {
     }
   }
 
-  onSignup(String type) async {
+  onSignup(String type, context) async {
     print('the image $imageUrl');
     if (vendorKey.currentState!.validate()) {
       if (serviceName.isEmpty) {
@@ -311,25 +319,38 @@ class VendorController extends GetxController {
             backgroundColor: Colors.red);
         licenseIsEmpty.value = true;
       } else {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return Center(
+              child: CircularProgressIndicator(
+                color: AppTheme.lightAppColors.bordercolor,
+              ),
+            );
+          },
+        );
         await uploadStoreImage();
         await uploadStoreLicence();
         // print(vendor.commercialLicense);
         print('962${removeLeadingZero(phoneNumber.text)}');
         print("the imag  $licenceUrl"); // licence
         print("the image $imageUrl"); // store img
-        await registerVendor(Vendor(
-            title: username.text,
-            subtitle: subTitle.text,
-            img: imageUrl,
-            address: address.text,
-            number: '962${removeLeadingZero(phoneNumber.text)}',
-            commercialLicense: licenceUrl,
-            password: password.text,
-            type: type,
-            tags: serviceID,
-            description: description.text,
-            status: 'Pending',
-            id: ''));
+        await registerVendor(
+            Vendor(
+                title: username.text,
+                subtitle: subTitle.text,
+                img: imageUrl,
+                address: address.text,
+                number: '962${removeLeadingZero(phoneNumber.text)}',
+                commercialLicense: licenceUrl,
+                password: password.text,
+                type: type,
+                tags: serviceID,
+                description: description.text,
+                status: 'Pending',
+                id: ''),
+            context);
 
         //  print(vendor.title);
         //  print(vendor.subtitle);

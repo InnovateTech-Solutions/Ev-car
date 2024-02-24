@@ -1,4 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:evcar/src/core/constants/api_key.dart';
@@ -17,6 +18,8 @@ import 'package:http/http.dart' as http;
 class AddLocation extends GetxController {
   static AddLocation get instance => Get.find();
   GoogleMapController? mapController;
+  Completer<GoogleMapController> controller = Completer();
+
   final coordinate = TextEditingController();
   static CameraPosition intialCameraPositin = const CameraPosition(
     target: LatLng(37.422131, -122.084801),
@@ -24,6 +27,8 @@ class AddLocation extends GetxController {
   Set<Marker> markers = {};
   Rx<BitmapDescriptor> markerIcon = BitmapDescriptor.defaultMarker.obs;
   late String mapStyleString;
+  late LatLng initialPosition =
+      const LatLng(31.900883058179527, 35.9346984671693);
 
   final markersList = <Marker>[].obs;
   late GoogleMapController googleMapController;
@@ -188,5 +193,51 @@ class AddLocation extends GetxController {
 
     displayPrediction(p!, homeScaffoldKey.currentState);
     print(homeScaffoldKey.currentState);
+  }
+
+  //current location
+
+  void goToPosition(Position position) async {
+    final GoogleMapController mapController = await controller.future;
+    print(position);
+    mapController.animateCamera(CameraUpdate.newCameraPosition(
+      CameraPosition(
+        target: LatLng(position.latitude, position.longitude),
+        zoom: 15.151926040649414,
+      ),
+    ));
+  }
+
+  Future<void> getCurrentLocationButton() async {
+    LocationPermission permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      // Handle denied permission
+    } else if (permission == LocationPermission.deniedForever) {
+      // Handle permanently denied permission
+    } else {
+      try {
+        Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+        );
+        initialPosition = LatLng(position.latitude, position.longitude);
+        print(position);
+        coordinate.text = position.toString();
+        goToPosition(position);
+
+        print("coordinates ${coordinate.text}");
+
+        // Add marker to the current location
+        markersList.clear();
+        markersList.add(Marker(
+          markerId: MarkerId('currentLocation'),
+          position: LatLng(position.latitude, position.longitude),
+          infoWindow: InfoWindow(title: 'Current Location'),
+        ));
+        // Set the coordinate text
+        String coordinates = '${position.latitude},${position.longitude}';
+        coordinate.text = coordinates;
+        // ignore: empty_catches
+      } catch (e) {}
+    }
   }
 }

@@ -3,14 +3,16 @@ import 'package:evcar/src/feature/services/view/widget/main/vendor_services_widg
 import 'package:flutter/material.dart';
 
 class VendorServicesPage extends StatelessWidget {
-  const VendorServicesPage({super.key});
-
+  const VendorServicesPage({super.key, required this.token});
+  final String token;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         appBar: BasicInfoAppBar.appBar(),
-        body: VendorServicesWidget(),
+        body: VendorServicesWidget(
+          token: token,
+        ),
       ),
     );
   }

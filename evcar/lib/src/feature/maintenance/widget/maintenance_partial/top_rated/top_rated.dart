@@ -22,7 +22,7 @@ class TopRated extends StatelessWidget {
         padding: EdgeInsets.symmetric(
             vertical: context.screenHeight * 0.01,
             horizontal: context.screenWidth * 0.01),
-        width: context.screenWidth * 0.4,
+        width: context.screenWidth * 0.45,
         height: context.screenHeight * 0.25,
         decoration: BoxDecoration(
           color: AppTheme.lightAppColors.containercolor,
@@ -32,7 +32,7 @@ class TopRated extends StatelessWidget {
           children: [
             Container(
               height: context.screenHeight * 0.25,
-              width: context.screenWidth * 0.35,
+              width: context.screenWidth * 0.4,
               decoration: BoxDecoration(
                 color: AppTheme.lightAppColors.background,
                 borderRadius: BorderRadius.circular(20),
@@ -43,7 +43,7 @@ class TopRated extends StatelessWidget {
                     children: [
                       Container(
                         height: context.screenHeight * 0.12,
-                        width: context.screenWidth * 0.35,
+                        width: context.screenWidth * 0.4,
                         decoration: BoxDecoration(
                             color: AppTheme.lightAppColors.background,
                             borderRadius:

@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AllProductPage extends StatelessWidget {
-  const AllProductPage({super.key, required this.id});
+  const AllProductPage({super.key, required this.id, required this.token});
+  final String token;
   final String id;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,9 @@ class AllProductPage extends StatelessWidget {
               color: AppTheme.lightAppColors.background,
             )),
         appBar: detailAppBar("القطع والاكسسوارات"),
-        body: VendorAllProductWidget(),
+        body: VendorAllProductWidget(
+          token: token,
+        ),
       ),
     );
   }

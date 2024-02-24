@@ -8,6 +8,7 @@ import 'package:evcar/src/feature/shop/widget/widget_collection.dart/accessories
 import 'package:evcar/src/feature/shop/widget/widget_collection.dart/shop_app_bar.dart';
 import 'package:evcar/src/feature/vendor_account/model/vednor_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 class ShopWidget extends StatelessWidget {
@@ -27,12 +28,27 @@ class ShopWidget extends StatelessWidget {
             height: context.screenHeight * 0.01,
           ),
           Container(
+            padding: EdgeInsets.all(10),
             width: context.screenWidth,
             height: 0.25 * context.screenHeight,
             decoration: BoxDecoration(
                 image: DecorationImage(
                     image: NetworkImage(shopModel.img), fit: BoxFit.cover),
                 borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  backgroundColor: AppTheme.lightAppColors.background,
+                  child: GestureDetector(
+                    onTap: () => {},
+                    child: SvgPicture.asset(
+                      'assets/images/favTrueHeart.svg',
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: MediaQuery.of(context).size.width * 0.05,

@@ -348,7 +348,7 @@ class VendorRegisterWidget extends StatelessWidget {
                             '962${controller.removeLeadingZero(controller.phoneNumber.text)}'));
 
                         if (!vendorExits) {
-                          controller.onSignup(type);
+                          controller.onSignup(type, context);
                         } else {
                           userExistDialog(context, ("المستخدم موجود مسبقا"));
                         }

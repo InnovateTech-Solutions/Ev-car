@@ -5,16 +5,16 @@ import 'package:evcar/src/feature/login/controller/login_controller.dart';
 import 'package:evcar/src/feature/register/controller/user_register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/services/controller/vendor_services_controller.dart';
-import 'package:evcar/test_view.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/add_service_widget.dart';
 import 'package:evcar/src/feature/services/view/widget/widget_collection/service_form.dart';
 import 'package:evcar/src/feature/vendor_account/view/widget/text_widget/text_widget.dart';
+import 'package:evcar/test_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VendorServicesWidget extends StatefulWidget {
-  const VendorServicesWidget({super.key});
-
+  const VendorServicesWidget({super.key, required this.token});
+  final String token;
   @override
   State<VendorServicesWidget> createState() => _VendorServicesWidgetState();
 }
@@ -74,11 +74,8 @@ class _VendorServicesWidgetState extends State<VendorServicesWidget> {
                       height: controller.serviceIsEmpty.value
                           ? null
                           : context.screenHeight * 0.15,
-                      child: Obx(
-                        () => SelectServiceWidget(
-                          token: registerToken.token.value +
-                              loginToken.token.value,
-                        ),
+                      child: SelectServiceWidget(
+                        token: widget.token,
                       )),
                 ),
                 SizedBox(height: context.screenHeight * 0.018),
@@ -130,7 +127,7 @@ class _VendorServicesWidgetState extends State<VendorServicesWidget> {
                     text: "تاكيد",
                     onPressed: () {
                       controller.addService(
-                          registerToken.token.value + loginToken.token.value,
+                          widget.token,
                           controller.description.text,
                           selectServiceController.serviceID);
                     },

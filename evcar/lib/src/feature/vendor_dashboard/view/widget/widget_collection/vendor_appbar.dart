@@ -65,7 +65,11 @@ class _ProductAppBarState extends State<VendorAppBar> {
               return Row(
                 children: [
                   GestureDetector(
-                    onTap: () => {Get.to(BasicInformationPage())},
+                    onTap: () => {
+                      Get.to(BasicInformationPage(
+                          token: registerToken.token.value +
+                              loginToken.token.value))
+                    },
                     child: CircleAvatar(
                       radius: 35,
                       backgroundImage: NetworkImage(snapshot.data!.img),

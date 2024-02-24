@@ -31,7 +31,7 @@ class TopRatedWidget extends StatelessWidget {
                         width: context.screenWidth * 0.03,
                       );
                     },
-                    itemCount: 5),
+                    itemCount: vendor.length),
               );
             } else {
               return Center(

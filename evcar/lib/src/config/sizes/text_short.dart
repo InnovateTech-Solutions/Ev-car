@@ -1,5 +1,5 @@
 class TextLength {
-  static String addressShortenText(String text, {int maxLength = 13}) {
+  static String addressShortenText(String text, {int maxLength = 17}) {
     if (text.length <= maxLength) {
       return text;
     } else {
@@ -7,7 +7,7 @@ class TextLength {
     }
   }
 
-  static String DiscriptionShortenText(String text, {int maxLength = 20}) {
+  static String DiscriptionShortenText(String text, {int maxLength = 30}) {
     if (text.length <= maxLength) {
       return text;
     } else {
@@ -23,7 +23,7 @@ class TextLength {
     }
   }
 
-  static String nameShortenText(String text, {int maxLength = 15}) {
+  static String nameShortenText(String text, {int maxLength = 17}) {
     if (text.length <= maxLength) {
       return text;
     } else {

@@ -17,20 +17,21 @@ class SearchVendorWidget extends StatelessWidget {
     return GestureDetector(
         onTap: () {
           Get.to(ShopPage(
-              shopModel: Vendor(
-                  id: vendor.id,
-                  title: vendor.title,
-                  subtitle: vendor.subtitle,
-                  img: vendor.img,
-                  address: vendor.address,
-                  number: vendor.number,
-                  commercialLicense: vendor.commercialLicense,
-                  password: vendor.password,
-                  type: vendor.type,
-                  tags: vendor.tags,
-                  status: vendor.status,
-                  description: vendor.description,
-                  rating: vendor.rating)));
+            shopModel: Vendor(
+                id: vendor.id,
+                title: vendor.title,
+                subtitle: vendor.subtitle,
+                img: vendor.img,
+                address: vendor.address,
+                number: vendor.number,
+                commercialLicense: vendor.commercialLicense,
+                password: vendor.password,
+                type: vendor.type,
+                tags: vendor.tags,
+                status: vendor.status,
+                description: vendor.description,
+                rating: vendor.rating),
+          ));
         },
         child: Container(
             padding: EdgeInsets.all(10),

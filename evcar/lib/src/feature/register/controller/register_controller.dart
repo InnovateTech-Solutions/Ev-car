@@ -81,8 +81,10 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  onSignup(UserModel user) {
+  onSignup(UserModel user, context) {
     if (fromKey.currentState!.validate()) {
+      Navigator.of(context, rootNavigator: true).pop();
+
       Get.to(OtpPage(
         userModel: user,
       ));

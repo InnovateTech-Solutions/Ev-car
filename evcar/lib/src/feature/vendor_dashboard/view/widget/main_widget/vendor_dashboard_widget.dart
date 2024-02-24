@@ -26,6 +26,7 @@ class _VendorDashboardWidgetState extends State<VendorDashboardWidget> {
   final selectServiceController = Get.put(SelectServiceController());
   @override
   void initState() {
+    print(registerToken.token.value + loginToken.token.value);
     selectServiceController.getVendorServiceDetails(
         registerToken.token.value + loginToken.token.value);
     super.initState();
@@ -38,13 +39,17 @@ class _VendorDashboardWidgetState extends State<VendorDashboardWidget> {
           widget: Image.asset("assets/vendor/services.png"),
           title: "الخدمات ",
           onTap: () {
-            Get.to(VendorServicesPage());
+            Get.to(VendorServicesPage(
+              token: registerToken.token.value + loginToken.token.value,
+            ));
           }),
       CategoryModel(
           widget: SvgPicture.asset("assets/vendor/info.svg"),
           title: "المعلومات\nالأساسية",
           onTap: () {
-            Get.to(BasicInformationPage());
+            Get.to(BasicInformationPage(
+              token: registerToken.token.value + loginToken.token.value,
+            ));
           }),
       CategoryModel(
           widget: SvgPicture.asset("assets/vendor/offers.svg"),
@@ -58,6 +63,7 @@ class _VendorDashboardWidgetState extends State<VendorDashboardWidget> {
           onTap: () {
             Get.to(AllProductPage(
               id: '',
+              token: registerToken.token.value + loginToken.token.value,
             ));
           }),
     ];

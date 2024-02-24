@@ -4,6 +4,7 @@ import 'package:evcar/src/feature/intro_page/view/widget_collection/intro_button
 import 'package:evcar/src/feature/vendor_account/view/page/otp_vendor_page.dart';
 import 'package:evcar/src/feature/vendor_map/controller/vendor_map_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -18,8 +19,6 @@ const kGoogleApiKey = 'AIzaSyBJTNVgozL5JDsZvWNqGJBxc_jIWVEVx6w';
 final homeScaffoldKey = GlobalKey<ScaffoldState>();
 
 class _MapWidgetState extends State<MapWidget> {
-  static const CameraPosition initialCameraPosition =
-      CameraPosition(target: LatLng(37.42796, -122.08574), zoom: 14.0);
   final AddLocation mapController = Get.put(AddLocation());
   @override
   void initState() {
@@ -31,6 +30,7 @@ class _MapWidgetState extends State<MapWidget> {
   void initializeMap() async {
     // await mapController.addCustomMarker();
     await mapController.loadMapStyle();
+    await mapController.getCurrentLocationButton();
     // await mapController.handlePressButton(context);
   }
 
@@ -42,13 +42,31 @@ class _MapWidgetState extends State<MapWidget> {
         Obx(
           () => GoogleMap(
             zoomControlsEnabled: false,
-            initialCameraPosition: initialCameraPosition,
+            initialCameraPosition: CameraPosition(
+              target: mapController.initialPosition,
+              zoom: 11.151926040649414,
+            ),
             markers: mapController.markersList.toSet(),
             mapType: MapType.normal,
             onMapCreated: (GoogleMapController controller) async {
               await controller.setMapStyle(mapController.mapStyleString);
               mapController.googleMapController = controller;
+              mapController.controller.complete(controller);
             },
+          ),
+        ),
+        Positioned(
+          top: context.screenHeight * 0.12,
+          right: context.screenWidth * 0.05,
+          child: GestureDetector(
+            onTap: () async {
+              await mapController.getCurrentLocationButton();
+            },
+            child: SvgPicture.asset(
+              "assets/images/currentLocation.svg",
+              width: 0.07 * context.screenWidth,
+              height: 0.04 * context.screenHeight,
+            ),
           ),
         ),
         Align(
