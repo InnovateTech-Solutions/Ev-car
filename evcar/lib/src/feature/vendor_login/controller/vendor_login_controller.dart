@@ -102,7 +102,7 @@ class VendorLoginController extends GetxController {
         homeController.login('vendor');
         Navigator.of(context, rootNavigator: true).pop();
 
-        Get.offAll(const VendorDashboardPage());
+        Get.offAll(VendorDashboardPage());
       } else {
         // Handle error case
         Get.snackbar("ERROR", "Invalid Data",

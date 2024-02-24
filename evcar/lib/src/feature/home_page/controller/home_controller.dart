@@ -32,7 +32,7 @@ class HomePageController extends GetxController {
       case 'user':
         return const NavBarWidget();
       case 'vendor':
-        return const VendorDashboardPage();
+        return VendorDashboardPage();
 
       default:
         // Handle invalid user type
