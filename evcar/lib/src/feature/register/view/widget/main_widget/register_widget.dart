@@ -1,6 +1,7 @@
 import 'package:evcar/src/config/sizes/sizes.dart';
 import 'package:evcar/src/config/theme/theme.dart';
 import 'package:evcar/src/feature/login/view/widget/widget_collection/login_partial.dart';
+import 'package:evcar/src/feature/otp/controller/otp_controller.dart';
 import 'package:evcar/src/feature/register/controller/register_controller.dart';
 import 'package:evcar/src/feature/register/model/form_model.dart';
 import 'package:evcar/src/feature/register/model/user_model.dart';
@@ -159,6 +160,9 @@ class RegisterWidgets extends StatelessWidget {
                           carType: controller.carType.text,
                           password: controller.password.text),
                     );
+                    final otpcontroller =
+                        Get.put(OTPController(controller.phoneNumber.text));
+                    otpcontroller.onButtonPressed();
                   } else {
                     userExistDialog(context, ("المستخدم موجود مسبقا"));
                   }
